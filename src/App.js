@@ -4,7 +4,7 @@ import './App.css';
 
 class App extends React.Component {
   handleClick() {
-    fetch('https://react-demo.azurewebsites.net/add').then(data => {
+    fetch('https://react-backend.azurewebsites.net/add').then(data => {
       if (typeof data.json === 'function') {
         data.json().then(elem => {
           console.log({ elem })
