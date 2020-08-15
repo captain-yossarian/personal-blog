@@ -30,7 +30,7 @@ class App extends React.Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Keep calm and Learn React
+            Keep calm and Learn React 1
         </a>
         </header>
       </div>
