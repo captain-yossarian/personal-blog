@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/components/prism-typescript';
+import Math from './Chapters/MathOperations'
 
 const code = `
 const foo: string = 'foo';
@@ -55,7 +56,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route path="/about">
-          <About />
+          <Math />
         </Route>
         <Route path="/">
           <Home />
