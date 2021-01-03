@@ -2,13 +2,28 @@ import React from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Prism from 'prismjs';
-import 'prismjs/themes/prism-twilight.css'
+import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/components/prism-typescript';
 
 const code = `
 const foo: string = 'foo';
 const bar = 'bar';
 console.log(foo + bar);
+
+type A = string;
+
+type PersonAsType = {
+  name: string;
+  age: number;
+  address: string[];
+  greet(): string;
+};
+
+// A function that sends this data to a back-end
+function send(data: FormData) {
+  console.log(data.entries()) // this compiles!! 😱
+  // but crashes horrendously in runtime 😕
+}
 `.trim()
 
 function Home() {
