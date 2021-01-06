@@ -21,13 +21,11 @@ const keys = Object.keys(links);
 
 const Home: FC = () => (
   <ul>
-    {(keys as (keyof typeof links)[]).map((elem, index) => {
-      return (
-        <li key={index}>
-          <Link to={elem}>{links[elem]}</Link>
-        </li>
-      );
-    })}
+    {(keys as (keyof typeof links)[]).map((elem, index) => (
+      <li key={index}>
+        <Link to={elem}>{links[elem]}</Link>
+      </li>
+    ))}
   </ul>
 );
 
