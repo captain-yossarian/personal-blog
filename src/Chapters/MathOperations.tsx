@@ -1,9 +1,9 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
-import Code from "./Code";
-import { Layout, Var } from "./Layout";
+import Code from "../Shared/Code";
+import { Layout, Var } from "../Shared/Layout";
 
 const code1 = `
 const sum = 2 + 2n; // Error
@@ -101,12 +101,11 @@ const MathOperations: FC = () => {
       <p>Ok, what we can do? We can define two generic parameters:</p>
 
       <Code code={code4} />
-      <p>
-        Unfortunately, above example still don't work as we expect.
-      </p>
+      <p>Unfortunately, above example still don't work as we expect.</p>
       <Code code={code5} />
       <p>
-        Only overloadings might help us here. We should explicitly say, that <Var>B</Var> generic parameter should have same type as <Var>A</Var>
+        Only overloadings might help us here. We should explicitly say, that{" "}
+        <Var>B</Var> generic parameter should have same type as <Var>A</Var>
       </p>
       <Code code={code6} />
     </Layout>
