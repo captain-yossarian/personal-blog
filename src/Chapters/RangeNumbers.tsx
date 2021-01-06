@@ -1,7 +1,11 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Layout, Var } from "../Shared/Layout";
+import Links from "../Shared/Links";
 
+/**
+ * @todo
+ */
 const code1 = `
 interface Foo {
   age: number;
@@ -160,8 +164,12 @@ type Enumerate<N extends number> = EnumerateInternal<[], N> extends (infer E)[]
 type Result = Enumerate<43>; // 0 | 1 | 2 | ... | 42
 `;
 
+const links = [
+  "https://stackoverflow.com/questions/65307438/how-to-define-properties-in-a-typescript-interface-with-dynamic-elements-in-the",
+];
 const RangeNumbers: FC = () => (
   <Layout>
+    <Links links={links} />
     <p>
       Let's take a look on <Var>type Values = T[keyof T]</Var> utility.
     </p>

@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Layout, Var } from "../Shared/Layout";
+import Links from "../Shared/Links";
 
 const code1 = `
 const handleArray=(x: number[], y: number[][]) => void
@@ -449,8 +450,13 @@ const result6 = array([1, 2, 3] as const, [[1, 2, 3], []] as const); // error
 const result7 = array(arr, [[1, 1, 1]]); // error, because TS is unable to figure out length of mutable array.
 `;
 
+const links = [
+  "https://stackoverflow.com/questions/65361696/arguments-of-same-length-typescript",
+];
+
 const CompareArguments: FC = () => (
   <Layout>
+    <Links links={links} />
     <p>Let's say you want to make a function with next constraints:</p>
     <ul>
       <li>First argument should be an array</li>

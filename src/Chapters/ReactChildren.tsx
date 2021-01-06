@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Layout, Var } from "../Shared/Layout";
+import Links from "../Shared/Links";
 
 const code1 = `
 function One() {
@@ -137,9 +138,12 @@ function App4() {
   });
 }
 `;
-
+const links = [
+  "https://stackoverflow.com/questions/64967447/adding-required-props-to-child-react-elements-with-typescript",
+];
 const ReactChildren: FC = () => (
   <Layout>
+    <Links links={links} />
     <p>
       Let's assume you want to create component which will accept array of
       children components with certain props ?

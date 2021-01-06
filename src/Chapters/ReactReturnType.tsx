@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Layout, Var } from "../Shared/Layout";
+import Links from "../Shared/Links";
 
 const code1 = `
 import React, { FC } from 'react';
@@ -57,9 +58,13 @@ const result2 = (
   />
 ); 
 `;
-
+const links = [
+  "https://stackoverflow.com/questions/65406516/react-typescript-difference-between-react-fc-t-and-function",
+];
 const ReactReturnType: FC = () => (
   <Layout>
+    <Links links={links} />
+
     <p>There is a common pattern for typing return value of component:</p>
     <Code code={code1} />
     <p>Is it helpful ? - Yes, but actually - No</p>
