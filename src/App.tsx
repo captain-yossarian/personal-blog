@@ -6,6 +6,7 @@ import ReactChildren from "./Chapters/ReactChildren";
 import ReactReturnType from "./Chapters/ReactReturnType";
 import CompareArguments from "./Chapters/CompareArguments";
 import RangeNumbers from "./Chapters/RangeNumbers";
+import RecursiveTypes from "./Chapters/RecursiveTypes";
 
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
@@ -29,6 +30,9 @@ const App = () => (
       </Route>
       <Route path="/range-numbers">
         <RangeNumbers />
+      </Route>
+      <Route path="/recursive-types">
+        <RecursiveTypes />
       </Route>
     </Switch>
   </Router>

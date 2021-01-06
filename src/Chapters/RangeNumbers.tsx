@@ -37,8 +37,6 @@ type Val4 = Arr[0 | 1 | 2]; // 3 | 1 | 1
 type Val5 = Arr[number]; // 3 | 1 | 1
 `;
 
-const inter = (arg: string) => "`${" + arg + "}`";
-
 const code4 = `type Assert<T, U extends T> = T extends U ? true : false;
 
 type Values<T> = T[keyof T];
@@ -162,7 +160,7 @@ type Enumerate<N extends number> = EnumerateInternal<[], N> extends (infer E)[]
 type Result = Enumerate<43>; // 0 | 1 | 2 | ... | 42
 `;
 
-const RangeNumbers = () => (
+const RangeNumbers: FC = () => (
   <Layout>
     <p>
       Let's take a look on <Var>type Values = T[keyof T]</Var> utility.
