@@ -13,5 +13,8 @@ export const CodeWrapper = styled.div`
 `;
 
 export const Var = styled.code`
-  background-color: #f4f4f4;
+  background-color: #bfb6b6;
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
 `;
