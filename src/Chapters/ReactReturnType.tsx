@@ -1,7 +1,4 @@
 import React, { FC } from "react";
-
-import "prismjs/themes/prism-tomorrow.css";
-import "prismjs/components/prism-typescript";
 import Code from "../Shared/Code";
 import { Layout, Var } from "../Shared/Layout";
 

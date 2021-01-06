@@ -1,100 +1,159 @@
-There is a common pattern for typing return value of component:
+Let's take a look on `type Values = T[keyof T]` utility.
+Maybe you wonder, what does it mean ?
+Before we continue, please make sure you are aware of [distibutive types](https://www.typescriptlang.org/docs/handbook/advanced-types.html#distributive-conditional-typ)
+
+Let's start with simple example:
 
 ```typescript
-type Props = {
-  label: string;
+interface Foo {
+  age: number;
   name: string;
-};
+}
 
-const Result: FC<Props> = (prop: Props): JSX.Element => <One label={"hello"} />;
+type Alias1 = Foo["age"]; // number
+type Alias2 = Foo["name"]; // stirng
+type Alias3 = Foo["age" | "name"]; // string | number
 
-type ComponentReturnType = ReturnType<typeof Result>; // React.ReactElement<any, any> | null
+type Check = keyof Foo; // 'age'|'name
 ```
 
-Is it correct ? - Yes.
-Is it helpful ? - Not really.
-What if you need to make sure that Result component will always return component with some particular props.
-For example I'm interested in `{label:string}` property.
+Our `Values` utility works perfect with objects, but not with arrays.
+To get all keys of object, we use - `keyof`.
+To get all array elements we use `[number]` because arrays have numeric keys.
 
 ```typescript
-type Props = {
-  label: string;
-};
-type CustomReturn = React.ReactElement<Props>;
-
-const MainButton: FC<Props> = (prop: Props): CustomReturn => <Two />;
+type Arr = [1, 2, 3];
+type Val1 = Arr[0]; // 1
+type Val2 = Arr[1]; // 2
+type Val3 = Arr[0 | 1]; // 1|2
+type Val4 = Arr[0 | 1 | 2]; // 3 | 1 | 1
+type Val5 = Arr[number]; // 3 | 1 | 1
 ```
 
-Unfortunately, there is no error. This code compiles.
-Native React syntax comes to help!
+Now, we can keep going. Let's define out utility types.
+For clarity, I will use simple Assert test type
 
 ```typescript
-const Two: React.FC = () => <div></div>;
+type Assert<T, U extends T> = T extends U ? true : false;
 
-type Props = {
-  label: string;
+type Values<T> = T[keyof T];
+
+{
+  type Test1 = Values<{ age: 42; name: "John" }>; //  42 | "John"
+  type Test2 = Assert<Test1, "John" | 42>;
+}
+
+type LiteralDigits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+
+type NumberString<T extends number> = `${T}`;
+
+{
+  type Test1 = Assert<NumberString<6>, "6">; // true
+  type Test2 = Assert<NumberString<42>, "42">; // true
+  type Test3 = Assert<NumberString<6>, 6>; // false
+  type Test4 = Assert<NumberString<6>, "6foo">; // false
+}
+
+type AppendDigit<T extends number | string> = `${T}${LiteralDigits}`;
+
+{
+  /**
+   * If you don't understand why, please read again about distributivenes here
+   * https://www.typescriptlang.org/docs/handbook/advanced-types.html#distributive-conditional-types
+   */
+  type Test1 = Assert<
+    AppendDigit<2>,
+    "20" | "21" | "22" | "23" | "24" | "25" | "26" | "27" | "28" | "29"
+  >; // true
+  type Test2 = Assert<
+    AppendDigit<9>,
+    "90" | "91" | "92" | "93" | "94" | "95" | "96" | "97" | "98" | "99"
+  >; // true
+}
+
+type MakeSet<T extends number> = {
+  [P in T]: AppendDigit<P>;
 };
-type CustomReturn = React.ReactElement<Props>;
 
-const MainButton: FC<Props> = (prop: Props): CustomReturn =>
-  React.createElement(Two); // Error
+{
+  type Test1 = Assert<
+    MakeSet<1>,
+    {
+      1: "10" | "11" | "12" | "13" | "14" | "15" | "16" | "17" | "18" | "19";
+    }
+  >;
+
+  type Test2 = Assert<
+    MakeSet<1 | 2>,
+    {
+      1: "10" | "11" | "12" | "13" | "14" | "15" | "16" | "17" | "18" | "19";
+      2: "20" | "21" | "22" | "23" | "24" | "25" | "26" | "27" | "28" | "29";
+    }
+  >;
+}
+
+type RemoveTrailingZero<
+  T extends string
+> = T extends `${infer Fst}${infer Rest}`
+  ? Fst extends `0`
+    ? RemoveTrailingZero<`${Rest}`>
+    : `${Fst}${Rest}`
+  : never;
+
+{
+  /**
+   * Because nobody uses 01 | 02 ... | 0n
+   * Everybody use 1 | 2 | 3 ... | n
+   */
+  type Test1 = Assert<RemoveTrailingZero<"01">, "1">;
+  type Test2 = Assert<RemoveTrailingZero<"02" | "03">, "2" | "3">;
+  type Test3 = Assert<RemoveTrailingZero<"002" | "003">, "2" | "3">;
+}
+
+type From_1_to_999 = RemoveTrailingZero<
+  Values<
+    {
+      [P in Values<MakeSet<LiteralDigits>>]: AppendDigit<P>;
+    }
+  >
+>;
+
+type By<V extends NumberString<number>> = RemoveTrailingZero<
+  Values<
+    {
+      [P in V]: AppendDigit<P>;
+    }
+  >
+>;
+
+/**
+ * Did not use recursion here,
+ * because my CPU will blow up
+ */
+type From_1_to_99999 =
+  | From_1_to_999
+  | By<From_1_to_999>
+  | By<From_1_to_999 | By<From_1_to_999>>;
 ```
 
-Finally, we have an error:
-
-```
-Type 'FunctionComponentElement<{}>' is not assignable to type 'CustomReturn'. Types of property 'props' are incompatible.
-Property 'label' is missing in type '{}' but required in type '{ label: string; }'.ts(2322)
-```
-
-This code works as expected:
+If you still want to generate literal numbers instead of string numbers, you can use this code:
 
 ```typescript
-type Props = {
-  label: string;
-};
-type CustomReturn = React.ReactElement<Props>;
+type PrependNextNum<A extends Array<unknown>> = A["length"] extends infer T
+  ? ((t: T, ...a: A) => void) extends (...x: infer X) => void
+    ? X
+    : never
+  : never;
 
-const One: React.VFC<{ label: string }> = ({ label }) => <div>{label} </div>;
+type EnumerateInternal<A extends Array<unknown>, N extends number> = {
+  0: A;
+  1: EnumerateInternal<PrependNextNum<A>, N>;
+}[N extends A["length"] ? 0 : 1];
 
-const MainButton: FC<Props> = (props: Props): CustomReturn =>
-  React.createElement(One, props);
-```
+type Enumerate<N extends number> = EnumerateInternal<[], N> extends (infer E)[]
+  ? E
+  : never;
 
-Btw, small reminder, how to use generics with React components:
-
-```typescript
-import React from "react";
-
-type Props<D, S> = {
-  data: D;
-  selector: (data: D) => S;
-  render: (data: S) => any;
-};
-
-const Comp = <D, S>(props: Props<D, S>) => null;
-
-const result = (
-  <Comp<number, string>
-    data={2}
-    selector={(data: number) => "fg"}
-    render={(data: string) => 42}
-  />
-); // ok
-
-const result2 = (
-  <Comp<number, string>
-    data={2}
-    selector={(data: string) => "fg"}
-    render={(data: string) => 42}
-  />
-); // expected error
-
-const result3 = (
-  <Comp<number, string>
-    data={2}
-    selector={(data: number) => "fg"}
-    render={(data: number) => 42}
-  />
-); // expected error
+// Up to 42 - meaning of the life
+type Result = Enumerate<43>; // 0 | 1 | 2 | ... | 42
 ```
