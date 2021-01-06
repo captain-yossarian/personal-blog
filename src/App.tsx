@@ -1,14 +1,22 @@
-import React from "react";
+import React, { FC } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Prism from "prismjs";
-import Math from "./Chapters/MathOperations";
-import ReactChildren from "./Chapters/ReactChildren";
-import ReactReturnType from "./Chapters/ReactReturnType";
-import CompareArguments from "./Chapters/CompareArguments";
-import RangeNumbers from "./Chapters/RangeNumbers";
-import RecursiveTypes from "./Chapters/RecursiveTypes";
-import Tuples from "./Chapters/Tuples";
-import UnionArray from "./Chapters/UnionArray";
+import {
+  Arrays,
+  Math,
+  ReactChildren,
+  ReactReturnType,
+  CompareArguments,
+  RangeNumbers,
+  RecursiveTypes,
+  Tuples,
+  UnionArray,
+  CallbackChain,
+  PubSub,
+  TypeState,
+  Api,
+} from "./Chapters";
+import Home from "./Shared/Home";
 
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
@@ -41,6 +49,24 @@ const App = () => (
       </Route>
       <Route path="/union-array">
         <UnionArray />
+      </Route>
+      <Route path="/callback-chain">
+        <CallbackChain />
+      </Route>
+      <Route path="/handle-arrays">
+        <Arrays />
+      </Route>
+      <Route path="/publish-subscribe">
+        <PubSub />
+      </Route>
+      <Route path="/type-state">
+        <TypeState />
+      </Route>
+      <Route path="/api">
+        <Api />
+      </Route>
+      <Route path="/">
+        <Home />
       </Route>
     </Switch>
   </Router>

@@ -1,159 +1,102 @@
-Let's take a look on `type Values = T[keyof T]` utility.
-Maybe you wonder, what does it mean ?
-Before we continue, please make sure you are aware of [distibutive types](https://www.typescriptlang.org/docs/handbook/advanced-types.html#distributive-conditional-typ)
-
-Let's start with simple example:
+Let's assume that we have next allowed endpoints:
 
 ```typescript
-interface Foo {
-  age: number;
-  name: string;
-}
-
-type Alias1 = Foo["age"]; // number
-type Alias2 = Foo["name"]; // stirng
-type Alias3 = Foo["age" | "name"]; // string | number
-
-type Check = keyof Foo; // 'age'|'name
-```
-
-Our `Values` utility works perfect with objects, but not with arrays.
-To get all keys of object, we use - `keyof`.
-To get all array elements we use `[number]` because arrays have numeric keys.
-
-```typescript
-type Arr = [1, 2, 3];
-type Val1 = Arr[0]; // 1
-type Val2 = Arr[1]; // 2
-type Val3 = Arr[0 | 1]; // 1|2
-type Val4 = Arr[0 | 1 | 2]; // 3 | 1 | 1
-type Val5 = Arr[number]; // 3 | 1 | 1
-```
-
-Now, we can keep going. Let's define out utility types.
-For clarity, I will use simple Assert test type
-
-```typescript
-type Assert<T, U extends T> = T extends U ? true : false;
-
-type Values<T> = T[keyof T];
-
-{
-  type Test1 = Values<{ age: 42; name: "John" }>; //  42 | "John"
-  type Test2 = Assert<Test1, "John" | 42>;
-}
-
-type LiteralDigits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-
-type NumberString<T extends number> = `${T}`;
-
-{
-  type Test1 = Assert<NumberString<6>, "6">; // true
-  type Test2 = Assert<NumberString<42>, "42">; // true
-  type Test3 = Assert<NumberString<6>, 6>; // false
-  type Test4 = Assert<NumberString<6>, "6foo">; // false
-}
-
-type AppendDigit<T extends number | string> = `${T}${LiteralDigits}`;
-
-{
+const enum Endpoints {
   /**
-   * If you don't understand why, please read again about distributivenes here
-   * https://www.typescriptlang.org/docs/handbook/advanced-types.html#distributive-conditional-types
+   * Have only GET and POST
    */
-  type Test1 = Assert<
-    AppendDigit<2>,
-    "20" | "21" | "22" | "23" | "24" | "25" | "26" | "27" | "28" | "29"
-  >; // true
-  type Test2 = Assert<
-    AppendDigit<9>,
-    "90" | "91" | "92" | "93" | "94" | "95" | "96" | "97" | "98" | "99"
-  >; // true
-}
-
-type MakeSet<T extends number> = {
-  [P in T]: AppendDigit<P>;
-};
-
-{
-  type Test1 = Assert<
-    MakeSet<1>,
-    {
-      1: "10" | "11" | "12" | "13" | "14" | "15" | "16" | "17" | "18" | "19";
-    }
-  >;
-
-  type Test2 = Assert<
-    MakeSet<1 | 2>,
-    {
-      1: "10" | "11" | "12" | "13" | "14" | "15" | "16" | "17" | "18" | "19";
-      2: "20" | "21" | "22" | "23" | "24" | "25" | "26" | "27" | "28" | "29";
-    }
-  >;
-}
-
-type RemoveTrailingZero<
-  T extends string
-> = T extends `${infer Fst}${infer Rest}`
-  ? Fst extends `0`
-    ? RemoveTrailingZero<`${Rest}`>
-    : `${Fst}${Rest}`
-  : never;
-
-{
+  users = "/api/users",
   /**
-   * Because nobody uses 01 | 02 ... | 0n
-   * Everybody use 1 | 2 | 3 ... | n
+   * Have only POST and DELETE
    */
-  type Test1 = Assert<RemoveTrailingZero<"01">, "1">;
-  type Test2 = Assert<RemoveTrailingZero<"02" | "03">, "2" | "3">;
-  type Test3 = Assert<RemoveTrailingZero<"002" | "003">, "2" | "3">;
+  notes = "/api/notes",
+  /**
+   * Have only GET
+   */
+  entitlements = "/api/entitlements",
 }
-
-type From_1_to_999 = RemoveTrailingZero<
-  Values<
-    {
-      [P in Values<MakeSet<LiteralDigits>>]: AppendDigit<P>;
-    }
-  >
->;
-
-type By<V extends NumberString<number>> = RemoveTrailingZero<
-  Values<
-    {
-      [P in V]: AppendDigit<P>;
-    }
-  >
->;
-
-/**
- * Did not use recursion here,
- * because my CPU will blow up
- */
-type From_1_to_99999 =
-  | From_1_to_999
-  | By<From_1_to_999>
-  | By<From_1_to_999 | By<From_1_to_999>>;
 ```
 
-If you still want to generate literal numbers instead of string numbers, you can use this code:
+You might have noticed, that I used `const enum` instead of `enum`. This technique will reduce you code output.
+Please, keep in mind, it works bad with babel.
+You allowed to make:
+
+- `GET` | `POST` requests for `/users`
+- `POST` | `DELETE` requests for `/notes`
+- `GET` requests for `/entitlements`
+
+Let's define interfaces of our allowed fetch methods:
 
 ```typescript
-type PrependNextNum<A extends Array<unknown>> = A["length"] extends infer T
-  ? ((t: T, ...a: A) => void) extends (...x: infer X) => void
-    ? X
-    : never
-  : never;
+interface HandleUsers {
+  get<T>(url: Endpoints.users): Promise<T>;
+  post(url: Endpoints.users): Promise<Response>;
+}
 
-type EnumerateInternal<A extends Array<unknown>, N extends number> = {
-  0: A;
-  1: EnumerateInternal<PrependNextNum<A>, N>;
-}[N extends A["length"] ? 0 : 1];
+interface HandleNotes {
+  post(url: Endpoints.notes): Promise<Response>;
+  delete(url: Endpoints.notes): Promise<Response>;
+}
 
-type Enumerate<N extends number> = EnumerateInternal<[], N> extends (infer E)[]
-  ? E
-  : never;
-
-// Up to 42 - meaning of the life
-type Result = Enumerate<43>; // 0 | 1 | 2 | ... | 42
+interface HandleEntitlements {
+  get<T>(url: Endpoints.entitlements): Promise<T>;
+}
 ```
+
+Now, we can define our main `API` class
+
+```typescript
+class Api {
+  get = <T = void>(url: Endpoints): Promise<T> =>
+    fetch(url).then((response) => response.json());
+  post = (url: Endpoints) => fetch(url, { method: "POST" });
+  delete = (url: Endpoints) => fetch(url, { method: "DELETE" });
+}
+```
+
+For now, class `Api` does not have any constraints.
+Let's define them:
+
+```typescript
+// Just helper
+type RequiredGeneric<T> = T extends void
+  ? { __TYPE__ERROR__: "Please provide generic parameter" }
+  : T;
+
+interface HandleHttp {
+  <T extends void>(): RequiredGeneric<T>;
+  <T extends Endpoints.users>(): HandleUsers;
+  <T extends Endpoints.notes>(): HandleNotes;
+  <T extends Endpoints.entitlements>(): HandleEntitlements;
+}
+```
+
+As You see, `HandleHttp` is just overloading for function. Nothing special except the first line. I will come back to it later.
+We have class `Api` and overloadings for function. How we can combine them? Very simple - we will just create a function which returns instance of Api class
+
+```typescript
+const handleHttp: HandleHttp = <_ extends Endpoints>() => new Api();
+```
+
+Take a look on generic parameter of `httpHandler` and `HandleHttp` interface, there is a relation between them.
+
+Let's test our result:
+
+```typescript
+const request1 = handleHttp<Endpoints.notes>(); // only delete and post methods are allowed
+const request2 = handleHttp<Endpoints.users>(); // only get and post methods are allowed
+const request3 = handleHttp<Endpoints.entitlements>(); // only get method is allowed
+```
+
+If you have forgotten to provide generic parameter, return type of `request` will be
+
+```typescript
+const request = {
+    __TYPE__ERROR__: 'Please provide generic parameter';
+}
+```
+
+Drawbacks:
+
+- Without generic parameter, using `request.TYPE _ERROR` will be perfectly valid from TS point of view
+- `Api` class is not singleton, you should create it every time

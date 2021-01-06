@@ -44,7 +44,7 @@ type FindIndex<
 type Result = Values<Omit<FindIndex<Arr, 65>, ArrayKeys>>; // '1'
 `;
 
-const Typeguards: FC = () => (
+const Arrays: FC = () => (
   <Layout>
     <Links links={links} />
     <p>
@@ -80,3 +80,5 @@ const Typeguards: FC = () => (
     </p>
   </Layout>
 );
+
+export default Arrays;
