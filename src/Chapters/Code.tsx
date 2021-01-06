@@ -1,20 +1,22 @@
 import React, { FC, useEffect } from 'react';
 import Prism from 'prismjs';
+import { CodeWrapper } from './Layout';
+
 import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/components/prism-typescript';
 
-
 const Code: FC<{ code: string }> = ({ code }) => {
     useEffect(() => {
-        // Обновляем заголовок документа с помощью API браузера
         setTimeout(() => Prism.highlightAll(), 0)
     });
     return (
-        <pre className="line-numbers">
-            <code className="language-typescript">
-                {code}
-            </code>
-        </pre>
+        <CodeWrapper>
+            <pre className="line-numbers" style={{ borderRadius: '10px' }}>
+                <code className="language-typescript">
+                    {code}
+                </code>
+            </pre>
+        </CodeWrapper>
     )
 }
 

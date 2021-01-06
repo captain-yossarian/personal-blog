@@ -6,64 +6,18 @@ import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/components/prism-typescript';
 import Math from './Chapters/MathOperations'
 
-const code = `
-const foo: string = 'foo';
-const bar = 'bar';
-console.log(foo + bar);
 
-type A = string;
+setTimeout(() => Prism.highlightAll(), 0)
 
-type PersonAsType = {
-  name: string;
-  age: number;
-  address: string[];
-  greet(): string;
-};
+const App = () => (
+  <Router>
+    <Switch>
+      <Route path="/">
+        <Math />
+      </Route>
 
-// A function that sends this data to a back-end
-function send(data: FormData) {
-  console.log(data.entries()) // this compiles!! 😱
-  // but crashes horrendously in runtime 😕
-}
-`.trim()
-
-function Home() {
-  return <h2>Home</h2>;
-}
-
-
-class About extends React.Component {
-  componentDidMount() {
-    console.log({ prism: Prism.languages })
-    // You can call the Prism.js API here
-    // Use setTimeout to push onto callback queue so it runs after the DOM is updated
-    setTimeout(() => Prism.highlightAll(), 0)
-  }
-  render() {
-    return (
-      <pre className="line-numbers">
-        <code className="language-typescript">
-          {code}
-        </code>
-      </pre>
-    )
-  }
-}
-
-const App = () => {
-
-  return (
-    <Router>
-      <Switch>
-        <Route path="/about">
-          <Math />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </Router>
-  );
-}
+    </Switch>
+  </Router>
+);
 
 export default App;

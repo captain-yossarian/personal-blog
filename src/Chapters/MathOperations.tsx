@@ -1,19 +1,19 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect } from "react";
 
-import Prism from 'prismjs';
-import 'prismjs/themes/prism-tomorrow.css'
-import 'prismjs/components/prism-typescript';
-import Code from './Code';
+import "prismjs/themes/prism-tomorrow.css";
+import "prismjs/components/prism-typescript";
+import Code from "./Code";
+import { Layout, Var } from "./Layout";
 
 const code1 = `
 const sum = 2 + 2n; // Error
-`.trim()
+`.trim();
 
 const code2 = `
 function sum<A extends number | bigint>(a: A, b: A) {
   return a * a + b * b;
 }
-`.trim()
+`.trim();
 
 const code3 = `
 const x = 3n;
@@ -21,10 +21,15 @@ let y: number | bigint;
 if (Math.random() < 0.5) y = 4;
 else y = 4n;
 
-sum(x, y); // OK
+sum(x, y); // It is Ok from TS point of view, but we know that here might be a bug
 `.trim();
 
 const code4 = `
+const x = 3n;
+let y: number | bigint;
+if (Math.random() < 0.5) y = 4;
+else y = 4n;
+
 type Numbers = number | bigint;
 
 function sumOfSquares<A extends Numbers, B extends Numbers>(
@@ -49,6 +54,11 @@ const code5 = `
 `.trim();
 
 const code6 = `
+const x = 3n;
+let y: number | bigint;
+if (Math.random() < 0.5) y = 4;
+else y = 4n;
+
 type Numbers = number | bigint;
 
 function sumOfSquares<A extends number, B extends number>(a: A, b: B): number;
@@ -64,8 +74,42 @@ const result4 = sumOfSquares(3, 4); // ok
 const result5 = sumOfSquares(3n, 4n); // ok
 `.trim();
 
+const MathOperations: FC = () => {
+  return (
+    <Layout>
+      <p>
+        Let's assume, You want to make some math operations either on number or
+        bigint
+      </p>
+      <Code code={code1} />
+      <p>
+        So, we want to accept only number or only bigints. Let's start with
+        function definition:
+      </p>
+      <Code code={code2} />
+      <p>Unfortunately, this function don't work as expected. Let's test it:</p>
+      <Code code={code3} />
+      <p>
+        In above case, <Var>y</Var> can be either <Var>number</Var> or{" "}
+        <Var>bigint</Var>.
+      </p>
+      <p>
+        So, from TS point of view it is ok, but I'd willing to bet, that it will
+        throw at least 1 error in dev environment and 1K errors in production.
+      </p>
+      <p>It was my first not funny a joke.</p>
+      <p>Ok, what we can do? We can define two generic parameters:</p>
 
-
-const MathOperations: FC = () => <Code code={code1} />
-
+      <Code code={code4} />
+      <p>
+        Unfortunately, above example still don't work as we expect.
+      </p>
+      <Code code={code5} />
+      <p>
+        Only overloadings might help us here. We should explicitly say, that <Var>B</Var> generic parameter should have same type as <Var>A</Var>
+      </p>
+      <Code code={code6} />
+    </Layout>
+  );
+};
 export default MathOperations;
