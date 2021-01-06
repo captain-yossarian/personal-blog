@@ -7,6 +7,8 @@ import ReactReturnType from "./Chapters/ReactReturnType";
 import CompareArguments from "./Chapters/CompareArguments";
 import RangeNumbers from "./Chapters/RangeNumbers";
 import RecursiveTypes from "./Chapters/RecursiveTypes";
+import Tuples from "./Chapters/Tuples";
+import UnionArray from "./Chapters/UnionArray";
 
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
@@ -33,6 +35,12 @@ const App = () => (
       </Route>
       <Route path="/recursive-types">
         <RecursiveTypes />
+      </Route>
+      <Route path="/tuples">
+        <Tuples />
+      </Route>
+      <Route path="/union-array">
+        <UnionArray />
       </Route>
     </Switch>
   </Router>
