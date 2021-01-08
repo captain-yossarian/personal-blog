@@ -69,6 +69,8 @@ const keys = Object.entries(links);
 
 const Aside = styled.aside`
   margin-left: 30px;
+  font-size: 18px;
+  line-height: 1.5;
 `;
 
 const Li = styled.li`
@@ -77,13 +79,10 @@ const Li = styled.li`
 
 const H2 = styled.h2`
   padding: 10px;
-  box-shadow: 4px 4px 4px black;
   display: inline-block;
   margin-bottom: 20px;
-  &:hover {
-    transform: translateX(2px) translateY(2px);
-    box-shadow: 2px 2px 2px black;
-  }
+  font-size: 20px;
+  border-bottom: 5px solid #fdba08;
 `;
 const ArticleHeader: FC<{ name: string; meta: Meta }> = ({ name, meta }) => (
   <Li>
