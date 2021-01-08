@@ -20,23 +20,19 @@ type Test1 = Union extends ["one", "one", "one"] ? true : false; // true
 `;
 
 const code3 = `
-//Credits goes to https://stackoverflow.com/questions/50374908/transform-union-type-to-intersection-type/50375286#50375286
 type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
   k: infer I
 ) => void
   ? I
   : never;
 
-// Credits goes to ShanonJackson https://github.com/microsoft/TypeScript/issues/13298#issuecomment-468114901
 // Converts union to overloaded function
 type UnionToOvlds<U> = UnionToIntersection<
   U extends any ? (f: U) => void : never
 >;
 
-// Credits goes to ShanonJackson https://github.com/microsoft/TypeScript/issues/13298#issuecomment-468114901
 type PopUnion<U> = UnionToOvlds<U> extends (a: infer A) => void ? A : never;
 
-// Credit goes to Titian Cernicova-Dragomir  https://stackoverflow.com/questions/53953814/typescript-check-if-a-type-is-a-union#comment-94748994
 type IsUnion<T> = [T] extends [UnionToIntersection<T>] ? false : true;
 
 // Finally me)
@@ -89,8 +85,22 @@ const UnionArray: FC = () => (
     </p>
     <Code code={code3} />
     <p>
+      Credits goes to
+      <a href="https://github.com/microsoft/TypeScript/issues/13298#issuecomment-468114901">
+        Shanon Jackson
+      </a>
+      ,
+      <a href="https://stackoverflow.com/questions/53953814/typescript-check-if-a-type-is-a-union#comment-94748994">
+        Titian Cernicova-Dragomir
+      </a>
+      ,
+      <a href="https://stackoverflow.com/questions/50374908/transform-union-type-to-intersection-type/50375286#50375286">
+        @jcalz
+      </a>
+    </p>
+    <p>
       Please keep in mind, this solution is not CPU friendly and order will
-      always be the same as in union.{" "}
+      always be the same as in union.
     </p>
     <p>
       It is bad, in case, if you want to use above type for

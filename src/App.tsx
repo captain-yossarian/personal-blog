@@ -1,5 +1,10 @@
-import React, { FC } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { FC, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  withRouter,
+} from "react-router-dom";
 import Prism from "prismjs";
 import {
   Arrays,
@@ -47,9 +52,23 @@ const map = {
 
 const keys = Object.keys(map);
 
+const ScrollToTop = withRouter(({ history }) => {
+  useEffect(() => {
+    const unlisten = history.listen(() => {
+      window.scrollTo(0, 0);
+    });
+    return () => {
+      unlisten();
+    };
+  }, []);
+
+  return null;
+});
+
 const App = () => (
   <Router>
     <Navigation>
+      <ScrollToTop />
       <Switch>
         {(keys as (keyof typeof map)[]).map((elem) => {
           const Comp = map[elem];

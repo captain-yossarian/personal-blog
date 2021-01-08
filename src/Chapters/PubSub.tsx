@@ -26,8 +26,6 @@ interface EventMap {
 
 type Values<T> = T[keyof T];
 
-// All credits goes here :
-// https://stackoverflow.com/questions/50374908/transform-union-type-to-intersection-type/50375286#50375286
 type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
   k: infer I
 ) => void
@@ -71,7 +69,13 @@ const PubSub: FC = () => (
       event driven app (sockets, etc...)
     </p>
     <Code code={code1} />
-
+    <p>
+      <Var>UnionToIntersection</Var> util type is taken from{" "}
+      <a href="https://stackoverflow.com/questions/50374908/transform-union-type-to-intersection-type/50375286#50375286">
+        {" "}
+        here
+      </a>
+    </p>
     <p>
       <Var>EventMap</Var> - is our single source of true.
     </p>
