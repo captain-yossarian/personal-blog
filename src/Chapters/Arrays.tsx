@@ -1,12 +1,7 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Layout } from "../Shared/Layout";
-import Links, { Link } from "../Shared/Links";
-
-const links = [
-  "https://stackoverflow.com/questions/65429424/need-help-in-understanding-confusing-typescript-function",
-  "https://typescriptnapowaznie.pl/",
-];
+import Links, { Anchor } from "../Shared/Links";
 
 const code1 = `
 const arr = [85, 65, 4, 9] as const;
@@ -46,7 +41,6 @@ type Result = Values<Omit<FindIndex<Arr, 65>, ArrayKeys>>; // '1'
 
 const Arrays: FC = () => (
   <Layout title="Handle arrays">
-    <Links links={links} />
     <p>
       I'd willing to bet, you are using Array.prototype.filter 1 hundred times
       per day.
@@ -69,15 +63,19 @@ const Arrays: FC = () => (
     <Code code={code3} />
     <p>Is second example is useful in practive? Of course not)</p>
     <p> Will it help you to understand better TS type system? - Definitely</p>
-    <p>
-      <Link
-        href={
-          "https://stackoverflow.com/questions/65429424/need-help-in-understanding-confusing-typescript-function"
-        }
-        text={"here"}
-      />
-      you can find very interesting example with typeguards
-    </p>
+    <Links
+      data={[
+        {
+          href:
+            "https://stackoverflow.com/questions/65429424/need-help-in-understanding-confusing-typescript-function",
+          text: "stackoverflow",
+        },
+        {
+          href: "https://typescriptnapowaznie.pl/",
+          text: "Typescript na powaznie",
+        },
+      ]}
+    />
   </Layout>
 );
 

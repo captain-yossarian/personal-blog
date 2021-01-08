@@ -472,7 +472,15 @@ const links = [
 
 const CompareArguments: FC = () => (
   <Layout title="Arguments constraints">
-    <Links links={links} />
+    <Links
+      data={[
+        {
+          href:
+            "https://stackoverflow.com/questions/65361696/arguments-of-same-length-typescript",
+          text: "stackoverflow",
+        },
+      ]}
+    />
     <p>Let's say you want to make a function with next constraints:</p>
     <ul>
       <li>First argument should be an array</li>

@@ -105,7 +105,7 @@ const ArticleHeader: FC<{ name: string; meta: Meta }> = ({ name, meta }) => (
 const Home: FC = () => (
   <div>
     <Layout title="Blog">
-      <ul style={{ margin: "0 auto" }}>
+      <ul>
         {keys.map(([name, meta]) => (
           <ArticleHeader name={name} meta={meta} key={name} />
         ))}

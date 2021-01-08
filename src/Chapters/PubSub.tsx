@@ -2,11 +2,6 @@ import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Layout, Var } from "../Shared/Layout";
 import Links from "../Shared/Links";
-import styled from "styled-components";
-
-const links = [
-  "https://stackoverflow.com/questions/50374908/transform-union-type-to-intersection-type/50375286#50375286",
-];
 
 const code1 = `
 const enum Events {
@@ -62,7 +57,6 @@ listen(Events.bar, (arg /* { bar: string } */) => {});
 
 const PubSub: FC = () => (
   <Layout title="Publish / Subscribe type safe pattern">
-    <Links links={links} />
     <p>Our main goal - is to make illegal states unrepresentable.</p>
     <p>
       Please see next example. This pattern is your friend if you want to make
@@ -72,7 +66,6 @@ const PubSub: FC = () => (
     <p>
       <Var>UnionToIntersection</Var> util type is taken from{" "}
       <a href="https://stackoverflow.com/questions/50374908/transform-union-type-to-intersection-type/50375286#50375286">
-        {" "}
         here
       </a>
     </p>

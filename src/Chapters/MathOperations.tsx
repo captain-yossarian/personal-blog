@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
-import { Layout, Title, Var } from "../Shared/Layout";
+import { Layout, Var } from "../Shared/Layout";
 import Links from "../Shared/Links";
 
 const code1 = `
@@ -79,7 +79,6 @@ const links = [
 const MathOperations: FC = () => {
   return (
     <Layout title="Math operations">
-      <Links links={links} />
       <p>
         Let's assume, You want to make some math operations either on number or
         bigint
@@ -93,7 +92,7 @@ const MathOperations: FC = () => {
       <p>Unfortunately, this function don't work as expected. Let's test it:</p>
       <Code code={code3} />
       <p>
-        In above case, <Var>y</Var> can be either <Var>number</Var> or{" "}
+        In above case, <Var>y</Var> can be either <Var>number</Var> or
         <Var>bigint</Var>.
       </p>
       <p>
@@ -107,10 +106,19 @@ const MathOperations: FC = () => {
       <p>Unfortunately, above example still don't work as we expect.</p>
       <Code code={code5} />
       <p>
-        Only overloadings might help us here. We should explicitly say, that{" "}
+        Only overloadings might help us here. We should explicitly say, that
         <Var>B</Var> generic parameter should have same type as <Var>A</Var>
       </p>
       <Code code={code6} />
+      <Links
+        data={[
+          {
+            href:
+              "https://stackoverflow.com/questions/65280785/is-it-possible-to-declare-a-typescript-function-which-works-on-both-numbers-and",
+            text: "stackoverflow",
+          },
+        ]}
+      />
     </Layout>
   );
 };

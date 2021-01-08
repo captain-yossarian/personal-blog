@@ -1,22 +1,30 @@
 import React, { FC } from "react";
+import styled from "styled-components";
 
-type Props = {
-  links: string[];
+type PropsAnchor = {
+  href: string;
+  text: string;
 };
 
-export const Link: FC<{ href: string; text: string }> = ({ href, text }) => (
-  <a target="_blank" rel="noopener noreferrer" href={href}>
+type Props = {
+  data: PropsAnchor[];
+};
+
+const A = styled.a``;
+
+export const Anchor: FC<PropsAnchor> = ({ href, text }) => (
+  <A target="_blank" rel="noopener noreferrer" href={href}>
     {text}
-  </a>
+  </A>
 );
 
-const Links: FC<Props> = ({ links }) => (
+const Links: FC<Props> = ({ data }) => (
   <div>
-    <p>Useful StackOverflow links:</p>
+    <p>Useful links:</p>
     <ul>
-      {links.map((elem, index) => (
+      {data.map(({ href, text }, index) => (
         <li key={index}>
-          <Link href={elem} text={`Link - ${index + 1}`} />
+          <Anchor href={href} text={text} />
         </li>
       ))}
     </ul>

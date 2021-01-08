@@ -47,6 +47,7 @@ const Container = styled.div`
 `;
 
 const Nav = styled.nav`
+  padding-top: 20px;
   width: 300px;
   background-color: #fdba08;
   height: 100vh;
