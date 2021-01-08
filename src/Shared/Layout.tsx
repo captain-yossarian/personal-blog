@@ -47,19 +47,9 @@ const Section = styled.section`
 `;
 
 const links = {
-  "/math": "Math operations",
-  "/typed-react-children": "Type React component children",
-  "/react-return-type": "Type React component return type",
-  "/compare-arguments": "Compare array arguments",
-  "/range-numbers": "Generate numbers in range",
-  "/recursive-types": "Recursive types",
-  "/tuples": "Handle tuples",
-  "/union-array": "Transform Union to Array",
-  "/callback-chain": "Callback chain",
-  "/handle-arrays": "Handle arrays",
-  "/publish-subscribe": "Publish subscribe pattern",
-  "/type-state": "Type state pattern",
-  "/api": "Make type safe api requests",
+  "/": "Home",
+  "/about": "About",
+  "/contact": "Contact",
 };
 
 const keys = Object.keys(links);

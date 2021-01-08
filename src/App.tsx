@@ -17,6 +17,8 @@ import {
   Api,
 } from "./Chapters";
 import Home from "./Shared/Home";
+import About from "./Shared/About";
+import Contact from "./Shared/Contact";
 
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
@@ -24,52 +26,39 @@ import { Navigation } from "./Shared/Layout";
 
 setTimeout(() => Prism.highlightAll(), 0);
 
+const map = {
+  "/math": Math,
+  "/typed-react-children": ReactChildren,
+  "/react-return-type": ReactReturnType,
+  "/compare-arguments": CompareArguments,
+  "/range-numbers": RangeNumbers,
+  "/recursive-types": RecursiveTypes,
+  "/tuples": Tuples,
+  "/union-array": UnionArray,
+  "/callback-chain": CallbackChain,
+  "/handle-arrays": Arrays,
+  "/publish-subscribe": PubSub,
+  "/type-state": TypeState,
+  "/api": Api,
+  "/about": About,
+  "/contact": Contact,
+  "/": Home,
+};
+
+const keys = Object.keys(map);
+
 const App = () => (
   <Router>
     <Navigation>
       <Switch>
-        <Route path="/math">
-          <Math />
-        </Route>
-        <Route path="/typed-react-children">
-          <ReactChildren />
-        </Route>
-        <Route path="/react-return-type">
-          <ReactReturnType />
-        </Route>
-        <Route path="/compare-arguments">
-          <CompareArguments />
-        </Route>
-        <Route path="/range-numbers">
-          <RangeNumbers />
-        </Route>
-        <Route path="/recursive-types">
-          <RecursiveTypes />
-        </Route>
-        <Route path="/tuples">
-          <Tuples />
-        </Route>
-        <Route path="/union-array">
-          <UnionArray />
-        </Route>
-        <Route path="/callback-chain">
-          <CallbackChain />
-        </Route>
-        <Route path="/handle-arrays">
-          <Arrays />
-        </Route>
-        <Route path="/publish-subscribe">
-          <PubSub />
-        </Route>
-        <Route path="/type-state">
-          <TypeState />
-        </Route>
-        <Route path="/api">
-          <Api />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
+        {(keys as (keyof typeof map)[]).map((elem) => {
+          const Comp = map[elem];
+          return (
+            <Route path={elem}>
+              <Comp />
+            </Route>
+          );
+        })}
       </Switch>
     </Navigation>
   </Router>

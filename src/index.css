@@ -136,6 +136,9 @@ nav li:hover {
 nav li a {
   text-decoration: none;
   color: #0e2924;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
 }
 
 p {
