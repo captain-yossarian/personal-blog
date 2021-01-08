@@ -146,7 +146,7 @@ const ReactChildren: FC = () => (
     <Links links={links} />
     <p>
       Let's assume you want to create component which will accept array of
-      children components with certain props ?
+      children components with certain props.
     </p>
     <p>
       In this case, I'd like to accept only components with <Var>label</Var>{" "}

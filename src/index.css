@@ -146,3 +146,18 @@ p {
   line-height: 1.5;
   color: #0e2924;
 }
+
+h2 {
+  font-size: 20px;
+}
+
+h2 a {
+  text-decoration: none;
+  color: #0b241e;
+  display: inline;
+  height: 100%;
+  width: 100%;
+  font-weight: bold;
+  padding: 5px;
+  background-color: #fdba08;
+}
