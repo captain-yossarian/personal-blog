@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Layout, Var } from "../Shared/Layout";
 import Links from "../Shared/Links";
+import styled from "styled-components";
 
 const links = [
   "https://stackoverflow.com/questions/50374908/transform-union-type-to-intersection-type/50375286#50375286",
@@ -62,7 +63,7 @@ listen(Events.bar, (arg /* { bar: string } */) => {});
 `;
 
 const PubSub: FC = () => (
-  <Layout>
+  <Layout title="Publish / Subscribe type safe pattern">
     <Links links={links} />
     <p>Our main goal - is to make illegal states unrepresentable.</p>
     <p>

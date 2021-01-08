@@ -73,7 +73,7 @@ const request = {
 }
 `;
 const Api: FC = () => (
-  <Layout>
+  <Layout title="Using type safe API requests">
     <p>
       If you ever thought how to make type safe API requests, this article might
       help you.

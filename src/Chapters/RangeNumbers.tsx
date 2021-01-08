@@ -168,7 +168,7 @@ const links = [
   "https://stackoverflow.com/questions/65307438/how-to-define-properties-in-a-typescript-interface-with-dynamic-elements-in-the",
 ];
 const RangeNumbers: FC = () => (
-  <Layout>
+  <Layout title="Make number range">
     <Links links={links} />
     <p>
       Let's take a look on <Var>type Values = T[keyof T]</Var> utility.

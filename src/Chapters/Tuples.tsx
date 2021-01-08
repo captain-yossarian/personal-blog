@@ -155,7 +155,7 @@ type Result = Mapper<Data>[] extends ExpectedType ? true : false;
 const href =
   "https://stackoverflow.com/questions/65476787/how-to-dynamically-create-an-object-based-on-a-readonly-tuple-in-typescript/65478618#65478618";
 const Tuples: FC = () => (
-  <Layout>
+  <Layout title="Handle Tupels">
     <Links links={links} />
     <p>
       Let's say you have a literal type of array and you want to filter this

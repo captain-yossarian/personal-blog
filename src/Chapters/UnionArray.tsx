@@ -74,7 +74,7 @@ type keys = TupleUnion<keyof Person>;
 `;
 
 const UnionArray: FC = () => (
-  <Layout>
+  <Layout title="Convert unions to arrays">
     <Links links={links} />
     <p>
       Let's say you have a <Var>Union</Var>, and you want to convert it to

@@ -43,7 +43,7 @@ myFn({
 `;
 
 const CallbackChain: FC = () => (
-  <Layout>
+  <Layout title="Type safe callbacks">
     <Links links={links} />
     <p>Let's say you have next function</p>
     <Code code={code1} />

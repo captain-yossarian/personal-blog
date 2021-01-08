@@ -455,7 +455,7 @@ const links = [
 ];
 
 const CompareArguments: FC = () => (
-  <Layout>
+  <Layout title="Arguments constraints">
     <Links links={links} />
     <p>Let's say you want to make a function with next constraints:</p>
     <ul>

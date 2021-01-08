@@ -46,7 +46,7 @@ const result = new ConnectionDisabled(socket);
 `;
 
 const TypeState: FC = () => (
-  <Layout>
+  <Layout title="Type state pattern">
     <Links links={links} />
     <p>
       Next patter called - typestate. You can find in links section, different

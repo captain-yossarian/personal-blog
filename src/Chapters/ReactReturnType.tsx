@@ -62,7 +62,7 @@ const links = [
   "https://stackoverflow.com/questions/65406516/react-typescript-difference-between-react-fc-t-and-function",
 ];
 const ReactReturnType: FC = () => (
-  <Layout>
+  <Layout title="React component return type">
     <Links links={links} />
 
     <p>There is a common pattern for typing return value of component:</p>

@@ -11,13 +11,16 @@ export const Link: FC<{ href: string; text: string }> = ({ href, text }) => (
 );
 
 const Links: FC<Props> = ({ links }) => (
-  <ul>
-    {links.map((elem, index) => (
-      <li key={index}>
-        <Link href={elem} text={`Link - ${index + 1}`} />
-      </li>
-    ))}
-  </ul>
+  <div>
+    <p>Useful StackOverflow links:</p>
+    <ul>
+      {links.map((elem, index) => (
+        <li key={index}>
+          <Link href={elem} text={`Link - ${index + 1}`} />
+        </li>
+      ))}
+    </ul>
+  </div>
 );
 
 export default Links;

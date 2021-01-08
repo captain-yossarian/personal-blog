@@ -33,7 +33,7 @@ result1.age.name.surname = "2"; // ok
 `;
 
 const RecursiveTypes: FC = () => (
-  <Layout>
+  <Layout title="Recursive types">
     <Links links={links} />
     <p>Simple example:</p>
     <Code code={code1} />

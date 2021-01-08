@@ -142,7 +142,7 @@ const links = [
   "https://stackoverflow.com/questions/64967447/adding-required-props-to-child-react-elements-with-typescript",
 ];
 const ReactChildren: FC = () => (
-  <Layout>
+  <Layout title="Type safe React children type">
     <Links links={links} />
     <p>
       Let's assume you want to create component which will accept array of

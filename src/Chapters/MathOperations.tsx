@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
-import { Layout, Var } from "../Shared/Layout";
+import { Layout, Title, Var } from "../Shared/Layout";
 import Links from "../Shared/Links";
 
 const code1 = `
@@ -75,9 +75,10 @@ const result5 = sumOfSquares(3n, 4n); // ok
 const links = [
   "https://stackoverflow.com/questions/65280785/is-it-possible-to-declare-a-typescript-function-which-works-on-both-numbers-and",
 ];
+
 const MathOperations: FC = () => {
   return (
-    <Layout>
+    <Layout title="Math operations">
       <Links links={links} />
       <p>
         Let's assume, You want to make some math operations either on number or

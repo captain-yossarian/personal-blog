@@ -45,7 +45,7 @@ type Result = Values<Omit<FindIndex<Arr, 65>, ArrayKeys>>; // '1'
 `;
 
 const Arrays: FC = () => (
-  <Layout>
+  <Layout title="Handle arrays">
     <Links links={links} />
     <p>
       I'd willing to bet, you are using Array.prototype.filter 1 hundred times
