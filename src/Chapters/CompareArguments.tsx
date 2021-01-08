@@ -167,11 +167,19 @@ const result2 = array(
     [1, 1, 1],
     [1, 2],
   ] as const
-); // no error, but should be
-const result3 = array([1, 2, 3] as const, [[1, 2]] as const); // error
-const result5 = array([1, 2, 3] as const, [1] as const); // error
-const result6 = array([1, 2, 3] as const, [[1, 2, 3], []] as const); // no error, but should be
-const result7 = array(arr, [[1, 1, 1]]); // no error, but should be
+); // no error, but we expect
+
+// error
+const result3 = array([1, 2, 3] as const, [[1, 2]] as const); 
+
+// error
+const result5 = array([1, 2, 3] as const, [1] as const); 
+
+// no error, but we expect 
+const result6 = array([1, 2, 3] as const, [[1, 2, 3], []] as const); 
+
+// no error, but we expect
+const result7 = array(arr, [[1, 1, 1]]); 
 `;
 
 const code8 = `
@@ -231,7 +239,9 @@ type CompareLength<
  */
 const arr1 = [1, 2, 3];
 const arr2 = [1, 2];
-type Test1 = CompareLength<typeof arr1, typeof arr2>; // true, BANG! this is not what we are expect!
+
+// true, BANG! this is not what we are expect!
+type Test1 = CompareLength<typeof arr1, typeof arr2>; 
 `;
 
 const code10 = `
@@ -251,7 +261,9 @@ type CompareLength<
  */
 const arr1 = [1, 2, 3];
 const arr2 = [1, 2];
-type Test1 = CompareLength<typeof arr1, typeof arr2>; // false, expected
+
+// false, expected
+type Test1 = CompareLength<typeof arr1, typeof arr2>; 
 `;
 
 const code11 = `
@@ -329,7 +341,9 @@ const result2 = array(
 const result3 = array([1, 2, 3] as const, [[1, 2]] as const); // error
 const result5 = array([1, 2, 3] as const, [1] as const); // error
 const result5 = array([1, 2, 3] as const, [[1, 2, 3], []] as const); // error
-const result6 = array(arr, [[1, 1, 1]]); // error, because TS is unable to fidure out length of mutable array.
+
+// error, because TS is unable to fidure out length of mutable array.
+const result6 = array(arr, [[1, 1, 1]]); 
 `;
 
 const code12 = `
@@ -447,7 +461,9 @@ const result3 = array([1, 2, 3] as const, [[1, 2]] as const); // error
 const result4 = array([1, 2, 3] as const, [[1], [1, 2], [1, 2, 3]] as const); // error
 const result5 = array([1, 2, 3] as const, [1] as const); // error
 const result6 = array([1, 2, 3] as const, [[1, 2, 3], []] as const); // error
-const result7 = array(arr, [[1, 1, 1]]); // error, because TS is unable to figure out length of mutable array.
+
+// error, because TS is unable to figure out length of mutable array.
+const result7 = array(arr, [[1, 1, 1]]); 
 `;
 
 const links = [

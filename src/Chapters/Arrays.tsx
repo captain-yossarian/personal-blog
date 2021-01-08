@@ -13,9 +13,9 @@ const arr = [85, 65, 4, 9] as const;
 type Arr = typeof arr;
 
 /**
- * Naive approach
- */
-const result_naive = arr.filter((elem) => elem !== 4 && elem !== 9); // (85 | 65 | 4 | 9)[]
+ * Naive approach - (85 | 65 | 4 | 9)[]
+ */ 
+const result_naive = arr.filter((elem) => elem !== 4 && elem !== 9); 
 `;
 
 const code2 = `

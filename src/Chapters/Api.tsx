@@ -63,9 +63,14 @@ const handleHttp: HandleHttp = <_ extends Endpoints>() => new Api();
 `;
 
 const code6 = `
-const request1 = handleHttp<Endpoints.notes>(); // only delete and post methods are allowed
-const request2 = handleHttp<Endpoints.users>(); // only get and post methods are allowed
-const request3 = handleHttp<Endpoints.entitlements>(); // only get method is allowed
+// only delete and post methods are allowed
+const request1 = handleHttp<Endpoints.notes>(); 
+
+// only get and post methods are allowed
+const request2 = handleHttp<Endpoints.users>(); 
+
+// only get method is allowed
+const request3 = handleHttp<Endpoints.entitlements>(); 
 `;
 const code7 = `
 const request = {

@@ -83,6 +83,15 @@ const H2 = styled.h2`
   margin-bottom: 20px;
   font-size: 20px;
   border-bottom: 5px solid #fdba08;
+  & a {
+    text-decoration: none;
+    color: #0b241e;
+    display: inline;
+    height: 100%;
+    width: 100%;
+    font-weight: bold;
+    padding: 5px;
+  }
 `;
 const ArticleHeader: FC<{ name: string; meta: Meta }> = ({ name, meta }) => (
   <Li>

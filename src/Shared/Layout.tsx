@@ -13,6 +13,11 @@ export const Title = styled.h1`
 
 const Wrapper = styled.div`
   width: 60%;
+  & p {
+    font-size: 20px;
+    line-height: 1.5;
+    color: #0e2924;
+  }
 `;
 export const Layout: FC<{ title: string }> = ({ title, children }) => (
   <Wrapper>
@@ -73,6 +78,13 @@ const keys = Object.keys(links);
 const NavElement = styled.li`
   font-size: 18px;
   padding: 10px 10px;
+  & a {
+    text-decoration: none;
+    color: #0e2924;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+  }
 `;
 
 export const Navigation: FC<{ children: React.ReactNode }> = ({ children }) => (

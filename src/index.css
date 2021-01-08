@@ -127,32 +127,3 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
-nav li:hover {
-  background-color: #d09805;
-  cursor: pointer;
-}
-
-nav li a {
-  text-decoration: none;
-  color: #0e2924;
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-}
-
-p {
-  font-size: 20px;
-  line-height: 1.5;
-  color: #0e2924;
-}
-
-h2 a {
-  text-decoration: none;
-  color: #0b241e;
-  display: inline;
-  height: 100%;
-  width: 100%;
-  font-weight: bold;
-  padding: 5px;
-}
