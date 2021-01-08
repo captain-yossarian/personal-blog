@@ -138,12 +138,9 @@ function App4() {
   });
 }
 `;
-const links = [
-  "https://stackoverflow.com/questions/64967447/adding-required-props-to-child-react-elements-with-typescript",
-];
+
 const ReactChildren: FC = () => (
   <Layout title="Type safe React children type">
-    <Links links={links} />
     <p>
       Let's assume you want to create component which will accept array of
       children components with certain props.
@@ -179,6 +176,15 @@ const ReactChildren: FC = () => (
     <Code code={code5} />
     <p>So, we can write now the code which will meet our requirements:</p>
     <Code code={code6} />
+    <Links
+      data={[
+        {
+          href:
+            "https://stackoverflow.com/questions/64967447/adding-required-props-to-child-react-elements-with-typescript",
+          text: "stackoverflow",
+        },
+      ]}
+    />
   </Layout>
 );
 

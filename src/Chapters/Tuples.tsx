@@ -1,11 +1,7 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Layout, Var } from "../Shared/Layout";
-import Links, { Link } from "../Shared/Links";
-
-const links = [
-  "https://stackoverflow.com/questions/65466617/typescript-filter-out-rest-parameter",
-];
+import Links, { Anchor } from "../Shared/Links";
 
 const code1 = `
 /**
@@ -152,11 +148,8 @@ type Mapper<
 type Result = Mapper<Data>[] extends ExpectedType ? true : false;
 `;
 
-const href =
-  "https://stackoverflow.com/questions/65476787/how-to-dynamically-create-an-object-based-on-a-readonly-tuple-in-typescript/65478618#65478618";
 const Tuples: FC = () => (
   <Layout title="Handle Tupels">
-    <Links links={links} />
     <p>
       Let's say you have a literal type of array and you want to filter this
       type
@@ -200,7 +193,13 @@ const Tuples: FC = () => (
     </p>
     <p>Is it possible to reuse above pattern for other cases ? Sure!</p>
     <p>
-      Take a look on this <Link href={href} text={"question"} />
+      Take a look on this
+      <Anchor
+        href={
+          "https://stackoverflow.com/questions/65476787/how-to-dynamically-create-an-object-based-on-a-readonly-tuple-in-typescript/65478618#65478618"
+        }
+        text={"question"}
+      />
     </p>
     <p>
       Let's say you have an array and you want to map it to other array. How to
@@ -212,7 +211,7 @@ const Tuples: FC = () => (
       problem.
     </p>
     <p>
-      <Link
+      <Anchor
         href={
           "https://stackoverflow.com/questions/65495285/typescript-restrict-maximum-array-length"
         }
@@ -227,7 +226,7 @@ const Tuples: FC = () => (
     </p>
     <p>
       Is it possible at all with typings? Sure, you can take a look on this
-      <Link
+      <Anchor
         text={"answer"}
         href={
           "https://stackoverflow.com/questions/65517583/create-an-object-type-in-typescript-derived-from-another-objects-values-using-a/65522869#65522869"
@@ -238,6 +237,15 @@ const Tuples: FC = () => (
       We should transform <Var>Data</Var> type to <Var>ExpectedType</Var> type
     </p>
     <Code code={code7} />
+    <Links
+      data={[
+        {
+          href:
+            "https://stackoverflow.com/questions/65476787/how-to-dynamically-create-an-object-based-on-a-readonly-tuple-in-typescript/65478618#65478618",
+          text: "stackoverflow",
+        },
+      ]}
+    />
   </Layout>
 );
 

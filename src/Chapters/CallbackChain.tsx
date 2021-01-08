@@ -1,15 +1,7 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Layout, Var } from "../Shared/Layout";
-import Links, { Link } from "../Shared/Links";
-
-const links = [
-  "https://stackoverflow.com/questions/65540887/typescript-type-can-not-be-inferred-if-function-parameter-is-used/65543597#65543597",
-  "https://en.wikipedia.org/wiki/Type_system#:~:text=In%20programming%20languages%2C%20a%20type,%2C%20expressions%2C%20functions%20or%20modules.",
-  "https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)",
-  "https://basarat.gitbook.io/typescript/type-system/type-compatibility",
-  "https://stackoverflow.com/questions/65550146/how-typescript-infers-callbacks-arguments-type",
-];
+import Links, { Anchor } from "../Shared/Links";
 
 const code1 = `
 const myFn = <T>(arg: { a: (a_arg: number) => T; b: (b_arg: T) => void }) => {
@@ -44,7 +36,6 @@ myFn({
 
 const CallbackChain: FC = () => (
   <Layout title="Type safe callbacks">
-    <Links links={links} />
     <p>Let's say you have next function</p>
     <Code code={code1} />
     <p>
@@ -58,7 +49,7 @@ const CallbackChain: FC = () => (
       be able explain it.
     </p>
     <p>
-      <Link
+      <Anchor
         href={
           "https://stackoverflow.com/questions/65550146/how-typescript-infers-callbacks-arguments-type"
         }
@@ -71,6 +62,30 @@ const CallbackChain: FC = () => (
       function.
     </p>
     <Code code={code3} />
+    <Links
+      data={[
+        {
+          href:
+            "https://stackoverflow.com/questions/65540887/typescript-type-can-not-be-inferred-if-function-parameter-is-used/65543597#65543597",
+          text: "stackoverflow",
+        },
+        {
+          href:
+            "https://en.wikipedia.org/wiki/Type_system#:~:text=In%20programming%20languages%2C%20a%20type,%2C%20expressions%2C%20functions%20or%20modules.",
+          text: "Type system",
+        },
+        {
+          href:
+            "https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)",
+          text: "Covariance_and_contravariance",
+        },
+        {
+          href:
+            "https://basarat.gitbook.io/typescript/type-system/type-compatibility",
+          text: "TS book",
+        },
+      ]}
+    />
   </Layout>
 );
 

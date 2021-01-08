@@ -3,11 +3,6 @@ import Code from "../Shared/Code";
 import { Layout, Var } from "../Shared/Layout";
 import Links from "../Shared/Links";
 
-const links = [
-  "https://stackoverflow.com/questions/64899511/deepexclude-type-for-typescript",
-  "https://stackoverflow.com/questions/65503728/defining-a-type-for-this-function-that-works-on-arbitrary-length-tuples",
-];
-
 const code1 = `
 type Immutable<T> = { readonly [K in keyof T]: Immutable<T[K]> };
 
@@ -34,12 +29,24 @@ result1.age.name.surname = "2"; // ok
 
 const RecursiveTypes: FC = () => (
   <Layout title="Recursive types">
-    <Links links={links} />
     <p>Simple example:</p>
     <Code code={code1} />
     <p>Make all properties immutable except name children</p>
     <Code code={code2} />
-    <p>Please check links, there are really useful examples</p>
+    <Links
+      data={[
+        {
+          href:
+            "https://stackoverflow.com/questions/64899511/deepexclude-type-for-typescript",
+          text: "stackoverflow",
+        },
+        {
+          href:
+            "https://stackoverflow.com/questions/65503728/defining-a-type-for-this-function-that-works-on-arbitrary-length-tuples",
+          text: "stackoverflow",
+        },
+      ]}
+    />
   </Layout>
 );
 

@@ -466,21 +466,8 @@ const result6 = array([1, 2, 3] as const, [[1, 2, 3], []] as const); // error
 const result7 = array(arr, [[1, 1, 1]]); 
 `;
 
-const links = [
-  "https://stackoverflow.com/questions/65361696/arguments-of-same-length-typescript",
-];
-
 const CompareArguments: FC = () => (
   <Layout title="Arguments constraints">
-    <Links
-      data={[
-        {
-          href:
-            "https://stackoverflow.com/questions/65361696/arguments-of-same-length-typescript",
-          text: "stackoverflow",
-        },
-      ]}
-    />
     <p>Let's say you want to make a function with next constraints:</p>
     <ul>
       <li>First argument should be an array</li>
@@ -554,6 +541,15 @@ const CompareArguments: FC = () => (
     <Code code={code12} />
     <p>Finall working code:</p>
     <Code code={code13} />
+    <Links
+      data={[
+        {
+          href:
+            "https://stackoverflow.com/questions/65361696/arguments-of-same-length-typescript",
+          text: "stackoverflow",
+        },
+      ]}
+    />
   </Layout>
 );
 

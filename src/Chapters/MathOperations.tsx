@@ -72,54 +72,48 @@ const result4 = sumOfSquares(3, 4); // ok
 const result5 = sumOfSquares(3n, 4n); // ok
 `.trim();
 
-const links = [
-  "https://stackoverflow.com/questions/65280785/is-it-possible-to-declare-a-typescript-function-which-works-on-both-numbers-and",
-];
+const MathOperations: FC = () => (
+  <Layout title="Math operations">
+    <p>
+      Let's assume, You want to make some math operations either on number or
+      bigint
+    </p>
+    <Code code={code1} />
+    <p>
+      So, we want to accept only number or only bigints. Let's start with
+      function definition:
+    </p>
+    <Code code={code2} />
+    <p>Unfortunately, this function don't work as expected. Let's test it:</p>
+    <Code code={code3} />
+    <p>
+      In above case, <Var>y</Var> can be either <Var>number</Var> or
+      <Var>bigint</Var>.
+    </p>
+    <p>
+      So, from TS point of view it is ok, but I'd willing to bet, that it will
+      throw at least 1 error in dev environment and 1K errors in production.
+    </p>
+    <p>It was my first not funny a joke.</p>
+    <p>Ok, what we can do? We can define two generic parameters:</p>
 
-const MathOperations: FC = () => {
-  return (
-    <Layout title="Math operations">
-      <p>
-        Let's assume, You want to make some math operations either on number or
-        bigint
-      </p>
-      <Code code={code1} />
-      <p>
-        So, we want to accept only number or only bigints. Let's start with
-        function definition:
-      </p>
-      <Code code={code2} />
-      <p>Unfortunately, this function don't work as expected. Let's test it:</p>
-      <Code code={code3} />
-      <p>
-        In above case, <Var>y</Var> can be either <Var>number</Var> or
-        <Var>bigint</Var>.
-      </p>
-      <p>
-        So, from TS point of view it is ok, but I'd willing to bet, that it will
-        throw at least 1 error in dev environment and 1K errors in production.
-      </p>
-      <p>It was my first not funny a joke.</p>
-      <p>Ok, what we can do? We can define two generic parameters:</p>
-
-      <Code code={code4} />
-      <p>Unfortunately, above example still don't work as we expect.</p>
-      <Code code={code5} />
-      <p>
-        Only overloadings might help us here. We should explicitly say, that
-        <Var>B</Var> generic parameter should have same type as <Var>A</Var>
-      </p>
-      <Code code={code6} />
-      <Links
-        data={[
-          {
-            href:
-              "https://stackoverflow.com/questions/65280785/is-it-possible-to-declare-a-typescript-function-which-works-on-both-numbers-and",
-            text: "stackoverflow",
-          },
-        ]}
-      />
-    </Layout>
-  );
-};
+    <Code code={code4} />
+    <p>Unfortunately, above example still don't work as we expect.</p>
+    <Code code={code5} />
+    <p>
+      Only overloadings might help us here. We should explicitly say, that
+      <Var>B</Var> generic parameter should have same type as <Var>A</Var>
+    </p>
+    <Code code={code6} />
+    <Links
+      data={[
+        {
+          href:
+            "https://stackoverflow.com/questions/65280785/is-it-possible-to-declare-a-typescript-function-which-works-on-both-numbers-and",
+          text: "stackoverflow",
+        },
+      ]}
+    />
+  </Layout>
+);
 export default MathOperations;

@@ -3,12 +3,6 @@ import Code from "../Shared/Code";
 import { Layout, Var } from "../Shared/Layout";
 import Links from "../Shared/Links";
 
-const links = [
-  "https://docs.google.com/presentation/d/1po3-zRQCp8m8cwg-CF5dUL_6RPe9gIaKIT5P_DNbGE8/edit#slide=id.g6baf2c25cf_0_33",
-  "http://cliffle.com/blog/rust-typestate/",
-  "https://stackoverflow.com/questions/65431379/type-property-relying-on-return-type-of-another-property/65433418#65433418",
-];
-
 const code1 = `
 interface Active {
   active: true;
@@ -45,9 +39,22 @@ const socket = { foo: 42 };
 const result = new ConnectionDisabled(socket);
 `;
 
+const links = [
+  {
+    href:
+      "https://docs.google.com/presentation/d/1po3-zRQCp8m8cwg-CF5dUL_6RPe9gIaKIT5P_DNbGE8/edit#slide=id.g6baf2c25cf_0_33",
+    text: "presentation",
+  },
+  { href: "http://cliffle.com/blog/rust-typestate/", text: "blog" },
+  {
+    href:
+      "https://stackoverflow.com/questions/65431379/type-property-relying-on-return-type-of-another-property/65433418#65433418",
+    text: "stackoverflow",
+  },
+];
+
 const TypeState: FC = () => (
   <Layout title="Type state pattern">
-    <Links links={links} />
     <p>
       Next patter called - typestate. You can find in links section, different
       implementations
@@ -62,6 +69,7 @@ const TypeState: FC = () => (
       The main goal here - is to make illegal states unrepresentable. This is
       always my first goal, when I'm trying to type smth.
     </p>
+    <Links data={links} />
   </Layout>
 );
 

@@ -164,12 +164,8 @@ type Enumerate<N extends number> = EnumerateInternal<[], N> extends (infer E)[]
 type Result = Enumerate<43>; // 0 | 1 | 2 | ... | 42
 `;
 
-const links = [
-  "https://stackoverflow.com/questions/65307438/how-to-define-properties-in-a-typescript-interface-with-dynamic-elements-in-the",
-];
 const RangeNumbers: FC = () => (
   <Layout title="Make number range">
-    <Links links={links} />
     <p>
       Let's take a look on <Var>type Values = T[keyof T]</Var> utility.
     </p>
@@ -207,6 +203,15 @@ const RangeNumbers: FC = () => (
       you can use this code:
     </p>
     <Code code={code5} />
+    <Links
+      data={[
+        {
+          href:
+            "https://stackoverflow.com/questions/65307438/how-to-define-properties-in-a-typescript-interface-with-dynamic-elements-in-the",
+          text: "stackoverflow",
+        },
+      ]}
+    />
   </Layout>
 );
 

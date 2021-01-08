@@ -1,11 +1,7 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Layout, Var } from "../Shared/Layout";
-import Links, { Link } from "../Shared/Links";
-
-const links = [
-  "https://stackoverflow.com/questions/65533827/get-keys-of-an-interface-in-generics/65534971#65534971",
-];
+import Links, { Anchor } from "../Shared/Links";
 
 const code1 = `
 type Union = "one" | "two" | "three";
@@ -68,10 +64,16 @@ interface Person {
 
 type keys = TupleUnion<keyof Person>;
 `;
+const links = [
+  {
+    href:
+      "https://stackoverflow.com/questions/65533827/get-keys-of-an-interface-in-generics/65534971#65534971",
+    text: "stackoverflow",
+  },
+];
 
 const UnionArray: FC = () => (
   <Layout title="Convert unions to arrays">
-    <Links links={links} />
     <p>
       Let's say you have a <Var>Union</Var>, and you want to convert it to
       <Var>ExpectedArray</Var>
@@ -113,12 +115,13 @@ const UnionArray: FC = () => (
     <p>
       If You want to use advanced type for <Var>Object.keys</Var> you should use
       next solution, which is shamelessly stolen from
-      <Link
+      <Anchor
         href={"https://twitter.com/WrocTypeScript/status/1306296710407352321"}
         text={"Wroclaw twittergroup"}
       />
     </p>
     <Code code={code4} />
+    <Links data={links} />
   </Layout>
 );
 
