@@ -41,7 +41,7 @@ const result = new ConnectionDisabled(socket);
 const TypeState: FC = () => (
   <>
     <p>
-      Next patter called - typestate. You can find in links section, different
+      Next pattern called - typestate. You can find in links section, different
       implementations
     </p>
     <p>See next example:</p>
