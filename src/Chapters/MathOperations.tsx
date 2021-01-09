@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
-import { Layout, Var } from "../Layout";
-import Links from "../Shared/Links";
+import { Var } from "../Layout";
 
 const code1 = `
 const sum = 2 + 2n; // Error
@@ -73,7 +72,7 @@ const result5 = sumOfSquares(3n, 4n); // ok
 `.trim();
 
 const MathOperations: FC = () => (
-  <Layout title="Math operations">
+  <>
     <p>
       Let's assume, You want to make some math operations either on number or
       bigint
@@ -87,14 +86,14 @@ const MathOperations: FC = () => (
     <p>Unfortunately, this function don't work as expected. Let's test it:</p>
     <Code code={code3} />
     <p>
-      In above case, <Var>y</Var> can be either <Var>number</Var> or
+      In above case,<Var>y</Var> can be either <Var>number</Var> or
       <Var>bigint</Var>.
     </p>
     <p>
       So, from TS point of view it is ok, but I'd willing to bet, that it will
-      throw at least 1 error in dev environment and 1K errors in production.
+      throw max 1 error in dev environment and 1K errors in production.
     </p>
-    <p>It was my first not funny a joke.</p>
+    <p>It was my first not funny joke.</p>
     <p>Ok, what we can do? We can define two generic parameters:</p>
 
     <Code code={code4} />
@@ -105,15 +104,6 @@ const MathOperations: FC = () => (
       <Var>B</Var>generic parameter should have same type as<Var>A</Var>
     </p>
     <Code code={code6} />
-    <Links
-      data={[
-        {
-          href:
-            "https://stackoverflow.com/questions/65280785/is-it-possible-to-declare-a-typescript-function-which-works-on-both-numbers-and",
-          text: "stackoverflow",
-        },
-      ]}
-    />
-  </Layout>
+  </>
 );
 export default MathOperations;

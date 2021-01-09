@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
-import { Layout, Var } from "../Layout";
-import Links from "../Shared/Links";
+import { Var } from "../Layout";
+import { Anchor } from "../Shared/Links";
 
 const code1 = `
 const enum Events {
@@ -56,7 +56,7 @@ listen(Events.bar, (arg /* { bar: string } */) => {});
 `;
 
 const PubSub: FC = () => (
-  <Layout title="Publish / Subscribe type safe pattern">
+  <>
     <p>Our main goal - is to make illegal states unrepresentable.</p>
     <p>
       Please see next example. This pattern is your friend if you want to make
@@ -65,15 +65,16 @@ const PubSub: FC = () => (
     <Code code={code1} />
     <p>
       <Var>UnionToIntersection</Var> util type is taken from
-      <a href="https://stackoverflow.com/questions/50374908/transform-union-type-to-intersection-type/50375286#50375286">
-        here
-      </a>
+      <Anchor
+        href="https://stackoverflow.com/questions/50374908/transform-union-type-to-intersection-type/50375286#50375286"
+        text="here"
+      />
     </p>
     <p>
       <Var>EventMap</Var> - is our single source of true.
     </p>
     <p>We can use it for typing our listeners and emitters</p>
-  </Layout>
+  </>
 );
 
 export default PubSub;

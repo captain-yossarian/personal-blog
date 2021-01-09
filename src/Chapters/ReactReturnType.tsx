@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
-import { Layout, Var } from "../Layout";
-import Links from "../Shared/Links";
+import { Var } from "../Layout";
 
 const code1 = `
 import React, { FC } from 'react';
@@ -60,7 +59,7 @@ const result2 = (
 `;
 
 const ReactReturnType: FC = () => (
-  <Layout title="React component return type">
+  <>
     <p>There is a common pattern for typing return value of component:</p>
     <Code code={code1} />
     <p>Is it helpful ? - Yes, but actually - No</p>
@@ -75,16 +74,7 @@ const ReactReturnType: FC = () => (
     <Code code={code3} />
     <p>Btw, small reminder, how to use generics with React components:</p>
     <Code code={code4} />
-    <Links
-      data={[
-        {
-          href:
-            "https://stackoverflow.com/questions/65406516/react-typescript-difference-between-react-fc-t-and-function",
-          text: "stackoverflow",
-        },
-      ]}
-    />
-  </Layout>
+  </>
 );
 
 export default ReactReturnType;

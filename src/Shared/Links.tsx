@@ -1,14 +1,13 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { Title } from "../Layout";
 
 type PropsAnchor = {
   href: string;
   text: string;
 };
 
-type Props = {
-  data: PropsAnchor[];
+export type Props = {
+  data: ReadonlyArray<PropsAnchor>;
 };
 
 const A = styled.a`

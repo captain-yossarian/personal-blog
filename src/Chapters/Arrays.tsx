@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
-import { Layout } from "../Layout";
-import Links, { Anchor } from "../Shared/Links";
+import { Anchor } from "../Shared/Links";
 
 const code1 = `
 const arr = [85, 65, 4, 9] as const;
@@ -40,7 +39,7 @@ type Result = Values<Omit<FindIndex<Arr, 65>, ArrayKeys>>; // '1'
 `;
 
 const Arrays: FC = () => (
-  <Layout title="Handle arrays">
+  <>
     <p>
       I'd willing to bet, you are using Array.prototype.filter 1 hundred times
       per day.
@@ -48,7 +47,7 @@ const Arrays: FC = () => (
     <p>And I bet you want to do it like a PRO.</p>
     <p>
       I have found this example in this
-      <a href="https://typescriptnapowaznie.pl/">book</a>
+      <Anchor href="https://typescriptnapowaznie.pl/" text="book" />
     </p>
     <p>Let's say you have an array, and you want to get rid of 4s and 9s</p>
     <Code code={code1} />
@@ -63,20 +62,7 @@ const Arrays: FC = () => (
     <Code code={code3} />
     <p>Is second example is useful in practice? Of course not)</p>
     <p> Will it help you to understand better TS type system? - Definitely</p>
-    <Links
-      data={[
-        {
-          href:
-            "https://stackoverflow.com/questions/65429424/need-help-in-understanding-confusing-typescript-function",
-          text: "stackoverflow",
-        },
-        {
-          href: "https://typescriptnapowaznie.pl/",
-          text: "Typescript na powaznie",
-        },
-      ]}
-    />
-  </Layout>
+  </>
 );
 
 export default Arrays;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React, { FC } from "react";
 import Navigation from "./Navigation";
-import { NAV_WIDTH, CTA_FONT_FAMILY } from "./css-utils";
+import { NAV_WIDTH, CTA_FONT_FAMILY } from "./utils";
 
 export const Title = styled.h1`
   font-weight: bold;
@@ -46,7 +46,7 @@ const Container = styled.div``;
 
 const Section = styled.section`
   margin-left: ${NAV_WIDTH};
-  max-width: 80%;
+  max-width: 60rem;
   font-family: ${CTA_FONT_FAMILY};
   padding: 50px 20px 10px 20px;
   @media (max-width: 768px) {

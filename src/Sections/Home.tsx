@@ -1,72 +1,12 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
-import { Layout } from "../Layout";
 import styled from "styled-components";
-import { THEME_COLOR } from "../Layout/css-utils";
+import { THEME_COLOR } from "../Layout/utils";
+import { blogArticles } from "../Layout/structure";
 
-type Meta = {
-  title: string;
-  description: string;
-};
-const links: Record<string, Meta> = {
-  "/math": {
-    title: "Math operations",
-    description:
-      "Let's assume, You want to make some math operations either on number or bigint",
-  },
-  "/typed-react-children": {
-    title: "Type React component children",
-    description:
-      "Let's assume you want to create component which will accept array of children components with certain props.",
-  },
-  "/react-return-type": {
-    title: "Type React component return type",
-    description:
-      "What if you need to make sure that some component will always return other component with some particular props",
-  },
-  "/compare-arguments": {
-    title: "Compare array arguments",
-    description: "Compare length of arrays as arguments",
-  },
-  "/range-numbers": {
-    title: "Generate numbers in range",
-    description: "How to generate numbers range as a literal type",
-  },
-  "/recursive-types": {
-    title: "Recursive types",
-    description: "Some useful techniques with recursive types",
-  },
-  "/tuples": {
-    title: "Handle tuples",
-    description: "Transform, filter, search ...",
-  },
-  "/union-array": {
-    title: "Transform Union to Array",
-    description: "How to transform unions to array",
-  },
-  "/callback-chain": {
-    title: "Callback chain",
-    description: "How to properly type callbacks",
-  },
-  "/handle-arrays": {
-    title: "Handle arrays",
-    description: "Several useful operations on array types",
-  },
-  "/publish-subscribe": {
-    title: "Publish subscribe pattern",
-    description: "Type safe publish subscribe pattern",
-  },
-  "/type-state": {
-    title: "Type state pattern",
-    description: "Type safe handler",
-  },
-  "/api": {
-    title: "Api requests",
-    description: "Make type safe api requests with TypeScript",
-  },
-};
+import { Props } from "../Chapters/Props";
 
-const keys = Object.entries(links);
+const keys = Object.entries(blogArticles);
 
 const Aside = styled.aside`
   margin-left: 30px;
@@ -97,7 +37,13 @@ const H2 = styled.h2`
     padding: 5px;
   }
 `;
-const ArticleHeader: FC<{ name: string; meta: Meta }> = ({ name, meta }) => (
+
+type Values<T> = T[keyof T];
+
+const ArticleHeader: FC<{
+  name: string;
+  meta: Values<typeof blogArticles>;
+}> = ({ name, meta }) => (
   <Li>
     <H2>
       <Link to={name}>{meta.title}</Link>
@@ -107,15 +53,13 @@ const ArticleHeader: FC<{ name: string; meta: Meta }> = ({ name, meta }) => (
 );
 
 const Home: FC = () => (
-  <div>
-    <Layout title="Blog">
-      <ul>
-        {keys.map(([name, meta]) => (
-          <ArticleHeader name={name} meta={meta} key={name} />
-        ))}
-      </ul>
-    </Layout>
-  </div>
+  <>
+    <ul>
+      {keys.map(([name, meta]) => (
+        <ArticleHeader name={name} meta={meta} key={name} />
+      ))}
+    </ul>
+  </>
 );
 
 export default Home;

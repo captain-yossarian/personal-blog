@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
-import { Layout, Var } from "../Layout";
-import Links from "../Shared/Links";
+import { Var } from "../Layout";
 
 const code1 = `
 const handleArray=(x: number[], y: number[][]) => void
@@ -467,7 +466,7 @@ const result7 = array(arr, [[1, 1, 1]]);
 `;
 
 const CompareArguments: FC = () => (
-  <Layout title="Arguments constraints">
+  <>
     <p>Let's say you want to make a function with next constraints:</p>
     <ul>
       <li>First argument should be an array</li>
@@ -541,16 +540,7 @@ const CompareArguments: FC = () => (
     <Code code={code12} />
     <p>Finally, working code:</p>
     <Code code={code13} />
-    <Links
-      data={[
-        {
-          href:
-            "https://stackoverflow.com/questions/65361696/arguments-of-same-length-typescript",
-          text: "stackoverflow",
-        },
-      ]}
-    />
-  </Layout>
+  </>
 );
 
 export default CompareArguments;

@@ -8,7 +8,7 @@ import {
 import Prism from "prismjs";
 import {
   Arrays,
-  Math,
+  MathOperations,
   ReactChildren,
   ReactReturnType,
   CompareArguments,
@@ -22,31 +22,33 @@ import {
   Api,
 } from "./Chapters";
 import { About, Contact, Home } from "./Sections";
+import { blogArticles, sections } from "./Layout/structure";
 
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
 import { Main } from "./Layout";
+import ArticleBase from "./Shared/ArticleBase";
+
+export const componentMap = {
+  MathOperations: MathOperations,
+  ReactChildren: ReactChildren,
+  ReactReturnType: ReactReturnType,
+  CompareArguments: CompareArguments,
+  RangeNumbers: RangeNumbers,
+  RecursiveTypes: RecursiveTypes,
+  Tuples: Tuples,
+  UnionArray: UnionArray,
+  CallbackChain: CallbackChain,
+  Arrays: Arrays,
+  PubSub: PubSub,
+  TypeState: TypeState,
+  Api: Api,
+  About: About,
+  Contact: Contact,
+  Home: Home,
+};
 
 setTimeout(() => Prism.highlightAll(), 0);
-
-const map = Object.entries({
-  "/math": Math,
-  "/typed-react-children": ReactChildren,
-  "/react-return-type": ReactReturnType,
-  "/compare-arguments": CompareArguments,
-  "/range-numbers": RangeNumbers,
-  "/recursive-types": RecursiveTypes,
-  "/tuples": Tuples,
-  "/union-array": UnionArray,
-  "/callback-chain": CallbackChain,
-  "/handle-arrays": Arrays,
-  "/publish-subscribe": PubSub,
-  "/type-state": TypeState,
-  "/api": Api,
-  "/about": About,
-  "/contact": Contact,
-  "/": Home,
-});
 
 const ScrollToTop = withRouter(({ history }) => {
   useEffect(() => {
@@ -61,16 +63,27 @@ const ScrollToTop = withRouter(({ history }) => {
   return null;
 });
 
+const merged = Object.assign(blogArticles, sections);
+
+const map = Object.entries(merged);
+
 const App: VFC = () => (
   <Router>
     <Main>
       <ScrollToTop />
       <Switch>
-        {map.map(([path, Comp]) => (
-          <Route path={path} key={path}>
-            <Comp />
-          </Route>
-        ))}
+        {map.map(([pth, { Comp }]) => {
+          const Component = componentMap[Comp];
+          const path = (pth as any) as keyof typeof merged;
+
+          return (
+            <Route path={path} key={path}>
+              <ArticleBase path={path} {...merged[path]}>
+                <Component />
+              </ArticleBase>
+            </Route>
+          );
+        })}
       </Switch>
     </Main>
   </Router>

@@ -2,8 +2,7 @@ import styled from "styled-components";
 import React, { VFC } from "react";
 import { Link } from "react-router-dom";
 
-import { NAV_WIDTH, CTA_FONT_FAMILY } from "./css-utils";
-import { media } from "./css-utils";
+import { NAV_WIDTH, CTA_FONT_FAMILY, media } from "./utils";
 
 const Nav = styled.nav`
   padding-top: 20px;

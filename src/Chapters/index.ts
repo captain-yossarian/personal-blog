@@ -1,5 +1,5 @@
 export { default as Arrays } from './Arrays'
-export { default as Math } from "./MathOperations";
+export { default as MathOperations } from "./MathOperations";
 export { default as ReactChildren } from "./ReactChildren";
 export { default as ReactReturnType } from "./ReactReturnType";
 export { default as CompareArguments } from "./CompareArguments";

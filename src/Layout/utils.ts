@@ -1,4 +1,4 @@
-import { css, CSSObject } from "styled-components";
+import { css } from "styled-components";
 
 export const NAV_WIDTH = "8rem";
 export const CTA_FONT_FAMILY = '"Lucida Console","Courier New",monospace';

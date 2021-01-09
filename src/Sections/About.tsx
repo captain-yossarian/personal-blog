@@ -1,42 +1,15 @@
 import React, { FC } from "react";
-import { Layout, Var } from "../Layout";
-import Links, { Anchor } from "../Shared/Links";
-
-const links = [
-  {
-    href: "https://www.stephanboyer.com/",
-    text: "https://www.stephanboyer.com/",
-  },
-  {
-    href: "http://cliffle.com/contact/",
-    text: "http://cliffle.com/contact/",
-  },
-  {
-    href: "https://fettblog.eu/",
-    text: "https://fettblog.eu/",
-  },
-  {
-    href: "https://mariusschulz.com/",
-    text: "https://mariusschulz.com/",
-  },
-  {
-    href: "https://twitter.com/WrocTypeScript",
-    text: "https://twitter.com/WrocTypeScript",
-  },
-  {
-    href: "https://typeofweb.com/",
-    text: "TypeOfWeb [PL]",
-  },
-];
+import { Var } from "../Layout";
+import { Anchor } from "../Shared/Links";
 
 const About: FC = () => (
-  <Layout title="About">
+  <>
     <div>
       <p>Hi, my name is Serhii.</p>
       <p> I work as a front end developer in UBS.</p>
       <p>
         I decided to gather some useful <Var>[typescript]</Var> stackoverflow
-        questions/answers with tag in one place.
+        questions/answers in one place.
       </p>
       <p>
         If I used someone's code and did not provide link to original
@@ -63,10 +36,8 @@ const About: FC = () => (
         ,
         <Anchor href="https://github.com/ahejlsberg" text="Anders Hejlsberg" />
       </p>
-      <p></p>
-      <Links data={links} />
     </div>
-  </Layout>
+  </>
 );
 
 export default About;

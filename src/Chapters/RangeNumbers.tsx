@@ -1,23 +1,7 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
-import { Layout, Var } from "../Layout";
-import Links from "../Shared/Links";
-
-/**
- * @todo
- */
-const code1 = `
-interface Foo {
-  age: number;
-  name: string;
-}
-
-type Alias1 = Foo["age"]; // number
-type Alias2 = Foo["name"]; // stirng
-type Alias3 = Foo["age" | "name"]; // string | number
-
-type Check = keyof Foo; // 'age'|'name
-`;
+import { Var } from "../Layout";
+import { Anchor } from "../Shared/Links";
 
 const code2 = `
 interface Foo {
@@ -165,20 +149,17 @@ type Result = Enumerate<43>; // 0 | 1 | 2 | ... | 42
 `;
 
 const RangeNumbers: FC = () => (
-  <Layout title="Make number range">
+  <>
     <p>
       Let's take a look on <Var>type Values = T[keyof T]</Var> utility.
     </p>
     <p>Maybe you wonder, what does it mean ?</p>
     <p>
       Before we continue, please make sure you are aware of
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
+      <Anchor
         href="https://www.typescriptlang.org/docs/handbook/advanced-types.html#distributive-conditional-typ"
-      >
-        distributive types
-      </a>
+        text="distributive types"
+      />
     </p>
     <p>Let's start with simple example:</p>
     <Code code={code2} />
@@ -203,16 +184,7 @@ const RangeNumbers: FC = () => (
       you can use this code:
     </p>
     <Code code={code5} />
-    <Links
-      data={[
-        {
-          href:
-            "https://stackoverflow.com/questions/65307438/how-to-define-properties-in-a-typescript-interface-with-dynamic-elements-in-the",
-          text: "stackoverflow",
-        },
-      ]}
-    />
-  </Layout>
+  </>
 );
 
 export default RangeNumbers;

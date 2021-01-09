@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
-import { Layout, Var } from "../Layout";
-import Links, { Anchor } from "../Shared/Links";
+import { Var } from "../Layout";
+import { Anchor } from "../Shared/Links";
 
 const code1 = `
 /**
@@ -149,7 +149,7 @@ type Result = Mapper<Data>[] extends ExpectedType ? true : false;
 `;
 
 const Tuples: FC = () => (
-  <Layout title="Handle Tuples">
+  <>
     <p>
       Let's say you have a literal type of array and you want to filter this
       type
@@ -237,16 +237,7 @@ const Tuples: FC = () => (
       We should transform <Var>Data</Var> type to <Var>ExpectedType</Var> type
     </p>
     <Code code={code7} />
-    <Links
-      data={[
-        {
-          href:
-            "https://stackoverflow.com/questions/65476787/how-to-dynamically-create-an-object-based-on-a-readonly-tuple-in-typescript/65478618#65478618",
-          text: "stackoverflow",
-        },
-      ]}
-    />
-  </Layout>
+  </>
 );
 
 export default Tuples;

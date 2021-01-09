@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
-import { Layout, Var } from "../Layout";
+import { Var } from "../Layout";
 
 const code1 = `
 const enum Endpoints {
@@ -78,7 +78,7 @@ const request = {
 }
 `;
 const Api: FC = () => (
-  <Layout title="Using type safe API requests">
+  <>
     <p>
       If you ever thought how to make type safe API requests, this article might
       help you.
@@ -138,14 +138,19 @@ const Api: FC = () => (
     <p>Drawbacks</p>
     <ul>
       <li>
-        Without generic parameter, using <Var>request.TYPE _ERROR</Var> will be
-        perfectly valid from TS point of view
+        <p>
+          - Without generic parameter, using <Var>request.TYPE _ERROR</Var> will
+          be perfectly valid from TS point of view
+        </p>
       </li>
       <li>
-        <Var>Api</Var> class is not singleton, you should create it every time
+        <p>
+          - <Var>Api</Var> class is not singleton, you should create it every
+          time
+        </p>
       </li>
     </ul>
-  </Layout>
+  </>
 );
 
 export default Api;

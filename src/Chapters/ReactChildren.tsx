@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
-import { Layout, Var } from "../Layout";
-import Links from "../Shared/Links";
+import { Var } from "../Layout";
 
 const code1 = `
 function One() {
@@ -140,13 +139,13 @@ function App4() {
 `;
 
 const ReactChildren: FC = () => (
-  <Layout title="Type safe React children type">
+  <>
     <p>
       Let's assume you want to create component which will accept array of
       children components with certain props.
     </p>
     <p>
-      In this case, I'd like to accept only components with <Var>label</Var>{" "}
+      In this case, I'd like to accept only components with <Var>label</Var>
       prop
     </p>
     <p>First approach:</p>
@@ -160,32 +159,21 @@ const ReactChildren: FC = () => (
     </p>
     <Code code={code2} />
     <p>Does it work - no! But, why????</p>
-
     <p>
-      {" "}
-      Because <Var>{code3}</Var> is still union type, and in fact, it accepts{" "}
+      Because <Var>{code3}</Var> is still union type, and in fact, it accepts
       <Var>{code4}</Var>
     </p>
     <p>
       It is looks like, we all forgot about React native syntax, did not we?
     </p>
     <p>
-      On my second approach, I will change a bit declaration of <Var>One</Var>{" "}
+      On my second approach, I will change a bit declaration of <Var>One</Var>
       component.
     </p>
     <Code code={code5} />
     <p>So, we can write now the code which will meet our requirements:</p>
     <Code code={code6} />
-    <Links
-      data={[
-        {
-          href:
-            "https://stackoverflow.com/questions/64967447/adding-required-props-to-child-react-elements-with-typescript",
-          text: "stackoverflow",
-        },
-      ]}
-    />
-  </Layout>
+  </>
 );
 
 export default ReactChildren;

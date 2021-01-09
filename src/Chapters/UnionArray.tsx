@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
-import { Layout, Var } from "../Layout";
-import Links, { Anchor } from "../Shared/Links";
+import { Var } from "../Layout";
+import { Anchor } from "../Shared/Links";
 
 const code1 = `
 type Union = "one" | "two" | "three";
@@ -64,16 +64,9 @@ interface Person {
 
 type keys = TupleUnion<keyof Person>;
 `;
-const links = [
-  {
-    href:
-      "https://stackoverflow.com/questions/65533827/get-keys-of-an-interface-in-generics/65534971#65534971",
-    text: "stackoverflow",
-  },
-];
 
 const UnionArray: FC = () => (
-  <Layout title="Convert unions to arrays">
+  <>
     <p>
       Let's say you have a <Var>Union</Var>, and you want to convert it to
       <Var>ExpectedArray</Var>
@@ -121,8 +114,7 @@ const UnionArray: FC = () => (
       />
     </p>
     <Code code={code4} />
-    <Links data={links} />
-  </Layout>
+  </>
 );
 
 export default UnionArray;
