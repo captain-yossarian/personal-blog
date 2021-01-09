@@ -130,3 +130,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+body {
+  background-color: #f1f1f1;
+}

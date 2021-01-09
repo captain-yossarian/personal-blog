@@ -64,7 +64,7 @@ const PubSub: FC = () => (
     </p>
     <Code code={code1} />
     <p>
-      <Var>UnionToIntersection</Var> util type is taken from{" "}
+      <Var>UnionToIntersection</Var> util type is taken from
       <a href="https://stackoverflow.com/questions/50374908/transform-union-type-to-intersection-type/50375286#50375286">
         here
       </a>

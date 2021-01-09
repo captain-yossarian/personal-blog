@@ -149,7 +149,7 @@ type Result = Mapper<Data>[] extends ExpectedType ? true : false;
 `;
 
 const Tuples: FC = () => (
-  <Layout title="Handle Tupels">
+  <Layout title="Handle Tuples">
     <p>
       Let's say you have a literal type of array and you want to filter this
       type

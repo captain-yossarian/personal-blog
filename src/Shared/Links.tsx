@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import { Title } from "../Layout";
 
 type PropsAnchor = {
   href: string;
@@ -10,17 +11,36 @@ type Props = {
   data: PropsAnchor[];
 };
 
-const A = styled.a``;
+const A = styled.a`
+  width: 100%;
+  margin: 10px 0;
+`;
+
+const Span = styled.span`
+  display: inline-block;
+  margin: 0 5px;
+`;
 
 export const Anchor: FC<PropsAnchor> = ({ href, text }) => (
   <A target="_blank" rel="noopener noreferrer" href={href}>
-    {text}
+    <Span>{text}</Span>
   </A>
 );
 
+const Container = styled.div`
+  margin-top: 20px;
+  & li {
+    margin: 10px 0;
+  }
+`;
+
+const Header = styled.h3`
+  font-weight: 600;
+`;
+
 const Links: FC<Props> = ({ data }) => (
-  <div>
-    <p>Useful links:</p>
+  <Container>
+    <Header>Useful links:</Header>
     <ul>
       {data.map(({ href, text }, index) => (
         <li key={index}>
@@ -28,7 +48,7 @@ const Links: FC<Props> = ({ data }) => (
         </li>
       ))}
     </ul>
-  </div>
+  </Container>
 );
 
 export default Links;

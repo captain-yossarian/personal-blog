@@ -110,7 +110,7 @@ const Home: FC = () => (
   <div>
     <Layout title="Blog">
       <ul>
-        {keys.map(([name, meta], index) => (
+        {keys.map(([name, meta]) => (
           <ArticleHeader name={name} meta={meta} key={name} />
         ))}
       </ul>

@@ -17,6 +17,7 @@ const Wrapper = styled.div`
     font-size: 20px;
     line-height: 1.5;
     color: #0e2924;
+    margin: 1rem 0;
   }
 `;
 
@@ -38,6 +39,7 @@ export const Var = styled.code`
   display: inline-block;
   padding-left: 5px;
   padding-right: 5px;
+  margin: 0 5px;
 `;
 
 const Container = styled.div``;

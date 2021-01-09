@@ -177,7 +177,7 @@ const RangeNumbers: FC = () => (
         rel="noopener noreferrer"
         href="https://www.typescriptlang.org/docs/handbook/advanced-types.html#distributive-conditional-typ"
       >
-        distibutive types
+        distributive types
       </a>
     </p>
     <p>Let's start with simple example:</p>

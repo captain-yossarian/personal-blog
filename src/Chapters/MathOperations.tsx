@@ -102,7 +102,7 @@ const MathOperations: FC = () => (
     <Code code={code5} />
     <p>
       Only overloadings might help us here. We should explicitly say, that
-      <Var>B</Var> generic parameter should have same type as <Var>A</Var>
+      <Var>B</Var>generic parameter should have same type as<Var>A</Var>
     </p>
     <Code code={code6} />
     <Links

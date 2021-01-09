@@ -86,7 +86,7 @@ const Api: FC = () => (
     <p>Let's assume that we have next allowed endpoints:</p>
     <Code code={code1} />
     <p>
-      You might have noticed, that I used <Var>const enum</Var> instead of{" "}
+      You might have noticed, that I used <Var>const enum</Var> instead of
       <Var>enum</Var>.
     </p>
     <p>

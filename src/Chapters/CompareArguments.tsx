@@ -539,7 +539,7 @@ const CompareArguments: FC = () => (
     </p>
     <p> So we should compare arrays only if their length are equal.</p>
     <Code code={code12} />
-    <p>Finall working code:</p>
+    <p>Finally, working code:</p>
     <Code code={code13} />
     <Links
       data={[

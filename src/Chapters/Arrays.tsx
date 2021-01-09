@@ -61,7 +61,7 @@ const Arrays: FC = () => (
       By using simple utility types, we can emulate JS Array.prototype.findIndex
     </p>
     <Code code={code3} />
-    <p>Is second example is useful in practive? Of course not)</p>
+    <p>Is second example is useful in practice? Of course not)</p>
     <p> Will it help you to understand better TS type system? - Definitely</p>
     <Links
       data={[
