@@ -469,10 +469,14 @@ const CompareArguments: FC = () => (
   <>
     <p>Let's say you want to make a function with next constraints:</p>
     <ul>
-      <li>First argument should be an array</li>
       <li>
-        Second arguments should be 2D array, where each nested array has same
-        length as first argument
+        <p>First argument should be an array</p>
+      </li>
+      <li>
+        <p>
+          Second arguments should be 2D array, where each nested array has same
+          length as first argument
+        </p>
       </li>
     </ul>
     <Code code={code1} />

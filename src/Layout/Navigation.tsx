@@ -32,6 +32,7 @@ const NavElement = styled.li`
     display: inline-block;
     height: 100%;
     width: 100%;
+    font-size: 1.3rem;
   }
   border-bottom: 4px solid transparent;
   &:hover {

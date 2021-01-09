@@ -4,8 +4,6 @@ import styled from "styled-components";
 import { THEME_COLOR } from "../Layout/utils";
 import { blogArticles } from "../Layout/structure";
 
-import { Props } from "../Chapters/Props";
-
 const keys = Object.entries(blogArticles);
 
 const Aside = styled.aside`
@@ -55,7 +53,7 @@ const ArticleHeader: FC<{
 const Home: FC = () => (
   <>
     <ul>
-      {keys.map(([name, meta]) => (
+      {keys.map(([name, meta], index) => (
         <ArticleHeader name={name} meta={meta} key={name} />
       ))}
     </ul>

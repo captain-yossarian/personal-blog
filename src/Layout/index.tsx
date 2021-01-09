@@ -14,7 +14,7 @@ export const Title = styled.h1`
 
 const Wrapper = styled.div`
   & p {
-    font-size: 20px;
+    font-size: 1.1rem;
     line-height: 1.5;
     color: #0e2924;
     margin: 1rem 0;
