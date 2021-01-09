@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
-import { Layout, Var } from "../Shared/Layout";
+import { Layout, Var } from "../Layout";
 
 const code1 = `
 const enum Endpoints {

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
-import { Layout } from "../Shared/Layout";
+import { Layout } from "../Layout";
 import Links, { Anchor } from "../Shared/Links";
 
 const code1 = `

@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from "react";
 import Prism from "prismjs";
-import { CodeWrapper } from "../Shared/Layout";
+import { CodeWrapper } from "../Layout";
 
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Layout } from "./Layout";
+import { Layout } from "../Layout";
 
 const Contact: FC = () => (
   <Layout title="Contact">

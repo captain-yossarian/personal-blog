@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { VFC, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -21,17 +21,15 @@ import {
   TypeState,
   Api,
 } from "./Chapters";
-import Home from "./Shared/Home";
-import About from "./Shared/About";
-import Contact from "./Shared/Contact";
+import { About, Contact, Home } from "./Sections";
 
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
-import { Navigation } from "./Shared/Layout";
+import { Main } from "./Layout";
 
 setTimeout(() => Prism.highlightAll(), 0);
 
-const map = {
+const map = Object.entries({
   "/math": Math,
   "/typed-react-children": ReactChildren,
   "/react-return-type": ReactReturnType,
@@ -48,9 +46,7 @@ const map = {
   "/about": About,
   "/contact": Contact,
   "/": Home,
-};
-
-const keys = Object.keys(map);
+});
 
 const ScrollToTop = withRouter(({ history }) => {
   useEffect(() => {
@@ -65,21 +61,18 @@ const ScrollToTop = withRouter(({ history }) => {
   return null;
 });
 
-const App = () => (
+const App: VFC = () => (
   <Router>
-    <Navigation>
+    <Main>
       <ScrollToTop />
       <Switch>
-        {(keys as (keyof typeof map)[]).map((elem) => {
-          const Comp = map[elem];
-          return (
-            <Route path={elem}>
-              <Comp />
-            </Route>
-          );
-        })}
+        {map.map(([path, Comp]) => (
+          <Route path={path} key={path}>
+            <Comp />
+          </Route>
+        ))}
       </Switch>
-    </Navigation>
+    </Main>
   </Router>
 );
 

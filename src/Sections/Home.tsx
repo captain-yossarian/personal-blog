@@ -1,7 +1,8 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
-import { Layout, Title } from "./Layout";
+import { Layout } from "../Layout";
 import styled from "styled-components";
+import { THEME_COLOR } from "../Layout/css-utils";
 
 type Meta = {
   title: string;
@@ -74,7 +75,7 @@ const Aside = styled.aside`
 `;
 
 const Li = styled.li`
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 `;
 
 const H2 = styled.h2`
@@ -82,7 +83,10 @@ const H2 = styled.h2`
   display: inline-block;
   margin-bottom: 20px;
   font-size: 20px;
-  border-bottom: 5px solid #fdba08;
+  border-bottom: 5px solid transparent;
+  &:hover {
+    border-bottom: 5px solid ${THEME_COLOR};
+  }
   & a {
     text-decoration: none;
     color: #0b241e;
@@ -106,7 +110,7 @@ const Home: FC = () => (
   <div>
     <Layout title="Blog">
       <ul>
-        {keys.map(([name, meta]) => (
+        {keys.map(([name, meta], index) => (
           <ArticleHeader name={name} meta={meta} key={name} />
         ))}
       </ul>

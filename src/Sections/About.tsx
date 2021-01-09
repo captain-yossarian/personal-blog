@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Layout, Var } from "./Layout";
+import { Layout, Var } from "../Layout";
 
 const About: FC = () => (
   <Layout title="About">
