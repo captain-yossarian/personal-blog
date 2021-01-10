@@ -132,7 +132,7 @@ const navigation = {
 };
 const links = Object.values(navigation);
 
-const CallbackChain: FC = () => {
+const Callbacks: FC = () => {
   return (
     <>
       <HeaderNav links={links} />
@@ -216,4 +216,4 @@ const CallbackChain: FC = () => {
   );
 };
 
-export default CallbackChain;
+export default Callbacks;

@@ -144,8 +144,8 @@ export const blogArticles = {
         tags: ['recursive']
     },
     "/tuples": {
-        title: "Handle tuples",
-        description: "Transform, filter, search ...",
+        title: "Handle literal arrays/tuples",
+        description: "Filter, map, reduce, findIndex etc ...",
         next: "/union-array",
         Comp: 'Tuples',
         links: [
@@ -171,11 +171,11 @@ export const blogArticles = {
         ],
         tags: ['union', 'array', 'transform']
     },
-    "/callback-chain": {
-        title: "Callback chain",
+    "/callbacks": {
+        title: "Callbacks",
         description: "How to properly type callbacks",
-        next: "/handle-arrays",
-        Comp: 'CallbackChain',
+        next: "/publish-subscribe",
+        Comp: 'Callbacks',
         links: [
             {
                 href:
@@ -199,24 +199,6 @@ export const blogArticles = {
             },
         ],
         tags: ['callback', 'infer']
-    },
-    "/handle-arrays": {
-        title: "Handle arrays",
-        description: "Several useful operations on array types",
-        next: "/publish-subscribe",
-        Comp: 'Arrays',
-        links: [
-            {
-                href:
-                    "https://stackoverflow.com/questions/65429424/need-help-in-understanding-confusing-typescript-function",
-                text: "stackoverflow",
-            },
-            {
-                href: "https://typescriptnapowaznie.pl/",
-                text: "Typescript na powaznie",
-            },
-        ],
-        tags: ['array', 'tuple']
     },
     "/publish-subscribe": {
         title: "Publish subscribe pattern",

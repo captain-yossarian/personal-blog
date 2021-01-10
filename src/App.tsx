@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import Prism from "prismjs";
 import {
-  Arrays,
   MathOperations,
   ReactChildren,
   ReactReturnType,
@@ -16,7 +15,7 @@ import {
   RecursiveTypes,
   Tuples,
   UnionArray,
-  CallbackChain,
+  Callbacks,
   PubSub,
   TypeState,
   Api,
@@ -38,8 +37,7 @@ export const componentMap = {
   RecursiveTypes: RecursiveTypes,
   Tuples: Tuples,
   UnionArray: UnionArray,
-  CallbackChain: CallbackChain,
-  Arrays: Arrays,
+  Callbacks: Callbacks,
   PubSub: PubSub,
   TypeState: TypeState,
   Api: Api,

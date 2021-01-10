@@ -149,6 +149,44 @@ type Mapper<
 type Result = Mapper<Data>[] extends ExpectedType ? true : false;
 `;
 
+const code8 = `
+const arr = [85, 65, 4, 9] as const;
+type Arr = typeof arr;
+
+/**
+ * Naive approach - (85 | 65 | 4 | 9)[]
+ */ 
+const result_naive = arr.filter((elem) => elem !== 4 && elem !== 9); 
+
+/**
+ * Filter like a PRO
+ */ 
+type Without_4_and_9 = Exclude<Arr[number], 4 | 9>;
+
+const result_pro = arr.filter(
+  (elem): elem is Without_4_and_9 => elem !== 4 && elem !== 9
+); // (85 | 65)[]
+`;
+
+const code9 = `
+const arr = [85, 65, 4, 9] as const;
+type Arr = typeof arr;
+
+type Values<T> = T[keyof T];
+
+type ArrayKeys = keyof [];
+
+type FindIndex<
+  T extends ReadonlyArray<number>,
+  Value extends number = 0,
+  Keys extends keyof T = keyof T
+> = {
+  [P in Keys]: Value extends T[P] ? P : never;
+};
+
+type Result = Values<Omit<FindIndex<Arr, 65>, ArrayKeys>>; // '1'
+`;
+
 const navigation = {
   filter: {
     id: "filter",
@@ -161,6 +199,10 @@ const navigation = {
   reduce: {
     id: "reduce",
     text: "Reduce literal type",
+  },
+  find_index: {
+    id: "find_index",
+    text: "Find index in literal types",
   },
 };
 
@@ -211,6 +253,14 @@ const Tuples: FC = () => (
       I used empty array here instead of never, because we want to filter an
       array, not to get either Head or Tail.
     </p>
+    <p>
+      Btw, we can use typeguard for <Var>Array.prototype.filter</Var>
+    </p>
+    <p>
+      I have found this example in this
+      <Anchor href="https://typescriptnapowaznie.pl/" text="book" />
+    </p>
+    <Code code={code8} />
     <p>Is it possible to reuse above pattern for other cases ? Sure!</p>
     <p>
       Take a look on this
@@ -259,6 +309,12 @@ const Tuples: FC = () => (
       We should transform <Var>Data</Var> type to <Var>ExpectedType</Var> type
     </p>
     <Code code={code7} />
+    <Header {...navigation.find_index} />
+    <p>
+      It is also possible to emulate <Var>Array.prototype.findIndex</Var> in
+      type system:
+    </p>
+    <Code code={code9} />
     <p>
       Try to implement <Var>Array.prototype.some</Var>, etc ...
     </p>
