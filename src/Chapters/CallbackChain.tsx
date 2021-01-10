@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Var } from "../Layout";
 import { Anchor } from "../Shared/Links";
+import { Header, HeaderNav } from "../Shared/ArticleBase";
 
 const code1 = `
 const myFn = <T>(arg: { a: (a_arg: number) => T; b: (b_arg: T) => void }) => {
@@ -118,10 +119,24 @@ arr.forEach(someInstruction => someInstruction(i => {
     i.promise.then(i.callback); // works
 }))
 `;
-const CallbackChain: FC = (props) => {
-  console.log(props);
+
+const navigation = {
+  infer_argument: {
+    id: "infer_argument",
+    text: "Infer function parameter",
+  },
+  cb_structure: {
+    id: "cb_structure",
+    text: "Data structure with callbacks",
+  },
+};
+const links = Object.values(navigation);
+
+const CallbackChain: FC = () => {
   return (
     <>
+      <HeaderNav links={links} />
+      <Header {...navigation.infer_argument} />
       <p>Let's say you have next function</p>
       <Code code={code1} />
       <p>
@@ -148,6 +163,8 @@ const CallbackChain: FC = (props) => {
         function.
       </p>
       <Code code={code3} />
+      <Header {...navigation.cb_structure} />
+
       <p>Let's go to a bit complicated example</p>
       <p>Consider next data structure:</p>
       <Code code={code4} />
@@ -188,7 +205,7 @@ const CallbackChain: FC = (props) => {
       </p>
       <p>Finally, working code:</p>
       <Code code={code8} />
-      <p>
+      <p id="hello">
         <Anchor
           href="https://stackoverflow.com/questions/65644828/typescript-dependant-type-inference-with-variadic-tuple-types#answer-65654415"
           text="Here"

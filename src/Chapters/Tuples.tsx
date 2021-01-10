@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Var } from "../Layout";
 import { Anchor } from "../Shared/Links";
+import { Header, HeaderNav } from "../Shared/ArticleBase";
 
 const code1 = `
 /**
@@ -148,8 +149,27 @@ type Mapper<
 type Result = Mapper<Data>[] extends ExpectedType ? true : false;
 `;
 
+const navigation = {
+  filter: {
+    id: "filter",
+    text: "Filter literal type",
+  },
+  map: {
+    id: "map",
+    text: "Map literal type",
+  },
+  reduce: {
+    id: "reduce",
+    text: "Reduce literal type",
+  },
+};
+
+const links = Object.values(navigation);
+
 const Tuples: FC = () => (
   <>
+    <HeaderNav links={links} />
+    <Header {...navigation.filter} />
     <p>
       Let's say you have a literal type of array and you want to filter this
       type
@@ -201,6 +221,7 @@ const Tuples: FC = () => (
         text={"question"}
       />
     </p>
+    <Header {...navigation.map} />
     <p>
       Let's say you have an array and you want to map it to other array. How to
       do it with type system?
@@ -220,6 +241,7 @@ const Tuples: FC = () => (
       you can find how to do it.
     </p>
     <Code code={code6} />
+    <Header {...navigation.reduce} />
     <p>
       Ok, ok. I know what you are thinking about. How we can reduce the array to
       object?
@@ -237,6 +259,9 @@ const Tuples: FC = () => (
       We should transform <Var>Data</Var> type to <Var>ExpectedType</Var> type
     </p>
     <Code code={code7} />
+    <p>
+      Try to implement <Var>Array.prototype.some</Var>, etc ...
+    </p>
   </>
 );
 
