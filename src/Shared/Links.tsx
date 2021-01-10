@@ -33,8 +33,8 @@ const Container = styled.div`
   }
 `;
 
-const Header = styled.h3`
-  font-weight: 600;
+const Header = styled.h2`
+  font-weight: bold;
 `;
 
 const Links: FC<Props> = ({ data }) => (
