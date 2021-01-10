@@ -62,7 +62,8 @@ export const blogArticles = {
                     "https://stackoverflow.com/questions/65280785/is-it-possible-to-declare-a-typescript-function-which-works-on-both-numbers-and",
                 text: "stackoverflow",
             },
-        ]
+        ],
+        tags: ['number', 'bigint', 'math', 'add']
     },
     "/typed-react-children": {
         title: "Type React component children",
@@ -76,7 +77,8 @@ export const blogArticles = {
                     "https://stackoverflow.com/questions/64967447/adding-required-props-to-child-react-elements-with-typescript",
                 text: "stackoverflow",
             },
-        ]
+        ],
+        tags: ['react', 'react-typescript', 'component', 'children']
     },
     "/react-return-type": {
         title: "Type React component return type",
@@ -90,7 +92,8 @@ export const blogArticles = {
                     "https://stackoverflow.com/questions/65406516/react-typescript-difference-between-react-fc-t-and-function",
                 text: "stackoverflow",
             },
-        ]
+        ],
+        tags: ['return type', 'react', 'component']
     },
     "/compare-arguments": {
         title: "Compare array arguments",
@@ -103,7 +106,8 @@ export const blogArticles = {
                     "https://stackoverflow.com/questions/65361696/arguments-of-same-length-typescript",
                 text: "stackoverflow",
             },
-        ]
+        ],
+        tags: ['array', 'arguments', 'narrow']
     },
 
     "/range-numbers": {
@@ -117,7 +121,8 @@ export const blogArticles = {
                     "https://stackoverflow.com/questions/65307438/how-to-define-properties-in-a-typescript-interface-with-dynamic-elements-in-the",
                 text: "stackoverflow",
             },
-        ]
+        ],
+        tags: ['number', 'range']
     },
     "/recursive-types": {
         title: "Recursive types",
@@ -135,7 +140,8 @@ export const blogArticles = {
                     "https://stackoverflow.com/questions/65503728/defining-a-type-for-this-function-that-works-on-arbitrary-length-tuples",
                 text: "stackoverflow",
             },
-        ]
+        ],
+        tags: ['recursive']
     },
     "/tuples": {
         title: "Handle tuples",
@@ -148,7 +154,8 @@ export const blogArticles = {
                     "https://stackoverflow.com/questions/65476787/how-to-dynamically-create-an-object-based-on-a-readonly-tuple-in-typescript/65478618#65478618",
                 text: "stackoverflow",
             },
-        ]
+        ],
+        tags: ['array', 'tuple', 'tuples']
     },
     "/union-array": {
         title: "Transform Union to Array",
@@ -161,7 +168,8 @@ export const blogArticles = {
                     "https://stackoverflow.com/questions/65533827/get-keys-of-an-interface-in-generics/65534971#65534971",
                 text: "stackoverflow",
             },
-        ]
+        ],
+        tags: ['union', 'array', 'transform']
     },
     "/callback-chain": {
         title: "Callback chain",
@@ -189,7 +197,8 @@ export const blogArticles = {
                     "https://basarat.gitbook.io/typescript/type-system/type-compatibility",
                 text: "TS book",
             },
-        ]
+        ],
+        tags: ['callback', 'infer']
     },
     "/handle-arrays": {
         title: "Handle arrays",
@@ -206,14 +215,16 @@ export const blogArticles = {
                 href: "https://typescriptnapowaznie.pl/",
                 text: "Typescript na powaznie",
             },
-        ]
+        ],
+        tags: ['array', 'arrays', 'tuple', 'tuples']
     },
     "/publish-subscribe": {
         title: "Publish subscribe pattern",
         description: "Type safe publish subscribe pattern",
         next: "/type-state",
         Comp: 'PubSub',
-        links: []
+        links: [],
+        tags: ['pattern']
     },
     "/type-state": {
         title: "Type state pattern",
@@ -232,13 +243,15 @@ export const blogArticles = {
                     "https://stackoverflow.com/questions/65431379/type-property-relying-on-return-type-of-another-property/65433418#65433418",
                 text: "stackoverflow",
             },
-        ]
+        ],
+        tags: ['pattern']
     },
     "/api": {
         title: "Api requests",
         description: "Make type safe api requests with TypeScript",
         next: "/math",
         Comp: 'Api',
-        links: []
+        links: [],
+        tags: ['pattern']
     },
-} as const
+}

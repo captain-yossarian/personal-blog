@@ -73,7 +73,7 @@ const App: VFC = () => (
       <ScrollToTop />
       <Switch>
         {map.map(([pth, { Comp }]) => {
-          const Component = componentMap[Comp];
+          const Component = componentMap[Comp as keyof typeof componentMap];
           const path = (pth as any) as keyof typeof merged;
 
           return (

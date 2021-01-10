@@ -6,7 +6,7 @@ const About: FC = () => (
   <>
     <div>
       <p>Hi, my name is Serhii.</p>
-      <p> I work as a front end developer in UBS.</p>
+      <p> I work as a front end developer at UBS.</p>
       <p>
         I decided to gather some useful <Var>[typescript]</Var> stackoverflow
         questions/answers in one place.
