@@ -98,8 +98,14 @@ type SomeInstruction = <R>(cb: <T>(instruction: Instruction<T>) => R) => R;
 const someInstruction = <T,>(i: Instruction<T>): SomeInstruction => cb => cb(i);
 
 const arr: SomeInstruction[] = [
-    someInstruction({ promise: Promise.resolve({ foo: 'bar' }), callback: (data) => console.log(data.foo) }),
-    someInstruction({ promise: Promise.resolve({ bar: 'foo' }), callback: (data) => console.log(data.bar) })
+    someInstruction({
+        promise: Promise.resolve({ foo: 'bar' }),
+        callback: (data) => console.log(data.foo)
+    }),
+    someInstruction({
+        promise: Promise.resolve({ bar: 'foo' }),
+        callback: (data) => console.log(data.bar)
+    })
 ]
 
 // writing out T for explicitness here
@@ -111,7 +117,6 @@ arr.forEach(someInstruction => someInstruction(<T,>(i: Instruction<T>) => {
 arr.forEach(someInstruction => someInstruction(i => {
     i.promise.then(i.callback); // works
 }))
-
 `;
 const CallbackChain: FC = (props) => {
   console.log(props);
@@ -143,7 +148,7 @@ const CallbackChain: FC = (props) => {
         function.
       </p>
       <Code code={code3} />
-      <p>Let's got to a bit complicated example</p>
+      <p>Let's go to a bit complicated example</p>
       <p>Consider next data structure:</p>
       <Code code={code4} />
       <p>
@@ -159,15 +164,16 @@ const CallbackChain: FC = (props) => {
       <Code code={code5} />
       <p>Now, we can assume it work</p>
       <Code code={code6} />
-      <p>But it still does not</p>
+      <p>But it still does not, if array have more than one element.</p>
       <Code code={code7} />
       <p>We ended up with strange intersection.</p>
       <p>
-        Another interesting example you can find here,
+        Another interesting example you can find
         <Anchor
           href="https://stackoverflow.com/questions/65624892/define-return-type-of-a-function-in-dictionary-based-on-its-parameter-in-typescr"
-          text="in comments section of accepted answer"
+          text="here,"
         />
+        see question and comments to accepted answer
       </p>
       <p>This is how TS handles callback argument types.</p>
       <p>
