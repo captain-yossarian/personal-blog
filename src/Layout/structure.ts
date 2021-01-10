@@ -78,7 +78,7 @@ export const blogArticles = {
                 text: "stackoverflow",
             },
         ],
-        tags: ['react', 'react-typescript', 'component', 'children']
+        tags: ['react', 'component', 'children']
     },
     "/react-return-type": {
         title: "Type React component return type",
@@ -93,7 +93,7 @@ export const blogArticles = {
                 text: "stackoverflow",
             },
         ],
-        tags: ['return type', 'react', 'component']
+        tags: ['ReturnType', 'react', 'component']
     },
     "/compare-arguments": {
         title: "Compare array arguments",
@@ -155,7 +155,7 @@ export const blogArticles = {
                 text: "stackoverflow",
             },
         ],
-        tags: ['array', 'tuple', 'tuples']
+        tags: ['array', 'tuple']
     },
     "/union-array": {
         title: "Transform Union to Array",
@@ -216,7 +216,7 @@ export const blogArticles = {
                 text: "Typescript na powaznie",
             },
         ],
-        tags: ['array', 'arrays', 'tuple', 'tuples']
+        tags: ['array', 'tuple']
     },
     "/publish-subscribe": {
         title: "Publish subscribe pattern",
