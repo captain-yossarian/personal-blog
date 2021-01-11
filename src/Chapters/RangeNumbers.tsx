@@ -48,10 +48,6 @@ type NumberString<T extends number> = \`${"${T}"}\`
 type AppendDigit<T extends number | string> = \`${"${T}"}${"${LiteralDigits}"}\`
 
 {
-  /**
-   * If you don't understand why, please read again about distributivenes here
-   * https://www.typescriptlang.org/docs/handbook/advanced-types.html#distributive-conditional-types
-   */
   type Test1 = Assert<
     AppendDigit<2>,
     "20" | "21" | "22" | "23" | "24" | "25" | "26" | "27" | "28" | "29"
@@ -168,9 +164,8 @@ const RangeNumbers: FC = () => (
       arrays.
     </p>
     <p>
-      To get all keys of object, we use - <Var>keyof</Var>
+      To get all keys of object, we use - <Var>keyof</Var>.
     </p>
-    .
     <p>
       To get all array elements we use <Var>[number]</Var> because arrays have
       numeric keys.

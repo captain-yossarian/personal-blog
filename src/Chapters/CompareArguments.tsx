@@ -499,9 +499,9 @@ const CompareArguments: FC = () => (
     </p>
     <Code code={code4} />
     <p>
-      It is looks like we have all our necessary utils. If you still have't head
-      ake, here You have other portion of types to think about. Try to figure
-      out whats going on here:
+      It is looks like we have all our necessary utils. If you still haven't
+      head ake, here You have other portion of types to think about. Try to
+      figure out what's going on here:
     </p>
     <Code code={code5} />
     <p>

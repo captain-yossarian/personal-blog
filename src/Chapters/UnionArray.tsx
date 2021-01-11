@@ -81,24 +81,25 @@ const UnionArray: FC = () => (
     <Code code={code3} />
     <p>
       Credits goes to
-      <a href="https://github.com/microsoft/TypeScript/issues/13298#issuecomment-468114901">
-        Shanon Jackson
-      </a>
+      <Anchor
+        href="https://github.com/microsoft/TypeScript/issues/13298#issuecomment-468114901"
+        text="Shanon Jackson"
+      />
       ,
-      <a href="https://stackoverflow.com/questions/53953814/typescript-check-if-a-type-is-a-union#comment-94748994">
-        Titian Cernicova-Dragomir
-      </a>
+      <Anchor
+        href="https://stackoverflow.com/questions/53953814/typescript-check-if-a-type-is-a-union#comment-94748994"
+        text="Titian Cernicova-Dragomir"
+      />
       ,
-      <a href="https://stackoverflow.com/questions/50374908/transform-union-type-to-intersection-type/50375286#50375286">
-        @jcalz
-      </a>
+      <Anchor
+        href="https://stackoverflow.com/questions/50374908/transform-union-type-to-intersection-type/50375286#50375286"
+        text="@jcalz"
+      />
+      .
     </p>
+    <p>Please keep in mind, this solution is not CPU friendly.</p>
     <p>
-      Please keep in mind, this solution is not CPU friendly and order will
-      always be the same as in union.
-    </p>
-    <p>
-      It is bad, in case, if you want to use above type for
+      Please, don't use above util for typing
       <Var>Object.keys()</Var>
     </p>
     <p>
@@ -106,8 +107,8 @@ const UnionArray: FC = () => (
       order guarantee.
     </p>
     <p>
-      If You want to use advanced type for <Var>Object.keys</Var> you should use
-      next solution, which is shamelessly stolen from
+      If You want to type <Var>Object.keys</Var> you should use next solution,
+      which is shamelessly stolen from
       <Anchor
         href={"https://twitter.com/WrocTypeScript/status/1306296710407352321"}
         text={"Wroclaw twittergroup"}

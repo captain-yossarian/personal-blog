@@ -43,7 +43,7 @@ const Links: FC<Props> = ({ data }) => (
     <ul>
       {data.map(({ href, text }, index) => (
         <li key={index}>
-          <Anchor href={href} text={text} />
+          {index + 1}. <Anchor href={href} text={text} />
         </li>
       ))}
     </ul>

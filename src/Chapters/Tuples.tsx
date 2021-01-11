@@ -87,15 +87,17 @@ type Filter<T extends any[], F> = T extends []
 `;
 
 const code5 = `
+type MapPredicate<T> = [T, true]
+
 type Mapped<
   Arr extends Array<unknown>,
   Result extends Array<unknown> = []
-> = Arr extends []
+  > = Arr extends []
   ? []
   : Arr extends [infer H]
-  ? [...Result, [H, true]]
+  ? [...Result, MapPredicate<H>]
   : Arr extends [infer Head, ...infer Tail]
-  ? Mapped<[...Tail], [...Result, [Head, true]]>
+  ? Mapped<[...Tail], [...Result, MapPredicate<Head>]>
   : Readonly<Result>;
 
 type Result = Mapped<[1, 2, 3, 4]>; // [[1, true], [2, true], [3, true], [4, true]]
@@ -253,14 +255,6 @@ const Tuples: FC = () => (
       I used empty array here instead of never, because we want to filter an
       array, not to get either Head or Tail.
     </p>
-    <p>
-      Btw, we can use typeguard for <Var>Array.prototype.filter</Var>
-    </p>
-    <p>
-      I have found this example in this
-      <Anchor href="https://typescriptnapowaznie.pl/" text="book" />
-    </p>
-    <Code code={code8} />
     <p>Is it possible to reuse above pattern for other cases ? Sure!</p>
     <p>
       Take a look on this
@@ -271,12 +265,27 @@ const Tuples: FC = () => (
         text={"question"}
       />
     </p>
+    <p>
+      Btw, we can use typeguard for <Var>Array.prototype.filter</Var>
+    </p>
+    <p>
+      I have found this example in this
+      <Anchor href="https://typescriptnapowaznie.pl/" text="book" />
+    </p>
+    <Code code={code8} />
     <Header {...navigation.map} />
     <p>
       Let's say you have an array and you want to map it to other array. How to
       do it with type system?
     </p>
     <Code code={code5} />
+    <p>
+      <Anchor
+        href="https://stackoverflow.com/questions/65666822/typescript-merged-type-of-two-objects-in-array-with-different-payload/65668729#65668729"
+        text="Here"
+      />{" "}
+      is another example of using above mapper util.
+    </p>
     <p>
       If you want to restrict maximum array (tuple) length - this is not a
       problem.
@@ -286,7 +295,7 @@ const Tuples: FC = () => (
         href={
           "https://stackoverflow.com/questions/65495285/typescript-restrict-maximum-array-length"
         }
-        text={"here"}
+        text={"Here"}
       />
       you can find how to do it.
     </p>

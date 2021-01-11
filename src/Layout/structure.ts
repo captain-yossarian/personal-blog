@@ -62,6 +62,10 @@ export const blogArticles = {
                     "https://stackoverflow.com/questions/65280785/is-it-possible-to-declare-a-typescript-function-which-works-on-both-numbers-and",
                 text: "stackoverflow",
             },
+            {
+                href: 'https://stackoverflow.com/questions/65508351/is-it-possible-to-use-intersection-to-make-function-overloadings-with-generics',
+                text: 'stackoverflow'
+            }
         ],
         tags: ['number', 'bigint', 'math', 'add']
     },
@@ -113,7 +117,7 @@ export const blogArticles = {
     "/range-numbers": {
         title: "Generate numbers in range",
         description: "How to generate numbers range as a literal type",
-        next: "/recursive-types",
+        next: "/tuples",
         Comp: 'RangeNumbers',
         links: [
             {
@@ -123,25 +127,6 @@ export const blogArticles = {
             },
         ],
         tags: ['number', 'range']
-    },
-    "/recursive-types": {
-        title: "Recursive types",
-        description: "Some useful techniques with recursive types",
-        next: "/tuples",
-        Comp: 'RecursiveTypes',
-        links: [
-            {
-                href:
-                    "https://stackoverflow.com/questions/64899511/deepexclude-type-for-typescript",
-                text: "stackoverflow",
-            },
-            {
-                href:
-                    "https://stackoverflow.com/questions/65503728/defining-a-type-for-this-function-that-works-on-arbitrary-length-tuples",
-                text: "stackoverflow",
-            },
-        ],
-        tags: ['recursive']
     },
     "/tuples": {
         title: "Handle literal arrays/tuples",
@@ -233,7 +218,10 @@ export const blogArticles = {
         description: "Make type safe api requests with TypeScript",
         next: "/math",
         Comp: 'Api',
-        links: [],
+        links: [{
+            href: 'https://stackoverflow.com/questions/65658633/how-to-determine-the-type-of-generic-in-a-class/65664455#65664455',
+            text: 'stackoverflow'
+        }],
         tags: ['pattern']
     },
 }

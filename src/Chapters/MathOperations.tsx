@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Var } from "../Layout";
+import { Anchor } from "../Shared/Links";
+import { Link } from "react-router-dom";
 
 const code1 = `
 const sum = 2 + 2n; // Error
@@ -79,7 +81,7 @@ const MathOperations: FC = () => (
     </p>
     <Code code={code1} />
     <p>
-      So, we want to accept only number or only bigints. Let's start with
+      So, we want to accept only numbers or only bigints. Let's start with
       function definition:
     </p>
     <Code code={code2} />
@@ -102,6 +104,22 @@ const MathOperations: FC = () => (
     <p>
       Only overloadings might help us here. We should explicitly say, that
       <Var>B</Var>generic parameter should have same type as<Var>A</Var>
+    </p>
+    <p>
+      I have tried to replace overloadings with function intersections, but
+      without success. See
+      <Anchor
+        href="https://stackoverflow.com/questions/65508351/is-it-possible-to-use-intersection-to-make-function-overloadings-with-generics"
+        text="here"
+      />
+      .
+    </p>
+    <p>
+      Btw, in most cases, you can replace overloadings with function
+      intersections. I used this technique
+      <Link to="/publish-subscribe">
+        <span> in Publish subscribe section</span>
+      </Link>
     </p>
     <Code code={code6} />
   </>
