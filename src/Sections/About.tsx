@@ -51,12 +51,12 @@ const About: FC = () => (
       </p>
       <p>
         More about React + TypeScript you can learn from these guys:
+        <Anchor href="https://twitter.com/ddprrt" text="@ddprrt" />
+        and
         <Anchor
           href="https://twitter.com/martin_hotell"
           text={"@martin_hottel"}
         />
-        and
-        <Anchor href="https://twitter.com/ddprrt" text="@ddprrt" />
       </p>
     </div>
   </>
