@@ -22,6 +22,19 @@ const About: FC = () => (
       </p>
       <p> You can treat this blog as a stackoverflow typescript news.</p>
       <p>
+        Btw, before asking anything on StackOverflow, I suggest you to take a
+        look at
+        <Anchor
+          href="https://www.typescriptlang.org/docs/handbook/intro.html"
+          text="TypeScript book"
+        />
+        and
+        <Anchor
+          href="https://www.typescriptlang.org/docs/handbook/2/basic-types.html"
+          text="TypeScript book v2 beta"
+        />
+      </p>
+      <p>
         If You want to know how TS type system works under the hood, I suggest
         you to follow:
         <Anchor
