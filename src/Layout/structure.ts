@@ -110,6 +110,10 @@ export const blogArticles = {
                     "https://stackoverflow.com/questions/65361696/arguments-of-same-length-typescript",
                 text: "stackoverflow",
             },
+            {
+                href: 'https://stackoverflow.com/questions/65549062/template-string-literal-with-variable-cause-argument-of-type-s-not-assignable-t/65549738#65549738',
+                text: 'stackoverflow'
+            }
         ],
         tags: ['array', 'arguments', 'narrow']
     },
