@@ -28,10 +28,15 @@ const About: FC = () => (
           href="https://www.typescriptlang.org/docs/handbook/intro.html"
           text="TypeScript book"
         />
-        and
+        ,
         <Anchor
           href="https://www.typescriptlang.org/docs/handbook/2/basic-types.html"
           text="TypeScript book v2 beta"
+        />
+        and
+        <Anchor
+          href="https://github.com/Microsoft/TypeScript/wiki/FAQ"
+          text="TypeScript FAQ"
         />
       </p>
       <p>
