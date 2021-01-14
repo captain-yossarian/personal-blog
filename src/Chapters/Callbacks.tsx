@@ -205,12 +205,18 @@ const Callbacks: FC = () => {
       </p>
       <p>Finally, working code:</p>
       <Code code={code8} />
+
       <p id="hello">
         <Anchor
           href="https://stackoverflow.com/questions/65644828/typescript-dependant-type-inference-with-variadic-tuple-types#answer-65654415"
           text="Here"
         />
-        you can find very similar case with my answer.
+        and
+        <Anchor
+          href="https://stackoverflow.com/questions/65698415/typing-and-validating-an-array-of-objects-of-unknown-shape"
+          text="here"
+        />
+        you can find very similar cases, maybe it helps you.
       </p>
     </>
   );
