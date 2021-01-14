@@ -51,6 +51,23 @@ export const HeaderNav: FC<HeaderProps> = ({ links }) => (
   </ul>
 );
 
+const twitterSkip = ["about", "contact", "home"];
+
+const TwitterShare: FC<{ title: string }> = ({ title }) =>
+  !twitterSkip.includes(title.toLowerCase()) ? (
+    <p>
+      <a
+        href={`https://twitter.com/share?hashtags=typescript,catchts&text=\n${title}`}
+      >
+        <img
+          width="45"
+          src="/twitter-logo.png"
+          title="Share this page on Twitter"
+        />
+      </a>
+    </p>
+  ) : null;
+
 const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
   title,
   next,
@@ -60,6 +77,7 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
 }) => (
   <Layout title={title}>
     {children}
+    <TwitterShare title={title} />
     {links.length > 0 ? <Links data={links} /> : null}
   </Layout>
 );
