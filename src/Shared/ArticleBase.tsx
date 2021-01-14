@@ -53,11 +53,11 @@ export const HeaderNav: FC<HeaderProps> = ({ links }) => (
 
 const twitterSkip = ["about", "contact", "home"];
 
-const TwitterShare: FC<{ title: string }> = ({ title }) =>
+const TwitterShare: FC<{ title: string; path: string }> = ({ title, path }) =>
   !twitterSkip.includes(title.toLowerCase()) ? (
     <p>
       <a
-        href={`https://twitter.com/share?hashtags=typescript,catchts&text=\n${title}`}
+        href={`https://twitter.com/share?url=catchts.com${path}&hashtags=typescript,catchts&text=${title}`}
       >
         <img
           width="45"
@@ -77,7 +77,7 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
 }) => (
   <Layout title={title}>
     {children}
-    <TwitterShare title={title} />
+    <TwitterShare title={title} path={path} />
     {links.length > 0 ? <Links data={links} /> : null}
   </Layout>
 );
