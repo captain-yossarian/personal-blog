@@ -103,6 +103,59 @@ type Mapped<
 type Result = Mapped<[1, 2, 3, 4]>; // [[1, true], [2, true], [3, true], [4, true]]
 `;
 
+const code51 = `
+// All credits you can find in this 
+// chapter: // https://catchts.com/union-array
+
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
+    k: infer I
+) => void
+    ? I
+    : never;
+
+type UnionToOvlds<U> = UnionToIntersection<
+    U extends any ? (f: U) => void : never
+>;
+
+type PopUnion<U> = UnionToOvlds<U> extends (a: infer A) => void ? A : never;
+
+type IsUnion<T> = [T] extends [UnionToIntersection<T>] ? false : true;
+
+type UnionToArray<T, A extends unknown[] = []> = IsUnion<T> extends true
+    ? UnionToArray<Exclude<T, PopUnion<T>>, [PopUnion<T>, ...A]>
+    : [T, ...A];
+
+
+const map = <A extends readonly [...any[]]>(values: A) =>
+    <T,>(func: (value: A[number]) => T) => {
+        type Mapped<
+            Arr extends Array<unknown>,
+            Result extends Array<unknown> = [],
+            > = Arr extends []
+            ? []
+            : Arr extends [infer H]
+            ? [...Result, T]
+            : Arr extends [infer Head, ...infer Tail]
+            ? Mapped<[...Tail], [...Result, T]>
+            : Readonly<Result>;
+
+        return (values.map<T>(func)) as Mapped<UnionToArray<A[number]>>
+    }
+
+const arr = [1, 2, 3] as const;
+type Arr = typeof arr;
+
+const result = map([1, 2, 3] as const)<{ elem: Arr[number] }>(elem => ({ elem }));
+
+// [{
+//     elem: Arr[number];
+// }, {
+//     elem: Arr[number];
+// }, {
+//     elem: Arr[number];
+// }]
+`;
+
 const code6 = `
 type ArrayOfMaxLength4 = readonly [any?, any?, any?, any?];
 `;
@@ -279,6 +332,19 @@ const Tuples: FC = () => (
       do it with type system?
     </p>
     <Code code={code5} />
+    <p>
+      <Anchor
+        href="https://stackoverflow.com/questions/64112702/possible-to-use-array-prototype-map-on-tuple-in-typescript-while-preserving-tu#answer-64117673"
+        text="There is"
+      />
+      very similar approach but more generic for mapping immutable arrays:
+    </p>
+    <Code code={code51} />
+    <p>
+      Meanwhile, you can boil some water on your laptop )) I don't know the
+      reason, but declaring <Var>Mapped</Var> type inside function make TS
+      playground inactive for a while
+    </p>
     <p>
       <Anchor
         href="https://stackoverflow.com/questions/65666822/typescript-merged-type-of-two-objects-in-array-with-different-payload/65668729#65668729"
