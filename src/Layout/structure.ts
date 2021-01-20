@@ -267,3 +267,4 @@ export const blogArticles = {
         id: 12,
     },
 }
+

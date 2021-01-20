@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { THEME_COLOR } from "../Layout/utils";
 import { blogArticles } from "../Layout/structure";
 
-const keys = Object.entries(blogArticles);
+const keys = Object.entries(blogArticles).sort((a, b) => b[1].id - a[1].id);
 
 const Aside = styled.aside`
   margin-left: 30px;

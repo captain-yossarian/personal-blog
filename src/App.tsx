@@ -63,11 +63,7 @@ const ScrollToTop = withRouter(({ history }) => {
 
 const merged = Object.assign(blogArticles, sections);
 
-const map = Object.entries(merged).sort((a, b) => {
-  return b[1].id - a[1].id;
-});
-
-console.log({ map });
+const map = Object.entries(merged);
 
 const App: VFC = () => (
   <Router>
