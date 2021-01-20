@@ -30,14 +30,16 @@ export const sections = {
                 href: "https://typeofweb.com/",
                 text: "TypeOfWeb [PL]",
             },
-        ]
+        ],
+        id: -1,
     },
     "/contact": {
         title: 'Contact',
         description: 'About section',
         Comp: 'Contact',
         next: '',
-        links: []
+        links: [],
+        id: -2,
 
     },
     "/": {
@@ -45,7 +47,8 @@ export const sections = {
         description: 'Home section',
         Comp: 'Home',
         next: '',
-        links: []
+        links: [],
+        id: -3
     },
 } as const;
 
@@ -67,7 +70,8 @@ export const blogArticles = {
                 text: 'stackoverflow'
             }
         ],
-        tags: ['number', 'bigint', 'math', 'add']
+        tags: ['number', 'bigint', 'math', 'add'],
+        id: 1,
     },
     "/typed-react-children": {
         title: "Type React component children",
@@ -82,7 +86,8 @@ export const blogArticles = {
                 text: "stackoverflow",
             },
         ],
-        tags: ['react', 'component', 'children']
+        tags: ['react', 'component', 'children'],
+        id: 2,
     },
     "/react-return-type": {
         title: "Type React component return type",
@@ -97,7 +102,8 @@ export const blogArticles = {
                 text: "stackoverflow",
             },
         ],
-        tags: ['ReturnType', 'react', 'component']
+        tags: ['ReturnType', 'react', 'component'],
+        id: 3,
     },
     "/compare-arguments": {
         title: "Compare array arguments",
@@ -115,7 +121,8 @@ export const blogArticles = {
                 text: 'stackoverflow'
             }
         ],
-        tags: ['array', 'arguments', 'narrow']
+        tags: ['array', 'arguments', 'narrow'],
+        id: 4,
     },
 
     "/range-numbers": {
@@ -130,7 +137,8 @@ export const blogArticles = {
                 text: "stackoverflow",
             },
         ],
-        tags: ['number', 'range']
+        tags: ['number', 'range'],
+        id: 5,
     },
     "/tuples": {
         title: "Handle literal arrays/tuples",
@@ -144,7 +152,8 @@ export const blogArticles = {
                 text: "stackoverflow",
             },
         ],
-        tags: ['array', 'tuple']
+        tags: ['array', 'tuple'],
+        id: 6,
     },
     "/union-array": {
         title: "Transform Union to Array",
@@ -158,7 +167,8 @@ export const blogArticles = {
                 text: "stackoverflow",
             },
         ],
-        tags: ['union', 'array', 'transform']
+        tags: ['union', 'array', 'transform'],
+        id: 7,
     },
     "/unions": {
         title: "Handle unions",
@@ -176,8 +186,13 @@ export const blogArticles = {
                     "https://stackoverflow.com/questions/65805600/struggling-with-building-a-type-in-ts",
                 text: "stackoverflow",
             },
+            {
+                href: "https://dev.to/gcanti/functional-design-algebraic-data-types-36kf",
+                text: 'dev.to'
+            }
         ],
-        tags: ['union', 'react']
+        tags: ['union', 'react'],
+        id: 8
     },
     "/callbacks": {
         title: "Callbacks",
@@ -206,7 +221,8 @@ export const blogArticles = {
                 text: "TS book",
             },
         ],
-        tags: ['callback', 'infer']
+        tags: ['callback', 'infer'],
+        id: 9,
     },
     "/publish-subscribe": {
         title: "Publish subscribe pattern",
@@ -214,7 +230,8 @@ export const blogArticles = {
         next: "/type-state",
         Comp: 'PubSub',
         links: [],
-        tags: ['pattern']
+        tags: ['pattern'],
+        id: 10,
     },
     "/type-state": {
         title: "Type state pattern",
@@ -234,7 +251,8 @@ export const blogArticles = {
                 text: "stackoverflow",
             },
         ],
-        tags: ['pattern']
+        tags: ['pattern'],
+        id: 11,
     },
     "/api": {
         title: "Api requests",
@@ -245,6 +263,7 @@ export const blogArticles = {
             href: 'https://stackoverflow.com/questions/65658633/how-to-determine-the-type-of-generic-in-a-class/65664455#65664455',
             text: 'stackoverflow'
         }],
-        tags: ['pattern']
+        tags: ['pattern'],
+        id: 12,
     },
 }
