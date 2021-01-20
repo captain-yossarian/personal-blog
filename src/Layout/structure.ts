@@ -149,7 +149,7 @@ export const blogArticles = {
     "/union-array": {
         title: "Transform Union to Array",
         description: "How to transform unions to array",
-        next: "/callback-chain",
+        next: "/unions",
         Comp: 'UnionArray',
         links: [
             {
@@ -159,6 +159,25 @@ export const blogArticles = {
             },
         ],
         tags: ['union', 'array', 'transform']
+    },
+    "/unions": {
+        title: "Handle unions",
+        description: "How to work with unions",
+        next: "/callbacks",
+        Comp: 'Unions',
+        links: [
+            {
+                href:
+                    "https://stackoverflow.com/questions/64899974/require-at-least-one-prop-to-be-passed-to-component-typescript",
+                text: "stackoverflow",
+            },
+            {
+                href:
+                    "https://stackoverflow.com/questions/65805600/struggling-with-building-a-type-in-ts",
+                text: "stackoverflow",
+            },
+        ],
+        tags: ['union', 'react']
     },
     "/callbacks": {
         title: "Callbacks",

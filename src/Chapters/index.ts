@@ -8,4 +8,5 @@ export { default as UnionArray } from "./UnionArray";
 export { default as Callbacks } from "./Callbacks";
 export { default as PubSub } from './PubSub';
 export { default as TypeState } from './TypeState';
-export { default as Api } from './Api'
+export { default as Api } from './Api';
+export { default as Unions } from './Unions'

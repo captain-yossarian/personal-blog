@@ -18,6 +18,7 @@ import {
   PubSub,
   TypeState,
   Api,
+  Unions,
 } from "./Chapters";
 import { About, Contact, Home } from "./Sections";
 import { blogArticles, sections } from "./Layout/structure";
@@ -28,20 +29,21 @@ import { Main } from "./Layout";
 import ArticleBase from "./Shared/ArticleBase";
 
 export const componentMap = {
-  MathOperations: MathOperations,
-  ReactChildren: ReactChildren,
-  ReactReturnType: ReactReturnType,
-  CompareArguments: CompareArguments,
-  RangeNumbers: RangeNumbers,
-  Tuples: Tuples,
-  UnionArray: UnionArray,
-  Callbacks: Callbacks,
-  PubSub: PubSub,
-  TypeState: TypeState,
-  Api: Api,
-  About: About,
-  Contact: Contact,
-  Home: Home,
+  MathOperations,
+  ReactChildren,
+  ReactReturnType,
+  CompareArguments,
+  RangeNumbers,
+  Tuples,
+  UnionArray,
+  Callbacks,
+  PubSub,
+  TypeState,
+  Api,
+  About,
+  Contact,
+  Home,
+  Unions,
 };
 
 setTimeout(() => Prism.highlightAll(), 0);
