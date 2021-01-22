@@ -77,7 +77,12 @@ const TemplateLiterals: FC = () => (
         text="Here"
       />
       I have found really interesting question and no less interesting answer
-      from Kimmo Brunfeldt. Let's say you have next literal string type
+      from
+      <Anchor
+        href="https://stackoverflow.com/users/1446092/kimmo"
+        text="Kimmo Brunfeldt"
+      />
+      . Let's say you have next literal string type
       <Var>'a b c'</Var>, with spaces, and you want to split it into array.
       <Code code={code1} />
       P.S. Please refer to
