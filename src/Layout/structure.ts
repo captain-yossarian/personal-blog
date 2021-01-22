@@ -137,7 +137,7 @@ export const blogArticles = {
                 text: "Make number range",
             },
         ],
-        tags: ['number', 'range'],
+        tags: ['number', 'range', 'template literals'],
         id: 5,
     },
     "/tuples": {
@@ -275,17 +275,17 @@ export const blogArticles = {
         id: 12,
     },
 
-    // '/template-literals': {
-    //     title: 'Working with template literals',
-    //     description: 'Here you can find some advanced examples with template literals',
-    //     next: '/math',
-    //     Comp: 'TemplateLiterals',
-    //     links: [{
-    //         href: 'https://stackoverflow.com/questions/65844206/how-to-avoid-ambiquity-in-typescript-template-literal-type-inference',
-    //         text: 'How to avoid ambiquity in TypeScript template literal type inference?',
-    //     }],
-    //     tags: ['template literals', 'literals', 'string'],
-    //     id: 13
-    // }
+    '/template-literals': {
+        title: 'Working with template literals',
+        description: 'Here you can find some advanced examples with template literals',
+        next: '/math',
+        Comp: 'TemplateLiterals',
+        links: [{
+            href: 'https://stackoverflow.com/questions/65844206/how-to-avoid-ambiquity-in-typescript-template-literal-type-inference',
+            text: 'How to avoid ambiquity in TypeScript template literal type inference?',
+        }],
+        tags: ['template literals'],
+        id: 13
+    }
 }
 
