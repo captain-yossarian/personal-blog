@@ -9,4 +9,5 @@ export { default as Callbacks } from "./Callbacks";
 export { default as PubSub } from './PubSub';
 export { default as TypeState } from './TypeState';
 export { default as Api } from './Api';
-export { default as Unions } from './Unions'
+export { default as Unions } from './Unions';
+export { default as TemplateLiterals } from './TemplateLiterals'

@@ -19,6 +19,7 @@ import {
   TypeState,
   Api,
   Unions,
+  TemplateLiterals,
 } from "./Chapters";
 import { About, Contact, Home } from "./Sections";
 import { blogArticles, sections } from "./Layout/structure";
@@ -44,6 +45,7 @@ export const componentMap = {
   Contact,
   Home,
   Unions,
+  TemplateLiterals,
 };
 
 setTimeout(() => Prism.highlightAll(), 0);

@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Var } from "../Layout";
 import { Anchor } from "../Shared/Links";
+import { Header, HeaderNav } from "../Shared/ArticleBase";
 
 const code1 = `
 interface Props {
@@ -116,7 +117,7 @@ const Comp: React.VFC<Props> = (props) => {
 `;
 
 const code6 = `
-// credits Titian Cernicova-Dragomir
+// credits goes to Titian Cernicova-Dragomir
 
 import React from 'react';
 
@@ -139,25 +140,6 @@ type StrictUnion<T> = StrictUnionHelper<T, T>
 
 type Props = StrictUnion<Props1 | Props2>
 
-const Comp: React.VFC<Props> = (props) => {
-  // simply boolean coersion
-  if (props.nameA) {
-    const x = props;
-  } else {
-    const y = props.nameA // string | undefined
-  }
-
-  // strict checking
-  if (typeof props.nameA === 'string') {
-    const x = props;
-  } else {
-    const y = props.nameA // undefined
-    const x = props.nameB // string | undefined
-  }
-
-
-  return null
-}
 `;
 const code7 = `
 // credits https://dev.to/gcanti/functional-design-algebraic-data-types-36kf
@@ -270,8 +252,27 @@ const code8 = `
 type IsUnion<T> = [T] extends [UnionToIntersection<T>] ? false : true;
 `;
 
+const navigation = {
+  props_union: {
+    id: "props_union",
+    text: "React Props Union",
+  },
+  safe_union: {
+    id: "safe_union",
+    text: "Safe way to use unions",
+  },
+  algebraic_types: {
+    id: "algebraic_types",
+    text: "Algebraic data types",
+  },
+} as const;
+
+const links = Object.values(navigation);
+
 const Unions: FC = () => (
   <>
+    <HeaderNav links={links} />
+    <Header {...navigation.props_union} />
     <p>Next technique is extremely simple and useful. </p>
     <p>Let's say you have next React component:</p>
     <Code code={code1} />
@@ -288,39 +289,42 @@ const Unions: FC = () => (
     </p>
     <Code code={code3} />
     <p>Bang! Error! But why???</p>
+    <Header {...navigation.safe_union} />
     <p>
       This is how TS unions works. To fix it, and make it 99% type safe, we can
       add typeguards.
     </p>
     <Code code={code4} />
-    <p>However, there is 2 alternative ways.</p>
+    <p>However, there are alternative ways.</p>
     <p>
-      The first one, is to add same required property to both <Var>Props1</Var>
-      and <Var>Props2</Var>
+      This one, is the most common. You just need to add same non-optional
+      property to both
+      <Var>Props1</Var>
+      and <Var>Props2</Var>. Same technique is used for typing redux
+      <Anchor
+        href="https://redux.js.org/recipes/usage-with-typescript#type-checking-actions--action-creators"
+        text="actions"
+      />
     </p>
     <Code code={code5} />
+    <Header {...navigation.algebraic_types} />
     <p>
-      Cons: we should every time add <Var>type</Var> property
-    </p>
-    <p>Pros: no function overhead</p>
-    <p>
-      Here you have another one good example which involves algebraic data types
-      definition.
+      Here you have another good example which involves algebraic data types
+      definition/explanation.
     </p>
     <Code code={code7} />
     <p>
-      The
+      You can also use next
       <Anchor
         href="https://stackoverflow.com/questions/65805600/struggling-with-building-a-type-in-ts#answer-65805753"
-        text="second"
+        text="util"
       />
-      one is to use type util
+      for unionizing
     </p>
     <Code code={code6} />
     <p>
-      Maybe this is not the best example for this util, but with help of
-      <Var>StrictUnion</Var> you can check unions without any extra properties.
-      I have found it very useful.
+      With help of <Var>StrictUnion</Var> you can create more stricter union
+      types. I have found it very useful.
     </p>
 
     <p>Don't forget, we have a type util to check if type is union or not</p>

@@ -63,11 +63,11 @@ export const blogArticles = {
             {
                 href:
                     "https://stackoverflow.com/questions/65280785/is-it-possible-to-declare-a-typescript-function-which-works-on-both-numbers-and",
-                text: "stackoverflow",
+                text: "FUnction that work both on numbers and bigints",
             },
             {
                 href: 'https://stackoverflow.com/questions/65508351/is-it-possible-to-use-intersection-to-make-function-overloadings-with-generics',
-                text: 'stackoverflow'
+                text: 'Overloadings with generics'
             }
         ],
         tags: ['number', 'bigint', 'math', 'add'],
@@ -83,7 +83,7 @@ export const blogArticles = {
             {
                 href:
                     "https://stackoverflow.com/questions/64967447/adding-required-props-to-child-react-elements-with-typescript",
-                text: "stackoverflow",
+                text: "Adding required props to child react elements",
             },
         ],
         tags: ['react', 'component', 'children'],
@@ -99,7 +99,7 @@ export const blogArticles = {
             {
                 href:
                     "https://stackoverflow.com/questions/65406516/react-typescript-difference-between-react-fc-t-and-function",
-                text: "stackoverflow",
+                text: "DIff between typed function component and untyped",
             },
         ],
         tags: ['ReturnType', 'react', 'component'],
@@ -114,11 +114,11 @@ export const blogArticles = {
             {
                 href:
                     "https://stackoverflow.com/questions/65361696/arguments-of-same-length-typescript",
-                text: "stackoverflow",
+                text: "How to restrict arguments to same length",
             },
             {
                 href: 'https://stackoverflow.com/questions/65549062/template-string-literal-with-variable-cause-argument-of-type-s-not-assignable-t/65549738#65549738',
-                text: 'stackoverflow'
+                text: 'StringNumber hack'
             }
         ],
         tags: ['array', 'arguments', 'narrow'],
@@ -134,7 +134,7 @@ export const blogArticles = {
             {
                 href:
                     "https://stackoverflow.com/questions/65307438/how-to-define-properties-in-a-typescript-interface-with-dynamic-elements-in-the",
-                text: "stackoverflow",
+                text: "Make number range",
             },
         ],
         tags: ['number', 'range'],
@@ -149,7 +149,7 @@ export const blogArticles = {
             {
                 href:
                     "https://stackoverflow.com/questions/65476787/how-to-dynamically-create-an-object-based-on-a-readonly-tuple-in-typescript/65478618#65478618",
-                text: "stackoverflow",
+                text: "Typing arrays",
             },
         ],
         tags: ['array', 'tuple'],
@@ -164,7 +164,7 @@ export const blogArticles = {
             {
                 href:
                     "https://stackoverflow.com/questions/65533827/get-keys-of-an-interface-in-generics/65534971#65534971",
-                text: "stackoverflow",
+                text: "Get keys from interface",
             },
         ],
         tags: ['union', 'array', 'transform'],
@@ -179,16 +179,24 @@ export const blogArticles = {
             {
                 href:
                     "https://stackoverflow.com/questions/64899974/require-at-least-one-prop-to-be-passed-to-component-typescript",
-                text: "stackoverflow",
+                text: "Pass union props to React component - 1",
             },
             {
                 href:
                     "https://stackoverflow.com/questions/65805600/struggling-with-building-a-type-in-ts",
-                text: "stackoverflow",
+                text: "How to make strict union",
             },
             {
                 href: "https://dev.to/gcanti/functional-design-algebraic-data-types-36kf",
-                text: 'dev.to'
+                text: 'Algebraic data types'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/65811270/problem-with-union-and-intersection-type-in-react-props',
+                text: 'Pass union props to React component - 2'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/65842153/property-id-is-optional-in-type-a-but-required-in-type-b-after-if-statement#answer-65842560',
+                text: 'Pass union props to React component - 3'
             }
         ],
         tags: ['union', 'react'],
@@ -203,7 +211,7 @@ export const blogArticles = {
             {
                 href:
                     "https://stackoverflow.com/questions/65540887/typescript-type-can-not-be-inferred-if-function-parameter-is-used/65543597#65543597",
-                text: "stackoverflow",
+                text: "Callback typings",
             },
             {
                 href:
@@ -244,11 +252,11 @@ export const blogArticles = {
                     "https://docs.google.com/presentation/d/1po3-zRQCp8m8cwg-CF5dUL_6RPe9gIaKIT5P_DNbGE8/edit#slide=id.g6baf2c25cf_0_33",
                 text: "presentation",
             },
-            { href: "http://cliffle.com/blog/rust-typestate/", text: "blog" },
+            { href: "http://cliffle.com/blog/rust-typestate/", text: "Cliff L. Biffle's blog" },
             {
                 href:
-                    "https://stackoverflow.com/questions/65431379/type-property-relying-on-return-type-of-another-property/65433418#65433418",
-                text: "stackoverflow",
+                    "https://stackoverflow.com/questions/65431379/type-property-relying-on-return-type-of-another-property",
+                text: "Typing data structure with callbacks",
             },
         ],
         tags: ['pattern'],
@@ -261,10 +269,23 @@ export const blogArticles = {
         Comp: 'Api',
         links: [{
             href: 'https://stackoverflow.com/questions/65658633/how-to-determine-the-type-of-generic-in-a-class/65664455#65664455',
-            text: 'stackoverflow'
+            text: 'Restrict using of methods by generic value'
         }],
         tags: ['pattern'],
         id: 12,
     },
+
+    // '/template-literals': {
+    //     title: 'Working with template literals',
+    //     description: 'Here you can find some advanced examples with template literals',
+    //     next: '/math',
+    //     Comp: 'TemplateLiterals',
+    //     links: [{
+    //         href: 'https://stackoverflow.com/questions/65844206/how-to-avoid-ambiquity-in-typescript-template-literal-type-inference',
+    //         text: 'How to avoid ambiquity in TypeScript template literal type inference?',
+    //     }],
+    //     tags: ['template literals', 'literals', 'string'],
+    //     id: 13
+    // }
 }
 
