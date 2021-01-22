@@ -76,9 +76,9 @@ const TemplateLiterals: FC = () => (
         href="https://stackoverflow.com/questions/65844206/how-to-avoid-ambiquity-in-typescript-template-literal-type-inference"
         text="Here"
       />
-      I have found really interesting question and no less interesting answer.
-      Let's say you have next literal string type <Var>'a b c'</Var>, with
-      spaces, and you want to split it into array.
+      I have found really interesting question and no less interesting answer
+      from Kimmo Brunfeldt. Let's say you have next literal string type
+      <Var>'a b c'</Var>, with spaces, and you want to split it into array.
       <Code code={code1} />
       P.S. Please refer to
       <Anchor
