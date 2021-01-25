@@ -197,6 +197,10 @@ export const blogArticles = {
             {
                 href: 'https://stackoverflow.com/questions/65842153/property-id-is-optional-in-type-a-but-required-in-type-b-after-if-statement#answer-65842560',
                 text: 'Pass union props to React component - 3'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/65668969/event-maps-and-type-guards#answer-65890181',
+                text: 'Use event map'
             }
         ],
         tags: ['union', 'react'],
@@ -237,7 +241,10 @@ export const blogArticles = {
         description: "Type safe publish subscribe pattern",
         next: "/type-state",
         Comp: 'PubSub',
-        links: [],
+        links: [{
+            href: 'https://stackoverflow.com/questions/65668969/event-maps-and-type-guards#answer-65890181',
+            text: 'Event mapping'
+        }],
         tags: ['pattern'],
         id: 10,
     },

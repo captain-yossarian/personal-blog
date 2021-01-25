@@ -324,7 +324,7 @@ const Unions: FC = () => (
     <Code code={code6} />
     <p>
       With help of <Var>StrictUnion</Var> you can create more stricter union
-      types. I have found it very useful.
+      types. I have found this utility very useful.
     </p>
 
     <p>Don't forget, we have a type util to check if type is union or not</p>
