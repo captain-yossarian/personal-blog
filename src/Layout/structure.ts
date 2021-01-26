@@ -269,6 +269,10 @@ export const blogArticles = {
                     "https://stackoverflow.com/questions/65431379/type-property-relying-on-return-type-of-another-property",
                 text: "Typing data structure with callbacks",
             },
+            {
+                href: 'https://stackoverflow.com/questions/65891135/how-to-define-map-with-correlation-between-a-key-type-and-a-value-type-while-th',
+                text: 'Make illegal Map irrepresentable'
+            }
         ],
         tags: ['pattern'],
         id: 11,
