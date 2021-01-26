@@ -151,6 +151,10 @@ export const blogArticles = {
                     "https://stackoverflow.com/questions/65476787/how-to-dynamically-create-an-object-based-on-a-readonly-tuple-in-typescript/65478618#65478618",
                 text: "Typing arrays",
             },
+            {
+                href: 'https://stackoverflow.com/questions/65899183/typescript-template-literals-convert-array-to-a-list#answer-65899432',
+                text: 'Reduce array to template string'
+            }
         ],
         tags: ['array', 'tuple'],
         id: 6,

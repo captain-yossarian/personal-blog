@@ -384,6 +384,13 @@ const Tuples: FC = () => (
       We should transform <Var>Data</Var> type to <Var>ExpectedType</Var> type
     </p>
     <Code code={code7} />
+    <p>
+      <Anchor
+        href="https://stackoverflow.com/questions/65899183/typescript-template-literals-convert-array-to-a-list#answer-65899432"
+        text="Here"
+      />
+      you can find another interesting use case for reduce and template literals
+    </p>
     <Header {...navigation.find_index} />
     <p>
       It is also possible to emulate <Var>Array.prototype.findIndex</Var> in
