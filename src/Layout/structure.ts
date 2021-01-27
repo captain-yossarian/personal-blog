@@ -295,10 +295,15 @@ export const blogArticles = {
         description: 'Here you can find some advanced examples with template literals',
         next: '/math',
         Comp: 'TemplateLiterals',
-        links: [{
-            href: 'https://stackoverflow.com/questions/65844206/how-to-avoid-ambiquity-in-typescript-template-literal-type-inference',
-            text: 'How to avoid ambiquity in TypeScript template literal type inference?',
-        }],
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/65844206/how-to-avoid-ambiquity-in-typescript-template-literal-type-inference',
+                text: 'How to avoid ambiquity in TypeScript template literal type inference?',
+            }, {
+                href: 'https://stackoverflow.com/questions/65899183/typescript-template-literals-convert-array-to-a-list/65899432#65899432',
+                text: 'Convert array to string'
+            }
+        ],
         tags: ['template literals'],
         id: 13
     }
