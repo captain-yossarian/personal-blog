@@ -154,6 +154,10 @@ export const blogArticles = {
             {
                 href: 'https://stackoverflow.com/questions/65899183/typescript-template-literals-convert-array-to-a-list#answer-65899432',
                 text: 'Reduce array to template string'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/65931013/defining-a-mixed-array-of-tuples/65932929#65932929',
+                text: 'Mixed array of tuples'
             }
         ],
         tags: ['array', 'tuple'],
