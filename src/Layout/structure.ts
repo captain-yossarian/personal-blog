@@ -276,9 +276,14 @@ export const blogArticles = {
             {
                 href: 'https://stackoverflow.com/questions/65891135/how-to-define-map-with-correlation-between-a-key-type-and-a-value-type-while-th',
                 text: 'Make illegal Map irrepresentable'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/65978153/typescript-mapenum-setenum-no-overload-matches-this-call-but-i-dont-get',
+                text: 'Map typing'
+
             }
         ],
-        tags: ['pattern'],
+        tags: ['pattern', 'Map', 'callback'],
         id: 11,
     },
     "/api": {
