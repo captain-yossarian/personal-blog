@@ -67,6 +67,16 @@ const merged = Object.assign(blogArticles, sections);
 
 const map = Object.entries(merged);
 
+fetch("http://catchts.com/hey", {
+  mode: "no-cors",
+  headers: {
+    Accept: "application/json, text/plain, */*",
+    "Content-Type": "application/json",
+  },
+}).then((elem) => {
+  console.log({ elem, pr: elem.json });
+});
+
 const App: VFC = () => (
   <Router>
     <Main>
