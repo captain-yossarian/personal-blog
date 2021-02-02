@@ -67,7 +67,7 @@ const merged = Object.assign(blogArticles, sections);
 
 const map = Object.entries(merged);
 
-fetch("http://catchts.com/hey", {
+fetch("https://catchts.com/hey", {
   mode: "no-cors",
   headers: {
     Accept: "application/json, text/plain, */*",
