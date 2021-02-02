@@ -73,9 +73,7 @@ fetch("https://catchts.com/hey", {
     Accept: "application/json, text/plain, */*",
     "Content-Type": "application/json",
   },
-}).then((elem) => {
-  console.log({ elem, pr: elem.json });
-});
+}).then((elem) => elem.json().then((data) => console.log({ data })));
 
 const App: VFC = () => (
   <Router>
