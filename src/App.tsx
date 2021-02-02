@@ -67,7 +67,7 @@ const merged = Object.assign(blogArticles, sections);
 
 const map = Object.entries(merged);
 
-fetch("https://app-29b1f7f3-49c6-4695-8772-e0f34d438327.cleverapps.io/hey", {
+fetch("https://catchts.com/hey", {
   mode: "no-cors",
 }).then((elem) => elem.json().then((data) => console.log({ data })));
 
