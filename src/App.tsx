@@ -67,13 +67,9 @@ const merged = Object.assign(blogArticles, sections);
 
 const map = Object.entries(merged);
 
-fetch("https://catchts.com/hey", {
-  mode: "no-cors",
-  headers: {
-    Accept: "application/json, text/plain, */*",
-    "Content-Type": "application/json",
-  },
-}).then((elem) => elem.json().then((data) => console.log({ data })));
+fetch(
+  "https://app-29b1f7f3-49c6-4695-8772-e0f34d438327.cleverapps.io/hey"
+).then((elem) => elem.json().then((data) => console.log({ data })));
 
 const App: VFC = () => (
   <Router>
