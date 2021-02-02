@@ -68,8 +68,9 @@ const merged = Object.assign(blogArticles, sections);
 const map = Object.entries(merged);
 
 fetch("https://catchts.com/hey", {
-  mode: "no-cors",
-}).then((elem) => elem.json().then((data) => console.log({ data })));
+  //  method: "GET", // *GET, POST, PUT, DELETE, etc.
+  // mode: "no-cors", // no-cors, *cors, same-origin
+}).then((response) => response.json());
 
 const App: VFC = () => (
   <Router>
