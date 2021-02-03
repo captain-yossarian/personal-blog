@@ -67,10 +67,21 @@ const merged = Object.assign(blogArticles, sections);
 
 const map = Object.entries(merged);
 
+fetch("https://catchts.com/hey", {
+  //  method: "GET", // *GET, POST, PUT, DELETE, etc.
+  // mode: "no-cors", // no-cors, *cors, same-origin
+}).then((response) =>
+  response
+    .json()
+    .then((data) => console.log("https://catchts.com/hey", { data }))
+);
+
 fetch("/hey", {
   //  method: "GET", // *GET, POST, PUT, DELETE, etc.
   // mode: "no-cors", // no-cors, *cors, same-origin
-}).then((response) => response.json());
+}).then((response) =>
+  response.json().then((data) => console.log("/hey", { data }))
+);
 
 const App: VFC = () => (
   <Router>
