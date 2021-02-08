@@ -1,6 +1,7 @@
 
-export const sections = {
-    "/about": {
+export const sections = [
+    {
+        url: "/about",
         title: 'About',
         description: 'About section',
         Comp: 'About',
@@ -32,28 +33,39 @@ export const sections = {
             },
         ],
         id: -1,
+        date: '',
+        type: 'section',
+        tags: []
     },
-    "/contact": {
+    {
+        url: "/contact",
         title: 'Contact',
         description: 'About section',
         Comp: 'Contact',
         next: '',
         links: [],
         id: -2,
-
+        date: '',
+        type: 'section',
+        tags: []
     },
-    "/": {
+    {
+        url: '/',
         title: 'Home',
         description: 'Home section',
         Comp: 'Home',
         next: '',
         links: [],
-        id: -3
+        id: -3,
+        date: '',
+        type: 'section',
+        tags: []
     },
-} as const;
+];
 
-export const blogArticles = {
-    "/math": {
+export const blogArticles = [
+    {
+        url: "/math",
         title: "Math operations",
         description:
             "Let's assume, You want to make some math operations either on number or bigint.",
@@ -62,8 +74,8 @@ export const blogArticles = {
         links: [
             {
                 href:
-                    "https://stackoverflow.com/questions/65280785/is-it-possible-to-declare-a-typescript-function-which-works-on-both-numbers-and",
-                text: "FUnction that work both on numbers and bigints",
+                    "https://stackoverflow.com/questions/65280785/is-it-possible-to-declare-a-typescript-function-which-works-on-both-numbers-and#answer-65281351",
+                text: "Function that work both on numbers and bigints",
             },
             {
                 href: 'https://stackoverflow.com/questions/65508351/is-it-possible-to-use-intersection-to-make-function-overloadings-with-generics',
@@ -72,8 +84,10 @@ export const blogArticles = {
         ],
         tags: ['number', 'bigint', 'math', 'add'],
         id: 1,
+        date: 'December 13, 2020'
     },
-    "/typed-react-children": {
+    {
+        url: "/typed-react-children",
         title: "Type React component children",
         description:
             "Let's assume you want to create component which will accept array of children components with certain props.",
@@ -88,8 +102,10 @@ export const blogArticles = {
         ],
         tags: ['react', 'component', 'children'],
         id: 2,
+        date: 'November 23, 2020'
     },
-    "/react-return-type": {
+    {
+        url: "/react-return-type",
         title: "Type React component return type",
         description:
             "What if you need to make sure that some component will always return other component with some particular props",
@@ -104,8 +120,10 @@ export const blogArticles = {
         ],
         tags: ['ReturnType', 'react', 'component'],
         id: 3,
+        date: 'December 22, 2020'
     },
-    "/compare-arguments": {
+    {
+        url: "/compare-arguments",
         title: "Compare array arguments",
         description: "Compare length of arrays as arguments",
         next: "/range-numbers",
@@ -123,9 +141,11 @@ export const blogArticles = {
         ],
         tags: ['array', 'arguments', 'narrow'],
         id: 4,
+        date: 'December 18, 2020'
     },
 
-    "/range-numbers": {
+    {
+        url: "/range-numbers",
         title: "Generate numbers in range",
         description: "How to generate numbers range as a literal type",
         next: "/tuples",
@@ -139,8 +159,10 @@ export const blogArticles = {
         ],
         tags: ['number', 'range', 'template literals'],
         id: 5,
+        date: 'December 15, 2020'
     },
-    "/tuples": {
+    {
+        url: "/tuples",
         title: "Handle literal arrays/tuples",
         description: "Filter, map, reduce, findIndex etc ...",
         next: "/union-array",
@@ -166,8 +188,10 @@ export const blogArticles = {
         ],
         tags: ['array', 'tuple'],
         id: 6,
+        date: 'December 28, 2020'
     },
-    "/union-array": {
+    {
+        url: "/union-array",
         title: "Transform Union to Array",
         description: "How to transform unions to array",
         next: "/unions",
@@ -181,9 +205,11 @@ export const blogArticles = {
         ],
         tags: ['union', 'array', 'transform'],
         id: 7,
+        date: 'January 2, 2021'
     },
-    "/unions": {
-        title: "Handle unions",
+    {
+        url: "/unions",
+        title: "Handle unions in React components",
         description: "How to work with unions",
         next: "/callbacks",
         Comp: 'Unions',
@@ -216,9 +242,11 @@ export const blogArticles = {
             }
         ],
         tags: ['union', 'react'],
-        id: 8
+        id: 8,
+        date: 'November 18, 2020'
     },
-    "/callbacks": {
+    {
+        url: "/callbacks",
         title: "Callbacks",
         description: "How to properly type callbacks",
         next: "/publish-subscribe",
@@ -247,8 +275,10 @@ export const blogArticles = {
         ],
         tags: ['callback', 'infer'],
         id: 9,
+        date: 'January 2, 2021'
     },
-    "/publish-subscribe": {
+    {
+        url: "/publish-subscribe",
         title: "Publish subscribe pattern",
         description: "Type safe publish subscribe pattern",
         next: "/type-state",
@@ -259,8 +289,10 @@ export const blogArticles = {
         }],
         tags: ['pattern'],
         id: 10,
+        date: 'January 25, 2021'
     },
-    "/type-state": {
+    {
+        url: "/type-state",
         title: "Type state pattern",
         description: "Type safe handler",
         next: "/api",
@@ -289,8 +321,10 @@ export const blogArticles = {
         ],
         tags: ['pattern', 'Map', 'callback'],
         id: 11,
+        date: 'December 23, 2020'
     },
-    "/api": {
+    {
+        url: "/api",
         title: "Api requests",
         description: "Make type safe api requests with TypeScript",
         next: "/math",
@@ -301,12 +335,14 @@ export const blogArticles = {
         }],
         tags: ['pattern'],
         id: 12,
+        date: 'January 11, 2021'
     },
 
-    '/template-literals': {
+    {
+        url: '/template-literals',
         title: 'Working with template literals',
         description: 'Here you can find some advanced examples with template literals',
-        next: '/math',
+        next: '/chain-callbacks',
         Comp: 'TemplateLiterals',
         links: [
             {
@@ -318,7 +354,23 @@ export const blogArticles = {
             }
         ],
         tags: ['template literals'],
-        id: 13
-    }
-}
+        id: 13,
+        date: 'January 22, 2021'
+    },
+    // '/chain-callbacks': {
+    //     title: 'How to chain callbacks',
+    //     description: 'Here you can find information about callbacks chaining',
+    //     next: '/math',
+    //     Comp: 'CallbackChain',
+    //     links: [
+    //         {
+    //             href: 'https://stackoverflow.com/questions/66096137/cant-make-typescript-generics-chain-work',
+    //             text: 'TypeScript callback chain',
+    //         }
+    //     ],
+    //     tags: ['callback', 'union'],
+    //     id: 14,
+    //     date: 'February 8, 2021'
+    // }
+].map(elem => ({ ...elem, type: 'article' }))
 

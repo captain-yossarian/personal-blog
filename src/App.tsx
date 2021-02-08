@@ -63,26 +63,25 @@ const ScrollToTop = withRouter(({ history }) => {
   return null;
 });
 
-const merged = Object.assign(blogArticles, sections);
+const toUnix = (date: string) => new Date(date).getTime();
 
-const map = Object.entries(merged);
-
-fetch("https://api.catchts.com/hey").then((response) =>
-  response.json().then((data) => console.log("/hey", { data }))
-);
+const data = blogArticles
+  .sort((prev, next) => toUnix(prev.date) - toUnix(next.date))
+  .reverse()
+  .concat(sections);
 
 const App: VFC = () => (
   <Router>
     <Main>
       <ScrollToTop />
       <Switch>
-        {map.map(([pth, { Comp }]) => {
+        {data.map((elem) => {
+          const { url, Comp } = elem;
           const Component = componentMap[Comp as keyof typeof componentMap];
-          const path = (pth as any) as keyof typeof merged;
 
           return (
-            <Route path={path} key={path}>
-              <ArticleBase path={path} {...merged[path]}>
+            <Route path={url} key={url}>
+              <ArticleBase path={url} {...elem}>
                 <Component />
               </ArticleBase>
             </Route>

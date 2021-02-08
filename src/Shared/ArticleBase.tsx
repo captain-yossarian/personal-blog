@@ -41,13 +41,13 @@ export const Header: FC<{ text: string; id: string }> = ({ text, id }) => (
 
 export const HeaderNav: FC<HeaderProps> = ({ links }) => (
   <ul>
-    {links.map(({ id, text }) => (
-      <Li>
-        <a key={id} href={`#${id}`}>
-          #{text}
-        </a>
-      </Li>
-    ))}
+    {links.map(({ id, text }, index) => {
+      return (
+        <Li key={id}>
+          <a href={`#${id}`}>#{text}</a>
+        </Li>
+      );
+    })}
   </ul>
 );
 
@@ -68,17 +68,24 @@ const TwitterShare: FC<{ title: string; path: string }> = ({ title, path }) =>
     </p>
   ) : null;
 
+const RenderDate = styled.div`
+  text-align: center;
+  margin: 0 auto;
+  font-weight: 900;
+`;
 const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
   title,
   next,
   children,
   links,
   path,
+  date,
 }) => (
   <Layout title={title}>
     {children}
     <TwitterShare title={title} path={path} />
     {links.length > 0 ? <Links data={links} /> : null}
+    <RenderDate>{date}</RenderDate>
   </Layout>
 );
 

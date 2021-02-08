@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { THEME_COLOR } from "../Layout/utils";
 import { blogArticles } from "../Layout/structure";
 
-const keys = Object.entries(blogArticles).sort((a, b) => b[1].id - a[1].id);
+const keys = blogArticles.sort((a, b) => b.id - a.id);
 
 const Aside = styled.aside`
   margin-left: 30px;
@@ -34,9 +34,10 @@ const H2 = styled.h2`
     font-weight: bold;
     padding: 5px;
   }
+  span {
+    font-size: 14px;
+  }
 `;
-
-type Values<T> = T[keyof T];
 
 const Tag = styled.li`
   display: inline-block;
@@ -49,11 +50,12 @@ const Tags = styled.ul`
 `;
 const ArticleHeader: FC<{
   name: string;
-  meta: Values<typeof blogArticles>;
+  meta: typeof blogArticles[number];
 }> = ({ name, meta }) => (
   <Li>
     <H2>
-      <Link to={name}>{meta.title}</Link>
+      <Link to={name}>{meta.title},</Link>
+      <span>{meta.date}</span>
     </H2>
     <Aside>{meta.description}</Aside>
     <Tags>
@@ -82,9 +84,7 @@ const Home: FC = () => {
   const filterArticles = (tag: string) => {
     if (tag.length >= 3) {
       const filtered = keys.filter((elem) => {
-        const [_, article] = elem;
-
-        return article.tags.findIndex((t) => t.includes(tag)) > -1;
+        return elem.tags.findIndex((t) => t.includes(tag)) > -1;
       });
       setArticles(filtered);
     } else {
@@ -107,8 +107,8 @@ const Home: FC = () => {
         </TipWrapper>
       </div>
       <ul>
-        {articles.map(([name, meta]) => (
-          <ArticleHeader name={name} meta={meta} key={name} />
+        {articles.map((elem) => (
+          <ArticleHeader name={elem.url} meta={elem} key={elem.url} />
         ))}
       </ul>
     </>
