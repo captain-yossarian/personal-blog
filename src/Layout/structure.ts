@@ -158,6 +158,10 @@ export const blogArticles = {
             {
                 href: 'https://stackoverflow.com/questions/65931013/defining-a-mixed-array-of-tuples/65932929#65932929',
                 text: 'Mixed array of tuples'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/66075326/define-an-array-with-infered-types-related-to-first-prop-in-the-array/66077819#66077819',
+                text: 'Map union to array'
             }
         ],
         tags: ['array', 'tuple'],

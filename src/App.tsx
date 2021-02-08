@@ -67,19 +67,7 @@ const merged = Object.assign(blogArticles, sections);
 
 const map = Object.entries(merged);
 
-fetch("https://api.catchts.com", {
-  //  method: "GET", // *GET, POST, PUT, DELETE, etc.
-  // mode: "no-cors", // no-cors, *cors, same-origin
-}).then((response) =>
-  response
-    .json()
-    .then((data) => console.log("https://api.catchts.com", { data }))
-);
-
-fetch("https://api.catchts.com/hey", {
-  //  method: "GET", // *GET, POST, PUT, DELETE, etc.
-  // mode: "no-cors", // no-cors, *cors, same-origin
-}).then((response) =>
+fetch("https://api.catchts.com/hey").then((response) =>
   response.json().then((data) => console.log("/hey", { data }))
 );
 
