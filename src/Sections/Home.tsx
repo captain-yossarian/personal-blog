@@ -156,9 +156,6 @@ const Home: FC = () => {
             </SearchTag>
           ))}
         </TagWrapper>
-        <TipWrapper>
-          <Tip>For example: tuple, array, infer, callback...</Tip>
-        </TipWrapper>
       </div>
       <ul>
         {articles.map((elem) => (
