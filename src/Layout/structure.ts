@@ -357,20 +357,21 @@ export const blogArticles = [
         id: 13,
         date: 'January 22, 2021'
     },
-    // '/chain-callbacks': {
-    //     title: 'How to chain callbacks',
-    //     description: 'Here you can find information about callbacks chaining',
-    //     next: '/math',
-    //     Comp: 'CallbackChain',
-    //     links: [
-    //         {
-    //             href: 'https://stackoverflow.com/questions/66096137/cant-make-typescript-generics-chain-work',
-    //             text: 'TypeScript callback chain',
-    //         }
-    //     ],
-    //     tags: ['callback', 'union'],
-    //     id: 14,
-    //     date: 'February 8, 2021'
-    // }
+    {
+        url: '/chain-callbacks',
+        title: 'How to chain callbacks',
+        description: 'Here you can find information about callbacks chaining',
+        next: '/math',
+        Comp: 'CallbackChain',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/66096137/cant-make-typescript-generics-chain-work',
+                text: 'TypeScript callback chain',
+            }
+        ],
+        tags: ['callback', 'union'],
+        id: 14,
+        date: 'February 11, 2021'
+    }
 ].map(elem => ({ ...elem, type: 'article' }))
 

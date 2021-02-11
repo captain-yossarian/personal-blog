@@ -248,6 +248,12 @@ const handleState = (state: ResponseState) => {
 `;
 const code8 = `
 
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
+  k: infer I
+) => void
+  ? I
+  : never;
+  
 // credits https://stackoverflow.com/users/125734/titian-cernicova-dragomir
 type IsUnion<T> = [T] extends [UnionToIntersection<T>] ? false : true;
 `;
