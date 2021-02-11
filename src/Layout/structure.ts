@@ -351,6 +351,10 @@ export const blogArticles = [
             }, {
                 href: 'https://stackoverflow.com/questions/65899183/typescript-template-literals-convert-array-to-a-list/65899432#65899432',
                 text: 'Convert array to string'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/66140451/typescript-add-kebab-case-types-form-actual-camel-case-keys#answer-66142561',
+                text: 'Classic example with templates string'
             }
         ],
         tags: ['template literals'],
@@ -361,7 +365,7 @@ export const blogArticles = [
         url: '/chain-callbacks',
         title: 'How to chain callbacks',
         description: 'Here you can find information about callbacks chaining',
-        next: '/math',
+        next: '/flatten-union',
         Comp: 'CallbackChain',
         links: [
             {
@@ -371,6 +375,22 @@ export const blogArticles = [
         ],
         tags: ['callback', 'union'],
         id: 14,
+        date: 'February 10, 2021'
+    },
+    {
+        url: '/flatten-union',
+        title: 'How to flatten union',
+        description: 'Here you can find information about union flattening',
+        next: '/math',
+        Comp: 'FlattenUnion',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/66116836/how-to-flatten-nested-union-types-in-typescript',
+                text: 'Flatten union',
+            }
+        ],
+        tags: ['union', 'flatten'],
+        id: 15,
         date: 'February 11, 2021'
     }
 ].map(elem => ({ ...elem, type: 'article' }))

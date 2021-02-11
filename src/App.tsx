@@ -21,6 +21,7 @@ import {
   Unions,
   TemplateLiterals,
   CallbackChain,
+  FlattenUnion,
 } from "./Chapters";
 import { About, Contact, Home } from "./Sections";
 import { blogArticles, sections } from "./Layout/structure";
@@ -48,6 +49,7 @@ export const componentMap = {
   Unions,
   TemplateLiterals,
   CallbackChain,
+  FlattenUnion,
 };
 
 setTimeout(() => Prism.highlightAll(), 0);
