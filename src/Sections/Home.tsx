@@ -6,6 +6,23 @@ import { blogArticles } from "../Layout/structure";
 
 const keys = blogArticles.sort((a, b) => b.id - a.id);
 
+const lower = (str: string) => str.toLowerCase();
+const tags = [
+  ...new Set(
+    blogArticles.reduce((acc, elem) => [...acc, ...elem.tags], [] as string[])
+  ),
+].sort((a, b) => {
+  const lowerA = lower(a[0]);
+  const lowerB = lower(b[0]);
+  if (lowerA < lowerB) {
+    return -1;
+  }
+  if (lowerA > lowerB) {
+    return 1;
+  }
+  return 0;
+});
+
 const Aside = styled.aside`
   margin-left: 30px;
   font-size: 18px;
@@ -74,34 +91,71 @@ const Tip = styled.span`
 const TipWrapper = styled.div`
   margin: 1rem 0;
 `;
-const Input = styled.input`
-  width: 20rem;
-  height: 2rem;
+
+const SearchTag = styled.button`
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid gray;
+  cursor: pointer;
+  background-color: ${(props: { isSelected: boolean }) =>
+    props.isSelected ? THEME_COLOR : "unset"};
+
+  &:hover {
+    background-color: ${THEME_COLOR};
+  }
 `;
+const TagWrapper = styled.div`
+  max-width: 300px;
+  margin: 10px;
+`;
+
+const removeItem = (array: string[], index: number) => [
+  ...array.slice(0, index),
+  ...array.slice(index + 1),
+];
+
 const Home: FC = () => {
-  const [articles, setArticles] = useState(keys);
+  const [{ articles, selectedTags }, setArticles] = useState({
+    articles: keys,
+    selectedTags: [] as string[],
+  });
 
   const filterArticles = (tag: string) => {
-    if (tag.length >= 3) {
-      const filtered = keys.filter((elem) => {
-        return elem.tags.findIndex((t) => t.includes(tag)) > -1;
-      });
-      setArticles(filtered);
-    } else {
-      setArticles(keys);
-    }
-  };
+    setArticles((prevState) => {
+      const tagIndex = prevState.selectedTags.indexOf(tag);
+      const isSelected = tagIndex > -1;
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    filterArticles(e.target.value);
+      const filterTags = prevState.selectedTags.filter((elem) => elem !== tag);
+
+      const newSelectedTags = isSelected
+        ? removeItem(prevState.selectedTags, tagIndex)
+        : [...filterTags, tag];
+
+      const filtered = keys.filter((elem) =>
+        newSelectedTags.every((el) => elem.tags.includes(el))
+      );
+
+      return {
+        articles: filtered,
+        selectedTags: newSelectedTags,
+      };
+    });
+  };
 
   return (
     <>
       <div>
-        <Input
-          onChange={onChange}
-          placeholder={"Please enter search tag ..."}
-        />
+        <TagWrapper>
+          {tags.map((tag, index) => (
+            <SearchTag
+              onClick={() => filterArticles(tag)}
+              key={index}
+              isSelected={selectedTags.includes(tag)}
+            >
+              {tag}
+            </SearchTag>
+          ))}
+        </TagWrapper>
         <TipWrapper>
           <Tip>For example: tuple, array, infer, callback...</Tip>
         </TipWrapper>

@@ -82,7 +82,7 @@ export const blogArticles = [
                 text: 'Overloadings with generics'
             }
         ],
-        tags: ['number', 'bigint', 'math', 'add'],
+        tags: ['number', 'bigint', 'math'],
         id: 1,
         date: 'December 13, 2020'
     },
@@ -100,7 +100,7 @@ export const blogArticles = [
                 text: "Adding required props to child react elements",
             },
         ],
-        tags: ['react', 'component', 'children'],
+        tags: ['react', 'children'],
         id: 2,
         date: 'November 23, 2020'
     },
@@ -118,7 +118,7 @@ export const blogArticles = [
                 text: "DIff between typed function component and untyped",
             },
         ],
-        tags: ['ReturnType', 'react', 'component'],
+        tags: ['ReturnType', 'react'],
         id: 3,
         date: 'December 22, 2020'
     },
@@ -186,7 +186,7 @@ export const blogArticles = [
                 text: 'Map union to array'
             }
         ],
-        tags: ['array', 'tuple'],
+        tags: ['array', 'tuples'],
         id: 6,
         date: 'December 28, 2020'
     },
