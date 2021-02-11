@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Var } from "../Layout";
 import { Header, HeaderNav } from "../Shared/ArticleBase";
+import { Anchor } from "../Shared/Links";
 
 const code1 = `
 function withWorld<Context extends {}>(context: Context) {
@@ -79,7 +80,7 @@ test([withWorld, withSomething, withSomethingElse] as const, (_context) => void 
 const code3 = `
 type Fn = (...args: any[]) => any
 
-// credits goes https://stackoverflow.com/questions/50374908/transform-union-type-to-intersection-type/50375286#50375286
+// credits goes to https://stackoverflow.com/a/50375286
 type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
   k: infer I
 ) => void
@@ -118,6 +119,75 @@ test([withWorld], (_context) => void 0)
 test([withWorld, withSomething, withSomethingElse], (_context) => void 0)
 `;
 
+const code4 = `
+enum HeroSex {
+   male,
+   female,
+   unknown,
+}
+
+interface Hero {
+   name: string;
+   age: number;
+   sex: HeroSex;
+}
+
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
+   k: infer I
+) => void
+   ? I
+   : never;
+
+type UnionToOvlds<U> = UnionToIntersection<
+   U extends any ? (f: U) => void : never
+>;
+
+type PopUnion<U> = UnionToOvlds<U> extends (a: infer A) => void ? A : never;
+
+type IsUnion<T> = [T] extends [UnionToIntersection<T>] ? false : true;
+
+type UnionToArray<T, A extends unknown[] = []> = IsUnion<T> extends true
+   ? UnionToArray<Exclude<T, PopUnion<T>>, [PopUnion<T>, ...A]>
+   : [T, ...A];
+
+
+type MapPredicate<T> = T extends keyof Hero ? [T, (arg: Hero[T]) => any] : never
+
+type Mapped<
+   Arr extends Array<unknown>,
+   Result extends Array<unknown> = []
+   > = Arr extends []
+   ? []
+   : Arr extends [infer H]
+   ? [...Result, MapPredicate<H>]
+   : Arr extends [infer Head, ...infer Tail]
+   ? Mapped<[...Tail], [...Result, MapPredicate<Head>]>
+   : Readonly<Result>;
+;
+
+
+type Data<T> = Mapped<UnionToArray<keyof T>>
+
+const makeData = <T,>(Obj: T, readers: Data<T>) => { };
+
+const hero: Hero = {
+   name: "batman",
+   age: 38,
+   sex: HeroSex.male,
+};
+
+const result1 = makeData(hero, [
+   ['name', (arg: string) => null],
+   ['age', (arg: number) => null],
+   ['sex', (arg: HeroSex) => null]
+])
+
+const result2 = makeData(hero, [
+   ['name', (arg: number) => null], // error
+   ['age', (arg: number) => null],
+   ['sex', (arg: HeroSex) => null]
+])
+`;
 const navigation = {
   long_way: {
     id: "long_way",
@@ -126,6 +196,10 @@ const navigation = {
   short_way: {
     id: "short_way",
     text: "Short way",
+  },
+  cb_in_tuple: {
+    id: "cb_in_tuple",
+    text: "Callback in tuple",
   },
 };
 const links = Object.values(navigation);
@@ -148,16 +222,23 @@ const CallbackChain: FC = () => {
         <Var>{'Context & {hello: "world"; something: "else"; }'}</Var>
       </p>
       <Header {...navigation.long_way} />
-
       <p>
         Here you have non flexible (accepts only immutable array) and too
         complicated solution:
       </p>
       <Code code={code2} />
-
       <Header {...navigation.short_way} />
       <p>What if I say you that there is a much simplier solution ?</p>
       <Code code={code3} />
+      <Header {...navigation.cb_in_tuple} />
+      <p>
+        <Anchor
+          href="https://stackoverflow.com/questions/66075326/define-an-array-with-infered-types-related-to-first-prop-in-the-array"
+          text="This"
+        />
+        question might be interesting for you if you have a callback in tuples.
+      </p>
+      <Code code={code4} />
     </>
   );
 };

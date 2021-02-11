@@ -371,9 +371,13 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/66096137/cant-make-typescript-generics-chain-work',
                 text: 'TypeScript callback chain',
+            },
+            {
+                href: 'https://stackoverflow.com/questions/66075326/define-an-array-with-infered-types-related-to-first-prop-in-the-array#answer-66077819',
+                text: 'Tuples with callbacks'
             }
         ],
-        tags: ['callback', 'union'],
+        tags: ['callback', 'union', 'tuples'],
         id: 14,
         date: 'February 10, 2021'
     },
