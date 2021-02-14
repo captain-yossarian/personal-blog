@@ -74,6 +74,9 @@ const data = blogArticles
   .reverse()
   .concat(sections);
 
+fetch("http://api.catchts.com/hey").then((response) =>
+  response.json().then((data) => console.log({ data }))
+);
 const App: VFC = () => (
   <Router>
     <Main>
