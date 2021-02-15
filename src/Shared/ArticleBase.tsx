@@ -86,7 +86,7 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
 
   useEffect(() => {
     const result = fetch(
-      `http://api.catchts.com/get-like?id=${id}`
+      `https://api.catchts.com/get-like?id=${id}`
     ).then((response) => response.json().then((data) => console.log({ data })));
   });
 
