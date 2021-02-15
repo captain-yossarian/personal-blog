@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Layout } from "../Layout";
 import { Props } from "../Chapters/Props";
 import Links, { Props as LinksProps } from "./Links";
@@ -80,13 +80,25 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
   links,
   path,
   date,
-}) => (
-  <Layout title={title}>
-    {children}
-    <TwitterShare title={title} path={path} />
-    {links.length > 0 ? <Links data={links} /> : null}
-    <RenderDate>{date}</RenderDate>
-  </Layout>
-);
+  id,
+}) => {
+  const [likes, setLikes] = useState({ likes: [] });
+
+  useEffect(() => {
+    const result = fetch(
+      `http://api.catchts.com/get-like?id=${id}`
+    ).then((response) => response.json().then((data) => console.log({ data })));
+  });
+
+  return (
+    <Layout title={title}>
+      {children}
+      <TwitterShare title={title} path={path} />
+      {links.length > 0 ? <Links data={links} /> : null}
+      <button>Like</button>
+      <RenderDate>{date}</RenderDate>
+    </Layout>
+  );
+};
 
 export default ArticleBase;
