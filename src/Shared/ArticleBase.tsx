@@ -85,7 +85,6 @@ type ServiceResponse = {
 };
 const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
   title,
-  next,
   children,
   links,
   path,
@@ -107,7 +106,7 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
     );
   };
 
-  useEffect(() => fetchLikes());
+  useEffect(() => fetchLikes(), []);
 
   return (
     <Layout title={title}>
