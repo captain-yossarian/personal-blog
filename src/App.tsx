@@ -74,9 +74,6 @@ const data = blogArticles
   .reverse()
   .concat(sections);
 
-fetch("http://api.catchts.com/get-like").then((response) =>
-  response.json().then((data) => console.log({ data }))
-);
 const App: VFC = () => (
   <Router>
     <Main>

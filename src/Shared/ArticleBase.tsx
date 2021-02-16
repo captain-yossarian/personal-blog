@@ -73,6 +73,16 @@ const RenderDate = styled.div`
   margin: 0 auto;
   font-weight: 900;
 `;
+
+type Like = {
+  id: number;
+  article_id: number;
+  count: number;
+};
+
+type ServiceResponse = {
+  likes: ReadonlyArray<Like>;
+};
 const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
   title,
   next,
@@ -82,12 +92,19 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
   date,
   id,
 }) => {
-  const [likes, setLikes] = useState({ likes: [] });
+  const [count, setCount] = useState(-1);
 
   useEffect(() => {
-    const result = fetch(
-      `https://api.catchts.com/get-like?id=${id}`
-    ).then((response) => response.json().then((data) => console.log({ data })));
+    if (id >= 0) {
+      fetch(`https://api.catchts.com/get-like?id=${id}`).then((response) =>
+        response.json().then((data: ServiceResponse) => {
+          if (data.likes.length === 1) {
+            const [like] = data.likes;
+            setCount(like.count);
+          }
+        })
+      );
+    }
   });
 
   return (
@@ -95,7 +112,7 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
       {children}
       <TwitterShare title={title} path={path} />
       {links.length > 0 ? <Links data={links} /> : null}
-      <button>Like</button>
+      <button>Like - {count > -1 ? count : 0}</button>
       <RenderDate>{date}</RenderDate>
     </Layout>
   );
