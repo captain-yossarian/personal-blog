@@ -96,14 +96,16 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
     fetch(`https://api.catchts.com/like?id=${id}`).then(fetchLikes);
 
   const fetchLikes = () => {
-    fetch(`https://api.catchts.com/get-like?id=${id}`).then((response) =>
-      response.json().then((data: ServiceResponse) => {
-        if (data.likes.length === 1) {
-          const [like] = data.likes;
-          setCount(like.count);
-        }
-      })
-    );
+    if (id >= 0) {
+      fetch(`https://api.catchts.com/get-like?id=${id}`).then((response) =>
+        response.json().then((data: ServiceResponse) => {
+          if (data.likes.length === 1) {
+            const [like] = data.likes;
+            setCount(like.count);
+          }
+        })
+      );
+    }
   };
 
   useEffect(() => fetchLikes(), []);
