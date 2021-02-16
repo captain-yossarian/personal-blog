@@ -16,9 +16,7 @@ const About: FC = () => (
         post/article/answer, please let me know, I will add it.
       </p>
       <p>
-        Because english is not my first language, I don't have enough experience
-        to write long and grammatically correct explanations, hence, if you
-        noticed a mistake, I kindly ask You to let me know. Thanks.
+        If you noticed a mistake\typo, I kindly ask You to let me know. Thanks.
       </p>
       <p> You can treat this blog as a stackoverflow typescript news.</p>
       <p>
