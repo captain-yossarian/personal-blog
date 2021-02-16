@@ -83,6 +83,21 @@ type Like = {
 type ServiceResponse = {
   likes: ReadonlyArray<Like>;
 };
+const LikeButton = styled.button`
+  cursor: pointer;
+  border: none;
+  background-color: ${THEME_COLOR};
+  color: #0e2924;
+  font-size: 20px;
+  padding: 5px;
+`;
+
+const Counter = styled.span`
+  border: 1px solid black;
+  font-size: 20px;
+  padding: 5px;
+  margin-left: 10px;
+`;
 const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
   title,
   children,
@@ -114,10 +129,18 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
     <Layout title={title}>
       {children}
       <TwitterShare title={title} path={path} />
-      {links.length > 0 ? <Links data={links} /> : null}
-      {id >= 0 ? (
-        <button onClick={handleClick}>Like - {count > -1 ? count : 0}</button>
+      {links.length > 0 ? (
+        <div>
+          <Links data={links} />
+          {id >= 0 ? (
+            <>
+              <LikeButton onClick={handleClick}>I Like It!</LikeButton>
+              <Counter>{count > -1 ? count : 0}</Counter>
+            </>
+          ) : null}
+        </div>
       ) : null}
+
       <RenderDate>{date}</RenderDate>
     </Layout>
   );
