@@ -385,7 +385,7 @@ export const blogArticles = [
         url: '/flatten-union',
         title: 'How to flatten union',
         description: 'Here you can find information about union flattening',
-        next: '/math',
+        next: '/union-partial',
         Comp: 'FlattenUnion',
         links: [
             {
@@ -396,6 +396,22 @@ export const blogArticles = [
         tags: ['union', 'flatten'],
         id: 15,
         date: 'February 11, 2021'
+    },
+    {
+        url: '/union-partial',
+        title: 'Use union instead of Partial',
+        description: 'Constrain object keys to enum\'s values while not requiring all keys to be present and object values are not considered undefined',
+        next: '/math',
+        Comp: 'UnionPartial',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/66257786/constrain-object-keys-to-enums-values-while-not-requiring-all-keys-to-be-presen#answer-66258085',
+                text: 'Use union instead of Partial',
+            }
+        ],
+        tags: ['union', 'partial', 'recursion', 'tuples'],
+        id: 16,
+        date: 'February 18, 2021'
     }
 ].map(elem => ({ ...elem, type: 'article' }))
 
