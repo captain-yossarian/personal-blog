@@ -74,6 +74,7 @@ const toUnix = (date: string) => new Date(date).getTime();
 const data = blogArticles
   .sort((prev, next) => toUnix(prev.date) - toUnix(next.date))
   .reverse()
+  //@ts-expect-error
   .concat(sections);
 
 const App: VFC = () => (
