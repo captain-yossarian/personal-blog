@@ -7,6 +7,19 @@ export const sections = [
         Comp: 'About',
         next: '',
         links: [
+            ,
+            {
+                href: 'https://www.typescriptlang.org/docs/handbook/intro.html',
+                text: 'TypeScript book'
+            },
+            {
+                href: 'https://www.typescriptlang.org/docs/handbook/2/basic-types.html',
+                text: 'TypeScript book v2 beta'
+            },
+            {
+                href: 'https://github.com/Microsoft/TypeScript/wiki/FAQ',
+                text: 'TypeScript FAQ'
+            },
             {
                 href: "https://www.stephanboyer.com/",
                 text: "https://www.stephanboyer.com/",
@@ -18,18 +31,6 @@ export const sections = [
             {
                 href: "https://fettblog.eu/",
                 text: "https://fettblog.eu/",
-            },
-            {
-                href: "https://mariusschulz.com/",
-                text: "https://mariusschulz.com/",
-            },
-            {
-                href: "https://twitter.com/WrocTypeScript",
-                text: "https://twitter.com/WrocTypeScript",
-            },
-            {
-                href: "https://typeofweb.com/",
-                text: "TypeOfWeb [PL]",
             },
         ],
         id: -1,
