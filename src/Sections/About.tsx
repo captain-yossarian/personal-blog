@@ -37,30 +37,6 @@ const About: FC = () => (
           text="TypeScript FAQ"
         />
       </p>
-      <p>
-        If You want to know how TS type system works under the hood, I suggest
-        you to follow:
-        <Anchor
-          href="https://stackoverflow.com/users/2887218/jcalz"
-          text="@jcalc"
-        />
-        ,
-        <Anchor
-          href="https://stackoverflow.com/users/125734/titian-cernicova-dragomir"
-          text="@Titian Cernicova-Dragomir"
-        />
-        ,
-        <Anchor href="https://github.com/ahejlsberg" text="Anders Hejlsberg" />
-      </p>
-      <p>
-        More about React + TypeScript you can learn from these guys:
-        <Anchor href="https://twitter.com/ddprrt" text="@ddprrt" />
-        and
-        <Anchor
-          href="https://twitter.com/martin_hotell"
-          text={"@martin_hottel"}
-        />
-      </p>
     </div>
   </>
 );
