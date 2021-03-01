@@ -48,7 +48,7 @@ const Section = styled.section`
   margin-left: ${NAV_WIDTH};
   max-width: 60rem;
   font-family: ${CTA_FONT_FAMILY};
-  padding: 50px 20px 10px 20px;
+  padding: 50px 20px 10px 80px;
   @media (max-width: 768px) {
     padding: 10px;
     margin-left: 0;
