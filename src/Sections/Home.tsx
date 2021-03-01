@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { THEME_COLOR } from "../Layout/utils";
 import { blogArticles } from "../Layout/structure";
+import { Var } from "../Layout";
 
 const keys = blogArticles.sort((a, b) => b.id - a.id);
 
@@ -156,6 +157,11 @@ const Home: FC = () => {
             </SearchTag>
           ))}
         </TagWrapper>
+        <p>
+          I decided to gather some useful <Var>[typescript]</Var> stackoverflow
+          questions/answers in one place. You can treat this blog as a
+          stackoverflow typescript news.
+        </p>
       </div>
       <ul>
         {articles.map((elem) => (
