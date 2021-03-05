@@ -13,4 +13,5 @@ export { default as Unions } from './Unions';
 export { default as TemplateLiterals } from './TemplateLiterals';
 export { default as CallbackChain } from './CallbackChain';
 export { default as FlattenUnion } from './FlattenUnion';
-export { default as UnionPartial } from './UnionsPartial'
+export { default as UnionPartial } from './UnionsPartial';
+//export { default as Limitations } from './Limitations'

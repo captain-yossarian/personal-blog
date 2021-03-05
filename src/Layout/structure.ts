@@ -356,6 +356,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/66140451/typescript-add-kebab-case-types-form-actual-camel-case-keys#answer-66142561',
                 text: 'Classic example with templates string'
+            },
+            {
+                href: 'https://github.com/microsoft/TypeScript/pull/40336',
+                text: 'TypeScript main merge request'
             }
         ],
         tags: ['template literals'],
@@ -402,7 +406,7 @@ export const blogArticles = [
         url: '/union-partial',
         title: 'Use union instead of Partial',
         description: 'Constrain object keys to enum\'s values while not requiring all keys to be present and object values are not considered undefined',
-        next: '/math',
+        next: '/ts-limitations',
         Comp: 'UnionPartial',
         links: [
             {
@@ -413,6 +417,26 @@ export const blogArticles = [
         tags: ['union', 'partial', 'recursion', 'tuples'],
         id: 16,
         date: 'February 18, 2021'
-    }
+    // },
+    // {
+    //     url: '/ts-limitations',
+    //     title: 'TypeScript design limitations',
+    //     description: 'Here you can find some TypeScript design limitations gathered in one place',
+    //     next: '/math',
+    //     Comp: 'Limitation',
+    //     links: [
+    //         {
+    //             href: 'https://stackoverflow.com/questions/66346104/typescript-incorrect-type-inference/66452775#66452775',
+    //             text: 'Deep comparison',
+    //         },
+    //         {
+    //             href: 'https://stackoverflow.com/questions/66439319/why-does-an-intersection-change-when-the-types-are-reordered#answer-66439965',
+    //             text: 'Overloadings infering'
+    //         }
+    //     ],
+    //     tags: ['union', 'partial', 'recursion', 'tuples'],
+    //     id: 16,
+    //     date: 'February 18, 2021'
+    // }
 ].map(elem => ({ ...elem, type: 'article' }))
 
