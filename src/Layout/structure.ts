@@ -406,7 +406,7 @@ export const blogArticles = [
         url: '/union-partial',
         title: 'Use union instead of Partial',
         description: 'Constrain object keys to enum\'s values while not requiring all keys to be present and object values are not considered undefined',
-        next: '/ts-limitations',
+        next: '/math',
         Comp: 'UnionPartial',
         links: [
             {
@@ -417,7 +417,7 @@ export const blogArticles = [
         tags: ['union', 'partial', 'recursion', 'tuples'],
         id: 16,
         date: 'February 18, 2021'
-    // },
+    },
     // {
     //     url: '/ts-limitations',
     //     title: 'TypeScript design limitations',
