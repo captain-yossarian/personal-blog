@@ -153,6 +153,7 @@ const code11 = `
 class Store<T> {
 
     itemCreator<U>(
+      // here I have used extra generic with default value
         generate: <P = Omit<T, keyof U>>(item: P) => U
     ): (item: Omit<T, keyof U>) => Omit<T, keyof U> & U {
         return item => ({ ...item, ...generate(item) });
