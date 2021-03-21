@@ -161,6 +161,120 @@ class Store<T> {
 }
 `;
 
+const code12 = `
+type Options<T = any> = {
+    options: T[]
+} & ({
+    isMulti?: false
+    onChange: (value: T) => void
+} | {
+    isMulti: true
+    onChange: (value: T[]) => void
+})
+`;
+
+const code13 = `
+interface Option {
+    value: string,
+}
+
+const a: Options<Option> = {
+    // isMulti: false,
+    options: [{
+        value: 'abc',
+    }],
+    onChange: (value) => console.log(value)
+}
+`;
+
+const code14 = `
+type A<T> = {
+    isMulti: false,
+    onChange: (value: T) => any
+}
+type B<T> = {
+    isMulti: true,
+    onChange: (value: T[]) => any
+
+}
+type C<T> = {
+    onChange: (value: T) => any
+}
+`;
+
+const code15 = `
+// credits goes to Titian Cernicova-Dragomir
+//https://stackoverflow.com/questions/65805600/struggling-with-building-a-type-in-ts#answer-65805753
+type UnionKeys<T> = T extends T ? keyof T : never;
+type StrictUnionHelper<T, TAll> =
+    T extends any
+    ? T & Partial<Record<Exclude<UnionKeys<TAll>, keyof T>, never>> : never;
+
+type StrictUnion<T> = StrictUnionHelper<T, T>
+
+type Unions<T> = StrictUnion<A<T> | B<T> | C<T>>
+`;
+
+const code16 = `
+
+type Options<T = any> = {
+    options: T[]
+} & Unions<T>
+
+interface Option {
+    value: string,
+}
+
+const a: Options<Option> = {
+    options: [{
+        value: 'abc',
+    }],
+
+    // trick is here
+    onChange: <T extends Option>(value: T) => {
+        return value
+    }
+}
+`;
+
+const code17 = `
+const b: Options<Option> = {
+    isMulti: true,
+    options: [{
+        value: 'abc',
+    }],
+    onChange: <T extends Option[]>(value: T) => {
+        return value
+    }
+}
+const c: Options<Option> = {
+    isMulti: false,
+    options: [{
+        value: 'abc',
+    }],
+    onChange: <T extends Option>(value: T) => {
+        return value
+    }
+}
+
+// error because if isMulti is false, value should be Option and not an array of Option
+const d: Options<Option> = {
+    isMulti: false,
+    options: [{
+        value: 'abc',
+    }],
+    // should be T extends Option instead of T extends Option[]
+    onChange: <T extends Option[]>(value: T) => {
+        return value
+    }
+}
+
+a.onChange({ value: 'hello' }) // ok
+b.onChange([{ value: 'hello' }]) // ok
+c.onChange({ value: 'hello' }) // ok
+c.onChange([{ value: 'hello' }]) // expected error
+`;
+
 const navigation = {
   infer_argument: {
     id: "infer_argument",
@@ -173,6 +287,10 @@ const navigation = {
   infer_argument_and_return_value: {
     id: "infer_argument_and_return_value",
     text: "Infer argument and return value of callback",
+  },
+  callback_in_union: {
+    id: "callback_in_union",
+    text: "Callbacks in unions",
   },
 };
 const links = Object.values(navigation);
@@ -283,11 +401,60 @@ const Callbacks: FC = () => {
       <Code code={code10} />
       <p>You will get an error. I'm unable to explain why this happens.</p>
       <p>
-        To make it work, you can just add extra generic with default value to{" "}
+        To make it work, you can just add extra generic with default value to
         <Var>itemCreator</Var> callback.
       </p>
       <Code code={code11} />
       <p>Btw, it is safe, you don't break any constraints.</p>
+      <Header {...navigation.callback_in_union} />
+      <p>Let's say you have simple union type</p>
+      <Code code={code12} />
+      <p>
+        If <Var>isMulti</Var> is <Var>false</Var> or does not exists, callback
+        argument is <Var>T</Var>
+      </p>
+      <p>
+        If <Var>isMulti</Var> is <Var>true</Var>, callback argument is
+        <Var>T[]</Var>.
+      </p>
+      <p>Pretty straitforward. But it is not that easy.</p>
+      <p>Let's try to compile it:</p>
+      <Code code={code13} />
+      <p>
+        TS is unable to infer <Var>value</Var> argument.
+      </p>
+      <p>Let's try to fix it.</p>
+      <p>First of all, I want to make a small refactor.</p>
+      <Code code={code14} />
+      <p>
+        Next, we should use
+        <Anchor
+          href="https://stackoverflow.com/questions/65805600/type-union-not-checking-for-excess-properties#answer-65805753"
+          text="Titian Cernicova-Dragomir's"
+        />
+        helper.
+      </p>
+      <Code code={code15} />
+      <p>If you don't understand next line:</p>
+      <Code code={`type UnionKeys<T> = T extends T ? keyof T : never;`} />
+      <p>
+        Please read first two paragraphs of
+        <Anchor
+          href="https://www.typescriptlang.org/docs/handbook/2/conditional-types.html#distributive-conditional-types"
+          text="docs"
+        />
+      </p>
+      <p>So, finally, our type:</p>
+      <Code code={code16} />
+      <p>Let's test it</p>
+      <Code code={code17} />
+      <p>
+        Original question
+        <Anchor
+          href="https://stackoverflow.com/questions/65028565/how-to-overload-optional-boolean-in-typescript"
+          text="is here"
+        />
+      </p>
     </>
   );
 };

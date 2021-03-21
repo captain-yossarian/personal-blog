@@ -276,6 +276,14 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/66706012/infer-function-generic-type-u-from-return-value-of-passed-function/66725927#66725927',
                 text: 'Infer argument and return type of callback when they are depend on each other'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/66668428/typescript-doesnt-figure-out-the-generic',
+                text: 'Generic quirks'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/65028565/how-to-overload-optional-boolean-in-typescript',
+                text: 'Union types and callbacks'
             }
         ],
         tags: ['callback', 'infer'],
