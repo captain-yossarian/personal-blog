@@ -120,6 +120,46 @@ arr.forEach(someInstruction => someInstruction(i => {
 }))
 `;
 
+const code9 = `
+class Store<T> {
+  itemCreator<U>(
+    generate: (item: Omit<T, keyof U>) => U
+  ): (item: Omit<T, keyof U>) => Omit<T, keyof U> & U {
+    return item => ({...item, ...generate(item)});
+  }
+}
+
+type Person = {
+  id: string;
+  name: string;
+  email: string;
+  age?: number;
+};
+
+const create = new Store<Person>()
+  .itemCreator(() => ({id: 'ID', extra: 42}));
+
+const person = create({name: 'John', email: 'john.doe@foo.com'});
+`;
+
+const code10 = `
+const create = new Store<Person>()
+  .itemCreator((a) => ({id: 'ID', extra: 42})); // a: Omit<Person, never>
+
+const person = create({name: 'John', email: 'john.doe@foo.com'}); // error
+`;
+
+const code11 = `
+class Store<T> {
+
+    itemCreator<U>(
+        generate: <P = Omit<T, keyof U>>(item: P) => U
+    ): (item: Omit<T, keyof U>) => Omit<T, keyof U> & U {
+        return item => ({ ...item, ...generate(item) });
+    }
+}
+`;
+
 const navigation = {
   infer_argument: {
     id: "infer_argument",
@@ -128,6 +168,10 @@ const navigation = {
   cb_structure: {
     id: "cb_structure",
     text: "Data structure with callbacks",
+  },
+  infer_argument_and_return_value: {
+    id: "infer_argument_and_return_value",
+    text: "Infer argument and return value of callback",
   },
 };
 const links = Object.values(navigation);
@@ -164,7 +208,6 @@ const Callbacks: FC = () => {
       </p>
       <Code code={code3} />
       <Header {...navigation.cb_structure} />
-
       <p>Let's go to a bit complicated example</p>
       <p>Consider next data structure:</p>
       <Code code={code4} />
@@ -205,7 +248,6 @@ const Callbacks: FC = () => {
       </p>
       <p>Finally, working code:</p>
       <Code code={code8} />
-
       <p id="hello">
         <Anchor
           href="https://stackoverflow.com/questions/65644828/typescript-dependant-type-inference-with-variadic-tuple-types#answer-65654415"
@@ -218,6 +260,33 @@ const Callbacks: FC = () => {
         />
         you can find very similar cases, maybe it helps you.
       </p>
+      <Header {...navigation.infer_argument_and_return_value} />
+      <p>
+        <Anchor
+          href="https://stackoverflow.com/questions/66706012/infer-function-generic-type-u-from-return-value-of-passed-function"
+          text="Here"
+        />
+        you can find another one interesting problem of callback typings.
+      </p>
+      <p>
+        A function with a generic type may infer the generic types from the
+        arguments in most cases. However, if an argument is a function where the
+        generic type is both part of the arguments and the return value, the
+        generic type is sometimes not inferred.
+      </p>
+      <Code code={code9} />
+      <p>Above code works perfectly fine.</p>
+      <p>
+        But try to add an argument to <Var>itemCreator</Var> argument
+      </p>
+      <Code code={code10} />
+      <p>You will get an error. I'm unable to explain why this happens.</p>
+      <p>
+        To make it work, you can just add extra generic with default value to{" "}
+        <Var>itemCreator</Var> callback.
+      </p>
+      <Code code={code11} />
+      <p>Btw, it is safe, you don't break any constraints.</p>
     </>
   );
 };

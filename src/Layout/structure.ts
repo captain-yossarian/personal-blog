@@ -273,6 +273,10 @@ export const blogArticles = [
                     "https://basarat.gitbook.io/typescript/type-system/type-compatibility",
                 text: "TS book",
             },
+            {
+                href: 'https://stackoverflow.com/questions/66706012/infer-function-generic-type-u-from-return-value-of-passed-function/66725927#66725927',
+                text: 'Infer argument and return type of callback when they are depend on each other'
+            }
         ],
         tags: ['callback', 'infer'],
         id: 9,
