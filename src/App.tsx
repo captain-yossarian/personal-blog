@@ -23,6 +23,7 @@ import {
   CallbackChain,
   FlattenUnion,
   UnionPartial,
+  Dates,
 } from "./Chapters";
 import { About, Contact, Home } from "./Sections";
 import { blogArticles, sections } from "./Layout/structure";
@@ -52,6 +53,7 @@ export const componentMap = {
   CallbackChain,
   FlattenUnion,
   UnionPartial,
+  Dates,
 };
 
 setTimeout(() => Prism.highlightAll(), 0);

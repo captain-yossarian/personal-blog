@@ -406,7 +406,7 @@ export const blogArticles = [
         url: '/union-partial',
         title: 'Use union instead of Partial',
         description: 'Constrain object keys to enum\'s values while not requiring all keys to be present and object values are not considered undefined',
-        next: '/math',
+        next: '/dates',
         Comp: 'UnionPartial',
         links: [
             {
@@ -418,6 +418,23 @@ export const blogArticles = [
         id: 16,
         date: 'February 18, 2021'
     },
+    {
+        url: '/dates',
+        title: 'Working with Dates',
+        description: 'Type safe objects with Dates',
+        next: '/math',
+        Comp: 'Dates',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/66563064/how-do-i-typescript-this-object-array#answer-66564065',
+                text: 'Type safe dates',
+            }
+        ],
+        tags: ['template literals'],
+        id: 17,
+        date: 'March 21, 2021'
+    },
+
     // {
     //     url: '/ts-limitations',
     //     title: 'TypeScript design limitations',
