@@ -280,7 +280,7 @@ export const blogArticles = [
         ],
         tags: ['callback', 'infer'],
         id: 9,
-        date: 'January 2, 2021'
+        date: 'March 21, 2021'
     },
     {
         url: "/publish-subscribe",
