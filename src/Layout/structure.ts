@@ -32,6 +32,10 @@ export const sections = [
                 href: "https://fettblog.eu/",
                 text: "https://fettblog.eu/",
             },
+            {
+                href: 'https://morzel.net/',
+                text: 'Orzel Milosz\'s blog. (.net, js, html, arduino, java, typescript)'
+            }
         ],
         id: -1,
         date: '',
