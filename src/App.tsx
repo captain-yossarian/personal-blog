@@ -24,6 +24,7 @@ import {
   FlattenUnion,
   UnionPartial,
   Dates,
+  TypeNegation,
 } from "./Chapters";
 import { About, Contact, Home } from "./Sections";
 import { blogArticles, sections } from "./Layout/structure";
@@ -54,6 +55,7 @@ export const componentMap = {
   FlattenUnion,
   UnionPartial,
   Dates,
+  TypeNegation,
 };
 
 setTimeout(() => Prism.highlightAll(), 0);

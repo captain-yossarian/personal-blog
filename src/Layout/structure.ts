@@ -438,7 +438,7 @@ export const blogArticles = [
         url: '/dates',
         title: 'Working with Dates',
         description: 'Type safe objects with Dates',
-        next: '/math',
+        next: '/type-nagation',
         Comp: 'Dates',
         links: [
             {
@@ -449,6 +449,25 @@ export const blogArticles = [
         tags: ['template literals'],
         id: 17,
         date: 'March 21, 2021'
+    },
+    {
+        url: '/type-nagation',
+        title: 'Type negation',
+        description: 'I want any type except ...',
+        next: '/math',
+        Comp: 'TypeNegation',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/66745644/generic-argument-constrained-to-be-non-array#answer-66745744',
+                text: 'Generic argument constrained to be non array',
+            }, {
+                href: 'https://stackoverflow.com/questions/66828502/conditional-type-based-on-a-non-empty-string#answer-66835100',
+                text: 'Empty string negation'
+            }
+        ],
+        tags: ['generic', 'negation'],
+        id: 18,
+        date: 'March 28, 2021'
     },
 
     // {
