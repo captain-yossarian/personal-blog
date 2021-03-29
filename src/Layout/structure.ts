@@ -454,7 +454,7 @@ export const blogArticles = [
         url: '/type-nagation',
         title: 'Type negation',
         description: 'I want any type except ...',
-        next: '/math',
+        next: '/hex-validation',
         Comp: 'TypeNegation',
         links: [
             {
@@ -468,6 +468,22 @@ export const blogArticles = [
         tags: ['generic', 'negation'],
         id: 18,
         date: 'March 28, 2021'
+    },
+    {
+        url: '/hex-validation',
+        title: 'HEX Validation',
+        description: 'Validator for HEX values',
+        next: '/math',
+        Comp: 'HexValidation',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/66851513/a-way-to-mark-arbitrary-strings-in-typescript-template-literals#answer-66852494',
+                text: 'Template literals HEX Validator',
+            }
+        ],
+        tags: ['template literals', 'hex', 'tuples'],
+        id: 19,
+        date: 'March 29, 2021'
     },
 
     // {
