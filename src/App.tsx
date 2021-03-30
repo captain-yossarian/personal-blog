@@ -26,6 +26,7 @@ import {
   Dates,
   TypeNegation,
   HexValidation,
+  LinkedList,
 } from "./Chapters";
 import { About, Contact, Home } from "./Sections";
 import { blogArticles, sections } from "./Layout/structure";
@@ -58,6 +59,7 @@ export const componentMap = {
   Dates,
   TypeNegation,
   HexValidation,
+  LinkedList,
 };
 
 setTimeout(() => Prism.highlightAll(), 0);

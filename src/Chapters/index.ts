@@ -16,5 +16,6 @@ export { default as FlattenUnion } from './FlattenUnion';
 export { default as UnionPartial } from './UnionsPartial';
 export { default as Dates } from './Dates';
 export { default as TypeNegation } from './TypeNegation';
-export { default as HexValidation } from './HexValidation'
+export { default as HexValidation } from './HexValidation';
+export { default as LinkedList } from './LinkedList';
 //export { default as Limitations } from './Limitations'

@@ -473,7 +473,7 @@ export const blogArticles = [
         url: '/hex-validation',
         title: 'HEX Validation',
         description: 'Validator for HEX values',
-        next: '/math',
+        next: '/linked-list',
         Comp: 'HexValidation',
         links: [
             {
@@ -484,6 +484,22 @@ export const blogArticles = [
         tags: ['template literals', 'hex', 'tuples'],
         id: 19,
         date: 'March 29, 2021'
+    },
+    {
+        url: '/linked-list',
+        title: 'Linked list',
+        description: 'Linked List with recursive types',
+        next: '/math',
+        Comp: 'LinkedList',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/66849973/scala-snippet-to-typescript-how-to-convert-abstract-type-members',
+                text: 'Linked List with recursive types in TypeScript',
+            }
+        ],
+        tags: ['recursive', 'data structure'],
+        id: 20,
+        date: 'March 30, 2021'
     },
 
     // {
