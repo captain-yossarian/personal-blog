@@ -48,6 +48,17 @@ type Result5 = ReduceToString<ToArray<'aaaaa'>> // to few arguments
 
 `;
 
+const code5 = `
+const hex = <T extends string, U extends {
+    'valid': 'valid',
+    'invalid': 'invalid',
+}[Check<T> extends string[] ? Mapper<Check<T>> extends T ? 'valid' : never : 'invalid']>
+    (value: T, ...rest: U extends 'valid' ? [] : [never]) => value
+
+const result = hex('aaaaaf') // ok
+const result2 = hex('aaaaaZ') // error
+`;
+
 const HexValidation: FC = () => {
   return (
     <>
@@ -67,6 +78,8 @@ const HexValidation: FC = () => {
       <Code code={code3} />
       <p>Let's test it.</p>
       <Code code={code4} />
+      <p>Looks great, but how we can use it in practice?</p>
+      <Code code={code5} />
       <p>That's all folks.</p>
     </>
   );
