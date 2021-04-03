@@ -1,6 +1,4 @@
 import React, { FC } from "react";
-import { Var } from "../Layout";
-import { Anchor } from "../Shared/Links";
 
 const About: FC = () => (
   <>
