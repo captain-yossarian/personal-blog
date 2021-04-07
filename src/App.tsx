@@ -84,27 +84,32 @@ const data = blogArticles
   .reverse()
   //@ts-expect-error
   .concat(sections);
+const App: VFC = () => {
+  useEffect(() => {
+    fetch(`https://api.catchts.com/collect`);
+  });
 
-const App: VFC = () => (
-  <Router>
-    <Main>
-      <ScrollToTop />
-      <Switch>
-        {data.map((elem) => {
-          const { url, Comp } = elem;
-          const Component = componentMap[Comp as keyof typeof componentMap];
+  return (
+    <Router>
+      <Main>
+        <ScrollToTop />
+        <Switch>
+          {data.map((elem) => {
+            const { url, Comp } = elem;
+            const Component = componentMap[Comp as keyof typeof componentMap];
 
-          return (
-            <Route path={url} key={url}>
-              <ArticleBase path={url} {...elem}>
-                <Component />
-              </ArticleBase>
-            </Route>
-          );
-        })}
-      </Switch>
-    </Main>
-  </Router>
-);
+            return (
+              <Route path={url} key={url}>
+                <ArticleBase path={url} {...elem}>
+                  <Component />
+                </ArticleBase>
+              </Route>
+            );
+          })}
+        </Switch>
+      </Main>
+    </Router>
+  );
+};
 
 export default App;
