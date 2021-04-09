@@ -242,6 +242,124 @@ type FindIndex<
 type Result = Values<Omit<FindIndex<Arr, 65>, ArrayKeys>>; // '1'
 `;
 
+const code10 = `
+type A = ["foo", "bar"];
+type B = [5, "bar"];
+
+type Expected = {
+  foo:5,
+  bar:'bar'
+}
+`;
+
+const code11 = `
+type Length<T extends ReadonlyArray<any>> = T extends { length: infer L }
+  ? L
+  : never;
+
+type CompareLength<
+  X extends ReadonlyArray<any>,
+  Y extends ReadonlyArray<any>
+  > = Length<X> extends Length<Y> ? true : false;
+`;
+
+const code12 = `
+/**
+ * Let's operate on primitives 
+ */
+type Keys = string | number | symbol;
+type AllowedKeys<T> = T extends readonly Keys[] ? T : never;
+
+
+type Predicate<T, U> = T extends Keys ? U extends Keys ? Record<T, U> : never : never;
+`;
+
+const code13 = `
+/**
+ * Recursive iteration through two arrays
+ */
+type Zip<
+T extends ReadonlyArray<Keys>,
+ U extends ReadonlyArray<Keys>, 
+ Result extends Record<string, any> = {}> =
+  CompareLength<T, U> extends true
+  ? T extends []
+  ? Result :
+  T extends [infer HeadT1]
+  ? U extends [infer HeadU1]
+  ? Result & Predicate<HeadT1, HeadU1> : never :
+  T extends [infer HeadT2, ...infer TailT2]
+  ? U extends [infer HeadU2, ...infer TailU2]
+  ? Zip<AllowedKeys<TailT2>, AllowedKeys<TailU2>, Result & Predicate<HeadT2, HeadU2>>
+  : never
+  : never
+  : never;
+`;
+
+const code14 = `
+/**
+ * Apply Zip only if arrays length is equal, otherwise return never
+ */
+type Zipper<T extends ReadonlyArray<Keys>, U extends ReadonlyArray<Keys>> =
+  CompareLength<T, U> extends true ? Zip<T, U> : never;
+`;
+
+const code15 = `
+
+type Length<T extends ReadonlyArray<any>> = T extends { length: infer L }
+  ? L
+  : never;
+
+type CompareLength<
+  X extends ReadonlyArray<any>,
+  Y extends ReadonlyArray<any>
+  > = Length<X> extends Length<Y> ? true : false;
+
+/**
+ * Let's operate on primitives 
+ */
+type Keys = string | number | symbol;
+type AllowedKeys<T> = T extends readonly Keys[] ? T : never;
+
+
+type Predicate<T, U> = T extends Keys ? U extends Keys ? Record<T, U> : never : never;
+
+/**
+ * Recursive iteration through two arrays
+ */
+type Zip<
+T extends ReadonlyArray<Keys>,
+ U extends ReadonlyArray<Keys>, 
+ Result extends Record<string, any> = {}> =
+  CompareLength<T, U> extends true
+  ? T extends []
+  ? Result :
+  T extends [infer HeadT1]
+  ? U extends [infer HeadU1]
+  ? Result & Predicate<HeadT1, HeadU1> : never :
+  T extends [infer HeadT2, ...infer TailT2]
+  ? U extends [infer HeadU2, ...infer TailU2]
+  ? Zip<AllowedKeys<TailT2>, AllowedKeys<TailU2>, Result & Predicate<HeadT2, HeadU2>>
+  : never
+  : never
+  : never;
+
+/**
+ * Apply Zip only if arrays length is equal, otherwise return never
+ */
+type Zipper<T extends ReadonlyArray<Keys>, U extends ReadonlyArray<Keys>> =
+  CompareLength<T, U> extends true ? Zip<T, U> : never;
+
+type Result = Zipper<["foo", "bar"], [5, "bar"]>;
+
+
+const zip: Result = {
+  foo: 5,
+  bar: 'bar'
+} // ok
+
+`;
+
 const navigation = {
   filter: {
     id: "filter",
@@ -254,6 +372,11 @@ const navigation = {
   reduce: {
     id: "reduce",
     text: "Reduce literal type",
+  },
+  zip: {
+    id: "zip",
+    text: "Zip arrays into object",
+    updated: true,
   },
   find_index: {
     id: "find_index",
@@ -391,6 +514,38 @@ const Tuples: FC = () => (
       />
       you can find another interesting use case for reduce and template literals
     </p>
+    <Header {...navigation.zip} />
+    <p>
+      Very similar approach you can use if you want to zip your arrays into
+      object.{" "}
+      <Anchor
+        text="Here"
+        href="https://stackoverflow.com/questions/67021405/ts-types-convert-arrays-of-keys-and-array-of-values-to-object"
+      />{" "}
+      you can find original question.
+    </p>
+    <Code code={code10} />
+    <p>First of all we should make sure that arrays have same length.</p>
+    <Code code={code11} />
+    <p>
+      Array values should be primitives in our example for simplicity. Let's
+      define some utils and our reduce predicate, aka callback:
+    </p>
+    <Code code={code12} />
+    <p>Our main util:</p>
+    <Code code={code13} />
+    <p>Don't forget about length comparison:</p>
+    <Code code={code14} />
+    <p>And whole code</p>
+    <Code code={code15} />
+    <p>
+      {" "}
+      <Anchor
+        text="TypeScript playground"
+        href="https://www.typescriptlang.org/play?#code/FAFwngDgpgBAMlAdgcxACwDwBUZQB4hIAmAzjAEpQCGRA9ogDZgCCATq1WBlYmAHx8YAXhg58hRKRgBvGAySo0ALhgBLRADMoreDAC+wGDAD88QzBWIoAN20BuYKEiwAwrQC2EKqygIU6DHMADVwCYjJKGnomNg4uHn4AGnMATVCJKUi6RhZ2Tm5ePnNBET9FDCDBcXD4BQCUwVMQVgBXWBUNKgYSKAdgAHoAKkHDQdqQAHIyWmgOQhh6GAhWVXdVEFVbMlH+p2gYAGkoMDIREmb1ZBgAHxhEFvcAI20bmBIwJ9oGB3B95gYGLQAO5QIhHE7YEqidI1HxRHKHY4kADaAF0TNDLDZ7I49rAAAo+IiqADGVEI2ESMAAqlCxGFJGRwWRTNSYYzEScMZQSbRWERKTTBFjbDoRTiBsNRhQoCSWqwSJtYOttOTVIt0KxaC1kGgYCAgbQYN44iQdniYAAtVQQbDszLUbIxPJcZl8Kls6ocrLRXJxDBuqmUEgtBgge0RWV8gXnFYoKkJKHSPQlcxuTzeXx1TBYD1VBlSZptcymekZMhoksykNhizmMs1ZHqLQ6AASjqwAEZUVXPQWK82Xu2aNTu1Xg6HwwAyGCE0Gk8lQDDDohdqkr0fCu7YsX1iMwJuaIcdgBMVIAdJfBzosFRVAwsCee0ZWfvDy2YBuzzBL+fr6I7wYaknyra1bX+QEQTBJFsEAx93RgCDgVBZlYPvYCEInWsZznYkyQpFdH3XR0MKKIxxVYcwKKo7dRT6IYRhgMZmAgCAmCtG0FgRVQNGNF0yHkfw9VUMgoAARxaLoqVodBtCBETYB8EB5UQWjtHNX5YDA2Y7S9B14Wdf1AxpfcfRyWJ8jdVMjHTLwfDKAJcyFfci1gUwwMFWkLDU1g+k06tJ2EDjWO0DBkQAIg0WhaHCqlwsebxwtRKlkQAVjihLWCSvg+mAXlEHOGAAC8bRULDwxEaRzCi2gVHS8xMpUCZMomYA9Bgfp+gWABrYAgA"
+      />
+    </p>
+
     <Header {...navigation.find_index} />
     <p>
       It is also possible to emulate <Var>Array.prototype.findIndex</Var> in

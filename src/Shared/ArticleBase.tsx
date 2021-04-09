@@ -8,6 +8,7 @@ import { TEXT_COLOR, THEME_COLOR } from "../Layout/utils";
 type NavElem = {
   text: string;
   id: string;
+  updated?: boolean;
 };
 type HeaderProps = {
   links: ReadonlyArray<NavElem>;
@@ -33,6 +34,14 @@ const A = styled.a`
   text-decoration: none;
   color: ${TEXT_COLOR};
 `;
+
+const Updated = styled.span`
+  background-color: #9e6192;
+  color: white;
+  padding: 3px;
+  margin-left: 10px;
+`;
+
 export const Header: FC<{ text: string; id: string }> = ({ text, id }) => (
   <Heading id={id}>
     <A rel="noopener noreferrer" href={`#${id}`}>{`#${text}`}</A>
@@ -41,10 +50,11 @@ export const Header: FC<{ text: string; id: string }> = ({ text, id }) => (
 
 export const HeaderNav: FC<HeaderProps> = ({ links }) => (
   <ul>
-    {links.map(({ id, text }, index) => {
+    {links.map(({ id, text, updated = false }) => {
       return (
         <Li key={id}>
           <a href={`#${id}`}>#{text}</a>
+          {updated && <Updated>New!</Updated>}
         </Li>
       );
     })}

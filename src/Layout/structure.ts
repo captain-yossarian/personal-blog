@@ -189,11 +189,15 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/66075326/define-an-array-with-infered-types-related-to-first-prop-in-the-array/66077819#66077819',
                 text: 'Map union to array'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/67021405/ts-types-convert-arrays-of-keys-and-array-of-values-to-object#answer-67022175',
+                text: 'Zip two arrays into object'
             }
         ],
         tags: ['array', 'tuples'],
         id: 6,
-        date: 'December 28, 2020'
+        date: 'April 9, 2021'
     },
     {
         url: "/union-array",
