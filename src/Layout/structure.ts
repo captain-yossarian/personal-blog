@@ -471,7 +471,7 @@ export const blogArticles = [
         ],
         tags: ['generic', 'negation'],
         id: 18,
-        date: 'March 28, 2021'
+        date: 'April 12, 2021'
     },
     {
         url: '/hex-validation',

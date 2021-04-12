@@ -54,6 +54,61 @@ const xxxx = animal({ dogName: '', canBark: true }) // error
 const xxxxx = animal({ canBark: true }) // error
 const xxxxxx = animal({ canBark: false }) // ok
 `;
+
+const code4 = `
+type A = string | null; // Valid
+type B = CustomInterface | undefined; // Valid;
+type C = string; // Invalid;
+type D = CustomInterface // Invalid
+`;
+
+const code5 = `
+const a: A = Math.floor(Math.random() * 11) <= 5 ? 'a' : null;
+const b: B = Math.floor(Math.random() * 11) <= 5 ? { foo: 42 } : undefined;
+const c: C = 'c';
+const d: D = { foo: 42 }
+`;
+
+const code6 = `
+function assertDefined<T>(
+    value: T,
+    ...nullable: T extends null | undefined ? [] : [never]) {
+}
+`;
+const code7 = `
+
+interface CustomInterface {
+    foo: number;
+}
+
+
+type A = string | null; // Valid
+type B = CustomInterface | undefined; // Valid;
+type C = string; // Invalid;
+type D = CustomInterface // Invalid
+
+
+type ShouldBeNonNullable<T> = T extends null | undefined ? T : never;
+type Result = ShouldBeNonNullable<A>
+
+
+function assertDefined<T>(
+    value: T,
+    ...nullable: T extends null | undefined ? [] : [never]) {
+}
+
+
+const a: A = Math.floor(Math.random() * 11) <= 5 ? 'a' : null;
+const b: B = Math.floor(Math.random() * 11) <= 5 ? { foo: 42 } : undefined;
+const c: C = 'c';
+const d: D = { foo: 42 }
+
+assertDefined(a); // ok
+assertDefined(b); // ok
+assertDefined(c); // error
+assertDefined(d); // error
+assertDefined(d, 2); // still error,
+`;
 const navigation = {
   simple: {
     id: "type_negation",
@@ -62,6 +117,11 @@ const navigation = {
   with_overloadings: {
     id: "negation_overloadings",
     text: "Negation of empty string",
+  },
+  union_constraints: {
+    id: "union_constraints",
+    text: "Union constraints",
+    updated: true,
   },
 };
 const links = Object.values(navigation);
@@ -119,6 +179,43 @@ const TypeNegation: FC = () => {
         <li>If dogName is not empty string, canBark should be true</li>
       </ul>
       <Code code={code3} />
+      <Header {...navigation.union_constraints} />
+      <p>
+        Assume, you want to allow only nullable types. I mean
+        <Var>string | null</Var>, or <Var>number|undefined</Var>.
+      </p>
+      <Code code={code4} />
+      <p>
+        In order to do it we can use very useful <Var>Never trick</Var>.
+      </p>
+      <p>Let's define our variables:</p>
+      <Code code={code5} />
+      <p>Our function with constraints:</p>
+      <Code code={code6} />
+      <p>
+        In order to achieve desired behavior I used rest operator. It means
+        that, if <Var>T</Var> can be either <Var>null</Var> or
+        <Var>undefined</Var> - <Var>...nullable</Var> evaluates to empty array,
+        what means that there is no second argument. Otherwise{" "}
+        <Var>...nullable</Var> evaluates to 1 element array <Var>[never]</Var>.
+      </p>
+      <p>
+        Is it possible in this case to pass second argument ? No! You can't do
+        smth like that in TS. never means never :D So, even if you pass second
+        argument it is still error.
+      </p>
+      <p>
+        Please keep in mind, that <Var>assertDefined(d, 2 as never);</Var> is
+        perfectly valid from TS point of view.
+      </p>
+      <p>Whole code:</p>
+      <Code code={code7} />
+      <p>
+        <Anchor
+          text="Playground"
+          href="https://www.typescriptlang.org/play?ts=4.3.0-beta#code/FASwdgLgpgTgZgQwMZQAQGECuBnCB7AWwElJZEVUBvYVW1OPPALlTEwICNYBuYAX2CCIATwAOaAIKoAvKlwxwAc1QAfVpgA2G7qgD0u1ADUEGkABNgI8agBCMjDnzFS8ZGjWYwZqHHBQzOvpGJua8Vmjo9vJKgQYkAG4hAZZiaAAi9li4hCTQrhRBCUmCKdYAygAWeJpmNlAAcnhg9ZoaCBwaUAA8ACoAfPY9qFAAHtBe2Opaqqie3r5g-qgA-KhDLIvxPKVoAEpQ2JoQ9pXVGrUNTS1a7Z1dEn0lcJ5IECBNqAjY2LAQaT5+My9PoAChodESGkwUBYPQANODaAA6FFsG4dGFrYZjKATKYaGZzAGLMwrVAAbQAuqgWOTNrBKQBKKj8EpIJq4T4sKSyACyCAgFSRcA0jBgIP5gqRMAQXkIIOZACpUABGFXMrqyACsZIA5AhdTT8bx2WBORwWHY+QKhSKxRKbdLZWZ5UrVerUJrUDrVpR6IwWAAWABMqD4RqJC38Jo5xyQLEisl1SF1MbNxzMLAysj9DGYqBDYcEXx+MD+xP8IIQjNiqDwAGtgCXfv8o2YQRwa3oDA2m98WxX20gu0FYDA8DA+6Xy22QWYRwYxxOpwPZ2Y4ahgwu5G9pkuYAjBEA"
+        />
+      </p>
     </>
   );
 };
