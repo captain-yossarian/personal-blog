@@ -16,6 +16,7 @@ type Test1 = Union extends ["one", "one", "one"] ? true : false; // true
 `;
 
 const code3 = `
+// credits goes to https://stackoverflow.com/a/50375286
 type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
   k: infer I
 ) => void

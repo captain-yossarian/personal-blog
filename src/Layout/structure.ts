@@ -505,6 +505,26 @@ export const blogArticles = [
         id: 20,
         date: 'March 30, 2021'
     },
+    {
+        url: '/oop-style',
+        title: 'OOP typings',
+        description: 'Typings for classes',
+        next: '/math',
+        Comp: 'OOP',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/67084764/function-return-type-that-matches-parameter-types-when-using-the-spread-operato#answer-67089413',
+                text: 'Typed inheritance, mixin pattern',
+            },
+            {
+                href: 'https://stackoverflow.com/questions/67070250/typescript-class-generic-type-is-too-narrow-if-extends-something-else-is-not#answer-67071331',
+                text: 'Infer strict type to more general'
+            }
+        ],
+        tags: ['oop', 'inheritance'],
+        id: 21,
+        date: 'April 17, 2021'
+    },
 
     // {
     //     url: '/ts-limitations',
