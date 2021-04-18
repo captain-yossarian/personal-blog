@@ -36,6 +36,9 @@ import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
 import { Main } from "./Layout";
 import ArticleBase from "./Shared/ArticleBase";
+import { tracker } from "@wunu/frontend";
+
+tracker("https://api.catchts.com");
 
 export const componentMap = {
   MathOperations,
@@ -87,10 +90,6 @@ const data = blogArticles
   //@ts-expect-error
   .concat(sections);
 const App: VFC = () => {
-  useEffect(() => {
-    fetch(`https://api.catchts.com/collect`);
-  });
-
   return (
     <Router>
       <Main>
