@@ -38,7 +38,7 @@ import { Main } from "./Layout";
 import ArticleBase from "./Shared/ArticleBase";
 import { tracker } from "@wunu/frontend";
 
-tracker("https://api.catchts.com");
+tracker("https://api.catchts.com").subscribe();
 
 export const componentMap = {
   MathOperations,
