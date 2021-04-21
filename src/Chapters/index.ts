@@ -18,5 +18,6 @@ export { default as Dates } from './Dates';
 export { default as TypeNegation } from './TypeNegation';
 export { default as HexValidation } from './HexValidation';
 export { default as LinkedList } from './LinkedList';
-export { default as OOP } from './OOP'
+export { default as OOP } from './OOP';
+export { default as FP } from './FunctionalProgramming'
 //export { default as Limitations } from './Limitations'

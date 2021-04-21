@@ -28,6 +28,7 @@ import {
   HexValidation,
   LinkedList,
   OOP,
+  FP,
 } from "./Chapters";
 import { About, Contact, Home } from "./Sections";
 import { blogArticles, sections } from "./Layout/structure";
@@ -65,6 +66,7 @@ export const componentMap = {
   HexValidation,
   LinkedList,
   OOP,
+  FP,
 };
 
 setTimeout(() => Prism.highlightAll(), 0);

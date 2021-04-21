@@ -509,7 +509,7 @@ export const blogArticles = [
         url: '/oop-style',
         title: 'OOP typings',
         description: 'Typings for classes',
-        next: '/math',
+        next: '/fp',
         Comp: 'OOP',
         links: [
             {
@@ -524,6 +524,19 @@ export const blogArticles = [
         tags: ['oop', 'inheritance'],
         id: 21,
         date: 'April 17, 2021'
+    },
+    {
+        url: '/FP-style',
+        title: 'Functional programming tips & utils',
+        description: 'Some useful typed pure functions',
+        next: '/math',
+        Comp: 'FP',
+        links: [
+
+        ],
+        tags: ['fp'],
+        id: 22,
+        date: 'April 21, 2021'
     },
 
     // {
