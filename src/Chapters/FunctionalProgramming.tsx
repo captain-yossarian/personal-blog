@@ -64,6 +64,22 @@ const result  =
         |> handleAge(42)
         |> handleName('John')
 `;
+
+const code7 = `
+const switcher = (arg: Obj) => {
+  if (arg.name === 'John') {
+    arg.items.push('Hello John')
+  }
+  if (arg.name === 'Bruce') {
+    arg.items.push('Hi Batman!')
+  }
+  if (arg.name === 'Peter') {
+    arg.items.push('Are U a Spiderman?')
+  }
+
+  return arg
+}
+`;
 const navigation = {
   fp_utils: {
     id: "fp_utils",
@@ -122,6 +138,11 @@ const FP: FC = () => (
       text="Here"
     />
     You can find <Var>orta's</Var> twitt regarding pipe operator in TypeScript.
+    <p>
+      Now, I'd willing to bet, that You knw how to rewrite next function to make
+      it more FP style
+    </p>
+    <Code code={code7} />
   </>
 );
 export default FP;
