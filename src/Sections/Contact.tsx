@@ -10,7 +10,12 @@ const Contact: FC = () => (
         href="https://stackoverflow.com/users/8495254/captain-yossarian?tab=profile"
         text="StackOverflow profile"
       />
-      and <Anchor href="https://twitter.com/captainyosarian" text="twitter" />
+      , <Anchor href="https://twitter.com/captainyosarian" text="twitter" />
+      and{" "}
+      <Anchor
+        href="https://www.linkedin.com/in/serhii-bilyk-764b6b7b/"
+        text="linkedin"
+      />
     </div>
   </>
 );
