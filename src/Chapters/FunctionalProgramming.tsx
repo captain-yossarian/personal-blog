@@ -80,6 +80,47 @@ const switcher = (arg: Obj) => {
   return arg
 }
 `;
+
+const code8 = `
+const enum SomeEvent {
+  click = 'click',
+  dbclick = 'dbclick',
+  mousedown = 'mousedown ',
+  mouseover = 'mouseover',
+  mouseenter = 'mouseenter'
+
+}
+
+const handleEvents = (ev: SomeEvent) => {
+  if (ev === SomeEvent.click || ev === SomeEvent.dbclick) {
+    console.log('Mouse clicked')
+  }
+
+  if (ev === SomeEvent.mouseenter || ev === SomeEvent.mouseover) {
+    console.log('Mouse hover')
+  }
+}
+
+const isOneOf = <T extends string, M extends string>(ev: T, ...matchers: M[]) =>
+  ev.match(new RegExp(matchers.join('|'), 'gi'))
+
+
+const isOneOfWithoutIteration = <T extends string>(ev: T, matchers: string) =>
+  ev.match(new RegExp(matchers, 'gi'))
+
+
+const handleEvents2 = (ev: SomeEvent) => {
+
+  if (isOneOf(ev, SomeEvent.click, SomeEvent.dbclick)) {
+    console.log('Mouse clicked')
+  }
+  const union =\`${"${SomeEvent.mouseenter}|${SomeEvent.mouseover}"}\`
+  
+  if (isOneOfWithoutIteration(ev, union)) {
+    console.log('Mouse hover')
+  }
+}
+`;
 const navigation = {
   fp_utils: {
     id: "fp_utils",
@@ -143,6 +184,23 @@ const FP: FC = () => (
       it more FP style
     </p>
     <Code code={code7} />
+    <p>
+      Let's consider next example. It is not strictly related to TS but I
+      believe it will be helpful for you.
+    </p>
+    <p>
+      This code is very specific, since it works only with strings, at least in
+      our example.
+    </p>
+    <p>
+      I'm not saying that it is better then several <Var>||</Var>, or better
+      then <Var>Array.prototype.includes</Var> or more performant.
+    </p>
+    <p>You can use it as a typeguard for unions.</p>
+    <Code code={code8} />
+    <p>
+      As You see, RegExp <Var>|</Var> in some way can restrict unions
+    </p>
   </>
 );
 export default FP;
