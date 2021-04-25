@@ -468,6 +468,12 @@ const DeepPick: FC = () => (
         text="Playground"
       />
     </p>
+    <p>
+      As You may have noticed that above function can throw an error, if
+      property does not exists in the object. I did not take into account
+      optional properties. It is up to You to make it safer. All I wanted is to
+      write some types.
+    </p>
   </>
 );
 export default DeepPick;
