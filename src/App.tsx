@@ -28,7 +28,8 @@ import {
   HexValidation,
   LinkedList,
   OOP,
-  FP,
+  // FP,
+  DeepPick,
 } from "./Chapters";
 import { About, Contact, Home } from "./Sections";
 import { blogArticles, sections } from "./Layout/structure";
@@ -66,7 +67,8 @@ export const componentMap = {
   HexValidation,
   LinkedList,
   OOP,
-  FP,
+  // FP,
+  DeepPick,
 };
 
 setTimeout(() => Prism.highlightAll(), 0);

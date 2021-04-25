@@ -509,7 +509,7 @@ export const blogArticles = [
         url: '/oop-style',
         title: 'OOP typings',
         description: 'Typings for classes',
-        next: '/fp',
+        next: '/deep-pick',
         Comp: 'OOP',
         links: [
             {
@@ -526,18 +526,35 @@ export const blogArticles = [
         date: 'April 17, 2021'
     },
     {
-        url: '/FP-style',
-        title: 'Functional programming tips & utils',
-        description: 'Some useful typed pure functions',
+        url: '/deep-pick',
+        title: 'Deep pick typings',
+        description: 'I will try to implement smth similar to lodash.get typings',
         next: '/math',
-        Comp: 'FP',
+        Comp: 'DeepPick',
         links: [
+            {
+                href: 'https://stackoverflow.com/questions/67242871/declare-a-type-that-allows-all-parts-of-all-levels-of-another-type#answer-67247652',
+                text: 'Deep pick function ',
+            },
 
         ],
-        tags: ['fp'],
+        tags: ['deeppick'],
         id: 22,
-        date: 'April 21, 2021'
+        date: 'April 25, 2021'
     },
+    // {
+    //     url: '/FP-style',
+    //     title: 'Functional programming tips & utils',
+    //     description: 'Some useful typed pure functions',
+    //     next: '/math',
+    //     Comp: 'FP',
+    //     links: [
+
+    //     ],
+    //     tags: ['fp'],
+    //     id: 22,
+    //     date: 'April 21, 2021'
+    // },
 
     // {
     //     url: '/ts-limitations',
