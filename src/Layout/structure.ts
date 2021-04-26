@@ -503,7 +503,7 @@ export const blogArticles = [
         ],
         tags: ['recursive', 'data structure'],
         id: 20,
-        date: 'March 30, 2021'
+        date: 'April 26, 2021'
     },
     {
         url: '/oop-style',
