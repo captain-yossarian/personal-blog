@@ -529,7 +529,7 @@ export const blogArticles = [
         url: '/deep-pick',
         title: 'Deep pick typings',
         description: 'I will try to implement smth similar to lodash.get typings',
-        next: '/math',
+        next: '/validators',
         Comp: 'DeepPick',
         links: [
             {
@@ -541,6 +541,23 @@ export const blogArticles = [
         tags: ['deeppick'],
         id: 22,
         date: 'April 25, 2021'
+    },
+    {
+        url: '/validators',
+        title: 'Type validators',
+        description: 'How to implements several type validators in generic way',
+        next: '/math',
+        Comp: 'DeepPick',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/67282788/how-would-i-add-type-to-nested-object#answer-67284951',
+                text: 'CSS validation',
+            },
+
+        ],
+        tags: ['type validation'],
+        id: 23,
+        date: 'April 27, 2021'
     },
     // {
     //     url: '/FP-style',
