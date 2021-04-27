@@ -547,7 +547,7 @@ export const blogArticles = [
         title: 'Type validators',
         description: 'How to implements several type validators in generic way',
         next: '/math',
-        Comp: 'DeepPick',
+        Comp: 'Validation',
         links: [
             {
                 href: 'https://stackoverflow.com/questions/67282788/how-would-i-add-type-to-nested-object#answer-67284951',
