@@ -69,7 +69,10 @@ type Validator<T extends boolean> =
   : ['Dear developer, please use valid CSS values'];
 
 const foo = <T extends string>
-  (arg: T, ...validation: [...Validator<IsValidCSS<T>>, ...Validator<IsAllowedNumber<T>>]) => { }
+  (
+    arg: T,
+    ...validation: [...Validator<IsValidCSS<T>>, ...Validator<IsAllowedNumber<T>>]
+  ) => { }
 
 foo('100px'); // ok
 foo('99px'); // expected error
