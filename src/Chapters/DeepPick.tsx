@@ -386,13 +386,14 @@ const DeepPick: FC = () => (
     <Code code={code2} />
     <p>
       Now, we need to generate array of all allowed keys.In order to do that, we
-      need iterate through every key and replace type property by array of keys.
+      need to iterate through every key and replace type property with array of
+      keys.
     </p>
     <p>Does it make sense for You?</p>
     <Code code={code3} />
     <p>
       Above code does not make any sense. We need to iterate through every
-      nesten property, hence, we need to make it recursively. Lets try again.
+      nested property, hence, we need to make it recursively. Let's try again.
       But now, we need call recursion only if property is not primitive.
     </p>
     <Code code={code4} />
@@ -401,7 +402,7 @@ const DeepPick: FC = () => (
       <Var>name and surname</Var>. We only have an array of last non primitive
       property.
     </p>
-    <p>To fix it, we need some cache.</p>
+    <p>Seems, we need some cache.</p>
     <Code code={code5} />
     <p>
       Looks a way better now. But we need all possible values. User should be
@@ -409,12 +410,12 @@ const DeepPick: FC = () => (
       <Var>['user', 'description']</Var>
     </p>
     <p>
-      We can try to pass <Var>Cache</Var> as a union of previous and next
+      We can try to pass <Var>Cache</Var> as a union of previous and next type
     </p>
     <Code code={code6} />
     <p>
       Seems we are closer now. Pls keep in mind, we still need a union of arrays
-      instead of some wierd object. Btw, it is still does not feet our
+      instead of some weird object. Btw, it is still does not feet our
       requirements
     </p>
     <p>Let's move our condition statement one level up.</p>
@@ -449,14 +450,13 @@ const DeepPick: FC = () => (
     <p>
       Let's write type for picking the object property. I decided to implement
       deep picking exactly how we did it in function. I think it will help You
-      to understand how does it work under the hood. Ok, ok, You catch me. I
-      just don't have a clue how to do it in other way :)
+      to understand how does it work under the hood. Ok, ok, You cought me. I
+      just don't know how to do it in other way :)
     </p>
     <Code code={code13} />
     <p>
       If it is hard to understand what I did here, no worries, it is hard for me
-      either. It is hard to understand such complex types and even harder to
-      maintain
+      either.
     </p>
     <p>Here you have pure js analogy:</p>
     <Code code={code14} />
@@ -469,10 +469,10 @@ const DeepPick: FC = () => (
       />
     </p>
     <p>
-      As You may have noticed that above function can throw an error, if
-      property does not exists in the object. I did not take into account
-      optional properties. It is up to You to make it safer. All I wanted is to
-      write some types.
+      As You may have noticed, above function can throw an error, if property
+      does not exists in the object. I did not take into account optional
+      properties. It is up to You to make it safer. All I wanted is to write
+      some types.
     </p>
   </>
 );
