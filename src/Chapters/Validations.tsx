@@ -120,7 +120,7 @@ const Validation: FC = () => (
       <Var>never</Var>
     </p>
     <p>
-      So in Validator failed, TS expects second argument which is{" "}
+      So if Validator has failed, TS expects second argument which is{" "}
       <Var>never</Var>
     </p>
     <p>
