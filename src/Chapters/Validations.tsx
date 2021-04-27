@@ -49,18 +49,27 @@ foo('10p'); // error
 
 const code7 = `
 
+
 type Units = 'px' | 'rem' | '%';
 
 type IsValidCSS<T> = T extends \`${"${number}${Units}"}\` ? true : false;
 
 type StringNumber<T extends number> = \`${"${T}"}\`;
 
-type IsAllowedNumber<T> = T extends \`${"${infer Num}${Units}"}\` ? Num extends StringNumber<99> ? false : true : false;
+type IsAllowedNumber<T> = 
+  T extends \`${"${infer Num}${Units}"}\` 
+  ? Num extends StringNumber<99> 
+  ? false 
+  : true 
+  : false;
 
-type Validator<T extends boolean> = T extends true ? [] : ['Dear developer, please use valid CSS values'];
+type Validator<T extends boolean> = 
+  T extends true 
+  ? [] 
+  : ['Dear developer, please use valid CSS values'];
 
-
-const foo = <T extends string>(arg: T, ...validation: [...Validator<IsValidCSS<T>>, ...Validator<IsAllowedNumber<T>>]) => { }
+const foo = <T extends string>
+  (arg: T, ...validation: [...Validator<IsValidCSS<T>>, ...Validator<IsAllowedNumber<T>>]) => { }
 
 foo('100px'); // ok
 foo('99px'); // expected error
@@ -75,8 +84,7 @@ const Validation: FC = () => (
       example: <Var>100px, 10rem, 50% etc ...</Var>
     </p>
     <p>
-      First of all we should check if strings end up with some allowed measure
-      units
+      First of all we should check if value ends with some allowed measure units
     </p>
     <Code code={code2} />
     <p>
@@ -87,7 +95,7 @@ const Validation: FC = () => (
     <p>Lets write generic validator:</p>
     <Code code={code4} />
     <p>
-      Please, give me a minute, I will explain we we need an array as a return
+      Please, give me a minute, I will explain why we need an array as a return
       type from <Var>Validator</Var>
     </p>
     <p>Let's try it</p>
