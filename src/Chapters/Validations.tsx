@@ -121,6 +121,16 @@ const Validation: FC = () => (
         text="Playground"
       />
     </p>
+    <p>
+      Please refer to{" "}
+      <Anchor
+        href="https://stackoverflow.com/questions/67282788/how-would-i-add-type-to-nested-object/67284951#67284951"
+        text="this question"
+      />{" "}
+      if You are interested in object validation or to
+      <Anchor href="https://catchts.com/hex-validation" text="my article" /> in
+      case You want validate HEX value
+    </p>
   </>
 );
 export default Validation;
