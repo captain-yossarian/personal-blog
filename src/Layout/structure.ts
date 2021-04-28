@@ -33,8 +33,8 @@ export const sections = [
                 text: "https://fettblog.eu/",
             },
             {
-                href: 'https://morzel.net/',
-                text: 'Orzel Milosz\'s blog. (.net, js, html, arduino, java, typescript)'
+                href: 'https://blog.joshuakgoldberg.com/',
+                text: 'https://blog.joshuakgoldberg.com/'
             }
         ],
         id: -1,
