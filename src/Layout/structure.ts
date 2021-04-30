@@ -292,11 +292,14 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/65028565/how-to-overload-optional-boolean-in-typescript',
                 text: 'Union types and callbacks'
+            }, {
+                href: 'https://stackoverflow.com/questions/67337050/typescript-failing-to-correctly-infer-types-from-generic-using-keyof-as-property#answer-67337548',
+                text: 'Union type and callbacks 2'
             }
         ],
         tags: ['callback', 'infer'],
         id: 9,
-        date: 'March 21, 2021'
+        date: 'April 30, 2021'
     },
     {
         url: "/publish-subscribe",

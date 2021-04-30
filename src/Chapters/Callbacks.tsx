@@ -292,9 +292,46 @@ const navigation = {
     id: "callback_in_union",
     text: "Callbacks in unions",
   },
+  callback_in_union2: {
+    id: "callback_in_union 2",
+    text: "Callbacks in unions 2",
+    updated: true,
+  },
 };
 const links = Object.values(navigation);
 
+const code18 = `
+type Main = {
+    foo: string;
+    bar: number;
+};
+`;
+
+const code19 = `
+type Validator<T extends keyof Main> = {
+    key: T;
+    isValid: (value: Main[T]) => boolean;
+};
+
+const validators: Array<MainValidationRule<keyof Main>> = [
+    { key: 'foo', isValid: (value) => true }
+]
+`;
+
+const code20 = `
+type Values<T> = T[keyof T]
+
+type MainValidationRule = Values<{
+  [P in keyof Main]: {
+    key: P;
+    isValid: (value: Main[P]) => boolean;
+  }
+}>
+
+const validators: Array<MainValidationRule> = [
+  { key: 'foo', isValid: (value/* infered to stirng */) => true }
+]
+`;
 const Callbacks: FC = () => {
   return (
     <>
@@ -455,6 +492,22 @@ const Callbacks: FC = () => {
           text="is here"
         />
       </p>
+      <Header {...navigation.callback_in_union2} />
+      <p>
+        Let's say you want to make some validation logic for each key of object:
+      </p>
+      <Code code={code18} />
+      <p>
+        And you want to make array of validators. Believe me, such kind of
+        questions are VERY popular:
+      </p>
+      <Code code={code19} />
+      <p>
+        As You see, <Var>{`(value) => true`} </Var>, argument <Var>value</Var>{" "}
+        is inferred to <Var>string | number</Var> instead of <Var>string</Var>{" "}
+      </p>
+      <p>All we need is just to make union type of all possible values:</p>
+      <Code code={code20} />
     </>
   );
 };
