@@ -132,6 +132,79 @@ type Result = MakeDate<'2021-03-01'> // 1st March
 type Result2 = MakeDate<'2021-03-02'> // 2st March
 `;
 
+const code20 = `
+type PrependNextNum<A extends Array<unknown>> = A["length"] extends infer T
+    ? ((t: T, ...a: A) => void) extends (...x: infer X) => void
+    ? X
+    : never
+    : never;
+
+type EnumerateInternal<A extends Array<unknown>, N extends number> = {
+    0: A;
+    1: EnumerateInternal<PrependNextNum<A>, N>;
+}[N extends A["length"] ? 0 : 1];
+
+type Enumerate<N extends number> = EnumerateInternal<[], N> extends (infer E)[]
+    ? E
+    : never;
+
+type Range = Enumerate<13>
+
+type NumberString<T extends number> = \`${"${T}"}\`;
+
+type Year =
+    \`${"${NumberString<number>}${NumberString<number>}${NumberString<number>}${NumberString<number>}"}\`;
+
+type ZeroRequired = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+
+type AddZero<T extends number> = T extends ZeroRequired ? \`${"${0}${T}"}\` : T;
+
+type MakeString<T extends number | \`${"${number}`> = `${T}"}\`;
+
+type Month = MakeString<AddZero<Exclude<Enumerate<13>, 0>>>;
+
+type Day = MakeString<AddZero<Exclude<Enumerate<32>, 0>>>;
+
+type DataKey = \`${"${Year}-${Month}-${Day}"}\`;
+
+type MapMonth<T extends NumberString<number>> =
+    T extends '01'
+    ? 'January' : T extends '02'
+    ? 'February' : T extends '03'
+    ? 'March' : T extends '04'
+    ? 'April' : T extends '05'
+    ? 'May' : T extends '06'
+    ? 'June' : T extends '07'
+    ? 'July' : T extends '08'
+    ? 'August' : T extends '09'
+    ? 'September' : T extends '10'
+    ? 'October' : T extends '11'
+    ? 'November' : T extends '12'
+    ? 'December' : never
+type GetDay<T extends DataKey> =
+    T extends \`${"${string}-${Month}-${infer D}` ? D : `${number}"}\`;
+
+type GetMonth<T extends DataKey> =
+    T extends \`${"${string}-${infer M}-${Day}` ? M : `${ number }"}\`;
+
+type ConvertToMonth<T extends DataKey> = MapMonth<GetMonth<T>>;
+
+type Result = ConvertToMonth<'2021-03-01'> // March
+
+type AddSt<T extends NumberString<number>> = \`${"${T}st"}\`;
+
+type RemoveLeadZero<T extends GetDay<DataKey>> = T extends \`${"0${infer N}"}\` ? N : T
+
+type MakeDate<T extends DataKey> =
+    \`${"${AddSt<RemoveLeadZero<GetDay<T>>>} ${ConvertToMonth<T>}"}\`
+
+type Base = Record<DataKey, { date: MakeDate<DataKey>, value: number }>
+
+type Result2 = MakeDate<'2021-03-01'> // 1st March
+
+type Result3 = MakeDate<'2021-03-02'> // 2st March
+`;
+
 const navigation = {
   problem: {
     id: "problem",
@@ -241,6 +314,14 @@ const Dates: FC = () => {
       <p>
         There is a drawback, 2st March. I leave making appropriate endings to
         you :)
+      </p>
+      <p>Full example</p>
+      <Code code={code20} />
+      <p>
+        <Anchor
+          href="https://www.typescriptlang.org/play?#code/C4TwDgpgBACgThSA7AJgOQgD2GgrgWwB4BBKLYCVAZymLjgEMRDckBrJAewHckA+PlAC8tANoAiADaUA5sAAW4gLplslFDQCWSAGYQ4UACoAoKGagB+KAAprwAFxGANFAB07ho+IBKYYIBunJoovuTqNNburpiO2noGABq+QgFBKKbmVgkZZo5IEP76OVB5BfoA3MbGoJBQAKJIBPoMFACSSBRwSAySJKoU1LT0TCzsXLx8Lmj94VCN+ABG+oIiAN7FAAxeleZQAIyODU2MbR363b3wiOoY2HhExJNQaHyVAL6i02GDxBLSSHJFCorBsSvslJVquBoEd8M0KIQvmpBvMlnAVvV5vCIO1OhdCKIlFNBN8NDY4vp6t5CcUrHViqVCnBITVoAAlBgA6AiWHYwh7ADMfCqrOeBDRAGVgHBtDJCIYZijxcthFAAAYAElWhjeapZ0KgAE0IAwDEJiprVvdJdLZYRUcs3lrrfopTKAfbleinVavW67Q7vc6-baPYG+Lr9bUAFr6ThsiAAR1wmgQKFVeygAB8oAAmbNQAUFgAsBYArAWAGwFgDsBYAHAWAJxR6DEFAoWNwTjyxVk8OqhWkmhd+NJlNpyzqrUbH06tVgwytqAAWQYbAg-o9Q+R-a9Bctgd1GMt8+XK84HXkqrXG63cvbnbjhDqmAAxpJcCgIC+sScf4KTwbAIrwigaAAiTA3uum6hg+Haji+76ft+v7HC0P4CrmQEgcukHAAwADSEAgKqlrGqabwALRaheV7UVqkEgJGYG1GuYB0QovbDmKiyunBnp8eiKzFDuAxkgA5BsewSbSUASQAUpyuCmiAEmLn2NBSbmsm7FYEkAGIQAscAqXAakaTxUkCrpmTyWucBvvI6mOGJsxScWtlmPpxBgDKkguUYmnyRsZZeVOElrhZrnBVJlbhfpCmsBAgVuYMUk1gl8lJZI0VBVZGz1llEnELgMi4FQwCpbFGxNsVEqIBQQnVVZewbMVADyb7AJwaItbuWl7DJckSWgnCFM1lkDfJew6SN4EQG+ECTYyRSigA4hAwBMdx034URJEibsaVkpalXujIDGrJx8hXRSBjgbqU7gWCh5eixUK1JtwA3bt4k0PtxEgEd5gnTQZ1wXduiUiuV1MU9Vgrq9WpzPuH2igAwpeTLAIYnC-WDUCA4d0EcZeXHfQTAjLgmVC4JIwCqljSA43jv0SbmGy5nsVEbAKvMyYIAD0QurqaTmsW2HZSn9swunA96CWiAhkVqOqVXqktQAm+DjRAAAyJpPt2suDN9O3E8DGKE2qGxavdzwI88i5a7eED4T+hOWyDZiWo+Ms63rhsMMbPbmyMhggW8UBaszrP4+T8jyhGapawAQgwVDctri2cHAKCEJbLirFAKAYY4bse4XLQHcDLj+D0uAQHkaPCp97IQHTDP5iIlcYYQHNczzfMCxJwui3slVi458ha7T9PAEWvcwVXg-c7z-Nc2PUAi3mU8OU5QA"
+          text="Playground"
+        />
       </p>
     </>
   );
