@@ -2,9 +2,8 @@ import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Var } from "../Layout";
 import { Anchor } from "../Shared/Links";
-import { Link } from "react-router-dom";
 import { Header, HeaderNav } from "../Shared/ArticleBase";
-import { compose } from "lodash/fp";
+
 const code1 = `
 const removeProperty = <Obj, Prop extends keyof Obj>(obj: Obj, prop: Prop) => {
   const { [prop]: _, ...rest } = obj;
