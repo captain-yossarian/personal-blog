@@ -28,7 +28,7 @@ import {
   HexValidation,
   LinkedList,
   OOP,
-  // FP,
+  FP,
   DeepPick,
   Validation,
 } from "./Chapters";
@@ -42,6 +42,15 @@ import ArticleBase from "./Shared/ArticleBase";
 import { tracker } from "@wunu/frontend";
 
 tracker("https://api.catchts.com").subscribe();
+
+// console.log({ tracker });
+// tracker("http://localhost:3001").subscribe();
+
+// fetch("http://localhost:3001/metrics/distinct_per_day").then((data) =>
+//   data.json().then((resp) => {
+//     console.log({ resp });
+//   })
+// );
 
 export const componentMap = {
   MathOperations,
@@ -68,7 +77,7 @@ export const componentMap = {
   HexValidation,
   LinkedList,
   OOP,
-  // FP,
+  FP,
   DeepPick,
   Validation,
 };

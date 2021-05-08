@@ -4,7 +4,7 @@ import { Var } from "../Layout";
 import { Anchor } from "../Shared/Links";
 import { Link } from "react-router-dom";
 import { Header, HeaderNav } from "../Shared/ArticleBase";
-
+import { compose } from "lodash/fp";
 const code1 = `
 const removeProperty = <Obj, Prop extends keyof Obj>(obj: Obj, prop: Prop) => {
   const { [prop]: _, ...rest } = obj;
@@ -121,14 +121,176 @@ const handleEvents2 = (ev: SomeEvent) => {
   }
 }
 `;
+
+const code9 = `
+type Fn = (a: any) => any
+
+type Head<T extends any[]> =
+    T extends [infer H, ...infer _]
+    ? H
+    : never;
+
+type Last<T extends any[]> =
+    T extends [infer _]
+    ? never : T extends [...infer _, infer Tl]
+    ? Tl
+    : never;
+
+type Foo = typeof foo
+type Bar = typeof bar
+type Baz = typeof baz
+`;
+
+const code10 = `
+    interface LodashFlowRight {
+        <A extends any[], R1, R2, R3, R4, R5, R6, R7>(f7: (a: R6) => R7, f6: (a: R5) => R6, f5: (a: R4) => R5, f4: (a: R3) => R4, f3: (a: R2) => R3, f2: (a: R1) => R2, f1: (...args: A) => R1): (...args: A) => R7;
+        <A extends any[], R1, R2, R3, R4, R5, R6>(f6: (a: R5) => R6, f5: (a: R4) => R5, f4: (a: R3) => R4, f3: (a: R2) => R3, f2: (a: R1) => R2, f1: (...args: A) => R1): (...args: A) => R6;
+        <A extends any[], R1, R2, R3, R4, R5>(f5: (a: R4) => R5, f4: (a: R3) => R4, f3: (a: R2) => R3, f2: (a: R1) => R2, f1: (...args: A) => R1): (...args: A) => R5;
+        <A extends any[], R1, R2, R3, R4>(f4: (a: R3) => R4, f3: (a: R2) => R3, f2: (a: R1) => R2, f1: (...args: A) => R1): (...args: A) => R4;
+        <A extends any[], R1, R2, R3>(f3: (a: R2) => R3, f2: (a: R1) => R2, f1: (...args: A) => R1): (...args: A) => R3;
+        <A extends any[], R1, R2>(f2: (a: R1) => R2, f1: (...args: A) => R1): (...args: A) => R2;
+        (...func: Array<lodash.Many<(...args: any[]) => any>>): (...args: any[]) => any;
+    }
+`;
+
+const code11 = `
+type Allowed<
+    T extends Fn[],
+    Cache extends Fn[] = []
+    > =
+    T extends []
+    ? Cache
+    : T extends [infer Lst]
+    ? Lst extends Fn
+    ? Allowed<[], [...Cache, Lst]> : never
+    : T extends [infer Fst, ...infer Lst]
+    ? Fst extends Fn
+    ? Lst extends Fn[]
+    ? Head<Lst> extends Fn
+    ? Head<Parameters<Fst>> extends ReturnType<Head<Lst>>
+    ? Allowed<Lst, [...Cache, Fst]>
+    : never
+    : never
+    : never
+    : never
+    : never;
+`;
+const code12 = `
+type LastParameterOf<T extends Fn[]> =
+    Last<T> extends Fn
+    ? Head<Parameters<Last<T>>>
+    : never
+
+type Return<T extends Fn[]> =
+    Head<T> extends Fn
+    ? ReturnType<Head<T>>
+    : never
+
+`;
+
+const code13 = `
+function compose<T extends Fn, Fns extends T[], Allow extends {
+    0: [never],
+    1: [LastParameterOf<Fns>]
+}[Allowed<Fns> extends never ? 0 : 1]>
+    (...args: [...Fns]): (...data: Allow) => Return<Fns>
+
+function compose<
+    T extends Fn,
+    Fns extends T[], Allow extends unknown[]
+>(...args: [...Fns]) {
+    return (...data: Allow) =>
+        args.reduceRight((acc, elem) => elem(acc), data)
+}
+`;
+
+const code14 = `
+
+type Foo = typeof foo
+type Bar = typeof bar
+type Baz = typeof baz
+
+
+type Fn = (a: any) => any
+
+type Head<T extends any[]> =
+    T extends [infer H, ...infer _]
+    ? H
+    : never;
+
+type Last<T extends any[]> =
+    T extends [infer _]
+    ? never : T extends [...infer _, infer Tl]
+    ? Tl
+    : never;
+
+
+type Allowed<
+    T extends Fn[],
+    Cache extends Fn[] = []
+    > =
+    T extends []
+    ? Cache
+    : T extends [infer Lst]
+    ? Lst extends Fn
+    ? Allowed<[], [...Cache, Lst]> : never
+    : T extends [infer Fst, ...infer Lst]
+    ? Fst extends Fn
+    ? Lst extends Fn[]
+    ? Head<Lst> extends Fn
+    ? Head<Parameters<Fst>> extends ReturnType<Head<Lst>>
+    ? Allowed<Lst, [...Cache, Fst]>
+    : never
+    : never
+    : never
+    : never
+    : never;
+
+type LastParameterOf<T extends Fn[]> =
+    Last<T> extends Fn
+    ? Head<Parameters<Last<T>>>
+    : never
+
+type Return<T extends Fn[]> =
+    Head<T> extends Fn
+    ? ReturnType<Head<T>>
+    : never
+
+
+function compose<T extends Fn, Fns extends T[], Allow extends {
+    0: [never],
+    1: [LastParameterOf<Fns>]
+}[Allowed<Fns> extends never ? 0 : 1]>
+    (...args: [...Fns]): (...data: Allow) => Return<Fns>
+
+function compose<
+    T extends Fn,
+    Fns extends T[], Allow extends unknown[]
+>(...args: [...Fns]) {
+    return (...data: Allow) =>
+        args.reduceRight((acc, elem) => elem(acc), data)
+}
+
+const foo = (arg: 1 | 2) => [1, 2, 3]
+const bar = (arg: string) => arg.length > 10 ? 1 : 2
+const baz = (arg: number[]) => 'hello'
+
+const check = compose(foo, bar, baz)([1, 2, 3]) // [number]
+const check2 = compose(bar, foo)(1) // expected error
+`;
 const navigation = {
   fp_utils: {
     id: "fp_utils",
     text: "Functional programming utils",
   },
-  strict_to_general: {
-    id: "strictt_to_general",
-    text: "Convert strict type to more general",
+
+  compose: {
+    id: "compose",
+    text: "Typing compose function",
+  },
+  string_unions: {
+    id: "string_unions",
+    text: "String union types",
   },
 };
 
@@ -184,6 +346,59 @@ const FP: FC = () => (
       it more FP style
     </p>
     <Code code={code7} />
+    <Header {...navigation.compose} />
+    <p>
+      Wait, don't you think above <Var>compose</Var> function is poorly typed?
+    </p>
+    <p>Let's write some crazy, unreadable and unmaintainable typings! :)</p>
+    <p>Let's define some base types and utils.</p>
+    <Code code={code9} />
+    <p>
+      Our main goal is to make <Var>compose</Var> without any arguments length
+      restriction.
+    </p>
+    <p>
+      For example, take a look on <Var>lodash compose typings</Var>
+    </p>
+    <Code code={code10} />
+    <p>There is a limit for arguments.</p>
+    <p>
+      Let's try to write function without any limits, at least explicit limits.
+      Please keep in mind TS has his own recursion limits, so we have to live
+      with that
+    </p>
+    <p>Validation logic</p>
+    <Code code={code11} />
+    <p>
+      Above type iterates through every function in the array and checks if
+      argument of current function is assignable to return type of next function{" "}
+      <Var>{"Head<Parameters<Fst>> extends ReturnType<Head<Lst>>"}</Var>
+    </p>
+    <p>Next, we can define simple helpers</p>
+    <Code code={code12} />
+    <p>
+      Finally, our <Var>compose</Var> function
+    </p>
+    <p>
+      <Anchor text="Here" href="https://catchts.com/validators" /> you can find
+      my article about type validation, it will help You to understand how I
+      made validation.
+    </p>
+    <Code code={code13} />
+    <p>
+      As you might have noticed, I have defined only one overload, this is
+      considered a bad practice. We should always define at least two. Sorry for
+      that.
+    </p>
+    <p>Full example</p>
+    <Code code={code14} />
+    <p>
+      <Anchor
+        text="Playground"
+        href="https://www.typescriptlang.org/play?#code/FAFwngDgpgBAYgewTAvDc0EDMZaaSWAIQEMAnVdQ7GAI3IOhlIC9KMob6XheP4AdpQAUJAFwwSAsAEpUAPknS+hGAAkoJACYAeACowoADxBQBWgM5KwAbQC6ilMBguYB46fNWbASwFYoCjUAGhgAOgi-AIoAfTtnVwB+dQSXCQEoADdAgG4VJgAZEgsQfUMTM0tre0dUt3LPKt9-QJg4uuSM7IoJdwqvGBsIsKjWmNDRij0AG3jXGGSZuvSs3N5GWABBaemEAHcoXTq+xqs4AXtguoBhEgBjAAtYD0qzi7tKezra+ZPXwbmSRgt0eUGW9ReA2a0RgBRKgJcyThIAa-3OHRg212B10l0GwxBT1CyIcMBW3XBfyhk3gJVCwxpJIxcBKqIG6PmSNZkKq5y+nPUml0yMUPLeGI02h0AAVyCQALZQUxkCw6FkgeSi-pVABKSoArmQBHpCDpJcKSpqMVj9ocdMjQkMIoSoKF1Q5wV1Ap7VmQfRT5uTvYGYF6yHkNrDiiBZWQFUrAgB5LBlMWCGqoOpFEr6LWnQQSoUyuWK5Wq7OlPSa+T+72RvUgQ0CVPat4Zpzzc25tm8gQYhtNk3QM1Fqs1kNh9ZYfUCO4gHwIIR3BDyiAICxQFv585ugRWNN6PE2vY9qwAbzqAAYJDYw3YrvMAIw3iux+PK5NqvfyeIAXxsx52ucFh5v8YYLDAl5kjAj4evMwjDOQADmFg3sMwF2DIEgIREWgkCA4iYjs+xyCgigDkaX4gbw06zvOi4wMuq7rpuxynoID6uMB7GHveRHYuxM4ANYCPs7zAPIOFhMhqH4hEGFyBe8xkAaRowFJeEERIx6keO8yuDJYQqVo+p3FAOo+EhDwgMIoh3HcoRQNMUDyrphjOfKdl3DIoSaSQMjAL+vDLnuKJ4MgaCiGQSESI+MAAD4wAATG5NiPqESWhAAzPEIWsvQFCRchEglGQfhIW5yFhM5AhISADwwIoj5QckcUSElwB5Si3AiMVob6vKtCBPYbkAORPMRo3BYurKgncQmUExa4bsI4WhAV60kCwMjCGlGXZZhMAAPRHYMAgDUNZC5TNKJzUJSWLSuy1QMIG24EgO2PnIJ3lNAc6HIYZBkAgfrrGDwBAA"
+      />
+    </p>
+    <Header {...navigation.string_unions} />
     <p>
       Let's consider next example. It is not strictly related to TS but I
       believe it will be helpful for you.

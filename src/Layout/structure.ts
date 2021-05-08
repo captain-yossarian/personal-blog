@@ -562,19 +562,19 @@ export const blogArticles = [
         id: 23,
         date: 'April 27, 2021'
     },
-    // {
-    //     url: '/FP-style',
-    //     title: 'Functional programming tips & utils',
-    //     description: 'Some useful typed pure functions',
-    //     next: '/math',
-    //     Comp: 'FP',
-    //     links: [
+    {
+        url: '/FP-style',
+        title: 'Functional programming tips & utils',
+        description: 'Some useful typed pure functions',
+        next: '/math',
+        Comp: 'FP',
+        links: [
 
-    //     ],
-    //     tags: ['fp'],
-    //     id: 22,
-    //     date: 'April 21, 2021'
-    // },
+        ],
+        tags: ['fp'],
+        id: 23,
+        date: 'May 8, 2021'
+    },
 
     // {
     //     url: '/ts-limitations',
