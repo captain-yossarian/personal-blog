@@ -530,7 +530,7 @@ export const blogArticles = [
     },
     {
         url: '/deep-pick',
-        title: 'Deep pick typings',
+        title: 'Deep pick typings (updated)',
         description: 'I will try to implement smth similar to lodash.get typings',
         next: '/validators',
         Comp: 'DeepPick',
@@ -543,7 +543,7 @@ export const blogArticles = [
         ],
         tags: ['deeppick'],
         id: 22,
-        date: 'April 25, 2021'
+        date: 'May 28, 2021'
     },
     {
         url: '/validators',
