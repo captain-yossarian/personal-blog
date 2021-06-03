@@ -132,6 +132,7 @@ interface Hero {
    sex: HeroSex;
 }
 
+// credits goes to https://stackoverflow.com/a/50375286
 type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
    k: infer I
 ) => void
