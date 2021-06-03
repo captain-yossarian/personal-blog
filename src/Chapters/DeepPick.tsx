@@ -389,6 +389,20 @@ const result7 = deepPickFinal(foo)
 `;
 
 const code16 = `
+type Foo = {
+    user: {
+        description: {
+            name: string;
+            surname: string;
+        }
+    }
+}
+
+declare var foo: Foo;
+
+type Primitives = string | number | symbol;
+
+
 type Util<Obj, Props extends ReadonlyArray<Primitives>> =
     Props extends []
     ? Obj
@@ -409,6 +423,16 @@ type IsNeverType<T> = [T] extends [never] ? true : false;
 
 type IsAllowed<T> = IsNeverType<T> extends true ? false : true;
 type Validator<T extends boolean | string> = T extends true ? [] : [never]
+type ValuesUnion<T, Cache = T> =
+    T extends Primitives ? T : {
+        [P in keyof T]:
+        | Cache | T[P]
+        | ValuesUnion<T[P], Cache | T[P]>
+    }[keyof T]
+
+const hasProperty = <Obj, Prop extends Primitives>(obj: Obj, prop: Prop)
+    : obj is Obj & Record<Prop, any> =>
+    Object.prototype.hasOwnProperty.call(obj, prop);
 
 
 function pick<
@@ -420,7 +444,7 @@ function pick<
         obj: ValuesUnion<Obj>,
         props: [...Props],
         ..._: Validator<IsAllowed<Result>>
-    ): Reducer<Props, Obj>;
+    ): Util<Obj, Props>;
 
 function pick<
     Obj,
@@ -590,7 +614,7 @@ const DeepPick: FC = () => (
     <p>
       <Anchor
         text="Playground"
-        href="https://www.typescriptlang.org/play?#code/C4TwDgpgBAYg9nKBeKBvAsAKCjqBXAZwgCcAuNLXKqAEwgIGNiBLMYZuAO3I22v84BDALYRyBYC04BzANyV+1AnmJDR4ycxny+-AL4KcBzMax0GAG0HFoAN2tQAZgnLw4OrKEhQACi2HM7Lb0yFASUtJQAD5QnHjCAEYk0WEgiXAWHphe0ABqghZ49AA8ACoAfKGlANoA1hAgcI5QpQC6WJ7g0ACiFhDCoeFach3ZXb42NMwMgsAQxQBK9HgWwFAQAB5znDQEUEsMcMQ0xUMyADRQgpwg5Zel61sQO3u9-ZVIhi2P27tQ9Y1mktlKsoAB+fbLVbVNpQcicCDBYijHKQmh4BgkYpfADSDT2m1+eyWghoXAsIAAgsRiIIQMVrrdzl9KQwGPEVrMjj9nn8DkcTmdpJdGR80MYqB9cfieS8oNV2rpwVBWezhJzgEcvuQ8SACU85dUtI5kgAJRVUCGm2V-N7CL4QvwQKYzObFVUcqya4iXU3lbWxREkAO6-VEqA2UnkkDy41my4AOiTceILUEzAsFtwENK6YsNuJECjnAp1Np9Lt-qVVoLUDtDrRGKxuYzlydLtm8w96q9R195SrVHhQeRSuHSIDCKRWUOnAkUAAFoICH44JBiKBQsUAPIJABWbeIa9rfmYASC9HKAAo4PvyLuD1AwEewORV2AAJQB297qDMPYPlAABkkKHMcxTviKNwfIOuAPhADDAAmz5wJqOQJkuBDbgA7pw74kKACYzBYFg3vulwoZ+WSdN4+SFPQACqnAcJwZSXAAwoIDALtAKAVMgXwPISvJ7Ke57MMEew5nCUB0UUBDFLwijyj4f6cP8DRNC0rSkF8VAxJx3HQDENQ+Fm-AxHJjHMVwZTVGZHFcTxKSma0sFGFWNHQAx7AWDu5ETGuYYiZCxaljSdIQf4gQSZeUpKu+wWGuZyoPgGiW1kanAmqmMDMMQEgpRCeUFWswlygCWlpdWUAPtUJWFZOI7pS+SV-FlOWwBIibJtlyQtpmDYwPO5V-JVzTVZaaYZrWQoKg2PkZv5e71YV9x5u5MlTsGY6BhOu3baOWAAPTHVATDOoEewLsAwBgAQpCndIgQLngCREXAwjHQETBwAQTTAMdpRdAAykwrCA-+yj0MdABMADMACMAAcsMAMRQ0UhzCKInDAAAtPDADsACcAAMJMo8jRNeVAACSBAAHIjsDkBlGKMKtJlh1cxCkhFDJjgFEQWSogzlIkXA2HOuzoQM8zSKs-M-GjXs-PQBCQsWEQMnqzoqJ0cwNBcsQZS1gkCB9NcKRCmKQkGn86vKgqMnVDzoxYI4eCcIhLFPtMtTYkqD7MglL6zZoFxfBlquhWSJZUhF9LvncXzAisZUO3si1+SHgX3QOXxXnpuA-uQVkEExLHLanSpUJRD3ykmCaJa0ofKc3AD65cFEbJvFOLkvSyc6erIXSofuQSzopipuJZcD7lFkXs++wXD+wwgdfCH0fh7HQrt7gMdZ3H0ZlpFKeHzgo+Z+GOfLYeQUDsXdel3eskFPJVe2YvV-UA35BqjN1bn-KgXce4WD7t6AeBAJYWCljLG+A4PwUCVDYYAKh1INwTJMJsL9lJXi4gwCiL4UFIEqJhfCG4QCELZCQtcKCIREOqJRLm5AiGgLfnuL4X4TCjGOgAKgEZQARtVagiOOlgWc84bAgmAMjUIYAA5XmcHAS41QADkhASAaMuBougjAWBsBYho1oKDTpQDgOIzA0i1iyIziTRRyjVHqK0UQYguioD6PoODYxXBPEaLUBAUx5izpWP4UIkRdYNiQEQs6dYNIjgEAkaMWxEYoTAERmTJxm8VEIFcQY3xa9OAhKgBYkgR5RxpPsasRGiMcm1DyWo+UgSRDBLMWUsJtQgA"
+        href="https://www.typescriptlang.org/play?#code/C4TwDgpgBAYg9nKBeKBvAsAKCjqBXAZwgCcAuNLXKqAEwgIGNiBLMYZuAO3I22v84BDALYRyBYC04BzANyV+1AnmJDR4ycxny+-AL4KcBzMax0GAG0HFoAN2tQAZgnLw4OrKEhQACi2HM7Lb0yFASUtJQAD5QnHjCAEYk0WEgiXAWHpie4NAAquwWADwA8gkAVgA0vsRwYARQEAAewBCcNA0AShCCNFwWIACCxMSCIEV+zAFB9AB8s8iGNXUNza3tDQDaALpLAPxQZeVL5H4rjS1tHVCbWo7JMMzEEru6UAePz8AX69cA1hAQHBHIcKvtQeVNp8XidYhBgsRYWd6j8rls7g8JNUAHS4jHEKAAFUEzAsryoHwkqI2UABQJBR3BxNJ1Ou4S00h24IKpNKFShL2qzIss1hnHhJDFEsRb3I4oRWCwAHolVAmBAaIEGgALYDAeqkFXSQLavAJbEMODCJUBJhwAjA4BKwm5ADKTFYTuYBGU9CVACYAMwARgAHP6AMTe32W4SiTjAAC0gYA7ABOAAMabDoZTOW8AEkCAA5aUuyBFQkLFCbQnbVlbeUkesHSR4aDkRyCCxELJeaBFwYWCxwADuGsr1agRdLCPLEEnDagbegBy7PY7y+I7Z0-agADVu8waIJgHBiJWlwkEBYepwUuyZFPCUuV+8bvXyJsm8RXnvDxY7YEHknAcJwlbVAAwoIDDatAKBVosbwvmsaI1FMgTMMEDQHC+PBLFQmw+FAWi0oCwJEtspAEbgMTQbB0AxISRHkooMQAUBIFgZWLFQTBcEpMxPjbKKbx6JsdIUXWiqYJanBUtqggEMiJCgKEfJVMsYBLpM0xYXMAAUcAVOQRzVGAtRgKclkAJSwsZ5QkQ0RxQAAZFA3SWsQNATJZ1SCJwIDVqJVBHBADDANiFlwGe-bYopBAlKOnAqcQoAWt2FhGRU5m2VkWCOHgnARWBUBgMwDB-EUSxmUsyJLo+0iVHVlmrJcNLdL0-RDCMYy+XUszNW83TKBY3yoTSPLFGZWkEPMSwGTROAOeQHH0FxXAaYNS1la1X64tiyIENsQ2KFAB0APqrUeJ5nheg7DmOE4jXgY3zW8NnkFNGnVEdsxZIVxXsFwZUVVVNU5S1dQNZoMinbgR1Lp1fScAMwyjOMyLbcN9CveN7XXN9M1-bMi1vFQK0Ht2nGgZtRzY2d0UGjcB1HSdO2XddFjHqe55FA9I7jj5L1vbMNkUG8NjACo95MwQ2I2DQeAMBAZNnQZMEMLldTi0gCwJaloAawwWu7Tr76a5sTOflAmvw-wDlLHZJgyUqABUbuUG7hx-F7SpYHJVI2KNwChqE5WVQZzhwNUmwAOSECQcfVHHdCMCwbBgXH2ziyqUBwL7slcEHuNjWm4dg1HCCxwnRDEMnUCp-QHqZ1wDdx2oEDZ7nqoF67Hte1AACiTSQBFGqNCM54EH7MmB98wd48GGYV5H0c12nLfA5w3dQHnJC1DK89QIvY3BsGq9-FXMc3B3Ihdzne+938QA"
       />
     </p>
     <p>
