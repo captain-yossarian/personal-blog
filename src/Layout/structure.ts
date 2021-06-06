@@ -35,6 +35,10 @@ export const sections = [
             {
                 href: 'https://blog.joshuakgoldberg.com/',
                 text: 'https://blog.joshuakgoldberg.com/'
+            },
+            {
+                href: 'https://thenewtoys.dev/blog',
+                text: 'T.J. Crowder \'s blog'
             }
         ],
         id: -1,
