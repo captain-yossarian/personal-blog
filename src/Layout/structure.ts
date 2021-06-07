@@ -570,7 +570,7 @@ export const blogArticles = [
         url: '/FP-style',
         title: 'Functional programming tips & utils',
         description: 'Some useful typed pure functions',
-        next: '/math',
+        next: '/mutations',
         Comp: 'FP',
         links: [
 
@@ -578,6 +578,19 @@ export const blogArticles = [
         tags: ['fp'],
         id: 23,
         date: 'May 8, 2021'
+    },
+    {
+        url: '/mutations',
+        title: 'Mutations in typescript',
+        description: 'TypeScript is more about immutability',
+        next: '/math',
+        Comp: 'Mutations',
+        links: [
+
+        ],
+        tags: ['fp', 'mutations'],
+        id: 24,
+        date: 'June 7, 2021'
     },
 
     // {

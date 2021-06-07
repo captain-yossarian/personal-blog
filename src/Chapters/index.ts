@@ -21,5 +21,6 @@ export { default as LinkedList } from './LinkedList';
 export { default as OOP } from './OOP';
 export { default as FP } from './FunctionalProgramming';
 export { default as DeepPick } from './DeepPick';
-export { default as Validation } from './Validations'
+export { default as Validation } from './Validations';
+export { default as Mutations } from './Mutations'
 //export { default as Limitations } from './Limitations'

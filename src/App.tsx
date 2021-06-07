@@ -31,6 +31,7 @@ import {
   FP,
   DeepPick,
   Validation,
+  Mutations,
 } from "./Chapters";
 import { About, Contact, Home } from "./Sections";
 import { blogArticles, sections } from "./Layout/structure";
@@ -80,6 +81,7 @@ export const componentMap = {
   FP,
   DeepPick,
   Validation,
+  Mutations,
 };
 
 setTimeout(() => Prism.highlightAll(), 0);
