@@ -216,8 +216,6 @@ const links = Object.values(navigation);
 const Mutations: FC = () => (
   <>
     <HeaderNav links={links} />
-    <p>I think object mutation is ok.</p>
-    <p>If you also think that way - keep reading ))</p>
     <p>
       In this article, I will describe all problems you can encounter mutating
       the objects in typescript.
@@ -313,7 +311,7 @@ const Mutations: FC = () => (
         text="Here"
         href="https://stackoverflow.com/questions/67834191/why-can-i-index-by-string-to-get-a-property-value-but-not-to-set-it/67836124#67836124"
       />
-      you can find question/answer
+      you can find related question/answer
     </p>
     <p>
       <Anchor
@@ -322,10 +320,11 @@ const Mutations: FC = () => (
       />
       you can find another good example when TS is not happy about mutations
     </p>
+    <p>
+      So, if you want to mutate your variable, please check if you don't break
+      anything :)
+    </p>
   </>
 );
-// https://stackoverflow.com/questions/67857960/how-to-selectively-assign-from-one-partial-to-another-in-typescript/67860407#67860407
-// https://stackoverflow.com/questions/67834191/why-can-i-index-by-string-to-get-a-property-value-but-not-to-set-it/67836124#67836124
-// https://stackoverflow.com/questions/67660342/why-does-typescript-say-this-variable-is-referenced-directly-or-indirectly-in-i
-// https://stackoverflow.com/questions/66410115/difference-between-variance-covaraince-contravariance-and-bivariance-in-typesc
+
 export default Mutations;

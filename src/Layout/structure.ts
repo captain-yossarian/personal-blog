@@ -590,7 +590,7 @@ export const blogArticles = [
         ],
         tags: ['fp', 'mutations'],
         id: 24,
-        date: 'June 7, 2021'
+        date: 'June 10, 2021'
     },
 
     // {
