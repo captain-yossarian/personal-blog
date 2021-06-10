@@ -46,7 +46,7 @@ interface Person {
 
 type Result = UnionToArray<keyof Person>; // ["name", "age", "surname", "children"]
 
-const func = <T>(): UnionToArray<keyof T> => null as any;
+const func = <T,>(): UnionToArray<keyof T> => null as any;
 
 const result = func<Person>(); // ["name", "age", "surname", "children"]
 `;

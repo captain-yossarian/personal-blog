@@ -119,15 +119,96 @@ Reflect.deleteProperty(obj, 'tag'); // unfortunatelly is allowed
 delete obj.count // allowed
 `;
 
-const navigation = {
-  first_argument: {
-    id: "first_argument",
-    text: "First argument",
-  },
+const code6 = `
+interface InjectMap {
+    "A": "B",
+    "C": "D"
+}
+type InjectKey = keyof InjectMap;
 
-  strict_to_general: {
-    id: "strict_to_general",
-    text: "Convert strict type to more general",
+const input: Partial<InjectMap> = {};
+const output: Partial<InjectMap> = {};
+
+const keys: InjectKey[] = []
+
+
+for (let i = 0; i < keys.length; i++) {
+    const key = keys[i];
+
+    const inp = input[key] // "B" | "D" | undefined
+    const out = output[key] // "B" | "D" | undefined
+
+    output[key] = input[key] // error
+    
+}
+`;
+
+const code7 = `
+type KeyType_ = "B" | "D" | undefined
+
+let keyB: KeyType_ = 'B';
+let keyD: KeyType_ = 'D'
+
+output[keyB] = input[keyD] // Boom, illegal state! Runtime error!
+`;
+
+const code8 = `
+const foo = <T extends { [key: string]: any }>(obj: T) => {
+    obj['a'] = 2 // error
+}
+`;
+
+const code9 = `
+let index: { [key: string]: any } = {}
+
+let immutable = {
+    a: 'a'
+} as const
+
+let record: Record<'a', 1> = { a: 1 }
+
+index = immutable // ok
+index = record // ok
+
+const foo = <T extends { [key: string]: any }>(obj: T) => {
+    obj['a'] = 2 // error
+
+    return obj
+}
+
+const result1 = foo(immutable) //  unsound, see return type 
+const result2 = foo(record) // unsound , see return type
+`;
+
+const code10 = `
+let index: { [key: string]: any } = {}
+
+let immutable = {
+  a: 'a'
+} as const
+
+let record: Record<'a', 1> = { a: 1 }
+
+index = immutable // ok
+index = record // ok
+
+const foo = <T extends { [key: string]: any }>(obj: T) => {
+  Reflect.deleteProperty(obj, 'a')
+
+  return obj
+}
+
+const result1 = foo(immutable) //  unsound, see return type 
+const result2 = foo(record) // unsound , see return type
+`;
+const navigation = {
+  first: {
+    id: "first",
+    text: "First example",
+  },
+  second: {
+    id: "second",
+    text: "Second example",
   },
 };
 const links = Object.values(navigation);
@@ -191,11 +272,56 @@ const Mutations: FC = () => (
     </p>
     <Code code={code4} />
     <p>
-      However, TypeScript is smart enough to prevent some issues related to
-      mutations.
+      However, if you are planning to mutate your objects, you should be aware
+      about some issues you can face.
     </p>
-    <p>Consider next example:</p>
-    <Code code={code5} />
+    <Header {...navigation.first} />
+    <p>First example:</p>
+    <Code code={code6} />
+    <p>It is might be not obvious, but this is expected behavior.</p>
+    <p>
+      While both <Var>input</Var> and <Var>output</Var> share same type, they
+      could have different value.
+    </p>
+    <Code code={code7} />
+    <p>
+      <Anchor
+        href="https://stackoverflow.com/questions/67857960/how-to-selectively-assign-from-one-partial-to-another-in-typescript/67860407#67860407"
+        text="Here"
+      />
+      you can find above example
+    </p>
+    <Header {...navigation.second} />
+    <p>Second example:</p>
+    <Code code={code8} />
+    <p>
+      This behavior is expectable, because mutating the arguments can lead to
+      runtime errors.
+    </p>
+    <Code code={code9} />
+    <p>
+      As you see, TS has some mechanisms to avoid unsound mutations. But,
+      unfortunately, it is not enough.
+    </p>
+    <p>
+      Try to use <Var>Reflect.deleteProperty</Var>
+    </p>
+    <Code code={code10} />
+    <p>
+      Unfortunately, there is no error.
+      <Anchor
+        text="Here"
+        href="https://stackoverflow.com/questions/67834191/why-can-i-index-by-string-to-get-a-property-value-but-not-to-set-it/67836124#67836124"
+      />
+      you can find question/answer
+    </p>
+    <p>
+      <Anchor
+        text="Here"
+        href="https://stackoverflow.com/questions/67660342/why-does-typescript-say-this-variable-is-referenced-directly-or-indirectly-in-i"
+      />
+      you can find another good example when TS is not happy about mutations
+    </p>
   </>
 );
 // https://stackoverflow.com/questions/67857960/how-to-selectively-assign-from-one-partial-to-another-in-typescript/67860407#67860407
