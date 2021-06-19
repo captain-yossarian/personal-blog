@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import { Layout } from "../Layout";
 import { Props } from "../Chapters/Props";
-import Links, { Props as LinksProps } from "./Links";
+import Links, { Props as LinksProps, Anchor } from "./Links";
 import styled from "styled-components";
 import { TEXT_COLOR, THEME_COLOR } from "../Layout/utils";
 
@@ -65,7 +65,7 @@ const twitterSkip = ["about", "contact", "home"];
 
 const TwitterShare: FC<{ title: string; path: string }> = ({ title, path }) =>
   !twitterSkip.includes(title.toLowerCase()) ? (
-    <p>
+    <span>
       <a
         href={`https://twitter.com/share?url=catchts.com${path}&hashtags=typescript,catchts&text=${title}`}
       >
@@ -75,7 +75,7 @@ const TwitterShare: FC<{ title: string; path: string }> = ({ title, path }) =>
           title="Share this page on Twitter"
         />
       </a>
-    </p>
+    </span>
   ) : null;
 
 const RenderDate = styled.div`
@@ -108,6 +108,12 @@ const Counter = styled.span`
   padding: 5px;
   margin-left: 10px;
 `;
+
+const Footer = styled.footer`
+  border-top: 2px solid ${THEME_COLOR};
+  margin: 10px 0 20px 0;
+  padding: 5px;
+`;
 const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
   title,
   children,
@@ -138,19 +144,32 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
   return (
     <Layout title={title}>
       {children}
-      <TwitterShare title={title} path={path} />
-      {links.length > 0 ? (
+      <Footer>
         <div>
-          <Links data={links} />
-          {id >= 0 ? (
-            <>
-              <LikeButton onClick={handleClick}>I Like It!</LikeButton>
-              <Counter>{count > -1 ? count : 0}</Counter>
-            </>
-          ) : null}
+          <p>
+            Share on twitter <TwitterShare title={title} path={path} />
+          </p>
         </div>
-      ) : null}
-
+        <p>
+          If you want to contribute,
+          <Anchor
+            href="https://github.com/captain-yossarian/personal-blog"
+            text="here"
+          />
+          you can find the repo
+        </p>
+        {links.length > 0 ? (
+          <div>
+            <Links data={links} />
+            {id >= 0 ? (
+              <>
+                <LikeButton onClick={handleClick}>I Like It!</LikeButton>
+                <Counter>{count > -1 ? count : 0}</Counter>
+              </>
+            ) : null}
+          </div>
+        ) : null}
+      </Footer>
       <RenderDate>{date}</RenderDate>
     </Layout>
   );
