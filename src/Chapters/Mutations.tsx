@@ -217,7 +217,7 @@ const Mutations: FC = () => (
   <>
     <HeaderNav links={links} />
     <p>
-      In this article, I will describe all problems you can encounter mutating
+      In this article, I will describe some problems you can encounter mutating
       the objects in typescript.
     </p>
     <p>

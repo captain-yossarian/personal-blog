@@ -32,6 +32,7 @@ import {
   DeepPick,
   Validation,
   Mutations,
+  ReactProps,
 } from "./Chapters";
 import { About, Contact, Home } from "./Sections";
 import { blogArticles, sections } from "./Layout/structure";
@@ -43,15 +44,6 @@ import ArticleBase from "./Shared/ArticleBase";
 import { tracker } from "@wunu/frontend";
 
 tracker("https://api.catchts.com").subscribe();
-
-// console.log({ tracker });
-// tracker("http://localhost:3001").subscribe();
-
-// fetch("http://localhost:3001/metrics/distinct_per_day").then((data) =>
-//   data.json().then((resp) => {
-//     console.log({ resp });
-//   })
-// );
 
 export const componentMap = {
   MathOperations,
@@ -82,6 +74,7 @@ export const componentMap = {
   DeepPick,
   Validation,
   Mutations,
+  ReactProps,
 };
 
 setTimeout(() => Prism.highlightAll(), 0);

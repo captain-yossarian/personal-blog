@@ -5,7 +5,6 @@ export const sections = [
         title: 'About',
         description: 'About section',
         Comp: 'About',
-        next: '',
         links: [
             ,
             {
@@ -51,7 +50,6 @@ export const sections = [
         title: 'Contact',
         description: 'About section',
         Comp: 'Contact',
-        next: '',
         links: [],
         id: -2,
         date: '',
@@ -63,7 +61,6 @@ export const sections = [
         title: 'Home',
         description: 'Home section',
         Comp: 'Home',
-        next: '',
         links: [],
         id: -3,
         date: '',
@@ -78,7 +75,6 @@ export const blogArticles = [
         title: "Math operations",
         description:
             "Let's assume, You want to make some math operations either on number or bigint.",
-        next: "/typed-react-children",
         Comp: 'MathOperations',
         links: [
             {
@@ -92,7 +88,6 @@ export const blogArticles = [
             }
         ],
         tags: ['number', 'bigint', 'math'],
-        id: 1,
         date: 'December 13, 2020'
     },
     {
@@ -100,7 +95,6 @@ export const blogArticles = [
         title: "Type React component children",
         description:
             "Let's assume you want to create component which will accept array of children components with certain props.",
-        next: "/react-return-type",
         Comp: 'ReactChildren',
         links: [
             {
@@ -110,7 +104,6 @@ export const blogArticles = [
             },
         ],
         tags: ['react', 'children'],
-        id: 2,
         date: 'November 23, 2020'
     },
     {
@@ -118,7 +111,6 @@ export const blogArticles = [
         title: "Type React component return type",
         description:
             "What if you need to make sure that some component will always return other component with some particular props",
-        next: "/compare-arguments",
         Comp: 'ReactReturnType',
         links: [
             {
@@ -128,14 +120,12 @@ export const blogArticles = [
             },
         ],
         tags: ['ReturnType', 'react'],
-        id: 3,
         date: 'December 22, 2020'
     },
     {
         url: "/compare-arguments",
         title: "Compare array arguments",
         description: "Compare length of arrays as arguments",
-        next: "/range-numbers",
         Comp: 'CompareArguments',
         links: [
             {
@@ -149,7 +139,6 @@ export const blogArticles = [
             }
         ],
         tags: ['array', 'arguments', 'narrow'],
-        id: 4,
         date: 'December 18, 2020'
     },
 
@@ -157,7 +146,6 @@ export const blogArticles = [
         url: "/range-numbers",
         title: "Generate numbers in range",
         description: "How to generate numbers range as a literal type",
-        next: "/tuples",
         Comp: 'RangeNumbers',
         links: [
             {
@@ -167,14 +155,12 @@ export const blogArticles = [
             },
         ],
         tags: ['number', 'range', 'template literals'],
-        id: 5,
         date: 'December 15, 2020'
     },
     {
         url: "/tuples",
         title: "Handle literal arrays/tuples",
         description: "Filter, map, reduce, findIndex etc ...",
-        next: "/union-array",
         Comp: 'Tuples',
         links: [
             {
@@ -200,14 +186,12 @@ export const blogArticles = [
             }
         ],
         tags: ['array', 'tuples'],
-        id: 6,
         date: 'April 9, 2021'
     },
     {
         url: "/union-array",
         title: "Transform Union to Array",
         description: "How to transform unions to array",
-        next: "/unions",
         Comp: 'UnionArray',
         links: [
             {
@@ -217,14 +201,12 @@ export const blogArticles = [
             },
         ],
         tags: ['union', 'array', 'transform'],
-        id: 7,
         date: 'January 2, 2021'
     },
     {
         url: "/unions",
         title: "Handle unions in React components",
         description: "How to work with unions",
-        next: "/callbacks",
         Comp: 'Unions',
         links: [
             {
@@ -255,14 +237,12 @@ export const blogArticles = [
             }
         ],
         tags: ['union', 'react'],
-        id: 8,
         date: 'November 18, 2020'
     },
     {
         url: "/callbacks",
         title: "Callbacks",
         description: "How to properly type callbacks",
-        next: "/publish-subscribe",
         Comp: 'Callbacks',
         links: [
             {
@@ -302,28 +282,24 @@ export const blogArticles = [
             }
         ],
         tags: ['callback', 'infer'],
-        id: 9,
         date: 'April 30, 2021'
     },
     {
         url: "/publish-subscribe",
         title: "Publish subscribe pattern",
         description: "Type safe publish subscribe pattern",
-        next: "/type-state",
         Comp: 'PubSub',
         links: [{
             href: 'https://stackoverflow.com/questions/65668969/event-maps-and-type-guards#answer-65890181',
             text: 'Event mapping'
         }],
         tags: ['pattern'],
-        id: 10,
         date: 'January 25, 2021'
     },
     {
         url: "/type-state",
         title: "Type state pattern",
         description: "Type safe handler",
-        next: "/api",
         Comp: 'TypeState',
         links: [
             {
@@ -348,21 +324,18 @@ export const blogArticles = [
             }
         ],
         tags: ['pattern', 'Map', 'callback'],
-        id: 11,
         date: 'December 23, 2020'
     },
     {
         url: "/api",
         title: "Api requests",
         description: "Make type safe api requests with TypeScript",
-        next: "/math",
         Comp: 'Api',
         links: [{
             href: 'https://stackoverflow.com/questions/65658633/how-to-determine-the-type-of-generic-in-a-class/65664455#65664455',
             text: 'Restrict using of methods by generic value'
         }],
         tags: ['pattern'],
-        id: 12,
         date: 'January 11, 2021'
     },
 
@@ -370,7 +343,6 @@ export const blogArticles = [
         url: '/template-literals',
         title: 'Working with template literals',
         description: 'Here you can find some advanced examples with template literals',
-        next: '/chain-callbacks',
         Comp: 'TemplateLiterals',
         links: [
             {
@@ -390,14 +362,12 @@ export const blogArticles = [
             }
         ],
         tags: ['template literals'],
-        id: 13,
         date: 'January 22, 2021'
     },
     {
         url: '/chain-callbacks',
         title: 'How to chain callbacks',
         description: 'Here you can find information about callbacks chaining',
-        next: '/flatten-union',
         Comp: 'CallbackChain',
         links: [
             {
@@ -410,14 +380,12 @@ export const blogArticles = [
             }
         ],
         tags: ['callback', 'union', 'tuples'],
-        id: 14,
         date: 'February 10, 2021'
     },
     {
         url: '/flatten-union',
         title: 'How to flatten union',
         description: 'Here you can find information about union flattening',
-        next: '/union-partial',
         Comp: 'FlattenUnion',
         links: [
             {
@@ -426,14 +394,12 @@ export const blogArticles = [
             }
         ],
         tags: ['union', 'flatten'],
-        id: 15,
         date: 'February 11, 2021'
     },
     {
         url: '/union-partial',
         title: 'Use union instead of Partial',
         description: 'Constrain object keys to enum\'s values while not requiring all keys to be present and object values are not considered undefined',
-        next: '/dates',
         Comp: 'UnionPartial',
         links: [
             {
@@ -442,14 +408,12 @@ export const blogArticles = [
             }
         ],
         tags: ['union', 'partial', 'recursion', 'tuples'],
-        id: 16,
         date: 'February 18, 2021'
     },
     {
         url: '/dates',
         title: 'Working with Dates',
         description: 'Type safe objects with Dates',
-        next: '/type-nagation',
         Comp: 'Dates',
         links: [
             {
@@ -458,14 +422,12 @@ export const blogArticles = [
             }
         ],
         tags: ['template literals'],
-        id: 17,
         date: 'March 21, 2021'
     },
     {
-        url: '/type-nagation',
+        url: '/type-negation',
         title: 'Type negation',
         description: 'I want any type except ...',
-        next: '/hex-validation',
         Comp: 'TypeNegation',
         links: [
             {
@@ -477,14 +439,12 @@ export const blogArticles = [
             }
         ],
         tags: ['generic', 'negation'],
-        id: 18,
         date: 'April 12, 2021'
     },
     {
         url: '/hex-validation',
         title: 'HEX Validation',
         description: 'Validator for HEX values',
-        next: '/linked-list',
         Comp: 'HexValidation',
         links: [
             {
@@ -493,14 +453,12 @@ export const blogArticles = [
             }
         ],
         tags: ['template literals', 'hex', 'tuples'],
-        id: 19,
         date: 'March 29, 2021'
     },
     {
         url: '/linked-list',
         title: 'Linked list',
         description: 'Linked List with recursive types',
-        next: '/math',
         Comp: 'LinkedList',
         links: [
             {
@@ -509,14 +467,12 @@ export const blogArticles = [
             }
         ],
         tags: ['recursive', 'data structure'],
-        id: 20,
         date: 'April 26, 2021'
     },
     {
         url: '/oop-style',
         title: 'OOP typings',
         description: 'Typings for classes',
-        next: '/deep-pick',
         Comp: 'OOP',
         links: [
             {
@@ -529,14 +485,12 @@ export const blogArticles = [
             }
         ],
         tags: ['oop', 'inheritance'],
-        id: 21,
         date: 'April 17, 2021'
     },
     {
         url: '/deep-pick',
         title: 'Deep pick typings (updated)',
         description: 'I will try to implement smth similar to lodash.get typings',
-        next: '/validators',
         Comp: 'DeepPick',
         links: [
             {
@@ -546,14 +500,12 @@ export const blogArticles = [
 
         ],
         tags: ['deeppick'],
-        id: 22,
         date: 'May 28, 2021'
     },
     {
         url: '/validators',
         title: 'Type validators',
         description: 'How to implements several type validators in generic way',
-        next: '/math',
         Comp: 'Validation',
         links: [
             {
@@ -563,55 +515,41 @@ export const blogArticles = [
 
         ],
         tags: ['type validation'],
-        id: 23,
         date: 'April 27, 2021'
     },
     {
         url: '/FP-style',
         title: 'Functional programming tips & utils',
         description: 'Some useful typed pure functions',
-        next: '/mutations',
         Comp: 'FP',
         links: [
 
         ],
         tags: ['fp'],
-        id: 23,
         date: 'May 8, 2021'
     },
     {
         url: '/mutations',
         title: 'Mutations in typescript',
         description: 'TypeScript is more about immutability',
-        next: '/math',
         Comp: 'Mutations',
         links: [
 
         ],
         tags: ['fp', 'mutations'],
-        id: 24,
         date: 'June 10, 2021'
     },
+    {
+        url: '/react-props',
+        title: 'Handle Props in React',
+        description: 'Make illegal props unrepresentable',
+        Comp: 'ReactProps',
+        links: [
 
-    // {
-    //     url: '/ts-limitations',
-    //     title: 'TypeScript design limitations',
-    //     description: 'Here you can find some TypeScript design limitations gathered in one place',
-    //     next: '/math',
-    //     Comp: 'Limitation',
-    //     links: [
-    //         {
-    //             href: 'https://stackoverflow.com/questions/66346104/typescript-incorrect-type-inference/66452775#66452775',
-    //             text: 'Deep comparison',
-    //         },
-    //         {
-    //             href: 'https://stackoverflow.com/questions/66439319/why-does-an-intersection-change-when-the-types-are-reordered#answer-66439965',
-    //             text: 'Overloadings infering'
-    //         }
-    //     ],
-    //     tags: ['union', 'partial', 'recursion', 'tuples'],
-    //     id: 16,
-    //     date: 'February 18, 2021'
-    // }
-].map(elem => ({ ...elem, type: 'article' }))
+        ],
+        tags: ['illegal state', 'react', 'props'],
+        date: 'June 19, 2021'
+    },
+
+].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
 
