@@ -333,8 +333,8 @@ const links = Object.values(navigation);
 const ReactProps: FC = () => (
   <>
     <p>
-      In this article, I will describe how to make illegal props unrepresentable
-      in React.
+      In this article, I will describe some issues you may encounter making
+      illegal props unrepresentable in React.
     </p>
     <p>Let's start with simple example:</p>
     <Code code={code1} />
