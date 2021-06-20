@@ -14,7 +14,7 @@ interface Disabled {
 }
 
 class ConnectionActive<T> implements Active {
-  active: true;
+  active: true = true;
   data: T;
   constructor(data: T) {
     this.data = data;
@@ -24,7 +24,7 @@ class ConnectionActive<T> implements Active {
 }
 
 class ConnectionDisabled<T> implements Disabled {
-  active: false;
+  active: false = false;
   data: T;
   constructor(data: T) {
     this.data = data;
