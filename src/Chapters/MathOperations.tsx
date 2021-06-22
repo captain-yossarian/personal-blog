@@ -85,7 +85,7 @@ const MathOperations: FC = () => (
       function definition:
     </p>
     <Code code={code2} />
-    <p>Unfortunately, this function don't work as expected. Let's test it:</p>
+    <p>Unfortunately, this function doesn't work as expected. Let's test it:</p>
     <Code code={code3} />
     <p>
       In above case,<Var>y</Var> can be either <Var>number</Var> or
@@ -99,7 +99,7 @@ const MathOperations: FC = () => (
     <p>Ok, what we can do? We can define two generic parameters:</p>
 
     <Code code={code4} />
-    <p>Unfortunately, above example still don't work as we expect.</p>
+    <p>Unfortunately, above example still doesn't work as we expect.</p>
     <Code code={code5} />
     <p>
       Only overloadings might help us here. We should explicitly say, that

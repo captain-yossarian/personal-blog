@@ -159,7 +159,7 @@ const result0 = array([1, 2, 3] as const, [[1, 1, 1]] as const); // ok
 /**
  * Errors expected
  */
-const result1 = array([1, 2, 3], [[1, 1, 1], [1]]); // no error, but should be
+const result1 = array([1, 2, 3], [[1, 1, 1], [1]]); 
 const result2 = array(
   [1, 2, 3] as const,
   [
@@ -474,7 +474,7 @@ const CompareArguments: FC = () => (
       </li>
       <li>
         <p>
-          Second arguments should be 2D array, where each nested array has same
+          Second argument should be 2D array, where each nested array has same
           length as first argument
         </p>
       </li>
@@ -500,21 +500,18 @@ const CompareArguments: FC = () => (
     <Code code={code4} />
     <p>
       It is looks like we have all our necessary utils. If you still haven't
-      head ake, here You have other portion of types to think about. Try to
+      head ake, here You have another portion of types to think about. Try to
       figure out what's going on here:
     </p>
     <Code code={code5} />
     <p>
       Now, when You are familiar with such a weird syntax, we can go further.
-      Here is our function definition with 1 overloading.
+      Here is our function definition with 1 overload.
     </p>
     <Code code={code6} />
     <p>And here is our whole code placed in one block with type tests</p>
     <Code code={code7} />
-    <p>
-      It is look like we made logical error somewhere in the code. Ok, not we, I
-      made it :D.
-    </p>
+    <p>It is looks like I made logical error somewhere in the code.</p>
     <p>
       Maybe we should test again our <Var>Length</Var> type util.
     </p>
@@ -535,12 +532,14 @@ const CompareArguments: FC = () => (
     <p>Ok, I'm exhausted now, it should work. Let's test our code:</p>
     <Code code={code11} />
     <p>Ohh, what a .... What's going on here ? </p>
-    <p>We still need to fix one failed test, see `result3`.</p>
     <p>
-      It looks like if second arguments contains at least one array which feet
+      We still need to fix one failed test, see <Var>result3</Var>.
+    </p>
+    <p>
+      It looks like if second argument contains at least one array which meets
       requirements, TS ok with it.
     </p>
-    <p> So we should compare arrays only if their length are equal.</p>
+    <p> So we should compare arrays only if their length is equal.</p>
     <Code code={code12} />
     <p>Finally, working code:</p>
     <Code code={code13} />

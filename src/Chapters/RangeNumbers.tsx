@@ -125,6 +125,7 @@ type From_1_to_99999 =
 `;
 
 const code5 = `
+// https://stackoverflow.com/questions/39494689/is-it-possible-to-restrict-number-to-a-certain-range
 type PrependNextNum<A extends Array<unknown>> = A["length"] extends infer T
   ? ((t: T, ...a: A) => void) extends (...x: infer X) => void
     ? X

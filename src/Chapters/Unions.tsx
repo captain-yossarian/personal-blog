@@ -333,7 +333,10 @@ const Unions: FC = () => (
       types. I have found this utility very useful.
     </p>
 
-    <p>Don't forget, we have a type util to check if type is union or not</p>
+    <p>
+      Don't forget, that we have a type util for checking whether type is union
+      or not
+    </p>
     <Code code={code8} />
   </>
 );

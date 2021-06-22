@@ -25,7 +25,8 @@ const Result: FC<Props> = (prop: Props): CustomReturn => <Two />;
 const code2 = `{label:string}`;
 
 const code3 = `
-const Result: FC<Props> = (prop: Props): CustomReturn => <Two />; // No error, but should be
+// No error, but should be
+const Result: FC<Props> = (prop: Props): CustomReturn => <Two />; 
 
 const Result2: FC<Props> = (prop: Props): CustomReturn =>
   React.createElement(Two); // Error
