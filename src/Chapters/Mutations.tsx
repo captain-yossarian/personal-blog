@@ -293,7 +293,7 @@ const Mutations: FC = () => (
     <p>Second example:</p>
     <Code code={code8} />
     <p>
-      This behavior is expectable, because mutating the arguments can lead to
+      This behavior is expected, because mutating the arguments can lead to
       runtime errors.
     </p>
     <Code code={code9} />

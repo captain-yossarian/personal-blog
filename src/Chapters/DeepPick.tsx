@@ -539,7 +539,7 @@ const DeepPick: FC = () => (
     <Code code={code6} />
     <p>
       Seems we are closer now. Pls keep in mind, we still need a union of arrays
-      instead of some weird object. Btw, it is still does not feet our
+      instead of some weird object. Btw, it is still does not meet our
       requirements
     </p>
     <p>Let's move our condition statement one level up.</p>

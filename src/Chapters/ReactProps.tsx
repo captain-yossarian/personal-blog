@@ -370,8 +370,8 @@ const ReactProps: FC = () => (
       still can't use <Var>data</Var> variable from props
     </p>
     <p>
-      So, we either can make much complicated typeguard or we can add one more
-      typeguard for <Var>data</Var> argument{" "}
+      So, we can either make much complicated typeguard or add another one for
+      <Var>data</Var> argument{" "}
     </p>
     <p>
       If you don't want to make refactor, neither of above approaches does not
@@ -421,10 +421,10 @@ const ReactProps: FC = () => (
       />
     </p>
     <p>
-      I'm not claim that it is safely or better than using typeguards. You can
-      use this approach if you don't want to provide any changes to business
-      logic of your application. After this change, nobody will ask you to write
-      unit tests :)
+      I'm not claiming that it is safer or better option than using typeguards.
+      In fact - it is not. You can use this approach if you don't want to
+      provide any changes to business logic of your application. After this
+      change, nobody will ask you to write unit tests :)
     </p>
     <p>
       I know what you are thinking about. What if I have more than one argument?

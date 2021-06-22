@@ -135,7 +135,7 @@ const TemplateLiterals: FC = () => (
     </p>
     <Code code={code2} />
     <p>
-      If you are interested in template literal types, you can check other my
+      If you are interested in template literal types, you can check this
       article: <Anchor href="/range-numbers" text="range numbers" />
     </p>
   </>

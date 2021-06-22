@@ -239,7 +239,7 @@ const Dates: FC = () => {
         from 1 to 12 and from 1 to 31. I hope you understand my intensions ))
       </p>
       <p>
-        This code was honestly stolen from
+        This code was shamelessly stolen from
         <Anchor
           href="https://stackoverflow.com/questions/65573679/how-to-overcome-ts2589-on-enumerate-type-with-dynamic-enumerator-upper-limit-qu"
           text="here"
@@ -291,13 +291,11 @@ const Dates: FC = () => {
       <p>Our object key type:</p>
       <Code code={code14} />
       <p>
-        Since we already have types for our keys, we should somehow map, for
-        example 01-01-2020 to January 1st
+        Since we already have types for our keys, we should somehow map them.
+        For example 01-01-2020 to January 1st
       </p>
       <Code code={code15} />
-      <p>
-        Now, we we should be able to obtain actual month and day from the key
-      </p>
+      <p>Now, we should be able to obtain actual month and day from the key</p>
       <Code code={code16} />
       <p>
         Now we should actually convert two digits month to month string
@@ -305,15 +303,15 @@ const Dates: FC = () => {
       </p>
       <Code code={code17} />
       <p>
-        Do you remember, that we should convert <Var>2021-03-01</Var> to
+        Do you remember that we should convert <Var>2021-03-01</Var> to
         <Var>1st March</Var> ?
       </p>
       <Code code={code18} />
       <p>This is how our type should be represented</p>
       <Code code={code19} />
       <p>
-        There is a drawback, 2st March. I leave making appropriate endings to
-        you :)
+        There is a drawback, 2st March. Making appropriate endings is up to you
+        :)
       </p>
       <p>Full example</p>
       <Code code={code20} />

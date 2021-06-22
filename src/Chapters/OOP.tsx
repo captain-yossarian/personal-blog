@@ -393,9 +393,9 @@ const OOP: FC = () => (
     </p>
     <p>In TS terms it means - intersection.</p>
     <p>
-      In order to make intersection of some types, we need to gather have all of
-      them in one place, in other words - we should some how to get union type
-      of all passes classes.
+      In order to make intersection of some types, we need to gather all of them
+      in one place, in other words - we should some how to get union type of all
+      passed classes.
     </p>
     <p>
       It is easy to achieve.<Var>[...R][number]</Var>.

@@ -104,8 +104,7 @@ type Result = Mapped<[1, 2, 3, 4]>; // [[1, true], [2, true], [3, true], [4, tru
 `;
 
 const code51 = `
-// All credits you can find in this 
-// chapter: // https://catchts.com/union-array
+// All credits you can find here https://catchts.com/union-array
 
 // credits goes to https://stackoverflow.com/a/50375286
 type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
@@ -415,8 +414,8 @@ const Tuples: FC = () => (
     <Code code={code3} />
     <p>Very straightforward. </p>
     <p>
-      I hope you have noticed, that in case of empty list, I returned never,
-      because empty list has not neither head nor tail.
+      I hope you have noticed, that in case of empty list, I have returned
+      never, because empty list has not neither head nor tail.
     </p>
     <p>Now, we can define our recursive type:</p>
     <Code code={code4} />
@@ -425,12 +424,11 @@ const Tuples: FC = () => (
       conditional type.
     </p>
     <p>
-      It is mean, that if list has not neither Head nor Tail - return empty
-      array.
+      It means, that if list has not neither Head nor Tail - return empty array.
     </p>
     <p>
-      I used empty array here instead of never, because we want to filter an
-      array, not to get either Head or Tail.
+      I have used empty array instead of <Var>never</Var>, because we want to
+      filter an array, not to get either Head or Tail.
     </p>
     <p>Is it possible to reuse above pattern for other cases ? Sure!</p>
     <p>

@@ -341,8 +341,8 @@ const FP: FC = () => (
     />
     You can find <Var>orta's</Var> twitt regarding pipe operator in TypeScript.
     <p>
-      Now, I'd willing to bet, that You knw how to rewrite next function to make
-      it more FP style
+      Now, I'd willing to bet, that You know how to rewrite next function to
+      make it more FP style
     </p>
     <Code code={code7} />
     <Header {...navigation.compose} />
