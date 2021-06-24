@@ -545,6 +545,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/67070250/typescript-class-generic-type-is-too-narrow-if-extends-something-else-is-not#answer-67071331',
                 text: 'Infer strict type to more general'
+            },
+            {
+                href: "https://stackoverflow.com/questions/67979663/typescript-keyof-instancetypet-cannot-be-used-to-index-type-error#answer-68118171",
+                text: 'Infer keyof InstanceType'
             }
         ],
         tags: ['oop', 'inheritance'],
