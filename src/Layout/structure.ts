@@ -470,24 +470,6 @@ export const blogArticles = [
         date: 'April 26, 2021'
     },
     {
-        url: '/oop-style',
-        title: 'OOP typings',
-        description: 'Typings for classes',
-        Comp: 'OOP',
-        links: [
-            {
-                href: 'https://stackoverflow.com/questions/67084764/function-return-type-that-matches-parameter-types-when-using-the-spread-operato#answer-67089413',
-                text: 'Typed inheritance, mixin pattern',
-            },
-            {
-                href: 'https://stackoverflow.com/questions/67070250/typescript-class-generic-type-is-too-narrow-if-extends-something-else-is-not#answer-67071331',
-                text: 'Infer strict type to more general'
-            }
-        ],
-        tags: ['oop', 'inheritance'],
-        date: 'April 17, 2021'
-    },
-    {
         url: '/deep-pick',
         title: 'Deep pick typings (updated)',
         description: 'I will try to implement smth similar to lodash.get typings',
@@ -549,6 +531,24 @@ export const blogArticles = [
         ],
         tags: ['illegal state', 'react', 'props'],
         date: 'June 19, 2021'
+    },
+    {
+        url: '/oop-style',
+        title: 'OOP typings',
+        description: 'Typings for classes',
+        Comp: 'OOP',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/67084764/function-return-type-that-matches-parameter-types-when-using-the-spread-operato#answer-67089413',
+                text: 'Typed inheritance, mixin pattern',
+            },
+            {
+                href: 'https://stackoverflow.com/questions/67070250/typescript-class-generic-type-is-too-narrow-if-extends-something-else-is-not#answer-67071331',
+                text: 'Infer strict type to more general'
+            }
+        ],
+        tags: ['oop', 'inheritance'],
+        date: 'June 24, 2021'
     },
 
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))

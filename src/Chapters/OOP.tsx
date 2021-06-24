@@ -314,6 +314,65 @@ class StrictItem<T, R = Infer<T>> extends Item<R> { }
 let item2 = new StrictItem('a');
 item2.set('2'); // ok
 `;
+
+const code16 = `
+class Base {}
+
+function fn<T extends typeof Base>(
+    Cls: T,
+    prop: keyof InstanceType<T>,
+) {
+    return (new Cls())[prop]; // error
+}
+`;
+
+const code17 = `
+type X = (a: number) => number
+type Y = (a: string) => string
+
+type Overload = X & Y
+
+declare var fun: Overload;
+
+fun(2)   // number
+fun('2') // string
+`;
+
+const code18 = `
+class Base {
+  base = 'base'
+}
+
+class A extends Base {
+  a = 'a'
+}
+class B extends Base {
+  b = 'b'
+}
+
+class C {
+  c = 'c'
+}
+
+
+const fn = <
+  T extends typeof Base,
+  Instance extends InstanceType<T>
+>(Cls: T & (new () => Instance), prop: keyof Instance,
+) => new Cls()[prop];
+
+const result = fn(A, 'base') // ok
+
+const result2 = fn(B, 'b') // ok
+
+const result3 = fn(Base, 'base') // ok
+
+const result4 = fn(A, 'b') // expected error
+
+const result5 = fn(B, 'a') // expected error
+
+const result6 = fn(C, 'x') // expected error
+`;
 const navigation = {
   typed_inheritance: {
     id: "typed_inheritance",
@@ -323,6 +382,11 @@ const navigation = {
     id: "strictt_to_general",
     text: "Convert strict type to more general",
   },
+  handle_keyof: {
+    id: 'handle_keyof',
+    text: 'Handle keyof class instance',
+    updated:true
+  }
 };
 const links = Object.values(navigation);
 
@@ -497,6 +561,18 @@ const OOP: FC = () => (
         href="https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgAoBs6gPICMBWECYAPACoB8yA3sgNqgAmEAHgFzIDOYUoA5gF0OZZAF8AUOLABPAA4oAkpAC2ANTjoArigC845AeQAfZLgD2Z9BDgh9hkyE3Lc0OwZPdeIPm+PIlEGoa2nQCvia0DCDM7Fw8-EL+KupaKBKGfo7o6ADckgiYnJxJgeRU1L6yvABucJDItanCeRkIZiCemsRmUAAUjdrCAJQ0vhlgABbAnAB0A7oNwRAthumGspq46MAIXBBg-UvDoxnjU7PzyDqLqSsGEhJScoogMNBlV8girJDRxaBvKDIABKyAA-CDkAAyEpBVLIDggCDVVziAD0aK+52Q7RQGzAxSgEE8OzAwHaxXayEmKD4ECRvAQ4gKcCKyAAyvFiAFlOQADSQ64KV7vShUH70xjFHkkYHlMSSKxgZDAFQAJk+SIA7hyuWAeb0AORwQ1DPKqwJqmacfZGtWmnLIDE4gDWQA"
       />
     </p>
+    <Header {...navigation.handle_keyof} />
+    <p>Here you have very simple sample of code:</p>
+    <Code code={code16} />
+    <p>The question is: How to fix the error without changing the actual business logic?</p>
+    <p>Do you remember that intersection of function produces overloadings?</p>
+    <Code code={code17} />
+    <p>Here you have similar behavior</p>
+    <Code code={code18} />
+    <p>
+      <Anchor text="Playground" href="https://www.typescriptlang.org/play?#code/MYGwhgzhAEBCkFNoG8BQ1oCNHQLzQHJsIEDUBfVVUSGAQWgQA8AXBAOwBMZ4SV1oYPITBlKNKHEasO3ODjQZMwomKoSYAYX4ZgK4GvUB7dhBbQAZu2EAeAQBVpbLjBYBPAA4IjF+SQA0AgCSpixg7MBIzM5yIWbhkfaeCDb2AHyoaQAUmiAQAFzQjgBk0FnsCADuZQCUeGnQcWERCDX+0B4ATkYehQDWCG4+jaEJCIF1uA0V1bkQWTUA2l09ALoA3Mah0J0IEACuIOb4Vll07USIBHUA9DfQRn1bZjt7hywATMKnsBeY19A7g8ntQTC9dgcjgBmb7sLK8caEYikW73R7PcwQ94AFlhZz+AKBzC8wDYnEYnW6nQxr0hLAArHjfiJCfdiQhSQhyQhKUZqaDtlijgA2PGaC5MVnSElkilU1BAA" />
+    </p>   
+
   </>
 );
 export default OOP;
