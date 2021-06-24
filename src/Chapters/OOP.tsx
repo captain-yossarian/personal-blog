@@ -565,14 +565,8 @@ const OOP: FC = () => (
     <p>Here you have very simple sample of code:</p>
     <Code code={code16} />
     <p>The question is: How to fix the error without changing the actual business logic?</p>
-    <p>Do you remember that intersection of function produces overloadings?</p>
-    <Code code={code17} />
-    <p>Here you have similar behavior</p>
+    <p>We just have to make some generic inference</p>
     <Code code={code18} />
-    <p>
-      <Anchor text="Playground" href="https://www.typescriptlang.org/play?#code/MYGwhgzhAEBCkFNoG8BQ1oCNHQLzQHJsIEDUBfVVUSGAQWgQA8AXBAOwBMZ4SV1oYPITBlKNKHEasO3ODjQZMwomKoSYAYX4ZgK4GvUB7dhBbQAZu2EAeAQBVpbLjBYBPAA4IjF+SQA0AgCSpixg7MBIzM5yIWbhkfaeCDb2AHyoaQAUmiAQAFzQjgBk0FnsCADuZQCUeGnQcWERCDX+0B4ATkYehQDWCG4+jaEJCIF1uA0V1bkQWTUA2l09ALoA3Mah0J0IEACuIOb4Vll07USIBHUA9DfQRn1bZjt7hywATMKnsBeY19A7g8ntQTC9dgcjgBmb7sLK8caEYikW73R7PcwQ94AFlhZz+AKBzC8wDYnEYnW6nQxr0hLAArHjfiJCfdiQhSQhyQhKUZqaDtlijgA2PGaC5MVnSElkilU1BAA" />
-    </p>   
-
   </>
 );
 export default OOP;
