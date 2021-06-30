@@ -201,6 +201,30 @@ const foo = <T extends { [key: string]: any }>(obj: T) => {
 const result1 = foo(immutable) //  unsound, see return type 
 const result2 = foo(record) // unsound , see return type
 `;
+
+const code11 = `
+const paths = ['a', 'b'] as const
+
+type Path = typeof paths[number]
+
+type PathMap = {
+    [path in Path]: path
+}
+
+const BASE_PATHS = paths.reduce((map: PathMap, p: Path) => {
+    let x = map[p]
+    map[p] = p // same here
+    return map
+}, {} as PathMap)
+`;
+
+const code12 = `
+type a = 'a'
+type b = 'b'
+
+type c = a & b // never
+
+`;
 const navigation = {
   first: {
     id: "first",
@@ -209,6 +233,11 @@ const navigation = {
   second: {
     id: "second",
     text: "Second example",
+  },
+  third: {
+    id: "third",
+    text: "Third example",
+    updated: true,
   },
 };
 const links = Object.values(navigation);
@@ -312,6 +341,30 @@ const Mutations: FC = () => (
         href="https://stackoverflow.com/questions/67834191/why-can-i-index-by-string-to-get-a-property-value-but-not-to-set-it/67836124#67836124"
       />
       you can find related question/answer
+    </p>
+    <Header {...navigation.third} />
+    <p>Consider next example:</p>
+    <Code code={code11} />
+    <p>
+      You see the error here because objects are contravariant in their key
+      types
+    </p>
+    <p>What does it mean ???</p>
+    <p>
+      Multiple candidates for the same type variable in contra-variant positions
+      causes an intersection type to be inferred.
+    </p>
+    <Code code={code12} />
+    <p>
+      <Anchor
+        text="Here"
+        href="https://github.com/microsoft/TypeScript/pull/30769"
+      />{" "}
+      you can find official explanation
+    </p>
+    <p>
+      This is why, in above examples, we have
+      <Var>Type 'string' is not assignable to type 'never'</Var>
     </p>
     <p>
       <Anchor

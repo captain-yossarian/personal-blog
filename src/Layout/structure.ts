@@ -511,17 +511,6 @@ export const blogArticles = [
         date: 'May 8, 2021'
     },
     {
-        url: '/mutations',
-        title: 'Mutations in typescript',
-        description: 'TypeScript is more about immutability',
-        Comp: 'Mutations',
-        links: [
-
-        ],
-        tags: ['fp', 'mutations'],
-        date: 'June 10, 2021'
-    },
-    {
         url: '/react-props',
         title: 'Handle Props in React',
         description: 'Make illegal props unrepresentable',
@@ -553,6 +542,17 @@ export const blogArticles = [
         ],
         tags: ['oop', 'inheritance'],
         date: 'June 24, 2021'
+    },
+    {
+        url: '/mutations',
+        title: 'Mutations in typescript',
+        description: 'TypeScript is more about immutability',
+        Comp: 'Mutations',
+        links: [
+
+        ],
+        tags: ['fp', 'mutations'],
+        date: 'June 30, 2021'
     },
 
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
