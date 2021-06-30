@@ -152,14 +152,6 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
                 Share on twitter <TwitterShare title={title} path={path} />
               </p>
             </div>
-            <p>
-              If you want to contribute,
-              <Anchor
-                href="https://github.com/captain-yossarian/personal-blog"
-                text="here"
-              />
-              you can find the repo
-            </p>
           </>
         ) : null}
         {links.length > 0 ? (
