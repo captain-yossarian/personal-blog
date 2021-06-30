@@ -549,12 +549,26 @@ export const blogArticles = [
         description: 'TypeScript is more about immutability',
         Comp: 'Mutations',
         links: [
-            'https://stackoverflow.com/questions/68189542/typescript-why-cant-i-assign-a-valid-field-of-an-object-with-type-a-a-b/68190097#68190097',
-            'https://stackoverflow.com/questions/67660342/why-does-typescript-say-this-variable-is-referenced-directly-or-indirectly-in-i',
-            'https://github.com/microsoft/TypeScript/pull/30769',
-            'https://stackoverflow.com/questions/67834191/why-can-i-index-by-string-to-get-a-property-value-but-not-to-set-it/67836124#67836124',
-            'https://stackoverflow.com/questions/67857960/how-to-selectively-assign-from-one-partial-to-another-in-typescript/67860407#67860407'
-
+            {
+                href: 'https://stackoverflow.com/questions/67857960/how-to-selectively-assign-from-one-partial-to-another-in-typescript/67860407#67860407',
+                text: 'First example'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/67834191/why-can-i-index-by-string-to-get-a-property-value-but-not-to-set-it/67836124#67836124',
+                text: 'Second exmaple'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68189542/typescript-why-cant-i-assign-a-valid-field-of-an-object-with-type-a-a-b/68190097#68190097',
+                text: 'Third example'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/67660342/why-does-typescript-say-this-variable-is-referenced-directly-or-indirectly-in-i',
+                text: 'TS mutations'
+            },
+            {
+                href: 'https://github.com/microsoft/TypeScript/pull/30769',
+                text: 'Official explanation'
+            },
         ],
         tags: ['fp', 'mutations'],
         date: 'June 30, 2021'
