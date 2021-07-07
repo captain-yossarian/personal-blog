@@ -112,8 +112,103 @@ const result = Object.entries(state).forEach(([key, value]) => {
 })
 `;
 
-const UnionPartial: FC = () => (
+const code4 = `
+type MetaKey = 'meta';
+type CtrlKey = 'ctrl';
+type ShiftKey = 'shift';
+type AltKey = 'alt';
+type ModiferKeyCombinations = ???
+`;
+
+const code5 = `
+type ModiferKeyCombinations = 
+  | 'meta'
+  | 'ctrl'
+  | 'shift'
+  | 'alt'
+  | 'meta ctrl'
+  | 'meta shift'
+  | 'meta alt'
+  | 'ctrl meta'
+  | 'ctrl shift'
+  | 'ctrl alt'
+  | 'shift meta'
+  | 'shift ctrl'
+  | 'shift alt'
+  | 'alt meta'
+  | 'alt ctrl'
+  | 'alt shift'
+  | 'meta ctrl shift'
+  | 'meta ctrl alt'
+  | 'meta shift ctrl'
+  | 'meta shift alt'
+  | 'meta alt ctrl'
+  | 'meta alt shift'
+  | 'ctrl meta shift'
+  | 'ctrl meta alt'
+  | 'ctrl shift meta'
+  | 'ctrl shift alt'
+  | 'ctrl alt meta'
+  | 'ctrl alt shift'
+  | 'shift meta ctrl'
+  | 'shift meta alt'
+  | 'shift ctrl meta'
+  | 'shift ctrl alt'
+  | 'shift alt meta'
+  | 'shift alt ctrl'
+  | 'alt meta ctrl'
+  | 'alt meta shift'
+  | 'alt ctrl meta'
+  | 'alt ctrl shift'
+  | 'alt shift meta'
+  | 'alt shift ctrl'
+  | 'meta ctrl shift alt'
+  | 'meta ctrl alt shift'
+  | 'meta shift ctrl alt'
+  | 'meta shift alt ctrl'
+  | 'meta alt ctrl shift'
+  | 'meta alt shift ctrl'
+  | 'ctrl meta shift alt'
+  | 'ctrl meta alt shift'
+  | 'ctrl shift meta alt'
+  | 'ctrl shift alt meta'
+  | 'ctrl alt meta shift'
+  | 'ctrl alt shift meta'
+  | 'shift meta ctrl alt'
+  | 'shift meta alt ctrl'
+  | 'shift ctrl meta alt'
+  | 'shift ctrl alt meta'
+  | 'shift alt meta ctrl'
+  | 'shift alt ctrl meta'
+  | 'alt meta ctrl shift'
+  | 'alt meta shift ctrl'
+  | 'alt ctrl meta shift'
+  | 'alt ctrl shift meta'
+  | 'alt shift meta ctrl'
+  | 'alt shift ctrl meta'
+`;
+
+const code6 = `
+type Permutations<T extends string, U extends string = T> =
+    T extends any ? (T | \`${"${T} ${Permutations<Exclude<U, T>>}"}\`) : never;
+`;
+const navigation = {
+  first: {
+    id: "first",
+    text: "Enum permutations",
+  },
+  second: {
+    id: "second",
+    text: "Template literal string permutations",
+    updated: true,
+  },
+};
+const links = Object.values(navigation);
+
+const Permutations: FC = () => (
   <>
+    <HeaderNav links={links} />
+    <Header {...navigation.first} />
     <p>Let's say you have next enum:</p>
     <Code code={code1} />
     <p>
@@ -142,7 +237,23 @@ const UnionPartial: FC = () => (
       limit very fast, because rec <Var>MappedArray</Var> calls rec
       <Var>MappedString</Var>.
     </p>
+    <Header {...navigation.second} />
+    <p>Let's say you have next string literal types:</p>
+    <Code code={code4} />
+    <p>
+      Where <Var>ModiferKeyCombinations</Var> expected to be:
+      <Code code={code5} />
+    </p>
+    <p>How can we compute all permutations of above strings?</p>
+    <p>
+      <Anchor
+        href="https://stackoverflow.com/questions/68252446/is-it-possible-to-generate-string-literal-combinations-with-template-literal-in#answer-68256789"
+        text="Here"
+      />
+      You can find @jcalz's solution:
+    </p>
+    <Code code={code6} />
   </>
 );
 
-export default UnionPartial;
+export default Permutations;

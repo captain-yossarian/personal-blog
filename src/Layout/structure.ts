@@ -183,6 +183,14 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/67021405/ts-types-convert-arrays-of-keys-and-array-of-values-to-object#answer-67022175',
                 text: 'Zip two arrays into object'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68207767/typescript-infer-possible-object-keys-based-on-value-of-previous-argument/68208487#68208487',
+                text: 'Arguments validation with help of Reduce'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68207767/typescript-infer-possible-object-keys-based-on-value-of-previous-argument/68208487#68208487',
+                text: 'Arguments constraints'
             }
         ],
         tags: ['array', 'tuples'],
@@ -397,18 +405,22 @@ export const blogArticles = [
         date: 'February 11, 2021'
     },
     {
-        url: '/union-partial',
-        title: 'Use union instead of Partial',
-        description: 'Constrain object keys to enum\'s values while not requiring all keys to be present and object values are not considered undefined',
-        Comp: 'UnionPartial',
+        url: '/permutations',
+        title: 'Compute permutations',
+        description: 'Compute permutations of enum keys and other unions',
+        Comp: 'Permutations',
         links: [
             {
                 href: 'https://stackoverflow.com/questions/66257786/constrain-object-keys-to-enums-values-while-not-requiring-all-keys-to-be-presen#answer-66258085',
                 text: 'Use union instead of Partial',
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68252446/is-it-possible-to-generate-string-literal-combinations-with-template-literal-in#answer-68256789',
+                text: 'String permutation'
             }
         ],
         tags: ['union', 'partial', 'recursion', 'tuples'],
-        date: 'February 18, 2021'
+        date: 'July 7, 2021'
     },
     {
         url: '/dates',
@@ -436,10 +448,14 @@ export const blogArticles = [
             }, {
                 href: 'https://stackoverflow.com/questions/66828502/conditional-type-based-on-a-non-empty-string#answer-66835100',
                 text: 'Empty string negation'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68235338/making-arrays-of-generic-interfaces#68236225',
+                text: 'Generic constraints'
             }
         ],
         tags: ['generic', 'negation'],
-        date: 'April 12, 2021'
+        date: 'July 7, 2021'
     },
     {
         url: '/hex-validation',
@@ -538,6 +554,14 @@ export const blogArticles = [
             {
                 href: "https://stackoverflow.com/questions/67979663/typescript-keyof-instancetypet-cannot-be-used-to-index-type-error#answer-68118171",
                 text: 'Infer keyof InstanceType'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68030997/how-can-i-create-generic-function-that-only-accepts-instances-of-a-type-with-a-s/68159603#68159603',
+                text: 'Apply relation between class and instance - 1'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/67979663/typescript-keyof-instancetypet-cannot-be-used-to-index-type-error/68118171#68118171',
+                text: 'Apply relation between class and instance - 2'
             }
         ],
         tags: ['oop', 'inheritance'],

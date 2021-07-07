@@ -17,6 +17,33 @@ const hasProperty = <Obj, Prop extends string>(obj: Obj, prop: Prop)
   Object.prototype.hasOwnProperty.call(obj, prop);
 `;
 
+const code2_1 = `
+interface Foo {
+    a: number
+}
+const obj = { a: 1 };
+
+interface CallableFunction extends Function {
+
+    call<T extends Foo, Prop extends string, R>(
+        this: (this: Foo, property: Prop) => R,
+        thisArg: Foo,
+        property: Prop
+    ): thisArg is T & Record<Prop, string>;
+}
+
+function foo(str: string) {
+    if (Object.prototype.hasOwnProperty.call(obj, ';')) {
+        const y = obj //  Foo & Record<";", string>
+    }
+    if (Object.prototype.hasOwnProperty.call(obj, str)) {
+        const y = obj // Foo & Record<string, string>
+
+        console.log(obj[str]);
+    }
+}
+`;
+
 const code3 = `
 const obj = {
   age: 0,
@@ -304,6 +331,20 @@ const FP: FC = () => (
     <Code code={code1} />
     <p>Check if property exists</p>
     <Code code={code2} />
+    <p>
+      Also, you can overload <Var>hasOwnProperty.call</Var> in{" "}
+      <Anchor
+        href="https://stackoverflow.com/questions/68001036/override-types-for-built-in-methods-on-prototype/68136715#68136715"
+        text="this"
+      />{" "}
+      way:
+    </p>
+    <Code code={code2_1} />
+    <p>
+      Btw, You might be interested in{" "}
+      <Anchor href="https://v8.dev/features/object-has-own" text="this" />{" "}
+      feature.
+    </p>
     <p>Let's say you have next code:</p>
     <Code code={code3} />
     <p>
@@ -363,8 +404,8 @@ const FP: FC = () => (
     <p>There is a limit for arguments.</p>
     <p>
       Let's try to write function without any limits, at least explicit limits.
-      Please keep in mind TS has his own recursion limits, so we have to live
-      with that
+      In practice I was able to provide 2 functions more :D. Please keep in mind
+      TS has his own recursion limits, so we have to live with that
     </p>
     <p>Validation logic</p>
     <Code code={code11} />

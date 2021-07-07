@@ -13,7 +13,7 @@ export { default as Unions } from './Unions';
 export { default as TemplateLiterals } from './TemplateLiterals';
 export { default as CallbackChain } from './CallbackChain';
 export { default as FlattenUnion } from './FlattenUnion';
-export { default as UnionPartial } from './UnionsPartial';
+export { default as Permutations } from './Permutations';
 export { default as Dates } from './Dates';
 export { default as TypeNegation } from './TypeNegation';
 export { default as HexValidation } from './HexValidation';

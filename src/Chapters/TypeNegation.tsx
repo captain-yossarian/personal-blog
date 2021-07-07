@@ -109,6 +109,53 @@ assertDefined(c); // error
 assertDefined(d); // error
 assertDefined(d, 2); // still error,
 `;
+
+const code8 = `
+type Entity = {
+      a: string;
+      b: string;
+      c: \`${"${Entity['a']} ${Entity['b']}"}\`
+    }
+`;
+
+const code9 = `
+type IsValid<T> = T extends { a: string; b: string }
+  ? T extends {
+      a: string;
+      b: string;
+      c: \`${"${T['a']} ${T['b']}"}\`
+    }
+    ? T
+    : never
+  : never;
+
+const makeArr = <T>(arr: IsValid<T>[]) => arr;
+
+makeArr([
+  {
+    a: "1",
+    b: "2",
+    c: "1 2",
+  },
+  {
+    a: "3",
+    b: "4",
+    c: "any", // error
+    d: "s",
+  },
+]);
+`;
+
+const code10 = `
+type BanProperty<Obj, Prop extends PropertyKey> = Obj extends Record<
+  Prop,
+  unknown
+>
+  ? never
+  : Obj;
+
+const makeArr = <T>(arr: BanProperty<IsValid<T>, "d">[]) => arr;
+`;
 const navigation = {
   simple: {
     id: "type_negation",
@@ -121,6 +168,11 @@ const navigation = {
   union_constraints: {
     id: "union_constraints",
     text: "Union constraints",
+    updated: true,
+  },
+  generic_constraints: {
+    id: "generic_constraints",
+    text: "Generic constraints",
     updated: true,
   },
 };
@@ -216,6 +268,42 @@ const TypeNegation: FC = () => {
           href="https://www.typescriptlang.org/play?ts=4.3.0-beta#code/FASwdgLgpgTgZgQwMZQAQGECuBnCB7AWwElJZEVUBvYVW1OPPALlTEwICNYBuYAX2CCIATwAOaAIKoAvKlwxwAc1QAfVpgA2G7qgD0u1ADUEGkABNgI8agBCMjDnzFS8ZGjWYwZqHHBQzOvpGJua8Vmjo9vJKgQYkAG4hAZZiaAAi9li4hCTQrhRBCUmCKdYAygAWeJpmNlAAcnhg9ZoaCBwaUAA8ACoAfPY9qFAAHtBe2Opaqqie3r5g-qgA-KhDLIvxPKVoAEpQ2JoQ9pXVGrUNTS1a7Z1dEn0lcJ5IECBNqAjY2LAQaT5+My9PoAChodESGkwUBYPQANODaAA6FFsG4dGFrYZjKATKYaGZzAGLMwrVAAbQAuqgWOTNrBKQBKKj8EpIJq4T4sKSyACyCAgFSRcA0jBgIP5gqRMAQXkIIOZACpUABGFXMrqyACsZIA5AhdTT8bx2WBORwWHY+QKhSKxRKbdLZWZ5UrVerUJrUDrVpR6IwWAAWABMqD4RqJC38Jo5xyQLEisl1SF1MbNxzMLAysj9DGYqBDYcEXx+MD+xP8IIQjNiqDwAGtgCXfv8o2YQRwa3oDA2m98WxX20gu0FYDA8DA+6Xy22QWYRwYxxOpwPZ2Y4ahgwu5G9pkuYAjBEA"
         />
       </p>
+      <Header {...navigation.generic_constraints} />
+      <p>
+        Say we have a function which expects an array with next constraints:
+      </p>
+      <ul>
+        <li>
+          <p>
+            - each object in array should have <Var>a</Var>,<Var>b</Var> and{" "}
+            <Var>c</Var> properties
+          </p>
+        </li>
+        <li>
+          <p>
+            - <Var>c</Var> property should consists of concatenated <Var>a</Var>{" "}
+            and <Var>b</Var> string properties
+          </p>
+        </li>
+      </ul>
+      <Code code={code8} />
+      <p>
+        Solution was provided by{" "}
+        <Anchor
+          href="https://stackoverflow.com/questions/68235338/making-arrays-of-generic-interfaces#68236225"
+          text="aleksxor"
+        />{" "}
+        user
+      </p>
+      <Code code={code9} />
+      <p>
+        If you want to apply more constraints just wrap your validator into
+        another one.
+      </p>
+      <p>
+        Let's say You want to disallow <Var>d</Var> property
+      </p>
+      <Code code={code10} />
     </>
   );
 };
