@@ -122,25 +122,6 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
   date,
   id,
 }) => {
-  const [count, setCount] = useState(-1);
-  const handleClick = () =>
-    fetch(`https://api.catchts.com/like?id=${id}`).then(fetchLikes);
-
-  const fetchLikes = () => {
-    if (id >= 0) {
-      fetch(`https://api.catchts.com/get-like?id=${id}`).then((response) =>
-        response.json().then((data: ServiceResponse) => {
-          if (data.likes.length === 1) {
-            const [like] = data.likes;
-            setCount(like.count);
-          }
-        })
-      );
-    }
-  };
-
-  useEffect(() => fetchLikes(), []);
-
   return (
     <Layout title={title}>
       {children}
@@ -157,12 +138,6 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
         {links.length > 0 ? (
           <div>
             <Links data={links} />
-            {id >= 0 ? (
-              <>
-                <LikeButton onClick={handleClick}>I Like It!</LikeButton>
-                <Counter>{count > -1 ? count : 0}</Counter>
-              </>
-            ) : null}
           </div>
         ) : null}
       </Footer>
