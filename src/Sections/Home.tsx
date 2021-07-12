@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { THEME_COLOR } from "../Layout/utils";
 import { blogArticles } from "../Layout/structure";
-import { Var } from "../Layout";
 
 const keys = blogArticles.sort((a, b) => b.id - a.id);
 
@@ -84,87 +83,23 @@ const ArticleHeader: FC<{
   </Li>
 );
 
-const Tip = styled.span`
-  font-size: 0.9rem;
-  display: block;
-`;
-
-const TipWrapper = styled.div`
-  margin: 1rem 0;
-`;
-
-const SearchTag = styled.button`
+export const Title = styled.h1`
+  line-height: 1.5;
+  font-size: 20px;
   display: inline-block;
-  padding: 5px;
-  border: 1px solid gray;
-  cursor: pointer;
-  background-color: ${(props: { isSelected: boolean }) =>
-    props.isSelected ? THEME_COLOR : "unset"};
-
-  &:hover {
-    background-color: ${THEME_COLOR};
-  }
 `;
-const TagWrapper = styled.div`
-  max-width: 300px;
-  margin: 10px;
-`;
-
-const removeItem = (array: string[], index: number) => [
-  ...array.slice(0, index),
-  ...array.slice(index + 1),
-];
 
 const Home: FC = () => {
-  const [{ articles, selectedTags }, setArticles] = useState({
-    articles: keys,
-    selectedTags: [] as string[],
-  });
-
-  const filterArticles = (tag: string) => {
-    setArticles((prevState) => {
-      const tagIndex = prevState.selectedTags.indexOf(tag);
-      const isSelected = tagIndex > -1;
-
-      const filterTags = prevState.selectedTags.filter((elem) => elem !== tag);
-
-      const newSelectedTags = isSelected
-        ? removeItem(prevState.selectedTags, tagIndex)
-        : [...filterTags, tag];
-
-      const filtered = keys.filter((elem) =>
-        newSelectedTags.every((el) => elem.tags.includes(el))
-      );
-
-      return {
-        articles: filtered,
-        selectedTags: newSelectedTags,
-      };
-    });
-  };
-
   return (
     <>
       <div>
-        <TagWrapper>
-          {tags.map((tag, index) => (
-            <SearchTag
-              onClick={() => filterArticles(tag)}
-              key={index}
-              isSelected={selectedTags.includes(tag)}
-            >
-              {tag}
-            </SearchTag>
-          ))}
-        </TagWrapper>
-        <p>
-          I decided to gather some useful <Var>[typescript]</Var> stackoverflow
-          questions/answers in one place. You can treat this blog as a
-          stackoverflow typescript news.
-        </p>
+        <Title>
+          Here you can find some non-trivial typescript examples taken from real
+          life (95% from stackoverflow).
+        </Title>
       </div>
       <ul>
-        {articles.map((elem) => (
+        {keys.map((elem) => (
           <ArticleHeader name={elem.url} meta={elem} key={elem.url} />
         ))}
       </ul>
