@@ -41,9 +41,6 @@ import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
 import { Main } from "./Layout";
 import ArticleBase from "./Shared/ArticleBase";
-import { tracker } from "@wunu/frontend";
-
-tracker("https://api.catchts.com").subscribe();
 
 export const componentMap = {
   MathOperations,
