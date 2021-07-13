@@ -4,24 +4,10 @@ import styled from "styled-components";
 import { THEME_COLOR } from "../Layout/utils";
 import { blogArticles } from "../Layout/structure";
 
-const keys = blogArticles.sort((a, b) => b.id - a.id);
+const toUnix = (date: string) => new Date(date).getTime();
 
-const lower = (str: string) => str.toLowerCase();
-const tags = [
-  ...new Set(
-    blogArticles.reduce((acc, elem) => [...acc, ...elem.tags], [] as string[])
-  ),
-].sort((a, b) => {
-  const lowerA = lower(a[0]);
-  const lowerB = lower(b[0]);
-  if (lowerA < lowerB) {
-    return -1;
-  }
-  if (lowerA > lowerB) {
-    return 1;
-  }
-  return 0;
-});
+export const sort = (data: typeof blogArticles) =>
+  data.sort((prev, next) => toUnix(prev.date) - toUnix(next.date)).reverse();
 
 const Aside = styled.aside`
   margin-left: 30px;
@@ -99,7 +85,7 @@ const Home: FC = () => {
         </Title>
       </div>
       <ul>
-        {keys.map((elem) => (
+        {sort(blogArticles).map((elem) => (
           <ArticleHeader name={elem.url} meta={elem} key={elem.url} />
         ))}
       </ul>

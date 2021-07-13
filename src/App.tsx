@@ -6,41 +6,13 @@ import {
   withRouter,
 } from "react-router-dom";
 import Prism from "prismjs";
-import {
-  MathOperations,
-  ReactChildren,
-  ReactReturnType,
-  CompareArguments,
-  RangeNumbers,
-  Tuples,
-  UnionArray,
-  Callbacks,
-  PubSub,
-  TypeState,
-  Api,
-  Unions,
-  TemplateLiterals,
-  CallbackChain,
-  FlattenUnion,
-  Permutations,
-  Dates,
-  TypeNegation,
-  HexValidation,
-  LinkedList,
-  OOP,
-  FP,
-  DeepPick,
-  Validation,
-  Mutations,
-  ReactProps,
-} from "./Chapters";
-import { About, Contact, Home } from "./Sections";
 import { blogArticles, sections } from "./Layout/structure";
 
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
 import { Main } from "./Layout";
 import ArticleBase from "./Shared/ArticleBase";
+import { sort } from "./Sections/Home";
 
 export const componentMap = {
   MathOperations: React.lazy(() => import("./Chapters/MathOperations")),
@@ -89,13 +61,10 @@ const ScrollToTop = withRouter(({ history }) => {
   return null;
 });
 
-const toUnix = (date: string) => new Date(date).getTime();
-
-const data = blogArticles
-  .sort((prev, next) => toUnix(prev.date) - toUnix(next.date))
-  .reverse()
+const data = sort(blogArticles)
   //@ts-expect-error
   .concat(sections);
+
 const App: VFC = () => {
   return (
     <React.Suspense fallback={<div>loading</div>}>
@@ -106,6 +75,7 @@ const App: VFC = () => {
             {data.map((elem) => {
               const { url, Comp } = elem;
               const Component = componentMap[Comp as keyof typeof componentMap];
+              console.log({ url });
 
               return (
                 <Route path={url} key={url}>
