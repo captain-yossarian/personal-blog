@@ -75,7 +75,6 @@ const App: VFC = () => {
             {data.map((elem) => {
               const { url, Comp } = elem;
               const Component = componentMap[Comp as keyof typeof componentMap];
-              console.log({ url });
 
               return (
                 <Route path={url} key={url}>
