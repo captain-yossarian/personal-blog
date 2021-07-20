@@ -44,6 +44,7 @@ export const componentMap = {
   Validation: React.lazy(() => import("./Chapters/Validations")),
   Mutations: React.lazy(() => import("./Chapters/Mutations")),
   ReactProps: React.lazy(() => import("./Chapters/ReactProps")),
+  CurryingComponents: React.lazy(() => import("./Chapters/CurryingComponents")),
 };
 
 setTimeout(() => Prism.highlightAll(), 0);

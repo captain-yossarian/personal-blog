@@ -597,6 +597,25 @@ export const blogArticles = [
         tags: ['fp', 'mutations'],
         date: 'June 30, 2021'
     },
+    {
+        url: '/currying-components',
+        title: 'Currying React components',
+        description: 'React: functional approach',
+        Comp: 'CurryingComponents',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/68397897/typing-a-react-component-factory-function/68433032#68433032',
+                text: 'React Component Factory Function'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68397897/typing-a-react-component-factory-function/68433032#68433032',
+                text: 'Children components constrained by generic'
+            },
+
+        ],
+        tags: ['fp', 'curry', 'react'],
+        date: 'July 20, 2021'
+    },
 
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
 
