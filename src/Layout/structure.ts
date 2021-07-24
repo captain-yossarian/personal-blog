@@ -102,6 +102,10 @@ export const blogArticles = [
                     "https://stackoverflow.com/questions/64967447/adding-required-props-to-child-react-elements-with-typescript",
                 text: "Adding required props to child react elements",
             },
+            {
+                href: 'https://stackoverflow.com/questions/68398560/typescript-type-for-react-functioncomponent-that-returns-exactly-one-intrinsicel/68399995#68399995',
+                text: 'Infer JSX'
+            }
         ],
         tags: ['react', 'children'],
         date: 'November 23, 2020'
@@ -452,6 +456,14 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68235338/making-arrays-of-generic-interfaces#68236225',
                 text: 'Generic constraints'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68494404/typescript-definition-how-to-constraint-differently-for-a-param-of-function-by/68496167#68496167',
+                text: 'Generic constraints - 2'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68404097/require-a-specific-item-in-a-typescript-array/68407121#68407121',
+                text: 'How to negate number 7 in the array'
             }
         ],
         tags: ['generic', 'negation'],
@@ -510,6 +522,18 @@ export const blogArticles = [
                 href: 'https://stackoverflow.com/questions/67282788/how-would-i-add-type-to-nested-object#answer-67284951',
                 text: 'CSS validation',
             },
+            {
+                href: 'https://stackoverflow.com/questions/68359417/how-to-type-function-return-type-with-optional-object-of-formatter-function/68359977#68359977',
+                text: 'Return type validation/computing'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68308390/react-props-struggling-with-discriminating-union-types/68312955#68312955',
+                text: 'React props validation'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68207767/typescript-infer-possible-object-keys-based-on-value-of-previous-argument/68208487#68208487',
+                text: 'Advanced validation of function arguments'
+            }
 
         ],
         tags: ['type validation'],
@@ -608,7 +632,7 @@ export const blogArticles = [
                 text: 'React Component Factory Function'
             },
             {
-                href: 'https://stackoverflow.com/questions/68397897/typing-a-react-component-factory-function/68433032#68433032',
+                href: 'https://stackoverflow.com/questions/68278567/react-ts-generic-component-to-pass-generic-props-to-children/#68442669',
                 text: 'Children components constrained by generic'
             },
 
@@ -616,6 +640,32 @@ export const blogArticles = [
         tags: ['fp', 'curry', 'react'],
         date: 'July 20, 2021'
     },
+    {
+        url: '/infer-arguments',
+        title: 'Typescript: Type Inference on function arguments',
+        description: 'Infer deep nested function arguments',
+        Comp: 'InferFunctionArguments',
+        links: [{
+            href: 'https://stackoverflow.com/questions/68503907/typescript-generic-message-factory/68504003#68504003',
+            text: 'Infer generic type with parameters'
+        }, {
+            href: 'https://stackoverflow.com/questions/68451909/typescript-create-combined-type-from-array-items-generic-types/68452079#68452079',
+            text: 'Infer class instances'
+        },
+        {
+            href: 'https://stackoverflow.com/questions/68506919/typescript-instantiation-type-definition/68510416#68510416',
+            text: 'Infer class instances - 2'
+        },
+        {
+            href: 'https://stackoverflow.com/questions/68391632/infer-type-from-array-literal/68392353#68392353',
+            text: 'Infer and convert literal array to object '
+        }
+
+
+        ],
+        tags: ['infer'],
+        date: 'July 24, 2021'
+    }
 
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
 

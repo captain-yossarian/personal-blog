@@ -24,6 +24,5 @@ export { default as DeepPick } from './DeepPick';
 export { default as Validation } from './Validations';
 export { default as Mutations } from './Mutations'
 export { default as ReactProps } from './ReactProps';
-export { default as CurryingComponents } from './CurryingComponents'
-
-//export { default as Limitations } from './Limitations'
+export { default as CurryingComponents } from './CurryingComponents';
+export { default as InferFunctionArguments } from './InferFunctionArguments'

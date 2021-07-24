@@ -45,6 +45,9 @@ export const componentMap = {
   Mutations: React.lazy(() => import("./Chapters/Mutations")),
   ReactProps: React.lazy(() => import("./Chapters/ReactProps")),
   CurryingComponents: React.lazy(() => import("./Chapters/CurryingComponents")),
+  InferFunctionArguments: React.lazy(
+    () => import("./Chapters/InferFunctionArguments")
+  ),
 };
 
 setTimeout(() => Prism.highlightAll(), 0);
