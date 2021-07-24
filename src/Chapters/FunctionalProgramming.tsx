@@ -304,6 +304,70 @@ const baz = (arg: number[]) => 'hello'
 const check = compose(foo, bar, baz)([1, 2, 3]) // [number]
 const check2 = compose(bar, foo)(1) // expected error
 `;
+
+const code15 = `
+type Foo = typeof foo
+type Bar = typeof bar
+type Baz = typeof baz
+
+type Fn = (a: any) => any
+
+type Head<T extends any[]> = T extends [infer H, ...infer _] ? H : never
+
+type Last<T extends any[]> = T extends [infer _]
+  ? never
+  : T extends [...infer _, infer Tl]
+  ? Tl
+  : never
+
+type Allowed<T extends Fn[], Cache extends Fn[] = []> = T extends []
+  ? Cache
+  : T extends [infer Lst]
+  ? Lst extends Fn
+    ? Allowed<[], [...Cache, Lst]>
+    : never
+  : T extends [infer Fst, ...infer Lst]
+  ? Fst extends Fn
+    ? Lst extends Fn[]
+      ? Head<Lst> extends Fn
+        ? ReturnType<Fst> extends Head<Parameters<Head<Lst>>>
+          ? Allowed<Lst, [...Cache, Fst]>
+          : never
+        : never
+      : never
+    : never
+  : never
+
+type FirstParameterOf<T extends Fn[]> = Head<T> extends Fn
+  ? Head<Parameters<Head<T>>>
+  : never
+
+type Return<T extends Fn[]> = Last<T> extends Fn ? ReturnType<Last<T>> : never
+
+function pipe<
+  T extends Fn,
+  Fns extends T[],
+  Allow extends {
+    0: [never]
+    1: [FirstParameterOf<Fns>]
+  }[Allowed<Fns> extends never ? 0 : 1]
+>(...args: [...Fns]): (...data: Allow) => Return<Fns>
+
+function pipe<T extends Fn, Fns extends T[], Allow extends unknown[]>(
+  ...args: [...Fns]
+) {
+  return (...data: Allow) => args.reduce((acc, elem) => elem(acc), data)
+}
+
+const foo = (arg: string) => [1, 2, 3]
+const baz = (arg: number[]) => 42
+
+const bar = (arg: number) => ['str']
+
+const check = pipe(foo, baz, bar)('hello') // string[]
+const check3 = pipe(baz, bar)([2]) // string[]
+const check2 = pipe(baz, bar)('hello') // expected error
+`;
 const navigation = {
   fp_utils: {
     id: "fp_utils",
@@ -312,7 +376,7 @@ const navigation = {
 
   compose: {
     id: "compose",
-    text: "Typing compose function",
+    text: "Typing compose/pipe function",
   },
   string_unions: {
     id: "string_unions",
@@ -438,6 +502,11 @@ const FP: FC = () => (
         href="https://www.typescriptlang.org/play?#code/FAFwngDgpgBAYgewTAvDc0EDMZaaSWAIQEMAnVdQ7GAI3IOhlIC9KMob6XheP4AdpQAUJAFwwSAsAEpUAPknS+hGAAkoJACYAeACowoADxBQBWgM5KwAbQC6ilMBguYB46fNWbASwFYoCjUAGhgAOgi-AIoAfTtnVwB+dQSXCQEoADdAgG4VJgAZEgsQfUMTM0tre0dUt3LPKt9-QJg4uuSM7IoJdwqvGBsIsKjWmNDRij0AG3jXGGSZuvSs3N5GWABBaemEAHcoXTq+xqs4AXtguoBhEgBjAAtYD0qzi7tKezra+ZPXwbmSRgt0eUGW9ReA2a0RgBRKgJcyThIAa-3OHRg212B10l0GwxBT1CyIcMBW3XBfyhk3gJVCwxpJIxcBKqIG6PmSNZkKq5y+nPUml0yMUPLeGI02h0AAVyCQALZQUxkCw6FkgeSi-pVABKSoArmQBHpCDpJcKSpqMVj9ocdMjQkMIoSoKF1Q5wV1Ap7VmQfRT5uTvYGYF6yHkNrDiiBZWQFUrAgB5LBlMWCGqoOpFEr6LWnQQSoUyuWK5Wq7OlPSa+T+72RvUgQ0CVPat4Zpzzc25tm8gQYhtNk3QM1Fqs1kNh9ZYfUCO4gHwIIR3BDyiAICxQFv585ugRWNN6PE2vY9qwAbzqAAYJDYw3YrvMAIw3iux+PK5NqvfyeIAXxsx52ucFh5v8YYLDAl5kjAj4evMwjDOQADmFg3sMwF2DIEgIREWgkCA4iYjs+xyCgigDkaX4gbw06zvOi4wMuq7rpuxynoID6uMB7GHveRHYuxM4ANYCPs7zAPIOFhMhqH4hEGFyBe8xkAaRowFJeEERIx6keO8yuDJYQqVo+p3FAOo+EhDwgMIoh3HcoRQNMUDyrphjOfKdl3DIoSaSQMjAL+vDLnuKJ4MgaCiGQSESI+MAAD4wAATG5NiPqESWhAAzPEIWsvQFCRchEglGQfhIW5yFhM5AhISADwwIoj5QckcUSElwB5Si3AiMVob6vKtCBPYbkAORPMRo3BYurKgncQmUExa4bsI4WhAV60kCwMjCGlGXZZhMAAPRHYMAgDUNZC5TNKJzUJSWLSuy1QMIG24EgO2PnIJ3lNAc6HIYZBkAgfrrGDwBAA"
       />
     </p>
+    <p>
+      Since, <Var>pipe</Var> function is very similar to <Var>compose</Var>, we
+      need to made only few changes to convert it
+    </p>
+    <Code code={code15} />
     <Header {...navigation.string_unions} />
     <p>
       Let's consider next example. It is not strictly related to TS but I

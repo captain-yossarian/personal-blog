@@ -545,6 +545,14 @@ export const blogArticles = [
         description: 'Some useful typed pure functions',
         Comp: 'FP',
         links: [
+            {
+                href: 'https://stackoverflow.com/questions/65319258/how-to-type-pipe-function-using-variadic-tuple-types-in-typescript-4/68513136#68513136',
+                text: 'Typing pipe function'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/65057205/typescript-reduce-an-array-of-function/67760188#67760188',
+                text: 'Typing compose function'
+            }
 
         ],
         tags: ['fp'],
