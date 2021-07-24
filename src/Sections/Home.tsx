@@ -73,6 +73,7 @@ export const Title = styled.h1`
   line-height: 1.5;
   font-size: 20px;
   display: inline-block;
+  margin-bottom: 20px;
 `;
 
 const Home: FC = () => {
