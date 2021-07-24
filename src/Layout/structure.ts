@@ -74,7 +74,7 @@ export const blogArticles = [
         url: "/math",
         title: "Math operations",
         description:
-            "Let's assume, You want to make some math operations either on number or bigint.",
+            "How to make math operations either on number or bigint in TypeScript.",
         Comp: 'MathOperations',
         links: [
             {
@@ -148,7 +148,7 @@ export const blogArticles = [
 
     {
         url: "/range-numbers",
-        title: "Generate numbers in range",
+        title: "Generate literal type for numbers in range",
         description: "How to generate numbers range as a literal type",
         Comp: 'RangeNumbers',
         links: [
@@ -163,8 +163,8 @@ export const blogArticles = [
     },
     {
         url: "/tuples",
-        title: "Handle literal arrays/tuples",
-        description: "Filter, map, reduce, findIndex etc ...",
+        title: "Handle literal arrays/tuples types",
+        description: "Variadic tuple types: filter, map, reduce, findIndex etc ...",
         Comp: 'Tuples',
         links: [
             {
@@ -202,7 +202,7 @@ export const blogArticles = [
     },
     {
         url: "/union-array",
-        title: "Transform Union to Array",
+        title: "Transform Union type to Tuple type",
         description: "How to transform unions to array",
         Comp: 'UnionArray',
         links: [
@@ -254,7 +254,7 @@ export const blogArticles = [
     {
         url: "/callbacks",
         title: "Callbacks",
-        description: "How to properly type callbacks",
+        description: "How to properly type callbacks in TypeScript",
         Comp: 'Callbacks',
         links: [
             {
@@ -379,7 +379,7 @@ export const blogArticles = [
     {
         url: '/chain-callbacks',
         title: 'How to chain callbacks',
-        description: 'Here you can find information about callbacks chaining',
+        description: 'Here you can find information about typing callbacks',
         Comp: 'CallbackChain',
         links: [
             {
@@ -429,7 +429,7 @@ export const blogArticles = [
     {
         url: '/dates',
         title: 'Working with Dates',
-        description: 'Type safe objects with Dates',
+        description: 'Type dates literal strings',
         Comp: 'Dates',
         links: [
             {
@@ -442,7 +442,7 @@ export const blogArticles = [
     },
     {
         url: '/type-negation',
-        title: 'Type negation',
+        title: 'Type negation in TypeScript',
         description: 'I want any type except ...',
         Comp: 'TypeNegation',
         links: [
@@ -472,7 +472,7 @@ export const blogArticles = [
     {
         url: '/hex-validation',
         title: 'HEX Validation',
-        description: 'Validator for HEX values',
+        description: 'Static type validator for HEX values',
         Comp: 'HexValidation',
         links: [
             {
@@ -561,7 +561,7 @@ export const blogArticles = [
     {
         url: '/react-props',
         title: 'Handle Props in React',
-        description: 'Make illegal props unrepresentable',
+        description: 'Make illegal React props unrepresentable',
         Comp: 'ReactProps',
         links: [
 
