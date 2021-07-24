@@ -233,24 +233,10 @@ foo([{
     object: { surname: 'John' }, key: 'name'
 }])
 `;
-const navigation = {
-  oop: {
-    id: "oop",
-    text: "OOP approach",
-  },
-  fp: {
-    id: "fp",
-    text: "FP approach",
-    updated: true,
-  },
-};
 
-const links = Object.values(navigation);
 const InferFunctionArguments: FC = () => {
   return (
     <>
-      <HeaderNav links={links} />
-      <Header {...navigation.oop} />
       <p>
         In this article I will show you simple and very useful examples of type
         inference in TypeScript.
