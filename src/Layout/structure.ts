@@ -541,8 +541,8 @@ export const blogArticles = [
     },
     {
         url: '/FP-style',
-        title: 'Functional programming tips & utils',
-        description: 'Some useful typed pure functions',
+        title: 'Functional programming. Typing compose and pipe functions',
+        description: 'TypeScript typings for compose and pipe functions',
         Comp: 'FP',
         links: [
             {
