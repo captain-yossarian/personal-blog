@@ -72,7 +72,7 @@ export const sections = [
 export const blogArticles = [
     {
         url: "/math",
-        title: "Math operations",
+        title: "Math operations in TypeScript",
         description:
             "How to make math operations either on number or bigint in TypeScript.",
         Comp: 'MathOperations',
@@ -92,7 +92,7 @@ export const blogArticles = [
     },
     {
         url: "/typed-react-children",
-        title: "Type React component children",
+        title: "Type React component children in TypeScript",
         description:
             "Let's assume you want to create component which will accept array of children components with certain props.",
         Comp: 'ReactChildren',
@@ -112,7 +112,7 @@ export const blogArticles = [
     },
     {
         url: "/react-return-type",
-        title: "Type React component return type",
+        title: "Type React component return type in TypeScript",
         description:
             "What if you need to make sure that some component will always return other component with some particular props",
         Comp: 'ReactReturnType',
@@ -129,7 +129,7 @@ export const blogArticles = [
     {
         url: "/compare-arguments",
         title: "Compare array arguments",
-        description: "Compare length of arrays as arguments",
+        description: "Compare length of arrays as arguments in TypeScript",
         Comp: 'CompareArguments',
         links: [
             {
@@ -148,7 +148,7 @@ export const blogArticles = [
 
     {
         url: "/range-numbers",
-        title: "Generate literal type for numbers in range",
+        title: "Generate literal type for numbers range in TypeScript",
         description: "How to generate numbers range as a literal type",
         Comp: 'RangeNumbers',
         links: [
@@ -163,7 +163,7 @@ export const blogArticles = [
     },
     {
         url: "/tuples",
-        title: "Handle literal arrays/tuples types",
+        title: "Handle literal arrays/tuples types in TypeScript",
         description: "Variadic tuple types: filter, map, reduce, findIndex etc ...",
         Comp: 'Tuples',
         links: [
@@ -202,7 +202,7 @@ export const blogArticles = [
     },
     {
         url: "/union-array",
-        title: "Transform Union type to Tuple type",
+        title: "Transform Union type to Tuple type in TypeScript",
         description: "How to transform unions to array",
         Comp: 'UnionArray',
         links: [
@@ -217,7 +217,7 @@ export const blogArticles = [
     },
     {
         url: "/unions",
-        title: "Handle unions in React components",
+        title: "Handle unions in React components in TypeScript",
         description: "How to work with unions",
         Comp: 'Unions',
         links: [
@@ -298,7 +298,7 @@ export const blogArticles = [
     },
     {
         url: "/publish-subscribe",
-        title: "Publish subscribe pattern",
+        title: "Publish subscribe pattern in TypeScript",
         description: "Type safe publish subscribe pattern",
         Comp: 'PubSub',
         links: [{
@@ -310,7 +310,7 @@ export const blogArticles = [
     },
     {
         url: "/type-state",
-        title: "Type state pattern",
+        title: "Type state pattern in TypeScript",
         description: "Type safe handler",
         Comp: 'TypeState',
         links: [
@@ -340,7 +340,7 @@ export const blogArticles = [
     },
     {
         url: "/api",
-        title: "Api requests",
+        title: "Api requests in TypeScript",
         description: "Make type safe api requests with TypeScript",
         Comp: 'Api',
         links: [{
@@ -353,7 +353,7 @@ export const blogArticles = [
 
     {
         url: '/template-literals',
-        title: 'Working with template literals',
+        title: 'Working with template literals in TypeScript',
         description: 'Here you can find some advanced examples with template literals',
         Comp: 'TemplateLiterals',
         links: [
@@ -378,7 +378,7 @@ export const blogArticles = [
     },
     {
         url: '/chain-callbacks',
-        title: 'How to chain callbacks',
+        title: 'How to chain callbacks in TypeScript',
         description: 'Here you can find information about typing callbacks',
         Comp: 'CallbackChain',
         links: [
@@ -396,7 +396,7 @@ export const blogArticles = [
     },
     {
         url: '/flatten-union',
-        title: 'How to flatten union',
+        title: 'How to flatten union in TypeScript',
         description: 'Here you can find information about union flattening',
         Comp: 'FlattenUnion',
         links: [
@@ -410,7 +410,7 @@ export const blogArticles = [
     },
     {
         url: '/permutations',
-        title: 'Compute permutations',
+        title: 'Compute permutations in TypeScript',
         description: 'Compute permutations of enum keys and other unions',
         Comp: 'Permutations',
         links: [
@@ -428,7 +428,7 @@ export const blogArticles = [
     },
     {
         url: '/dates',
-        title: 'Working with Dates',
+        title: 'Working with Dates in TypeScript',
         description: 'Type dates literal strings',
         Comp: 'Dates',
         links: [
@@ -471,7 +471,7 @@ export const blogArticles = [
     },
     {
         url: '/hex-validation',
-        title: 'HEX Validation',
+        title: 'HEX Validation in TypeScript',
         description: 'Static type validator for HEX values',
         Comp: 'HexValidation',
         links: [
@@ -485,7 +485,7 @@ export const blogArticles = [
     },
     {
         url: '/linked-list',
-        title: 'Linked list',
+        title: 'Linked list in TypeScript',
         description: 'Linked List with recursive types',
         Comp: 'LinkedList',
         links: [
@@ -499,7 +499,7 @@ export const blogArticles = [
     },
     {
         url: '/deep-pick',
-        title: 'Deep pick typings (updated)',
+        title: 'Deep pick typings (updated) in TypeScript',
         description: 'I will try to implement smth similar to lodash.get typings',
         Comp: 'DeepPick',
         links: [
@@ -514,7 +514,7 @@ export const blogArticles = [
     },
     {
         url: '/validators',
-        title: 'Type validators',
+        title: 'Type validators in TypeScript',
         description: 'How to implements several type validators in generic way',
         Comp: 'Validation',
         links: [
@@ -541,7 +541,7 @@ export const blogArticles = [
     },
     {
         url: '/FP-style',
-        title: 'Functional programming. Typing compose and pipe functions',
+        title: 'Functional programming. Typing compose and pipe functions in TypeScript',
         description: 'TypeScript typings for compose and pipe functions',
         Comp: 'FP',
         links: [
@@ -560,7 +560,7 @@ export const blogArticles = [
     },
     {
         url: '/react-props',
-        title: 'Handle Props in React',
+        title: 'Handle Props in React in TypeScript',
         description: 'Make illegal React props unrepresentable',
         Comp: 'ReactProps',
         links: [
@@ -571,7 +571,7 @@ export const blogArticles = [
     },
     {
         url: '/oop-style',
-        title: 'OOP typings',
+        title: 'OOP typings in TypeScript',
         description: 'Typings for classes',
         Comp: 'OOP',
         links: [
@@ -631,7 +631,7 @@ export const blogArticles = [
     },
     {
         url: '/currying-components',
-        title: 'Currying React components',
+        title: 'Currying React components in TypeScript',
         description: 'React: functional approach',
         Comp: 'CurryingComponents',
         links: [
