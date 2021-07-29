@@ -625,6 +625,10 @@ export const blogArticles = [
                 href: 'https://github.com/microsoft/TypeScript/pull/30769',
                 text: 'Official explanation'
             },
+            {
+                href: 'https://stackoverflow.com/questions/68576735/keyof-and-react-redux-action/68578198#68578198',
+                text: 'Working with redux toolkit'
+            }
         ],
         tags: ['fp', 'mutations'],
         date: 'June 30, 2021'
@@ -677,3 +681,4 @@ export const blogArticles = [
 
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
 
+type O = ArrayLike<1>
