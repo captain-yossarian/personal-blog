@@ -82,7 +82,7 @@ const Home: FC = () => {
       <div>
         <Title>
           Here you can find some non-trivial typescript examples taken from real
-          life (95% from stackoverflow).
+          life (95% are from stackoverflow).
         </Title>
       </div>
       <ul>

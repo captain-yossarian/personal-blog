@@ -38,6 +38,14 @@ export const sections = [
             {
                 href: 'https://thenewtoys.dev/blog',
                 text: 'T.J. Crowder \'s blog'
+            },
+            {
+                href: 'https://github.com/dzharii/awesome-typescript',
+                text:'A collection of awesome TypeScript resources for client-side and server-side development.'
+            },
+            {
+                text:'Vlad Rișcuția \'s blog',
+                href:'https://vladris.com/'
             }
         ],
         id: -1,
@@ -680,5 +688,3 @@ export const blogArticles = [
     }
 
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
-
-type O = ArrayLike<1>
