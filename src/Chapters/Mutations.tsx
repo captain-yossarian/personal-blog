@@ -225,6 +225,18 @@ type b = 'b'
 type c = a & b // never
 
 `;
+
+const code13 = `
+type DescribableFunction = {
+  description: string;
+  (): boolean;
+};
+
+// error
+const fn: DescribableFunction = () => true
+
+// fn.description = 'hello';
+`;
 const navigation = {
   first: {
     id: "first",
@@ -376,6 +388,22 @@ const Mutations: FC = () => (
     <p>
       So, if you want to mutate your variable, please check if you don't break
       anything :)
+    </p>
+    <p>P.S. It turns out that TypeScript can track mutations in this case:</p>
+    <Code code={code13} />
+    <p>
+      If you uncomment last line you will see that error will disappear. More
+      about this feature you can read{" "}
+      <Anchor
+        text="here"
+        href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-1.html#properties-declarations-on-functions"
+      />{" "}
+    </p>
+    <p>
+      <Anchor
+        text="Related question"
+        href="https://stackoverflow.com/questions/68643123/why-does-typescript-track-mutation-of-function-static-properties"
+      />
     </p>
   </>
 );
