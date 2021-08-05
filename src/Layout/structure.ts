@@ -515,6 +515,10 @@ export const blogArticles = [
                 href: 'https://stackoverflow.com/questions/67242871/declare-a-type-that-allows-all-parts-of-all-levels-of-another-type#answer-67247652',
                 text: 'Deep pick function ',
             },
+            {
+                href: 'https://stackoverflow.com/questions/68668055/eliminate-nevers-to-make-union-possible/68672512?noredirect=1#comment121362429_68672512',
+                text:'Deep pick with more comments'
+            }
 
         ],
         tags: ['deeppick'],
