@@ -545,6 +545,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68207767/typescript-infer-possible-object-keys-based-on-value-of-previous-argument/68208487#68208487',
                 text: 'Advanced validation of function arguments'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68700018/how-to-reuse-rest-types-in-tuples/68700643#68700643',
+                text:'Validation of tuple rest arguments'
             }
 
         ],
