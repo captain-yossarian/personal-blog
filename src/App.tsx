@@ -48,6 +48,7 @@ export const componentMap = {
   InferFunctionArguments: React.lazy(
     () => import("./Chapters/InferFunctionArguments")
   ),
+  PrototypeTyping: React.lazy(()=>import('./Chapters/PrototypeTyping'))
 };
 
 setTimeout(() => Prism.highlightAll(), 0);

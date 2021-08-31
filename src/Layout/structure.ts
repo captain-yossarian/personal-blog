@@ -693,6 +693,20 @@ export const blogArticles = [
         ],
         tags: ['infer'],
         date: 'July 24, 2021'
-    }
+    },
+    {
+        url: '/prototype-typing',
+        title: 'Typing the prototype chain',
+        description: 'Recursive typing of inheritance',
+        Comp: 'PrototypeTyping',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/68726766/typescript-make-properties-allowed-on-object-depend-on-values-in-other-property',
+                text: 'Typing the prototype chain'
+            }
+        ],
+        tags: ['recursive'],
+        date: 'August 31, 2021'
+    },
 
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
