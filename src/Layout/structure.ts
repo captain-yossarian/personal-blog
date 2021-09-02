@@ -41,11 +41,11 @@ export const sections = [
             },
             {
                 href: 'https://github.com/dzharii/awesome-typescript',
-                text:'A collection of awesome TypeScript resources for client-side and server-side development.'
+                text: 'A collection of awesome TypeScript resources for client-side and server-side development.'
             },
             {
-                text:'Vlad Rișcuția \'s blog',
-                href:'https://vladris.com/'
+                text: 'Vlad Rișcuția \'s blog',
+                href: 'https://vladris.com/'
             }
         ],
         id: -1,
@@ -254,6 +254,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/65668969/event-maps-and-type-guards#answer-65890181',
                 text: 'Use event map'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68591461/reference-for-typescript-parent-or-its-child-class-in-angular-html-template/68591711#68591711',
+                text: 'Working with unions'
             }
         ],
         tags: ['union', 'react'],
@@ -341,6 +345,10 @@ export const blogArticles = [
                 href: 'https://stackoverflow.com/questions/65978153/typescript-mapenum-setenum-no-overload-matches-this-call-but-i-dont-get',
                 text: 'Map typing'
 
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68676771/how-can-i-create-a-type-from-a-schema-that-describes-it/68677920#68677920',
+                text: 'COmpute allowed state'
             }
         ],
         tags: ['pattern', 'Map', 'callback'],
@@ -472,6 +480,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68404097/require-a-specific-item-in-a-typescript-array/68407121#68407121',
                 text: 'How to negate number 7 in the array'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68487359/how-to-dynamically-assign-properties-to-an-object-in-typescript-by-using-record/68526555#68526555',
+                text: 'Object/Array negation'
             }
         ],
         tags: ['generic', 'negation'],
@@ -517,7 +529,7 @@ export const blogArticles = [
             },
             {
                 href: 'https://stackoverflow.com/questions/68668055/eliminate-nevers-to-make-union-possible/68672512?noredirect=1#comment121362429_68672512',
-                text:'Deep pick with more comments'
+                text: 'Deep pick with more comments'
             }
 
         ],
@@ -548,7 +560,19 @@ export const blogArticles = [
             },
             {
                 href: 'https://stackoverflow.com/questions/68700018/how-to-reuse-rest-types-in-tuples/68700643#68700643',
-                text:'Validation of tuple rest arguments'
+                text: 'Validation of tuple rest arguments'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68572718/typescript-how-to-have-second-argument-type-to-be-dependent-on-first-argument-v/68572792#68572792',
+                text: 'How to have second argument type to be dependent on first argument value'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68632520/what-to-do-with-typescript-function-overload-growth-with-optional-variables/68633755#68633755',
+                text: 'Validate optional arguments'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68633821/what-is-the-way-to-declare-a-method-that-apply-only-specific-type-of-key-of-obje/68633904#68633904',
+                text: 'ANother one simple validation'
             }
 
         ],
@@ -610,6 +634,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/67979663/typescript-keyof-instancetypet-cannot-be-used-to-index-type-error/68118171#68118171',
                 text: 'Apply relation between class and instance - 2'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68598554/typescript-type-of-function-with-automatic-return-type-by-extends-generic/68602727#68602727',
+                text: 'Infer class instance'
             }
         ],
         tags: ['oop', 'inheritance'],
@@ -644,6 +672,22 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68576735/keyof-and-react-redux-action/68578198#68578198',
                 text: 'Working with redux toolkit'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68521780/cannot-dynamically-set-interface-objects-property-values/68526031#68526031',
+                text: 'Classic mutation'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68576735/keyof-and-react-redux-action/68578198#68578198',
+                text: 'Another one mutation'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68617333/how-to-achieve-a-generic-like-this/68617990#68617990',
+                text: 'Workaround'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68645349/type-extractkeyof-t-string-cannot-be-used-to-index-type-this/68647726#68647726',
+                text: 'Mutations'
             }
         ],
         tags: ['fp', 'mutations'],
@@ -687,6 +731,30 @@ export const blogArticles = [
         {
             href: 'https://stackoverflow.com/questions/68391632/infer-type-from-array-literal/68392353#68392353',
             text: 'Infer and convert literal array to object '
+        },
+        {
+            href: 'https://stackoverflow.com/questions/68557486/type-x-string-ts-is-not-assignable-to-type-partialt/68557852#68557852',
+            text: 'Simple infer'
+        },
+        {
+            href: 'https://stackoverflow.com/questions/68601472/type-for-a-function-receiving-array-of-string-and-returning-a-record-with-a-key/68602130#68602130',
+            text: 'Infer with recursive iteration'
+        },
+        {
+            href: 'https://stackoverflow.com/questions/68619999/in-typescript-is-there-a-way-to-declare-literal-type-other-than-giving-as-cons/68624247#68624247',
+            text: 'Infer return type'
+        },
+        {
+            href: 'https://stackoverflow.com/questions/68669744/infer-types-using-own-properties/68670399#68670399',
+            text: 'Infer arguments of nested method'
+        },
+        {
+            href: 'https://stackoverflow.com/questions/68678615/inferring-parameter-list-of-function/68679065#68679065',
+            text: 'Infer variadic tuple types'
+        },
+        {
+            href: 'https://stackoverflow.com/questions/68699646/typescript-strong-typing-and-autocomplete-for-a-value-based-on-a-sibling-obje/68700044#68700044',
+            text: 'Infer nested props of argument'
         }
 
 
@@ -714,10 +782,32 @@ export const blogArticles = [
         description: 'Some tips and tricks about safer types',
         Comp: 'SaferTypes',
         links: [
-      
+            {
+                href: 'https://stackoverflow.com/questions/68601578/return-generic-type-of-type-alias/68601916#68601916',
+                text: 'Difference between interface and type'
+            }
+
         ],
         tags: ['safe types'],
         date: 'September 2, 2021'
     },
 
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
+
+/**
+ * Decorators
+ * https://stackoverflow.com/questions/68648140/type-safe-decorator-for-private-method-in-typescript/68665107#68665107
+ */
+
+/**
+ * COntravariant
+ * https://stackoverflow.com/questions/68692740/typescript-intersection-reduced-to-never-because-property-length-has-conflic/68693586#68693586
+ * https://stackoverflow.com/questions/68711007/why-type-recordstring-unknown-does-not-accept-object-with-defined-keys-as-va/68711655#68711655
+ */
+
+/**
+ * Validation of tuples
+ * https://stackoverflow.com/questions/68700018/how-to-reuse-rest-types-in-tuples/68700643#68700643
+ */
+
+// 2 page
