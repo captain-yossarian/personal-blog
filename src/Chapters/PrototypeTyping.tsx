@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Var } from "../Layout";
-import { Header, HeaderNav } from "../Shared/ArticleBase";
 import { Anchor } from "../Shared/Links";
 
 const code1 = `
@@ -14,6 +13,7 @@ type ConfigObject = {
       css: Record<"$margin", string>
     },
     align: {
+      inherit: ['button.secondary']
       css: Record<'$left', string>
     }
   },
@@ -188,7 +188,8 @@ type Utility<Obj, Props extends Extract<KeysUnion<Obj>, string>> = Reducer<Props
 `;
 
 const code8 = `
-type DigInto<T extends { inherit: string, css: string }> = Record<'not impelemented', string>
+type DigInto<T extends { inherit: string, css: string }> =
+  Record<'not impelemented', string>
 
 type Callback<Accumulator extends Record<string, any>, El extends string> =
   // if El is a key of ConfigObject - dig into it
@@ -204,7 +205,9 @@ type DigInto<T extends { inherit: string, css: string }> =
       // call Reducer recursively with inherited Path and initial ConfigObject
       ? Reducer<Inherit, ConfigObject> & CSS
       // if Inherit is an array of allowed Paths - call Reducer with union of all Pathes
-      : (Inherit extends Array<Path<ConfigObject>> ? Reducer<Inherit[number], ConfigObject> & CSS : CSS))
+      : (Inherit extends Array<Path<ConfigObject>>
+          ? Reducer<Inherit[number], ConfigObject> & CSS
+            : CSS))
     : T)
 `;
 
@@ -218,6 +221,7 @@ type ConfigObject = {
       css: Record<"$margin", string>
     },
     align: {
+      inherit: ['button.secondary']
       css: Record<'$left', string>
     }
   },
@@ -261,7 +265,10 @@ type DigInto<T extends { inherit: string, css: string }> =
       // call Reducer recursively with inherited Path and initial ConfigObject
       ? Reducer<Inherit, ConfigObject> & CSS
       // if Inherit is an array of allowed Paths - call Reducer with union of all Pathes
-      : (Inherit extends Array<Path<ConfigObject>> ? Reducer<Inherit[number], ConfigObject> & CSS : CSS))
+      : (Inherit extends Array<Path<ConfigObject>>
+          ? Reducer<Inherit[number], ConfigObject> & CSS
+            : CSS)
+              )
     : T)
 
 type Callback<Accumulator extends Record<string, any>, El extends string> =
@@ -298,21 +305,111 @@ type Utility<Obj, Props extends Extract<KeysUnion<Obj>, string>> =
 
 type Result = Utility<ConfigObject, 'button.primary'>
 `;
-const navigation = {
-  long_way: {
-    id: "long_way",
-    text: "Long and complicated way",
+
+const code12 = `
+type ConfigObject = {
+  effect: {
+    hover: {
+      css: Record<"$padding", string>
+    },
+    out: {
+      css: Record<"$margin", string>
+    },
+    align: {
+      inherit: ['button.secondary']
+      css: Record<'$left', string>
+    }
   },
-  short_way: {
-    id: "short_way",
-    text: "Short way",
+  button: {
+    primary: {
+      inherit: 'effect.hover'
+      css: Record<"$color", string> & Record<"$margin", string>
+    }
+    secondary: {
+      css: Record<"$what", string>
+    }
   },
-  cb_in_tuple: {
-    id: "cb_in_tuple",
-    text: "Callback in tuple",
+  div: {
+    flexBox: {
+      inherit: ['effect.hover', 'effect.align']
+    }
   },
-};
-const links = Object.values(navigation);
+}
+
+type KeysUnion<T, Cache extends string = '', Level extends any[] = []> =
+  T extends PropertyKey ? Cache : {
+    [P in keyof T]:
+    P extends string
+    ? Cache extends ''
+    ? KeysUnion<T[P], \`${"${P}"}\`, [...Level, 1]>
+    : Level['length'] extends 1 // if it is a higher level - proceed
+    ? KeysUnion<T[P], \`${"${Cache}.${P}"}\`, [...Level, 1]>
+    : Level['length'] extends 2 // stop on second level
+    ? Cache | KeysUnion<T[P], \`${"${Cache}"}\`, [...Level, 1]>
+    : never
+    : never
+  }[keyof T]
+
+type Path<T> = Extract<KeysUnion<T>, string>
+
+type DigInto<T extends { inherit: string, css: string }> =
+  // if T has either inherit or css or both - proceed
+  (T extends { inherit?: infer Inherit, css?: infer CSS }
+    // if Inherit is allowed Path of ConfigObject
+    ? (Inherit extends Path<ConfigObject>
+      // call Reducer recursively with inherited Path and initial ConfigObject
+      ? Reducer<Inherit, ConfigObject> & CSS
+      // if Inherit is an array of allowed Paths - call Reducer with union of all Pathes
+      : (Inherit extends Array<Path<ConfigObject>>
+          ? Reducer<Inherit[number], ConfigObject> & CSS
+            : CSS))
+    : T)
+
+type Callback<Accumulator extends Record<string, any>, El extends string> =
+  // if El is a key of ConfigObject - dig into it
+  El extends keyof Accumulator ? DigInto<Accumulator[El]> : Accumulator
+
+type Reducer<
+  Keys extends string,
+  Accumulator extends Record<string, any> = {}
+  > =
+  Keys extends \`${"${infer Prop}.${infer Rest}"}\`
+  ? Reducer<Rest, Callback<Accumulator, Prop>>
+  : Keys extends \`${"${infer Last}"}\`
+  ? Callback<Accumulator, Last>
+  : never
+
+type UnionKeys<T> = T extends T ? keyof T : never;
+
+type StrictUnionHelper<T, TAll> =
+  T extends any
+  ? T & Partial<Record<Exclude<UnionKeys<TAll>, keyof T>, never>> : never;
+
+type StrictUnion<T> = StrictUnionHelper<T, T>
+
+type Utility<Obj, Props extends Extract<KeysUnion<Obj>, string>> =
+  StrictUnion<Partial<Reducer<Props, Obj>>>
+
+type Result = Utility<ConfigObject, 'button.primary'>
+
+// ok
+const resultOk: Result = {
+  $padding: '10px',
+  $color: 'azure',
+  $margin: '12px'
+}
+
+// error
+const resultFail: Result = {
+  $padding: '10px',
+  $color: 'azure',
+  $margin: '12px',
+  $unknown: 'unknown'
+}
+
+// $padding | $left | $what
+type Result2 = keyof Utility<ConfigObject, 'div.flexBox'>
+`;
 
 const PrototypeTyping: FC = () => {
   return (
@@ -327,7 +424,7 @@ const PrototypeTyping: FC = () => {
       <Code code={code2} />
       <p>
         We need to create utility type which will merge all <Var>css</Var>{" "}
-        properties which are exists in <Var>inherit</Var> chain and make then
+        properties which are exists in <Var>inherit</Var> chain and make them
         optional.
       </p>
       <p>
@@ -427,7 +524,7 @@ const PrototypeTyping: FC = () => {
         Let's do it
       </p>
       <Code code={code9} />
-      <p>Out whole code so far</p>
+      <p>Our whole code so far</p>
       <Code code={code10} />
       <p>
         I hope you did not forget that we need to get a <Var>Partial</Var> type
@@ -436,7 +533,15 @@ const PrototypeTyping: FC = () => {
         you will find there <Var>StrictUnion</Var> helper. Let's use it.
       </p>
       <Code code={code11} />
-      <p>This is time for tests</p>
+      <p>FInal code with some tests</p>
+      <Code code={code12} />
+      <p>
+        <Anchor
+          text="Playground"
+          href="https://www.typescriptlang.org/play?#code/C4TwDgpgBAwg9gOwGYEsDmB5ARgKwgY2CgF4oBvAWACgooIkkDgAuc622gCzgDcIAnVpRoda+AM7jWAJQJx+AEwA8AIgAkYAIYKFKBGhUAaKOOD89aAHzsOAX0M3acAK4s2I0RKlRZ+ecvUAW01+ND0jEzMLaw8oe0coTQAbdAQhBNo9TgEUNwBtAHIsV2BEADpxOQQFEJACgF0MqC8ZOUUlArUk+mAC41NzfRjRWxt4kWLgUrT3UTBzYP4QdNjMhGzzNwL6RkIy7j5+AqaWnzaAtT8k+QiB6KgAMjO-dqCQsIRbqKGE0djKvzVWorURiSStF4XADunE0wC+gysvzGDhEuh4II4SG6AA8AEJwHGY0RZHL5bYMJj7XgCPpQCm7YBlZKpBrIkTjP7UUCQKAAaQgIHEAFUEChEEoACrGGCafDZOg44AQariSKIkj0ukAGQgfCSiuVqsSCBAeXqmvNlhINklhpVCjVAAV+HBIPxQAKQFAAPywOUK4lQPJOqB6KAAa0FcCQUEl9WYCVDECVDrVd30CT9svl0BTRsdWqz-MFIrFEslIfqxgABmoyE7bDXjHkym3dfrjABGerDDisDsQJKFbr6YCcBr241dqAAelnYdjuTDas0UE46A2UG6+qgAFooPM4PgIBAFMWvWXxQgpVXa-Wc9lbGV643m8G22VB0lu72EgO9SHEcVTQcdJ3zNMoAAJjnBdTDdKBEBMKoFG3QCkmLR9oAAHxLIVRWvW8nWrKA6zILCmxbT9v1-PtaFYBBAP4f8oEYw4xjyKMQBjONGioblwGgJ04U4KVrVIABRJV+DlYAlEvAiK0sfpviRfiqB5aAABF0AASQQUopSnQsyDDdYyVYDM0GMU4rLicSbHnRc43XTQ1QgXIt1JTZEP4ZpJF8qAsDgcd90PV0TzPGwAAo7Qg41TO83IfVYPRGD8-SNlyGzJBSsz0tgABlQq4gSJyUFjTKyRXRIkmuKEzygYTQp4+BkHQbA8EIYtoqqnz4sLZrRLa1BMFwJg6I4Jz8GSA1ZAUZwTz8-gCGcfhxBQfVvShTyzKy5VUKGk1UL0XIUGSWBEFGzqmCaP15sWgQlD67LLvasauuAa0nhgYqmnKyrzJ8lBVwQRJ+Bk70eNmuAGsOkS1QPGa6rOBalqgHbQuccswehlGhogcQmlYXqgeXAa1QAQQhzQQCUIalBGjrxsISxrXus9Hv4Z6yeAPIEGcQIsAEEimY+ibHiKkrWF+wqAEo5ZYyVFfUzT-TqrA5QjJRKfwfBBecJI4XkYy1V8fwlCs4xNFNZSoAkg0KfVe5iEchcKvtg0QcSSNBUQ2MxZuwgwt0NAzNKMNgBsB3Td97jY11-XAkN42-L9HS0H0wzE4No3Sn4PIHd7KBWBz5O8-kagBN5B6lqUGxL1jq2bDLlP89j832itk0QHE8g-loByREbp2yLSgQmtdMBn3rce-NkUwmxsDm0aehfgBlWbNfwbXW4r-hjBdN02ZsVgR9TY0x+QCftTc4Al5EbMt61nW9dz1PjFv0w+wYpiq40wSUBFIIEvGJTUcUL6FjtH6LiPE7S-0OAAbn-mrQqURCDAIABJDndFKYwkpKZ1SHrQCBBZQYgGXi5J4wkPTnSSEoTuygpL4CSM4BQEAlDANAQQohxhYGxklHbNiAg2Yl1YkxZBqtAFoPMBgnGYDSAyJQHI682Cki4OlHGGI1doDCmACgFIoAlCdUPlPdykC1RSTMLJeSpZgHGNwHbKyojFHoOAPYmh+jkgMM5nXI+YBxDGE6mzbRACa6E0NkQUgeiDG5DpoHFmG96STGmGUeYKBFh1FCU5OAEZqCAlMFAFa4hIkYAjK0EpSQomzCgBobQuh9CsAKF2AADGAHEfQbCXDgNcQQ9JNAAC81oQE6SINQiwPhNK7FBdpxwqBcioE5AQrpmJUAKUQYpkSABimgDEVMiZqYQtA6k6AsFMtpHTUTHKuPIJpgzhmjOORMvQUyZmXK6djCMCBYYzAKJ875UIEBzIWU5E5DSw64S6D0KAkKYRwh0WcSpwAYKkH4UA-Rhj4lXWZp9YwBR0RlGxCmAkHTLBAA"
+        />
+      </p>
+      <p>You can also find an example of usage above types with react components in the original SO answer</p>
     </>
   );
 };
