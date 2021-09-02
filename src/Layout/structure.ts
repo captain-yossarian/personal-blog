@@ -696,17 +696,28 @@ export const blogArticles = [
     },
     {
         url: '/prototype-typing',
-        title: 'Typing the prototype chain',
+        title: 'Typing the inheritance chain',
         description: 'Recursive typing of inheritance',
         Comp: 'PrototypeTyping',
         links: [
             {
                 href: 'https://stackoverflow.com/questions/68726766/typescript-make-properties-allowed-on-object-depend-on-values-in-other-property',
-                text: 'Typing the prototype chain'
+                text: 'Typing the inheritance chain'
             }
         ],
         tags: ['recursive'],
         date: 'August 31, 2021'
+    },
+    {
+        url: '/safer-types',
+        title: 'Safer TypeScript',
+        description: 'Some tips and tricks about safer types',
+        Comp: 'SaferTypes',
+        links: [
+      
+        ],
+        tags: ['safe types'],
+        date: 'September 2, 2021'
     },
 
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
