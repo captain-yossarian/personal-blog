@@ -165,6 +165,10 @@ export const blogArticles = [
                     "https://stackoverflow.com/questions/65307438/how-to-define-properties-in-a-typescript-interface-with-dynamic-elements-in-the",
                 text: "Make number range",
             },
+            {
+                href: 'https://stackoverflow.com/questions/68724603/how-to-create-a-uuid-template-literal-type-in-typescript/68724963#68724963',
+                text: 'UUID string'
+            }
         ],
         tags: ['number', 'range', 'template literals'],
         date: 'December 15, 2020'
@@ -203,6 +207,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68207767/typescript-infer-possible-object-keys-based-on-value-of-previous-argument/68208487#68208487',
                 text: 'Arguments constraints'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68739264/typescript-unknown-is-assignable-to-the-constraint-of-type-r-but-r-cou/68739510#68739510',
+                text: 'Infer function tuples'
             }
         ],
         tags: ['array', 'tuples'],
@@ -219,6 +227,10 @@ export const blogArticles = [
                     "https://stackoverflow.com/questions/65533827/get-keys-of-an-interface-in-generics/65534971#65534971",
                 text: "Get keys from interface",
             },
+            {
+                href: 'https://stackoverflow.com/questions/68949858/how-can-i-get-tuple-type-from-the-members-of-another-type-in-typescript/68950848#68950848',
+                text: 'How can I get tuple type from the members of another type in typescript'
+            }
         ],
         tags: ['union', 'array', 'transform'],
         date: 'January 2, 2021'
@@ -258,6 +270,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68591461/reference-for-typescript-parent-or-its-child-class-in-angular-html-template/68591711#68591711',
                 text: 'Working with unions'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68813156/how-to-create-a-union-type-from-nested-arrays/68813549#68813549',
+                text: 'Obtain a union of all deep nested props'
             }
         ],
         tags: ['union', 'react'],
@@ -387,6 +403,10 @@ export const blogArticles = [
             {
                 href: 'https://github.com/microsoft/TypeScript/pull/40336',
                 text: 'TypeScript main merge request'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68770740/typescript-dynamic-type-for-object-key-based-on-sibling-string-field/68771074#68771074',
+                text: 'Compute router parameter'
             }
         ],
         tags: ['template literals'],
@@ -437,6 +457,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68252446/is-it-possible-to-generate-string-literal-combinations-with-template-literal-in#answer-68256789',
                 text: 'String permutation'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68935607/how-to-filter-union-type/68953201#68953201',
+                text: 'Remove all duplications inside permutation'
             }
         ],
         tags: ['union', 'partial', 'recursion', 'tuples'],
@@ -573,6 +597,18 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68633821/what-is-the-way-to-declare-a-method-that-apply-only-specific-type-of-key-of-obje/68633904#68633904',
                 text: 'ANother one simple validation'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68971574/how-to-type-an-arrays-values-with-typescript/68972217#68972217',
+                text: 'Validation of object keys'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68993482/x-instanceof-class-type-passed-through-parameter/68995414#68995414',
+                text: 'Curring'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69031540/generic-type-inference-from-an-specific-function-argument/69031642#69031642',
+                text: 'Validation of deep nested props'
             }
 
         ],
@@ -592,6 +628,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/65057205/typescript-reduce-an-array-of-function/67760188#67760188',
                 text: 'Typing compose function'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68800808/can-you-write-a-compose-method-that-infer-types-correctly-if-the-innermost-fun/68801798#68801798',
+                text: 'Middleware composition'
             }
 
         ],
@@ -604,6 +644,18 @@ export const blogArticles = [
         description: 'Make illegal React props unrepresentable',
         Comp: 'ReactProps',
         links: [
+            {
+                text: 'Validation of React props with generic parameter',
+                href: 'https://stackoverflow.com/questions/68727850/typing-the-click-handler-when-component-is-generic-polymorphic-react-component/68728199#68728199'
+            },
+            {
+                text: 'Validation of react props',
+                href: 'https://stackoverflow.com/questions/68813143/pick-a-type-from-one-of-the-props/68814050#68814050'
+            },
+            {
+                text: 'Manage weird intersection',
+                href: 'https://stackoverflow.com/questions/68966710/how-to-get-concrete-type-from-mapping-variable/68967097#68967097'
+            }
 
         ],
         tags: ['illegal state', 'react', 'props'],
@@ -638,6 +690,14 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68598554/typescript-type-of-function-with-automatic-return-type-by-extends-generic/68602727#68602727',
                 text: 'Infer class instance'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68734403/infer-type-when-extending-generic-class/68737746#68737746',
+                text: 'Infer generic from inherited class'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68934894/cast-empty-parameter-to-void/68935321#68935321',
+                text: 'Overloading of static class method'
             }
         ],
         tags: ['oop', 'inheritance'],
@@ -688,6 +748,14 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68645349/type-extractkeyof-t-string-cannot-be-used-to-index-type-this/68647726#68647726',
                 text: 'Mutations'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68773327/assigning-properties-in-an-object-by-iterating-through-its-keys/68773501#68773501',
+                text: 'Mutation 2'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/68788537/convert-object-entries-reduce-to-generics-type/68790139#68790139',
+                text: 'Mutation inside reduce'
             }
         ],
         tags: ['fp', 'mutations'],
@@ -803,6 +871,7 @@ export const blogArticles = [
  * COntravariant
  * https://stackoverflow.com/questions/68692740/typescript-intersection-reduced-to-never-because-property-length-has-conflic/68693586#68693586
  * https://stackoverflow.com/questions/68711007/why-type-recordstring-unknown-does-not-accept-object-with-defined-keys-as-va/68711655#68711655
+ * https://stackoverflow.com/questions/68979763/typescript-generics-strange-behavior/68981420#68981420
  */
 
 /**
@@ -810,4 +879,19 @@ export const blogArticles = [
  * https://stackoverflow.com/questions/68700018/how-to-reuse-rest-types-in-tuples/68700643#68700643
  */
 
-// 2 page
+/**
+ * DUplication in permutation
+ * https://stackoverflow.com/questions/68935607/how-to-filter-union-type/68953201#68953201
+ */
+
+/**
+ * Allow only lowerCase
+ * https://stackoverflow.com/questions/68963491/define-a-typescript-type-that-takes-a-lowercase-word/68963571#68963571
+ * https://stackoverflow.com/questions/69042390/typescript-allow-only-uppercase-keys-in-object/69042604#69042604
+ */
+
+/**
+ * Vue types
+ * https://stackoverflow.com/questions/68995690/correctly-typing-a-vuex-getters-getters-parameter/68996232#68996232
+ * https://stackoverflow.com/questions/69029774/nuxt-with-typescript-it-seems-vue-extend-does-not-support-injected-data/69030092#69030092
+ */
