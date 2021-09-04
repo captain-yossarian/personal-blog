@@ -27,3 +27,5 @@ export { default as ReactProps } from './ReactProps';
 export { default as CurryingComponents } from './CurryingComponents';
 export { default as InferFunctionArguments } from './InferFunctionArguments'
 export { default as PrototypeTyping } from './PrototypeTyping'
+export { default as EvenLength} from './EvenLength'
+

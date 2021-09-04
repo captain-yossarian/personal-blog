@@ -858,8 +858,21 @@ export const blogArticles = [
         ],
         tags: ['safe types'],
         date: 'September 2, 2021'
-    },
+    }, {
+        url: '/even-length',
+        title: 'Define a recursive array of even length in TypeScript',
+        description: 'Define a union of tuples with even length',
+        Comp: 'EvenLength',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/68370968/define-a-recursive-array-of-even-length-in-typescript#answer-68373774',
+                text: 'Define a recursive array of even length in TypeScript'
+            }
 
+        ],
+        tags: ['recursive', 'tuples'],
+        date: 'September 4, 2021'
+    },
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
 
 /**
@@ -894,4 +907,13 @@ export const blogArticles = [
  * Vue types
  * https://stackoverflow.com/questions/68995690/correctly-typing-a-vuex-getters-getters-parameter/68996232#68996232
  * https://stackoverflow.com/questions/69029774/nuxt-with-typescript-it-seems-vue-extend-does-not-support-injected-data/69030092#69030092
+ */
+
+/**
+ * Tail recursion optimization
+ * https://github.com/microsoft/TypeScript/pull/45711
+ *
+ * Questions:
+ * https://stackoverflow.com/questions/68370968/define-a-recursive-array-of-even-length-in-typescript
+ * https://stackoverflow.com/questions/68724603/how-to-create-a-uuid-template-literal-type-in-typescript/68724963#68724963
  */

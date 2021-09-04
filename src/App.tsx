@@ -50,6 +50,7 @@ export const componentMap = {
   ),
   PrototypeTyping: React.lazy(() => import("./Chapters/PrototypeTyping")),
   SaferTypes: React.lazy(() => import("./Chapters/SaferTypes")),
+  EvenLength: React.lazy(() => import("./Chapters/EvenLength")),
 };
 
 setTimeout(() => Prism.highlightAll(), 0);
