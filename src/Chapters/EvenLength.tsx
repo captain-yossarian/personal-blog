@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import { Var } from "../Layout";
-import { Header, HeaderNav } from "../Shared/ArticleBase";
 import Code from "../Shared/Code";
 import { Anchor } from "../Shared/Links";
 
@@ -168,6 +167,8 @@ const EvenLength: FC = () => {
         Let's define our tuple element <Var>Expression</Var> and first element
         of the union <Var>CallParams</Var>.
       </p>
+      <p>Please use TypeScript 4.5 or a nightly version</p>
+
       <Code code={code1} />
 
       <p>Now we can define our main utility function.</p>
@@ -209,7 +210,6 @@ const EvenLength: FC = () => {
       <Code code={code4} />
       <p>Here you have a function:</p>
       <Code code={code5} />
-      <p>The end</p>
     </>
   );
 };
