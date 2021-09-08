@@ -168,6 +168,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68724603/how-to-create-a-uuid-template-literal-type-in-typescript/68724963#68724963',
                 text: 'UUID string'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69089549/typescript-template-literal-type-how-to-infer-numeric-type',
+                text: 'TS 4.5 Tail recursion update'
             }
         ],
         tags: ['number', 'range', 'template literals'],
@@ -211,6 +215,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68739264/typescript-unknown-is-assignable-to-the-constraint-of-type-r-but-r-cou/68739510#68739510',
                 text: 'Infer function tuples'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69063690/inferring-a-generic-tuple-with-spread-expressions-in-typescript/69083682#69083682',
+                text: 'Handle tuples'
             }
         ],
         tags: ['array', 'tuples'],
@@ -230,6 +238,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68949858/how-can-i-get-tuple-type-from-the-members-of-another-type-in-typescript/68950848#68950848',
                 text: 'How can I get tuple type from the members of another type in typescript'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69100938/how-to-declare-an-array-of-exactly-one-alias-declared-in-a-type-alias/69101294#69101294',
+                text: 'Union to array'
             }
         ],
         tags: ['union', 'array', 'transform'],
@@ -407,6 +419,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68770740/typescript-dynamic-type-for-object-key-based-on-sibling-string-field/68771074#68771074',
                 text: 'Compute router parameter'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69102544/typescript-template-literals-with-inference/69103247#69103247',
+                text: 'Handle keys'
             }
         ],
         tags: ['template literals'],
@@ -867,6 +883,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68370968/define-a-recursive-array-of-even-length-in-typescript#answer-68373774',
                 text: 'Define a recursive array of even length in TypeScript'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69085069/repeat-multiple-function-arguments/69087323#69087323',
+                text: 'Function with even length of arguments'
             }
 
         ],
@@ -885,6 +905,7 @@ export const blogArticles = [
  * https://stackoverflow.com/questions/68692740/typescript-intersection-reduced-to-never-because-property-length-has-conflic/68693586#68693586
  * https://stackoverflow.com/questions/68711007/why-type-recordstring-unknown-does-not-accept-object-with-defined-keys-as-va/68711655#68711655
  * https://stackoverflow.com/questions/68979763/typescript-generics-strange-behavior/68981420#68981420
+ * https://stackoverflow.com/questions/69087743/conditional-type-infers-type-that-is-too-wide-when-using-intersection-types/69088618#69088618
  */
 
 /**

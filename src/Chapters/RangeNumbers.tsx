@@ -145,6 +145,36 @@ type Enumerate<N extends number> = EnumerateInternal<[], N> extends (infer E)[]
 type Result = Enumerate<43>; // 0 | 1 | 2 | ... | 42
 `;
 
+const code6 = `
+type MAXIMUM_ALLOWED_BOUNDARY = 495
+
+type ComputeRange<
+    N extends number,
+    Result extends Array<unknown> = [],
+    > =
+    (Result['length'] extends N
+        ? Result
+        : ComputeRange<N, [...Result, Result['length']]>
+    )
+
+const ComputeRange = (N: number, Result: number[] = []): number[] => {
+    if (Result.length === N) {
+        return Result
+    }
+    return ComputeRange(N, [...Result, Result.length])
+}
+// 0 , 1, 2 ... 494
+type NumberRange = ComputeRange<MAXIMUM_ALLOWED_BOUNDARY>[number]
+
+// Pure js representation
+
+const Mapped = (N: number, Result: number[] = []): number[] => {
+    if (Result.length === N) {
+        return Result
+    }
+    return Mapped(N, [...Result, Result.length])
+}
+`;
 const RangeNumbers: FC = () => (
   <>
     <p>
@@ -180,6 +210,15 @@ const RangeNumbers: FC = () => (
       you can use this code:
     </p>
     <Code code={code5} />
+    <p>
+      Since TS 4.5,{" "}
+      <Anchor
+        href="https://github.com/microsoft/TypeScript/pull/45711"
+        text="Tail recursion PR"
+      />
+      it is possible to make a range of <Var>numbers</Var> from 0 to 494.
+    </p>
+    <Code code={code6} />
   </>
 );
 
