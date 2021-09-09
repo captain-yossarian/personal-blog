@@ -125,6 +125,84 @@ evenTuple([1, 3]) // ok
 evenTuple([1, 3, 4]) // error
 `;
 
+const code6 = `
+type Expression = number | string | boolean | CallExpression;
+
+type CallExpression = MathCall | CaseCall;
+
+type MathCall = [
+    '+' | '-' | '/' | '*' | '>' | '<',
+    Expression,
+    Expression,
+];
+
+
+
+type MAXIMUM_ALLOWED_BOUNDARY = 495
+
+type Mapped<
+    N extends number,
+    Result extends Array<unknown> = [],
+    > =
+    (Result['length'] extends N
+        ? Result
+        : Mapped<N, [...Result, Result['length']]>
+    )
+
+// 0 , 1, 2 ... 494
+type NumberRange = Mapped<MAXIMUM_ALLOWED_BOUNDARY>[number]
+
+
+type Dictionary = {
+    [Prop in NumberRange as \`${"${Prop}"}\`]: Prop
+}
+
+type EvenEnd = '0' | '2' | '4' | '6' | '8'
+
+type IsEven<T extends \`${"${number}"}\`> =
+    (T extends \`${"${infer Int}${infer Rest}"}\`
+        ? (
+            Rest extends ''
+            ? (Int extends EvenEnd
+                ? true
+                : false
+            )
+            : (Rest extends \`${"${number}"}\`
+                ? IsEven<Rest>
+                : false
+            )
+        )
+        : false
+    )
+
+type Compare<Num extends number> =
+    Num extends number
+    ? IsEven<\`${"${Num}"}\`> extends true
+    ? Num
+    : never
+    : never
+
+type EvenRange = Exclude<Compare<NumberRange>, 0>
+
+type CaseCall<Exp> = {
+    [Prop in Exclude<NumberRange, 0>]?: Exp
+} & { length: EvenRange }
+
+const tuple: CaseCall<Expression> = [1, 1] as const // ok
+const tuple2: CaseCall<Expression> = [1, 1, 1] as const // expected error
+
+
+const handle = <
+    Exp extends Expression, Data extends Exp[]
+>(
+    arg: [...Data],
+    ...check: [...Data]['length'] extends EvenRange ? [] : [never]
+) => arg
+
+handle([1, 1, 1]) // expected error
+handle([1, 1]) // ok
+`;
+
 const EvenLength: FC = () => {
   return (
     <>
@@ -210,6 +288,12 @@ const EvenLength: FC = () => {
       <Code code={code4} />
       <p>Here you have a function:</p>
       <Code code={code5} />
+      <p>UPDATE</p>
+      <p>
+        If you are allowed to use TypeScript 4.5, you can use more efficient
+        version for 494 elements.
+      </p>
+      <Code code={code6} />
     </>
   );
 };
