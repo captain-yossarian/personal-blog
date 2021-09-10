@@ -50,6 +50,10 @@ export const sections = [
             {
                 text: 'How TS compiler works?',
                 href: 'https://ortatalks.s3.us-east-1.amazonaws.com/tsconf-2021/long-tsconf-2021.pdf'
+            },
+            {
+                href: 'https://www.youtube.com/watch?v=wSdV1M7n4gQ',
+                text: 'Anders Hejlsberg on Modern Compiler Construction'
             }
         ],
         id: -1,
