@@ -184,7 +184,7 @@ type Compare<Num extends number> =
 
 type EvenRange = Exclude<Compare<NumberRange>, 0>
 
-type CaseCall<Exp> = {
+type CaseCall<Exp = unknown> = {
     [Prop in Exclude<NumberRange, 0>]?: Exp
 } & { length: EvenRange }
 

@@ -176,8 +176,6 @@ type ExpectedType = Array<{
 
 type Values<T> = T[keyof T];
 
-type Data = typeof myArray;
-
 type Elem = { readonly name: string; readonly options: string };
 
 type MapObject<T extends Elem, Key extends keyof T, Val extends keyof T> = {

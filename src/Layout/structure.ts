@@ -726,6 +726,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68934894/cast-empty-parameter-to-void/68935321#68935321',
                 text: 'Overloading of static class method'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69141075/generic-typing-for-factory-function#answer-69141469',
+                text: 'Trick with rest parameters'
             }
         ],
         tags: ['oop', 'inheritance'],
@@ -960,6 +964,7 @@ export const blogArticles = [
  * React
  * https://stackoverflow.com/questions/69119542/creating-react-element-dynamically-in-typescript/69121051#69121051
  * https://stackoverflow.com/questions/68064397/derived-generic-class-cannot-be-assigned-to-base-generic-class-in-typescript/68065054#68065054
+ * https://stackoverflow.com/questions/65625179/react-styled-components-and-typescript-how-to-wrap-a-styled-component-in-a-fun/69143842#69143842
 
 https://stackoverflow.com/questions/67383159/correctly-typing-prop-injection/67384743#67384743
 
@@ -983,3 +988,5 @@ https://stackoverflow.com/questions/65414467/how-can-i-set-the-props-type-in-hoc
 
 https://stackoverflow.com/questions/68067622/forwardref-type-based-on-props/68070078#68070078
  */
+
+//https://stackoverflow.com/questions/69129519/how-to-write-a-type-for-array-for-multiple-discriminating-unions
