@@ -28,4 +28,4 @@ export { default as CurryingComponents } from './CurryingComponents';
 export { default as InferFunctionArguments } from './InferFunctionArguments'
 export { default as PrototypeTyping } from './PrototypeTyping'
 export { default as EvenLength} from './EvenLength'
-
+export { default as FlattenTuple } from './FlattenTuple'

@@ -913,6 +913,20 @@ export const blogArticles = [
         tags: ['recursive', 'tuples'],
         date: 'September 4, 2021'
     },
+    {
+        url: '/flatten',
+        title: 'Flat deep nested tuple',
+        description: 'Flat literal deep nested tuple',
+        Comp: 'FlattenTuple',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/69127304/typescript-interface-for-array-of-anything-but-other-arrays/69128887#69128887',
+                text: 'Flat deep nested tuple'
+            }
+        ],
+        tags: ['recursive', 'tuples'],
+        date: 'September 12, 2021'
+    }
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
 
 /**
