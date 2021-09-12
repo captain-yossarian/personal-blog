@@ -60,7 +60,7 @@ const result = flatten([[[[[[1]]], 2], 3]] as const)
 const FlattenTuple: FC = () => {
   return (
     <>
-      <p>How to flat deep nested tuple?</p>
+      <p>How to flatten a tuple type in TypeScript?</p>
       <p>
         Every time when I need to deal with type conversion/mapping, I'm asking
         my self: How would I do it in pure functional language wich supports
@@ -109,10 +109,13 @@ const FlattenTuple: FC = () => {
       <p>
         Let's go back to our utility type. You might want to ask me why I have
         used <Var>ReadonlyArray</Var> instead of regular Arrays?
-          </p>
-          <p>This is because with <Var>ReadonlyArray</Var> it is easier to infer deep nested tuple.</p>
-          <p>See this example:</p>
-          <Code code={code3} />
+      </p>
+      <p>
+        This is because with <Var>ReadonlyArray</Var> it is easier to infer deep
+        nested tuple.
+      </p>
+      <p>See this example:</p>
+      <Code code={code3} />
     </>
   );
 };

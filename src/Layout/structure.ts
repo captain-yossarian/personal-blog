@@ -915,7 +915,7 @@ export const blogArticles = [
     },
     {
         url: '/flatten',
-        title: 'Flat deep nested tuple',
+        title: 'How to flatten a tuple type in TypeScript?',
         description: 'Flat literal deep nested tuple',
         Comp: 'FlattenTuple',
         links: [
