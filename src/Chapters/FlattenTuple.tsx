@@ -86,7 +86,7 @@ const FlattenTuple: FC = () => {
       <p>Consider this example:</p>
       <Code code={code1} />
       <p>
-        This is function works in a way we expect. It accepts{" "}
+        This function works in a way we expect. It accepts{" "}
         <Var>[[[[[1]]]]]</Var> and returns <Var>[1]</Var>
       </p>
       <p>
