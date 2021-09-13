@@ -582,6 +582,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68668055/eliminate-nevers-to-make-union-possible/68672512?noredirect=1#comment121362429_68672512',
                 text: 'Deep pick with more comments'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69126879/typescript-deep-keyof-of-a-nested-object-with-related-type#answer-69129328',
+                text:'Deep pick with more edge cases, tests and explanation'
             }
 
         ],
