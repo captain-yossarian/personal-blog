@@ -213,20 +213,20 @@ const EvenLength: FC = () => {
         even infinity length.
       </p>
       <p>
-        But what means even infinity length? It means that we can defined this
-        kinds of tuples:<Var>[1,1] | [1,1,1,1] | [1,1,1,1,1,1] ...</Var>.
+        But what means even infinity length? It means that we can define these
+        tuples:<Var>[1,1] | [1,1,1,1] | [1,1,1,1,1,1] ...</Var>.
       </p>
       <p>
         In other words, we are allowed to define a union of all possible tuples
-        where length is even number.
+        where length is an even number.
       </p>
       <p>
-        This union will have infinity number of elements. I don't think it is
+        Such union should have infinity number of elements. I don't think it is
         possible to implement but it is possible to implement first 55 tuples of
         the union.
       </p>
       <p>
-        It might be possible to implement more elements of the union after{" "}
+        It might be possible to implement more elements of the union after
         <Anchor
           href="https://github.com/microsoft/TypeScript/pull/45711"
           text="Tail recursive evaluation of conditional types"
