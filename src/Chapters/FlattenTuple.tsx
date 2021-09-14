@@ -69,14 +69,14 @@ const FlattenTuple: FC = () => {
       </p>
       <p>
         Please keep in mind, that you are allowed to use only destruction and
-        recursion. There is no <Var>filter</Var>, <Var>fold</Var>,{" "}
+        recursion. There are no <Var>filter</Var>, <Var>fold</Var>,{" "}
         <Var>map</Var> and other fancy methods in type system.
       </p>
       <p>
         Wait, why am I even writing about functional languages. TypeScript is
         not strictly functional but, I believe, that type system is, or at least
         has a lot in common. For instance, you are unable to mutate type itself,
-        you can only override it. Please see my previous article about{" "}
+        you can only overwrite it. Please see my previous article about{" "}
         <Anchor href="https://catchts.com/mutations" text="mutations" />.
       </p>
       <p>
@@ -99,8 +99,8 @@ const FlattenTuple: FC = () => {
         previously.
       </p>
       <p>
-        I just wanted to say, that if you want to write not trivial types, you
-        need to change they way you are thinking.
+        I just wanted to say, that if you want to write non trivial types, you
+        need to change the way of thinking.
       </p>
       <p>
         Hence, if you learn some basics of <Var>F#</Var>,<Var>OCaml</Var> or any
@@ -111,11 +111,12 @@ const FlattenTuple: FC = () => {
         used <Var>ReadonlyArray</Var> instead of regular Arrays?
       </p>
       <p>
-        This is because with <Var>ReadonlyArray</Var> it is easier to infer deep
-        nested tuple.
+        This is because it is easier to infer deep nested tuple with{" "}
+        <Var>ReadonlyArray</Var>.
       </p>
       <p>See this example:</p>
       <Code code={code3} />
+      <p>The end.</p>
     </>
   );
 };
