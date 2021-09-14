@@ -585,7 +585,7 @@ export const blogArticles = [
             },
             {
                 href: 'https://stackoverflow.com/questions/69126879/typescript-deep-keyof-of-a-nested-object-with-related-type#answer-69129328',
-                text:'Deep pick with more edge cases, tests and explanation'
+                text: 'Deep pick with more edge cases, tests and explanation'
             }
 
         ],
@@ -864,7 +864,10 @@ export const blogArticles = [
             href: 'https://stackoverflow.com/questions/69130587/avoid-silly-inference-for-union-types-element-implicitly-has-an-any-type-bec/69130873#69130873',
             text: 'Curry inference'
         },
-
+        {
+            href: 'https://stackoverflow.com/questions/69176666/implementing-a-modular-system-with-typescript/69177072#69177072',
+            text: 'Curry inference 2'
+        }
 
         ],
         tags: ['infer'],
@@ -944,6 +947,7 @@ export const blogArticles = [
  * https://stackoverflow.com/questions/68711007/why-type-recordstring-unknown-does-not-accept-object-with-defined-keys-as-va/68711655#68711655
  * https://stackoverflow.com/questions/68979763/typescript-generics-strange-behavior/68981420#68981420
  * https://stackoverflow.com/questions/69087743/conditional-type-infers-type-that-is-too-wide-when-using-intersection-types/69088618#69088618
+ * https://stackoverflow.com/questions/69173641/how-to-type-a-method-with-an-interface-as-parameter/69175495#69175495
  */
 
 /**
