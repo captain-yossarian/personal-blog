@@ -867,6 +867,10 @@ export const blogArticles = [
         {
             href: 'https://stackoverflow.com/questions/69176666/implementing-a-modular-system-with-typescript/69177072#69177072',
             text: 'Curry inference 2'
+        },
+        {
+            href: 'https://stackoverflow.com/questions/69201083/is-there-a-better-way-to-tell-typescript-which-type-data-is/69204051?noredirect=1#comment122329355_69204051',
+            text: 'Reducer inference with curry'
         }
 
         ],
