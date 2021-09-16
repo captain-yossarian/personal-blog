@@ -987,6 +987,18 @@ export const blogArticles = [
  */
 
 /**
+ * Mix
+ * https://stackoverflow.com/questions/69208337/typescript-how-to-give-naming-rules-to-a-dynamic-keyproperty/69208839#69208839
+ */
+
+/**
+ * Extends is not equal
+ * https://stackoverflow.com/questions/69190069/typescript-utilities-record-and-partial-dont-work-with-a-constrained-generi/69205810#69205810
+ * https://stackoverflow.com/questions/69187022/why-cant-the-generic-interface-in-ts-infer-the-type-correctly/69188596#69188596
+ */
+
+
+/**
  * React
  * https://stackoverflow.com/questions/69119542/creating-react-element-dynamically-in-typescript/69121051#69121051
  * https://stackoverflow.com/questions/68064397/derived-generic-class-cannot-be-assigned-to-base-generic-class-in-typescript/68065054#68065054
