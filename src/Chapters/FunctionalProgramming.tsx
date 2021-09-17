@@ -18,30 +18,30 @@ const hasProperty = <Obj, Prop extends string>(obj: Obj, prop: Prop)
 `;
 
 const code2_1 = `
-interface Foo {
-    a: number
+type Tag = { [prop: \`${"tag${number}"}\`]: never }
+
+interface Object {
+  hasOwnProperty(v: PropertyKey): boolean & Tag
 }
-const obj = { a: 1 };
 
 interface CallableFunction extends Function {
-
-    call<T extends Foo, Prop extends string, R>(
-        this: (this: Foo, property: Prop) => R,
-        thisArg: Foo,
-        property: Prop
-    ): thisArg is T & Record<Prop, string>;
+  call<
+    T,
+    Prop extends string,
+    R extends boolean & Tag
+  >(this: (this: T, property: Prop) => R, thisArg: T, property: Prop): thisArg is T & Record<Prop, string>;
 }
 
-function foo(str: string) {
-    if (Object.prototype.hasOwnProperty.call(obj, ';')) {
-        const y = obj //  Foo & Record<";", string>
-    }
-    if (Object.prototype.hasOwnProperty.call(obj, str)) {
-        const y = obj // Foo & Record<string, string>
+declare const obj: { name?: string, surname?: number }
 
-        console.log(obj[str]);
-    }
+if (Object.prototype.hasOwnProperty.call(obj, 'name')) {
+  const test = obj.name // string
 }
+
+if (Object.prototype.propertyIsEnumerable.call(obj, 'name')) {
+  const test = obj.name // string | undefined
+}
+
 `;
 
 const code3 = `
@@ -401,7 +401,7 @@ const FP: FC = () => (
         href="https://stackoverflow.com/questions/68001036/override-types-for-built-in-methods-on-prototype/68136715#68136715"
         text="this"
       />{" "}
-      way:
+      way. Please keep in mind, it works only with TS 4.4
     </p>
     <Code code={code2_1} />
     <p>

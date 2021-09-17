@@ -1028,3 +1028,5 @@ https://stackoverflow.com/questions/68067622/forwardref-type-based-on-props/6807
  */
 
 //https://stackoverflow.com/questions/69129519/how-to-write-a-type-for-array-for-multiple-discriminating-unions
+
+//COnditional return statement https://github.com/microsoft/TypeScript/issues/24929
