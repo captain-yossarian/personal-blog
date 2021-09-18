@@ -818,7 +818,7 @@ export const blogArticles = [
     },
     {
         url: '/infer-arguments',
-        title: 'Typescript: Type Inference on function arguments',
+        title: 'Typescript: Type Inference on function arguments (huge update)',
         description: 'Infer deep nested function arguments',
         Comp: 'InferFunctionArguments',
         links: [{
@@ -879,7 +879,7 @@ export const blogArticles = [
 
         ],
         tags: ['infer'],
-        date: 'July 24, 2021'
+        date: 'September 18, 2021'
     },
     {
         url: '/prototype-typing',

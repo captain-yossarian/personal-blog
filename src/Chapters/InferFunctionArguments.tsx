@@ -234,34 +234,235 @@ foo([{
 }])
 `;
 
+const code14 = `
+foo([{
+  object: { name: 'John' }, key: 'name'
+},
+{
+  object: { surname: 'John' }, key: 'name'
+}, {}]) // <--- se here an empty object
+`;
+
+const code15 = `
+function fn<Char extends "a">(): Char {
+  return "a"
+}
+`;
+
+const code16 = `
+function fn<Char extends "a">(): Char {
+  return "a"
+}
+
+const result = fn<'a' & { readonly __tag: unique symbol }>().__tag 
+`;
+
+const code17 = `
+function fn<User extends { name: string }>(): User {
+  return { name: 'John', age: 42 }
+}
+
+fn<{ name: 'John', surname: 'Doe' }>().surname // unsafe
+fn<{ name: 'John', surname: 'Doe' }>().age // error
+
+`;
+
+const code18 = `
+interface Person {
+    firstName: string;
+    lastName: string;
+}
+
+const foo = <User extends Person>(user: User) => {
+    let user1: { [K in keyof User]?: number };
+    user1 = { firstName: 1 };
+
+    let user2: Partial<Record<keyof User, number>>;
+    user2 = { firstName: 2 } // <----- error
+}
+`;
+const code19 = `
+interface Person {
+    firstName: string;
+    lastName: string;
+}
+
+type Human = {
+    salary: number;
+} & Person
+
+let human1: { [K in keyof Human]?: number } = { firstName: 1 }
+let human2: Partial<Record<keyof Human, number>> = { firstName: 2 }
+`;
+
+const code20 = `
+interface Person {
+    firstName?: string;
+    lastName?: string;
+}
+
+type Human =
+    & {
+        salary?: number;
+    }
+    & Person
+    & string // <---- string
+
+const foo = <User extends Person>(user: User) => {
+    let user1: { [K in keyof User]?: number };
+    user1 = { firstName: 1 };
+
+    let user2: Partial<Record<keyof User, number>>;
+    user2 = { firstName: 2 } // <----- error
+}
+
+declare var human: Human
+
+const result = foo<Human>('a')
+`;
+
+const code21 = `
+interface Person {
+    firstName: string;
+    lastName: string;
+}
+
+type Human =
+    & Person
+    & {
+        toString: () => string
+    }
+
+let user2: Partial<Record<keyof Human, number>>;
+user2 = { firstName: 2 } // <----- error
+`;
+
+const code22 = `
+const result = mapKeys({ age: 1 }, { "age": "newAge" })
+result.newAge // 1 
+`;
+
+const code23 = `
+const mapKeys = <
+  ObjKeys extends PropertyKey,
+  ObjValues extends PropertyKey,
+  Obj extends Record<ObjKeys, ObjValues>,
+  >(obj: Obj) => 'unimplemented' as any
+
+
+const result = mapKeys({ age: 1 })
+
+`;
+
+const code24 = `
+const mapKeys = <
+  ObjKeys extends PropertyKey,
+  ObjValues extends PropertyKey,
+  Obj extends Record<ObjKeys, ObjValues>,
+  NewKeys extends PropertyKey,
+  KeyMap extends Record<keyof Obj, NewKeys>, // <--- keys are taken from Obj
+  >(obj: Obj, keyMap: KeyMap) => 'unimplemented' as any
+
+
+const result = mapKeys({ age: 1 }, { "age": "newAge" })
+result.newAge // 1
+`;
+
+const code25 = `
+
+// credits goes to https://stackoverflow.com/a/50375286
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
+  k: infer I
+) => void
+  ? I
+  : never;
+
+type Values<T> = T[keyof T]
+
+type Rename<Obj, Dictionary> =
+  Dictionary extends Record<string, string>
+  ? UnionToIntersection<Values<{
+    [Prop in keyof Dictionary]: Prop extends keyof Obj
+    ? Record<Dictionary[Prop], Obj[Prop]>
+    : never
+  }>>
+  : never
+
+
+const mapKeys = <
+  ObjKeys extends PropertyKey,
+  ObjValues extends PropertyKey,
+  Obj extends Record<ObjKeys, ObjValues>,
+  NewKeys extends PropertyKey,
+  KeyMap extends Record<keyof Obj, NewKeys>, 
+  >(obj: Obj, keyMap: KeyMap) => 'unimplemented' as any
+
+
+const result = mapKeys({ age: 1 }, { "age": "newAge" })
+result.newAge // 1
+`;
+const navigation = {
+  generic_inference: {
+    id: "generic_inference",
+    text: "Basics of argument inference",
+  },
+  generic_constraints: {
+    id: "generic_constraints",
+    text: "Generic constraints",
+    updated: true,
+  },
+  deep_infering: {
+    id: "deep_infering",
+    text: "Deep inference",
+    updated: true,
+  },
+};
+const links = Object.values(navigation);
+
 const InferFunctionArguments: FC = () => {
   return (
     <>
+      <HeaderNav links={links} />
       <p>
-        In this article I will show you simple and very useful examples of type
-        inference in TypeScript.
+        In this article I will show you useful examples of type inference in
+        TypeScript.
       </p>
+      <Header {...navigation.generic_inference} />
+      <p>Let's start from the simplest example.</p>
       <p>
-        Imagine you want to infer not just number type but a literal
-        representation. Consider next example:
+        Imagine you want to infer some primitive type. For instance let's infer
+        a <Var>number</Var>. Consider this example:
       </p>
       <Code code={code1} />
       <p>
         <Var>T</Var> generic parameter was infered to <Var>42</Var> which is
-        perfectly fine. Now, try to pass an object: <Var>{`{a: 42}`}</Var>:
+        perfectly fine. It was infered as a literal <Var>42</Var> instead of
+        just <Var>number</Var>.
+      </p>
+      <p>
+        If you used just <Var>{`const foo = (a: number) => a`}</Var>, you would
+        infer nothing.
+      </p>
+      <p>
+        Now, try to pass an object <Var>{`{a: 42}`}</Var> to our <Var>foo</Var>
+        function.
       </p>
       <Code code={code2} />
       <p>
-        This is not really what we want. We want to infer <Var>{`{a: 42}`}</Var>{" "}
+        This is not really what we want. We want to infer <Var>{`{a: 42}`}</Var>
         , not just <Var>{`{a: number}`}</Var>. You have at least two options how
-        to do it. First, you can just annotate your object as immutable value. I
-        mean <Var>as const</Var> .
+        to do it. First, you can just annotate your object with{" "}
+        <Var>as const</Var>. I mean make it fully immutable.
       </p>
       <Code code={`foo({ a: 42 } as const)`} />
       <p>
-        It works, but sometimes you are not allowed to use immutable values.
-        Second option is much better. You can add extra generic yo annotate the
-        value.
+        It works, but sometimes, if not always, you are not allowed to use
+        immutable values. Second option is much better. You can add extra
+        generic in order to infer the value.
+      </p>
+      <p>
+        From my experience arises, that if you can't infer something with one
+        generic - add another one.
       </p>
       <Code code={code3} />
       <p>
@@ -276,7 +477,6 @@ const InferFunctionArguments: FC = () => {
       </p>
       <p>Consider next example:</p>
       <Code code={code5} />
-
       <p>
         Now, I don't like this example, because my values are restricted to
         string and number types. Instead of using <Var>string | number</Var> as
@@ -333,16 +533,169 @@ const InferFunctionArguments: FC = () => {
         <Anchor
           href="https://stackoverflow.com/questions/68482949/typescript-keyof-unexpected-behavior/68483709#68483709"
           text="here"
-        />
+        />{" "}
         . The only difference between them, that second infers class constructor
         arguments
       </p>
       <p>
-        If you want to infer class instances, please refer to attached links at
-        the bottom. You will find there more interesting examples
+        There is one interesting thing in our last example. The validation
+        algorithm. It runs only after providing all arguments but not during.
+        Try to add comma after after last element and put an empty object in
+        example with error.
       </p>
+      <Code code={code14} />
+      <p>You will see that error is gone.</p>
+      <p>So, this is our algorithm:</p>
+      <ul>
+        <ol> - TS infers each object in the array</ol>
+        <ol> - TS validates whole infered array with elements</ol>
+      </ul>
+      <p>
+        Before we proceed with generics, I'd like to talk about generic
+        constraints.
+      </p>
+      <Header {...navigation.generic_constraints} />
+      <p>
+        Main point of this chapter is: <Var>extends</Var> does not mean{" "}
+        <Var>equal</Var>.
+      </p>
+      <p>Consider this example:</p>
+      <Code code={code15} />
+      <p>You will get this error:</p>
+      <p>
+        <Var>Type '"a"' is not assignable to type 'Char'.</Var>
+        <Var>
+          '"a"' is assignable to the constraint of type 'Char', but 'Char' could
+          be instantiated with a different subtype of constraint '"a"'
+        </Var>
+      </p>
+      <p>
+        While we think that compiler is just a picky machine which dislikes our
+        code, let's take a look at some weird edge cases.
+      </p>
+      <p>
+        What if our type argument is <Var>branded/tagged</Var>.
+      </p>
+      <Code code={code16} />
+      <p>
+        While TS claims that <Var>result</Var> is a <Var>symbol</Var>, in
+        runtime, it will be just an <Var>undefined</Var>
+      </p>
+      <p>
+        In above example <Var>{`'a' & { readonly __tag: unique symbol }`}</Var>{" "}
+        is assignable to type argument of <Var>fn</Var>function but as you might
+        have noticed, return value of function will not conform our expectation.
+        I mean if you provide branded type with some extra properties as an
+        argument you would expect them as an output, but since our function, in
+        fact, returns only <Var>"a"</Var>this behavior is unsafe.
+      </p>
+      <p>To make it clear, please see another example with object.</p>
+      <Code code={code17} />
+      <p>
+        Related{" "}
+        <Anchor
+          text="answer"
+          href="https://stackoverflow.com/questions/69187022/why-cant-the-generic-interface-in-ts-infer-the-type-correctly/69188596#69188596"
+        />
+      </p>
+      <p>
+        In case, if you did not like previous example, I have prepared another
+        one. More interesting.
+      </p>
+      <Code code={code18} />
+      <p>
+        Take a minute to think about this example and try to answer a simple
+        question: Why do you see an error?
+      </p>
+      <p>
+        If <Var>User</Var> is known, it works as expected.
+      </p>
+      <Code code={code19} />
+      <p>
+        Do you remember what I said at the beginning? <Var>Extends</Var> does
+        not mean - <Var>equal</Var>. It means that left side Type is a subtype
+        of right side type. Nothing more, nothing less.
+      </p>
+      <p>
+        Let's slightly change our example. I just made all property optional.
+      </p>
+      <Code code={code20} />
+      <p>You might think: Are you kidding me? Is this a joke?</p>
+      <p>
+        I know, you expected an object of <Var>Person</Var> type with some extra
+        properties. Above code is perfectly valid from technical point of view.{" "}
+        Despite being just a <Var>string</Var>, <Var>Human</Var> is a subtype of{" "}
+        <Var>Person</Var>.
+      </p>
+      <p>
+        I know it is a bit weird example. Please add <Var>toString</Var>{" "}
+        property to <Var>Human</Var> type instead of making it a primitive{" "}
+        <Var>string</Var>. Now , for the sake af brevity, we can even get rid of
+        out function.
+      </p>
+      <Code code={code21} />
+      <p>The error:</p>
+      <p>
+        <Var>{`Type '() => string' is not assignable to type 'number'`}</Var>
+      </p>
+      <p>
+        TS is smart enough to figure out that <Var>toString</Var> method of{" "}
+        <Var>{`{ firstName: 2 }`}</Var> is a <Var>{`() => string`}</Var> whereas
+        type <Var>{`Partial<Record<keyof Human, number>>`}</Var> expects it to
+        be <Var>{`toString?: number | undefined;`}</Var>
+      </p>
+      <p>
+        Related{" "}
+        <Anchor
+          text="answer"
+          href="https://stackoverflow.com/questions/69187022/why-cant-the-generic-interface-in-ts-infer-the-type-correctly/69188596#69188596"
+        />
+      </p>
+      <p>
+        Now, when we know that <Var>extends</Var> does not mean <Var>equal</Var>
+        , we can proceed.
+      </p>
+
+      <Header {...navigation.deep_infering} />
+      <p>
+        Imagine you have two dictionaries. One is your main, second one maps to
+        the key/values pairs which should be renamed.
+      </p>
+      <p>Consider this exmaple:</p>
+      <Code code={code22} />
+      <p>
+        All you need to do is to rename <Var>age</Var> key to <Var>newAge</Var>.
+        Nothing complicated.
+      </p>
+      <p>
+        In order to do that, we need to infer each key/value pair and transform
+        it into expected result.
+      </p>
+      <p>At the beginning, we need to infer first argument.</p>
+      <Code code={code23} />
+      <p>
+        <Var>Obj</Var> is infered as <Var>{`{ age: 1 }`}</Var>
+      </p>
+      <p>Let's infer the second one, using almost same algorithm.</p>
+      <Code code={code24} />
+      <p>
+        Why I said almost? Because we need to bind these two object. As you
+        might have noticed, I used <Var>keyof Obj</Var> for key argument in last{" "}
+        <Var>KeyMap</Var>. This is because <Var>KeyMap</Var> should contain only
+        valid keys, which exists in our source <Var>Obj</Var>
+      </p>
+      <p>All we need to do is to implement renaming logic, which is not too complicated. See full example.</p>
+      <Code code={code25} />
+
+      <p>This article is in WIP progress. I will add more example with explanation in one or two days.</p>
     </>
   );
 };
-
+// 
+// https://stackoverflow.com/questions/68669744/infer-types-using-own-properties/68670399#68670399
+// https://stackoverflow.com/questions/68699646/typescript-strong-typing-and-autocomplete-for-a-value-based-on-a-sibling-obje/68700044#68700044
+// https://stackoverflow.com/questions/69130587/avoid-silly-inference-for-union-types-element-implicitly-has-an-any-type-bec/69130873#69130873
+// https://stackoverflow.com/questions/69176666/implementing-a-modular-system-with-typescript/69177072#69177072
+// https://stackoverflow.com/questions/69201083/is-there-a-better-way-to-tell-typescript-which-type-data-is/69204051?noredirect=1#comment122329355_69204051
+// https://stackoverflow.com/questions/63708358/typescript-narrowing-tk-in-a-function-when-multiple-key-values-are-passed-in/63710980#63710980
 export default InferFunctionArguments;
