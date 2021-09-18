@@ -871,6 +871,10 @@ export const blogArticles = [
         {
             href: 'https://stackoverflow.com/questions/69201083/is-there-a-better-way-to-tell-typescript-which-type-data-is/69204051?noredirect=1#comment122329355_69204051',
             text: 'Reducer inference with curry'
+        },
+        {
+            href: 'https://stackoverflow.com/questions/63708358/typescript-narrowing-tk-in-a-function-when-multiple-key-values-are-passed-in/63710980#63710980',
+            text: 'Inference of multiple keys'
         }
 
         ],
@@ -1025,6 +1029,8 @@ https://stackoverflow.com/questions/67413371/how-to-correctly-type-a-generic-rea
 https://stackoverflow.com/questions/65414467/how-can-i-set-the-props-type-in-hoc-in-react-typescript/65416381#65416381
 
 https://stackoverflow.com/questions/68067622/forwardref-type-based-on-props/68070078#68070078
+
+https://stackoverflow.com/questions/57750777/generics-error-with-forwardref-property-ref-does-not-exist-on-type-intrinsic
  */
 
 //https://stackoverflow.com/questions/69129519/how-to-write-a-type-for-array-for-multiple-discriminating-unions
