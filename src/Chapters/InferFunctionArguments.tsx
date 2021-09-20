@@ -910,7 +910,7 @@ const InferFunctionArguments: FC = () => {
         example.
       </p>
       <Code code={code35} />
-      <p>As usually, I want to start with currying. FIrst of all, we need to type <Var></Var></p>
+      <p>As usually, I want to start with currying. First of all, we need to type ... to be continued <Var></Var></p>
     </>
   );
 };
