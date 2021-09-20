@@ -401,6 +401,158 @@ const mapKeys = <
 const result = mapKeys({ age: 1 }, { "age": "newAge" })
 result.newAge // 1
 `;
+
+const code26 = `
+const dictionary = {
+    a: {
+        foo: () => 'foo',
+        bar: () => 42
+    },
+    b: {
+        baz: () => 'baz'
+    }
+}
+`;
+
+const code27 = `
+const dictionary = {
+    a: {
+        foo: () => 'foo',
+        bar: () => 42
+    },
+    b: {
+        baz: () => 'baz'
+    }
+} as const;
+
+const getFn = <
+    Type extends keyof typeof dictionary>(
+        type: Type,
+        method: keyof (typeof dictionary)[Type]
+    ) => dictionary[type][method]
+
+// (() => string) | (() => number)
+const x = getFn('a', 'foo') // ok
+getFn('a', 'baz') // expected error
+`;
+
+const code28 = `
+const withConfig = (config: typeof dictionary) =>
+    <Type extends keyof typeof dictionary>(
+        type: Type,
+        method: keyof (typeof dictionary)[Type]
+    ) => config[type][method]
+
+const applyConfig = withConfig(dictionary)
+
+applyConfig('a', 'foo') // ok
+applyConfig('a', 'baz') // expected error
+`;
+
+const code29 = `
+const withConfig = <
+    Dictionary,
+    >(config: Dictionary) =>
+    <Type extends keyof Dictionary,
+        Method extends keyof Dictionary[Type]
+    >(
+        type: Type,
+        method: Method
+    ) => config[type][method]
+
+const applyConfig = withConfig({
+    a: {
+        foo: () => 'foo',
+        bar: () => 42
+    },
+    b: {
+        baz: () => 'baz'
+    }
+})
+
+
+//  () => "foo"
+const ok = applyConfig('a', 'foo') // ok
+const error = applyConfig('a', 'baz') // expected error
+`;
+
+const code30 = `
+enum DataType {
+  Text = 'TEXT',
+  Image = 'IMAGE',
+}
+`;
+const code31 = `
+interface TextInput {
+  type: DataType.Text,
+  text: string
+}
+
+interface TextOutput {
+  type: DataType.Text,
+  text: string
+}
+
+const TextTransformer = {
+  transform: (input: TextInput):
+    TextOutput => ({
+      type: DataType.Text,
+      text: input.text,
+    })
+}
+`;
+const code32 = `
+interface ImageInput {
+  type: DataType.Image,
+  url: string
+}
+
+interface ImageOutput {
+  type: DataType.Image,
+  url: string
+  width: number
+  height: number
+}
+
+const ImageTransformer = {
+  transform: (input: ImageInput):
+    ImageOutput => ({
+      type: DataType.Image,
+      url: input.url,
+      width: 0,
+      height: 0,
+    })
+}
+`;
+
+const code33 = `
+const transformerMap = {
+  [DataType.Text]: TextTransformer,
+  [DataType.Image]: ImageTransformer,
+}
+
+type Input = TextInput | ImageInput
+
+type Output = TextOutput | ImageOutput
+`;
+
+const code34 = `
+const magic = (inputs: Input[]): Output[] =>
+  inputs.map(
+    input =>
+      transformerMap[input.type]
+        .transform(input) // error
+  )
+`;
+
+const code35 = `
+declare var a: (value: string) => void
+declare var b: (value: number) => void
+
+declare var c: typeof a | typeof b
+c()// expects never
+`;
+
 const navigation = {
   generic_inference: {
     id: "generic_inference",
@@ -411,9 +563,19 @@ const navigation = {
     text: "Generic constraints",
     updated: true,
   },
-  deep_infering: {
-    id: "deep_infering",
-    text: "Deep inference",
+  first_level_inference: {
+    id: "first_level_inference",
+    text: "First level prop inference",
+    updated: true,
+  },
+  second_level_inference: {
+    id: "second_level_inference",
+    text: "Second level prop inference",
+    updated: true,
+  },
+  function_inference: {
+    id: "function_inference",
+    text: "Function inference",
     updated: true,
   },
 };
@@ -655,8 +817,7 @@ const InferFunctionArguments: FC = () => {
         Now, when we know that <Var>extends</Var> does not mean <Var>equal</Var>
         , we can proceed.
       </p>
-
-      <Header {...navigation.deep_infering} />
+      <Header {...navigation.first_level_inference} />
       <p>
         Imagine you have two dictionaries. One is your main, second one maps to
         the key/values pairs which should be renamed.
@@ -684,17 +845,77 @@ const InferFunctionArguments: FC = () => {
         <Var>KeyMap</Var>. This is because <Var>KeyMap</Var> should contain only
         valid keys, which exists in our source <Var>Obj</Var>
       </p>
-      <p>All we need to do is to implement renaming logic, which is not too complicated. See full example.</p>
+      <p>
+        All we need to do is to implement renaming logic, which is not too
+        complicated. See full example.
+      </p>
       <Code code={code25} />
+      <Header {...navigation.second_level_inference} />
+      <p>Imagine you have some dictionary.</p>
+      <Code code={code26} />
+      <p>
+        Also, you want to write a function which will return a method from above
+        dictionary by pair of keys. I mean <Var>{`a -> foo`}</Var> or{" "}
+        <Var>{`b -> baz`}</Var>
+      </p>
+      <p>See this example.</p>
+      <Code code={code27} />
+      <p>
+        Nothing complicated, right?. There is only one drawback, return type is
+        infered as a union instead of exact function type. Also, we have used{" "}
+        <Var>as const</Var>. From my experience arises, that many people don't
+        like/want/able to use it.
+      </p>
+      <p>
+        Let's try to infer exact config object an make some argument validation.
+        Personally, I like to curry config objects.
+      </p>
+      <Code code={code28} />
+      <p>I think it is more readable. Is not it?</p>
+      <p>
+        There is still a drawback. In fact, we did not infer the config object.
+        We should fix it.
+      </p>
+      <Code code={code29} />
+      <p>
+        You have probably noticed, that there is nothing complicated in above
+        examples. This is because there are no functions.
+      </p>
+      <Header {...navigation.function_inference} />
+      <p>
+        Imagine we have two data structures: <Var>Text</Var> and{" "}
+        <Var>Image</Var>
+      </p>
+      <Code code={code30} />
+      <p> Both of them have input and output interfaces accordingly.</p>
+      <p>For Text</p>
+      <Code code={code31} />
+      <p>For Image</p>
+      <Code code={code32} />
+      <p>
+        They are very similar and they need to be transformed according to some
+        strategy.
+      </p>
 
-      <p>This article is in WIP progress. I will add more example with explanation in one or two days.</p>
+      <Code code={code33} />
+      <p>So we just need write types fro this function</p>
+      <Code code={code34} />
+      <p>
+        Let's do it step by step. Why have have an error?. We always has an
+        errors in TypeScript :D
+      </p>
+      <p>
+        <Var>transform</Var> expects <Var>never</Var>. Because if we have union
+        of functions their argument types will intersect. See much simpler
+        example.
+      </p>
+      <Code code={code35} />
+      <p>As usually, I want to start with currying. FIrst of all, we need to type <Var></Var></p>
     </>
   );
 };
-// 
-// https://stackoverflow.com/questions/68669744/infer-types-using-own-properties/68670399#68670399
-// https://stackoverflow.com/questions/68699646/typescript-strong-typing-and-autocomplete-for-a-value-based-on-a-sibling-obje/68700044#68700044
-// https://stackoverflow.com/questions/69130587/avoid-silly-inference-for-union-types-element-implicitly-has-an-any-type-bec/69130873#69130873
+//
+
 // https://stackoverflow.com/questions/69176666/implementing-a-modular-system-with-typescript/69177072#69177072
 // https://stackoverflow.com/questions/69201083/is-there-a-better-way-to-tell-typescript-which-type-data-is/69204051?noredirect=1#comment122329355_69204051
 // https://stackoverflow.com/questions/63708358/typescript-narrowing-tk-in-a-function-when-multiple-key-values-are-passed-in/63710980#63710980
