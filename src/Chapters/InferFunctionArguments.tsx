@@ -553,6 +553,108 @@ declare var c: typeof a | typeof b
 c()// expects never
 `;
 
+const code36 = `
+const magic = <TransformMap,>(transformerMap: TransformMap) =>
+  (inputs: Input[]): Output[] =>
+    inputs.map(
+      input =>
+        transformerMap[input.type] // error
+          .transform(input)
+    )
+`;
+
+const code37 = `
+const magic = <
+  TransformMap extends Record<DataType, { transform: (...args: any[]) => any }>
+>(transformerMap: TransformMap) =>
+  (inputs: Input[]): Output[] =>
+    inputs.map(
+      input =>
+        transformerMap[input.type] // error
+          .transform(input)
+    )
+`;
+
+const code38 = `
+const magic = <
+  TransformMap extends Record<DataType, { transform: (args: Input) => Output }>
+>(transformerMap: TransformMap) =>
+  (inputs: Input[]): Output[] =>
+    inputs.map(
+      input =>
+        transformerMap[input.type]
+          .transform(input)
+    )
+
+const withMap = magic({
+  [DataType.Text]: TextTransformer, // error
+  [DataType.Image]: ImageTransformer, // error
+})
+
+const result = withMap([{
+  type: DataType.Text,
+  text: 'string'
+}]) // ok
+`;
+
+const code39 = `
+const magic = <
+  Key extends typeof DataType,
+  Value extends { transform: (arg: Input) => Output },
+  TransformMap extends Record<Key & string, Value>>(transformerMap: TransformMap) =>
+  (inputs: Input[]): Output[] =>
+    inputs.map(
+      input =>
+        transformerMap[input.type] // error
+          .transform(input)
+    )
+
+const withMap = magic({
+  [DataType.Text]: TextTransformer, // ok
+  [DataType.Image]: ImageTransformer, // ok
+})
+
+const result = withMap([{
+  type: DataType.Text,
+  text: 'string'
+}]) // ok
+`;
+
+const code40 = `
+const magic = <
+  Key extends typeof DataType,
+  Value extends { transform: (arg: Input) => Output },
+  TransformMap extends Record<Key & string, Value>>(transformerMap: TransformMap) =>
+  <
+    Type extends keyof TransformMap,
+    Inpt extends ({ type: Type }),
+    Inputs extends Inpt[]
+  >(inputs: [...Inputs]): Output[] =>
+    inputs.map(
+      input =>
+        transformerMap[input.type]
+          .transform(input) // error
+    )
+`;
+
+const code41 = `
+const magic = <
+  Key extends typeof DataType,
+  Value extends { transform: (arg: Input) => Output },
+  TransformMap extends Record<Key & string, Value>>(transformerMap: TransformMap) =>
+  <
+    Type extends keyof TransformMap,
+    Inpt extends ({ type: Type }) & Input, // small fix
+    Inputs extends Inpt[]
+  >(inputs: [...Inputs]): Output[] =>
+    inputs.map(
+      input =>
+        transformerMap[input.type]
+          .transform(input)
+    )
+
+`;
+
 const navigation = {
   generic_inference: {
     id: "generic_inference",
@@ -633,9 +735,10 @@ const InferFunctionArguments: FC = () => {
       </p>
       <Code code={code4} />
       <p>
-        Now, it works as expected. I know that you did not like last example.
-        What if you want to pass an object with multiple keys. According to my
-        example, you need to annotate each key then.
+        Now, it works as expected. I'd call it - type dustructure. You infer
+        deepest key/value, then you go one level up and infer whole object. What
+        if you want to pass an object with multiple keys. According to my
+        example, you need to annotate/infer each key/value pair then.
       </p>
       <p>Consider next example:</p>
       <Code code={code5} />
@@ -766,7 +869,7 @@ const InferFunctionArguments: FC = () => {
       </p>
       <Code code={code18} />
       <p>
-        Take a minute to think about this example and try to answer a simple
+        Take a minute and think about this example. Try to answer a simple
         question: Why do you see an error?
       </p>
       <p>
@@ -861,14 +964,14 @@ const InferFunctionArguments: FC = () => {
       <p>See this example.</p>
       <Code code={code27} />
       <p>
-        Nothing complicated, right?. There is only one drawback, return type is
+        Nothing complicated, right? There is only one drawback, return type is
         infered as a union instead of exact function type. Also, we have used{" "}
         <Var>as const</Var>. From my experience arises, that many people don't
         like/want/able to use it.
       </p>
       <p>
-        Let's try to infer exact config object an make some argument validation.
-        Personally, I like to curry config objects.
+        Let's try to infer exact config object and make some arguments
+        validation. Personally, I like to curry config objects.
       </p>
       <Code code={code28} />
       <p>I think it is more readable. Is not it?</p>
@@ -901,8 +1004,9 @@ const InferFunctionArguments: FC = () => {
       <p>So we just need write types fro this function</p>
       <Code code={code34} />
       <p>
-        Let's do it step by step. Why have have an error?. We always has an
-        errors in TypeScript :D
+        Let's do it step by step. Why we have an error here? We always has an
+        errors in TypeScript :smile:. If you think that it is hard to fight TS
+        compiler - try Rust.
       </p>
       <p>
         <Var>transform</Var> expects <Var>never</Var>. Because if we have union
@@ -910,13 +1014,91 @@ const InferFunctionArguments: FC = () => {
         example.
       </p>
       <Code code={code35} />
-      <p>As usually, I want to start with currying. First of all, we need to type ... to be continued <Var></Var></p>
+      <p>
+        As usually, I want to start with currying. First of all, we need to type
+        <Var>transformerMap</Var>. From my experience arises that if you have
+        some variables inside function which were not passed as arguments - you
+        better make them an arguments. The more you can infer - the better.
+      </p>
+      <Code code={code36} />
+      <p>
+        It is clear that keys of <Var>transformMap</Var> should be assignable to{" "}
+        <Var>input.type</Var>. Type of <Var>input.type</Var> is{" "}
+        <Var>DataType</Var>
+      </p>
+      <Code code={code37} />
+      <p>
+        There are too much <Var>any</Var>, don't you think? We want to play
+        nicely, that's why we need to replace <Var>any</Var> with{" "}
+        <Var>Input</Var> and <Var>Output</Var> accordingly.
+      </p>
+      <Code code={code38} />
+      <p>
+        Now we have some problems with <Var>transformMap</Var> keys. We just
+        need to infer their type.
+      </p>
+      <Code code={code39} />
+      <p>
+        Despite having error, we have finished our types for first part of the
+        function. In order to fix above error, we need to proceed.
+        <Var>input.type</Var> is not binded with <Var>transformMap</Var> keys in
+        any way. We can easily fix it.
+      </p>
+      <Code code={code40} />
+      <p>Hey, TypeScript! What's wrong with you? I have written all types!</p>
+      <p>
+        As you might have noticed, <Var>Inpt</Var> has only <Var>type</Var>{" "}
+        property, whereas it should be assignable to <Var>Input</Var> union. We
+        need to assure TypeScript that{" "}
+        <Var>{`Inpt extends ({ type: Type })`}</Var> extends <Var>Input</Var>
+        Let's do it!
+      </p>
+      <Code code={code41} />
+      <p>
+        <Anchor
+          text="Here"
+          href="https://stackoverflow.com/questions/69176666/implementing-a-modular-system-with-typescript/69177072#69177072"
+        />{" "}
+        you can find related question and{" "}
+        <Anchor
+          text="here"
+          href="https://stackoverflow.com/questions/63708358/typescript-narrowing-tk-in-a-function-when-multiple-key-values-are-passed-in/63710980#63710980"
+        />{" "}
+        you can find also an interesting example which I was unable to solve one
+        year ago.
+      </p>
+      <p>
+        Some times it is impossible to infer some property. In such case you
+        always can create a helper <Var>builder</Var> function just like I did{" "}
+        <Anchor
+          href="https://stackoverflow.com/questions/69254779/infer-type-based-on-the-generic-type-of-a-sibling-property-in-typescript/69270014#69270014"
+          text="here"
+        />{" "}
+      </p>
+      <p>
+        I have at least 3 more examples which are based on these answers [
+        <Anchor
+          href="https://stackoverflow.com/questions/69201083/is-there-a-better-way-to-tell-typescript-which-type-data-is/69204051?noredirect=1#comment122329355_69204051"
+          text={"first"}
+        />
+        ,
+        <Anchor
+          href="https://stackoverflow.com/questions/63708358/typescript-narrowing-tk-in-a-function-when-multiple-key-values-are-passed-in/63710980#63710980"
+          text={"second"}
+        />
+        ,
+        <Anchor
+          href="https://stackoverflow.com/questions/68699646/typescript-strong-typing-and-autocomplete-for-a-value-based-on-a-sibling-obje/68700044#68700044"
+          text={"third"}
+        />
+        ].
+        If you would like to read more about them, please let me know or upvote above answers.        
+      </p>
     </>
   );
 };
 //
 
-// https://stackoverflow.com/questions/69176666/implementing-a-modular-system-with-typescript/69177072#69177072
 // https://stackoverflow.com/questions/69201083/is-there-a-better-way-to-tell-typescript-which-type-data-is/69204051?noredirect=1#comment122329355_69204051
 // https://stackoverflow.com/questions/63708358/typescript-narrowing-tk-in-a-function-when-multiple-key-values-are-passed-in/63710980#63710980
 export default InferFunctionArguments;
