@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { Anchor } from "../Shared/Links";
 
 const About: FC = () => (
   <>
@@ -11,6 +12,10 @@ const About: FC = () => (
       </p>
       <p>
         If you noticed a mistake\typo, I kindly ask You to let me know. Thanks.
+      </p>
+      <p>
+        If you like my blog, you can
+        <Anchor href="https://www.buymeacoffee.com/captainyosarian" text="buy me a beer" />
       </p>
     </div>
   </>
