@@ -1,7 +1,7 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect } from "react";
 import { Layout } from "../Layout";
 import { Props } from "../Chapters/Props";
-import Links, { Props as LinksProps, Anchor } from "./Links";
+import Links, { Props as LinksProps } from "./Links";
 import styled from "styled-components";
 import { TEXT_COLOR, THEME_COLOR } from "../Layout/utils";
 
@@ -10,6 +10,7 @@ type NavElem = {
   id: string;
   updated?: boolean;
 };
+
 type HeaderProps = {
   links: ReadonlyArray<NavElem>;
 };
@@ -84,31 +85,6 @@ const RenderDate = styled.div`
   font-weight: 900;
 `;
 
-type Like = {
-  id: number;
-  article_id: number;
-  count: number;
-};
-
-type ServiceResponse = {
-  likes: ReadonlyArray<Like>;
-};
-const LikeButton = styled.button`
-  cursor: pointer;
-  border: none;
-  background-color: ${THEME_COLOR};
-  color: #0e2924;
-  font-size: 20px;
-  padding: 5px;
-`;
-
-const Counter = styled.span`
-  border: 1px solid black;
-  font-size: 20px;
-  padding: 5px;
-  margin-left: 10px;
-`;
-
 const Footer = styled.footer`
   border-top: 2px solid ${THEME_COLOR};
   margin: 10px 0 20px 0;
@@ -122,6 +98,14 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
   date,
   id,
 }) => {
+  useEffect(() => {
+    const prevTitle = document.title;
+    document.title = title;
+    return () => {
+      document.title = prevTitle;
+    };
+  });
+
   return (
     <Layout title={title}>
       {children}
