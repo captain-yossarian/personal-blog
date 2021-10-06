@@ -586,6 +586,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69126879/typescript-deep-keyof-of-a-nested-object-with-related-type#answer-69129328',
                 text: 'Deep pick with more edge cases, tests and explanation'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69449511/get-typescript-to-infer-tuple-parameters-types/69450150#69450150',
+                text:'Typing [at] lodash function'
             }
 
         ],
