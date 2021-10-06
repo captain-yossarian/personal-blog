@@ -146,7 +146,7 @@ type Result = Enumerate<43>; // 0 | 1 | 2 | ... | 42
 `;
 
 const code6 = `
-type MAXIMUM_ALLOWED_BOUNDARY = 495
+type MAXIMUM_ALLOWED_BOUNDARY = 999
 
 type ComputeRange<
     N extends number,
@@ -163,7 +163,7 @@ const ComputeRange = (N: number, Result: number[] = []): number[] => {
     }
     return ComputeRange(N, [...Result, Result.length])
 }
-// 0 , 1, 2 ... 494
+// 0 , 1, 2 ... 998
 type NumberRange = ComputeRange<MAXIMUM_ALLOWED_BOUNDARY>[number]
 
 // Pure js representation

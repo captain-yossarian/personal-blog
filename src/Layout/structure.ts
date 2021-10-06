@@ -941,6 +941,20 @@ export const blogArticles = [
         ],
         tags: ['recursive', 'tuples'],
         date: 'September 12, 2021'
+    },
+    {
+        url: '/safe-enums',
+        title: 'Make enums safe again',
+        description: 'You will learn how to make numerical enum safe again',
+        Comp: 'SafeEnum',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/69127304/typescript-interface-for-array-of-anything-but-other-arrays/69128887#69128887',
+                text: 'Flat deep nested tuple'
+            }
+        ],
+        tags: ['enums', 'tuples'],
+        date: 'October 6, 2021'
     }
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
 
