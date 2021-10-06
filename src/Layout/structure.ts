@@ -953,8 +953,8 @@ export const blogArticles = [
         Comp: 'SafeEnum',
         links: [
             {
-                href: 'https://stackoverflow.com/questions/69127304/typescript-interface-for-array-of-anything-but-other-arrays/69128887#69128887',
-                text: 'Flat deep nested tuple'
+                href: 'https://stackoverflow.com/questions/62268023/how-to-type-function-taking-an-enum#answer-69465829',
+                text: 'Make safer enum'
             }
         ],
         tags: ['enums', 'tuples'],
