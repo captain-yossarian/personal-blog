@@ -1054,3 +1054,6 @@ https://stackoverflow.com/questions/57750777/generics-error-with-forwardref-prop
 //https://stackoverflow.com/questions/69129519/how-to-write-a-type-for-array-for-multiple-discriminating-unions
 
 //COnditional return statement https://github.com/microsoft/TypeScript/issues/24929
+
+
+// IS UNIQUE SYMBOL https://stackoverflow.com/questions/69244389/force-generic-type-to-be-the-type-of-a-unique-symbol-in-typescript/69244820#69244820

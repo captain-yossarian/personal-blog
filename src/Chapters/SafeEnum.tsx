@@ -85,6 +85,12 @@ type Enumerate<Enum extends number | string> = keyof {
     [Prop in \`${"${Enum}"}\`]: Prop
 }
 
+// non generic version 
+type Keys = keyof typeof MyEnum
+type Enumerate2 = keyof {
+    [Prop in Keys]: Prop
+}
+
 type Values<T> = T[keyof T]
 
 type IsKeyValid<
@@ -180,6 +186,12 @@ const SafeEnum: FC = () => {
           href="https://stackoverflow.com/questions/62268023/how-to-type-function-taking-an-enum#answer-69465829"
         />{" "}
         you can find related answer.
+      </p>
+      <p>
+        P.S. I hope you have noticed <Var>Enumerate2</Var>. This is interesting
+        behavior. Seems that <Var>keyof SomeObj</Var> acts differently inside
+        iteration loop and outside. See related{" "}
+        <Anchor href="https://stackoverflow.com/questions/69523580/typescript-keyof-change-the-origin-property-optional/69524091#69524091" text="issue" />
       </p>
     </>
   );
