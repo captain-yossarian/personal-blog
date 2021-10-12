@@ -227,6 +227,15 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69063690/inferring-a-generic-tuple-with-spread-expressions-in-typescript/69083682#69083682',
                 text: 'Handle tuples'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69299590/transform-array-of-objects-to-single-object-and-keep-types-in-typescript/69300965#69300965',
+                text: 'Simple reducer'
+
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69231722/how-to-get-type-from-object-value/69252777#69252777',
+                text: 'Find index'
             }
         ],
         tags: ['array', 'tuples'],
@@ -435,6 +444,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69126879/typescript-deep-keyof-of-a-nested-object-with-related-type/69129328#69129328',
                 text: 'Compute object path string'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69265186/how-to-generate-array-with-template-literal-types-items/69265799#69265799',
+                text: 'Typing UNO card deck'
             }
         ],
         tags: ['template literals'],
@@ -536,6 +549,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/68487359/how-to-dynamically-assign-properties-to-an-object-in-typescript-by-using-record/68526555#68526555',
                 text: 'Object/Array negation'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69537870/passing-property-names-to-type-properties/69543477#69543477',
+                text: 'Validation of config object'
             }
         ],
         tags: ['generic', 'negation'],
@@ -589,11 +606,11 @@ export const blogArticles = [
             },
             {
                 href: 'https://stackoverflow.com/questions/69449511/get-typescript-to-infer-tuple-parameters-types/69450150#69450150',
-                text:'Typing [at] lodash function'
+                text: 'Typing [at] lodash function'
             },
             {
                 href: 'https://stackoverflow.com/questions/69449511/get-typescript-to-infer-tuple-parameters-types/69450150#69450150',
-                text:'Typing Lodash [at] function'
+                text: 'Typing Lodash [at] function'
             }
 
         ],
@@ -649,6 +666,14 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69031540/generic-type-inference-from-an-specific-function-argument/69031642#69031642',
                 text: 'Validation of deep nested props'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69492421/typescript-recovering-the-object-literal-may-only-specify-known-properties-ch/69545730#69545730',
+                text: 'Typing exact argument'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69417437/typescript-is-it-possible-to-ensure-the-key-and-an-inner-value-are-the-same-str/69418019#69418019',
+                text: 'Validation of literal argument'
             }
 
         ],
@@ -883,6 +908,11 @@ export const blogArticles = [
         {
             href: 'https://stackoverflow.com/questions/63708358/typescript-narrowing-tk-in-a-function-when-multiple-key-values-are-passed-in/63710980#63710980',
             text: 'Inference of multiple keys'
+        },
+        {
+            href: 'https://stackoverflow.com/questions/69529837/typescript-generic-union-resolution-order/69530251#69530251',
+            text: 'Simple validation with inference'
+
         }
 
         ],
@@ -945,6 +975,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69127304/typescript-interface-for-array-of-anything-but-other-arrays/69128887#69128887',
                 text: 'Flat deep nested tuple'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69537599/types-for-recursive-array-map-in-typescript/69538044#69538044',
+                text: 'Recursive iteration through array'
             }
         ],
         tags: ['recursive', 'tuples'],
