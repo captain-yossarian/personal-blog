@@ -590,6 +590,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69449511/get-typescript-to-infer-tuple-parameters-types/69450150#69450150',
                 text:'Typing [at] lodash function'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69449511/get-typescript-to-infer-tuple-parameters-types/69450150#69450150',
+                text:'Typing Lodash [at] function'
             }
 
         ],
