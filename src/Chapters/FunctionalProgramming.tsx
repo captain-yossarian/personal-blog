@@ -368,6 +368,52 @@ const check = pipe(foo, baz, bar)('hello') // string[]
 const check3 = pipe(baz, bar)([2]) // string[]
 const check2 = pipe(baz, bar)('hello') // expected error
 `;
+
+const code16 = `
+export {};
+
+declare function foo(a: number): number[];
+declare function bar(a: string): number;
+declare function baz(a: number[]): string;
+
+type Fn = (a: any) => any;
+
+type Last<T extends any[]> = T extends [...infer _, infer LastElement]
+  ? LastElement
+  : never;
+
+// Built in Parameters utility type
+type CustomParameters<T> = T extends (...args: infer P) => any ? P : never;
+
+// Built in ReturnType utility type
+type CustomReturnType<T> = T extends (...args: any) => infer R ? R : any;
+
+type Compose<Fst, Scd, Return> =
+  CustomParameters<Fst>[0] extends CustomReturnType<Scd> ? Return : never;
+
+/**
+ * Main logic
+ */
+type Iterate<T extends any[], Cache extends any[] = []> = T extends []
+  ? Cache
+  : T extends [infer Lst]
+  ? Iterate<[], [...Cache, Lst]>
+  : T extends [infer Fst, ...infer Lst]
+  ? Compose<Fst, Lst[0], Iterate<Lst, [...Cache, Fst]>>
+  : never;
+
+type ComposeArgument<Fns extends any[]> = Iterate<Fns> extends never
+  ? never
+  : CustomParameters<Last<Fns>>[0];
+
+const compose =
+  <T extends Fn, Fns extends T[]>(...args: [...Fns]) =>
+  (...data: [ComposeArgument<Fns>]): CustomReturnType<Fns[0]> =>
+    "UNIMPLEMENTED" as any;
+
+const check = compose(foo, bar, baz)([1, 2, 3]); // [number]
+const check2 = compose(bar, foo)(1); // expected error
+`;
 const navigation = {
   fp_utils: {
     id: "fp_utils",
@@ -502,6 +548,11 @@ const FP: FC = () => (
         href="https://www.typescriptlang.org/play?#code/FAFwngDgpgBAYgewTAvDc0EDMZaaSWAIQEMAnVdQ7GAI3IOhlIC9KMob6XheP4AdpQAUJAFwwSAsAEpUAPknS+hGAAkoJACYAeACowoADxBQBWgM5KwAbQC6ilMBguYB46fNWbASwFYoCjUAGhgAOgi-AIoAfTtnVwB+dQSXCQEoADdAgG4VJgAZEgsQfUMTM0tre0dUt3LPKt9-QJg4uuSM7IoJdwqvGBsIsKjWmNDRij0AG3jXGGSZuvSs3N5GWABBaemEAHcoXTq+xqs4AXtguoBhEgBjAAtYD0qzi7tKezra+ZPXwbmSRgt0eUGW9ReA2a0RgBRKgJcyThIAa-3OHRg212B10l0GwxBT1CyIcMBW3XBfyhk3gJVCwxpJIxcBKqIG6PmSNZkKq5y+nPUml0yMUPLeGI02h0AAVyCQALZQUxkCw6FkgeSi-pVABKSoArmQBHpCDpJcKSpqMVj9ocdMjQkMIoSoKF1Q5wV1Ap7VmQfRT5uTvYGYF6yHkNrDiiBZWQFUrAgB5LBlMWCGqoOpFEr6LWnQQSoUyuWK5Wq7OlPSa+T+72RvUgQ0CVPat4Zpzzc25tm8gQYhtNk3QM1Fqs1kNh9ZYfUCO4gHwIIR3BDyiAICxQFv585ugRWNN6PE2vY9qwAbzqAAYJDYw3YrvMAIw3iux+PK5NqvfyeIAXxsx52ucFh5v8YYLDAl5kjAj4evMwjDOQADmFg3sMwF2DIEgIREWgkCA4iYjs+xyCgigDkaX4gbw06zvOi4wMuq7rpuxynoID6uMB7GHveRHYuxM4ANYCPs7zAPIOFhMhqH4hEGFyBe8xkAaRowFJeEERIx6keO8yuDJYQqVo+p3FAOo+EhDwgMIoh3HcoRQNMUDyrphjOfKdl3DIoSaSQMjAL+vDLnuKJ4MgaCiGQSESI+MAAD4wAATG5NiPqESWhAAzPEIWsvQFCRchEglGQfhIW5yFhM5AhISADwwIoj5QckcUSElwB5Si3AiMVob6vKtCBPYbkAORPMRo3BYurKgncQmUExa4bsI4WhAV60kCwMjCGlGXZZhMAAPRHYMAgDUNZC5TNKJzUJSWLSuy1QMIG24EgO2PnIJ3lNAc6HIYZBkAgfrrGDwBAA"
       />
     </p>
+    <p>
+      It is possible to use a bit reduced version of <Var>compose</Var>, without
+      redundant type checking:
+    </p>
+    <Code code={code16} />
     <p>
       Since, <Var>pipe</Var> function is very similar to <Var>compose</Var>, we
       need to made only few changes to convert it

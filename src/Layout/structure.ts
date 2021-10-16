@@ -236,6 +236,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69231722/how-to-get-type-from-object-value/69252777#69252777',
                 text: 'Find index'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69585308/create-string-literal-type-from-dyanamic-array-in-typescript/69587394#69587394',
+                text: 'Create tuple with some length'
             }
         ],
         tags: ['array', 'tuples'],
@@ -674,6 +678,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69417437/typescript-is-it-possible-to-ensure-the-key-and-an-inner-value-are-the-same-str/69418019#69418019',
                 text: 'Validation of literal argument'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69594950/typescript-defining-type-of-element-in-array-based-of-the-types-of-the-previous/69596729#69596729',
+                text: 'Validate every next value'
             }
 
         ],
@@ -767,6 +775,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69141075/generic-typing-for-factory-function#answer-69141469',
                 text: 'Trick with rest parameters'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69584444/how-to-write-a-generic-function-that-calls-a-method-of-an-object/69584551#69584551',
+                text: 'Validate argument'
             }
         ],
         tags: ['oop', 'inheritance'],
@@ -913,6 +925,10 @@ export const blogArticles = [
             href: 'https://stackoverflow.com/questions/69529837/typescript-generic-union-resolution-order/69530251#69530251',
             text: 'Simple validation with inference'
 
+        },
+        {
+            href: 'https://stackoverflow.com/questions/69578873/typescript-generic-over-mapk-v-value-type/69582397#69582397',
+            text: 'Infer each key and value of a Map which'
         }
 
         ],
