@@ -1013,6 +1013,20 @@ export const blogArticles = [
         ],
         tags: ['enums', 'tuples'],
         date: 'October 6, 2021'
+    },
+    {
+        url: '/rest-tuples',
+        title: 'Rest operator in tuples',
+        description: 'Use rest operator one after another in tuple type representation',
+        Comp: 'RestTuples',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/68700018/how-to-reuse-rest-types-in-tuples/68700643#68700643',
+                text: 'How to reuse rest types in tuples?'
+            }
+        ],
+        tags: ['tuples'],
+        date: 'October 20, 2021'
     }
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
 
@@ -1050,6 +1064,7 @@ export const blogArticles = [
  * Vue types
  * https://stackoverflow.com/questions/68995690/correctly-typing-a-vuex-getters-getters-parameter/68996232#68996232
  * https://stackoverflow.com/questions/69029774/nuxt-with-typescript-it-seems-vue-extend-does-not-support-injected-data/69030092#69030092
+ * https://stackoverflow.com/questions/69643202/how-to-use-typescript-generics-to-correctly-map-between-keys-and-values-with-ind/69647430#69647430
  */
 
 /**
@@ -1109,5 +1124,6 @@ https://stackoverflow.com/questions/57750777/generics-error-with-forwardref-prop
 
 //COnditional return statement https://github.com/microsoft/TypeScript/issues/24929
 
-
+ // TO WRITE
 // IS UNIQUE SYMBOL https://stackoverflow.com/questions/69244389/force-generic-type-to-be-the-type-of-a-unique-symbol-in-typescript/69244820#69244820
+// https://stackoverflow.com/questions/68700018/how-to-reuse-rest-types-in-tuples/68700643#68700643

@@ -52,7 +52,8 @@ export const componentMap = {
   SaferTypes: React.lazy(() => import("./Chapters/SaferTypes")),
   EvenLength: React.lazy(() => import("./Chapters/EvenLength")),
   FlattenTuple: React.lazy(() => import("./Chapters/FlattenTuple")),
-  SafeEnum: React.lazy(()=>import('./Chapters/SafeEnum'))
+  SafeEnum: React.lazy(() => import("./Chapters/SafeEnum")),
+  RestTuples: React.lazy(() => import("./Chapters/RestTuples")),
 };
 
 setTimeout(() => Prism.highlightAll(), 0);
