@@ -104,7 +104,7 @@ export const blogArticles = [
             },
             {
                 href: 'https://stackoverflow.com/questions/69612540/typescript-type-to-prevent-division-by-0/69612861#69612861',
-                text:'Division by 0'
+                text: 'Division by 0'
             }
         ],
         tags: ['number', 'bigint', 'math'],
@@ -405,7 +405,7 @@ export const blogArticles = [
             },
             {
                 href: 'https://stackoverflow.com/questions/69629691/how-to-use-typescript-generics-to-validate-object-values-correctly/69630484#69630484',
-                text:'Unions'
+                text: 'Unions'
             }
         ],
         tags: ['pattern', 'Map', 'callback'],
@@ -463,7 +463,7 @@ export const blogArticles = [
             },
             {
                 href: 'https://stackoverflow.com/questions/69610786/proper-way-to-create-a-trim-type/69612559#69612559',
-                text:'Trim'
+                text: 'Trim'
             }
         ],
         tags: ['template literals'],
@@ -694,6 +694,14 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69594950/typescript-defining-type-of-element-in-array-based-of-the-types-of-the-previous/69596729#69596729',
                 text: 'Validate every next value'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69688023/typescript-object-set-with-unique-proeprty/69688324#69688324',
+                text: 'Validate duplicates'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69680459/soft-type-checking-function-parameters/69681910#69681910',
+                text: 'Validate subtype'
             }
 
         ],
@@ -720,7 +728,7 @@ export const blogArticles = [
             },
             {
                 href: 'https://stackoverflow.com/questions/69616906/how-can-i-strongly-type-a-composed-mixin/69627763#69627763',
-                text:'Alternative pipeline'
+                text: 'Alternative pipeline'
             }
 
         ],
@@ -945,27 +953,27 @@ export const blogArticles = [
         {
             href: 'https://stackoverflow.com/questions/69578873/typescript-generic-over-mapk-v-value-type/69582397#69582397',
             text: 'Infer each key and value of a Map which'
-            },
-            {
-                href: 'https://stackoverflow.com/questions/69643202/how-to-use-typescript-generics-to-correctly-map-between-keys-and-values-with-ind/69647430#69647430',
-                text:'Vue helpers inference'
-            },
-            {
-                href: 'https://stackoverflow.com/questions/69629222/typescript-does-not-understand-that-record-types-must-return-the-correct-type/69629742#69629742',
-                text:'Strategy pattern'
-            },
-            {
-                href: 'https://stackoverflow.com/questions/69626029/typescript-generic-type-for-nested-object-properties/69626987#69626987',
-                text:'Infer deep nested react object'
-            },
-            {
-                href: 'https://stackoverflow.com/questions/69605677/typescript-adding-dynamic-fields-to-a-class-at-runtime-with-type-safety/69606143#69606143',
-                text:'OOP and mutation tracking with help of assert'
-            },
-            {
-                href: 'https://stackoverflow.com/questions/69596738/types-object-base-on-arras-of-another-object/69597100#69597100',
-                text:'Infer key/value'
-            }
+        },
+        {
+            href: 'https://stackoverflow.com/questions/69643202/how-to-use-typescript-generics-to-correctly-map-between-keys-and-values-with-ind/69647430#69647430',
+            text: 'Vue helpers inference'
+        },
+        {
+            href: 'https://stackoverflow.com/questions/69629222/typescript-does-not-understand-that-record-types-must-return-the-correct-type/69629742#69629742',
+            text: 'Strategy pattern'
+        },
+        {
+            href: 'https://stackoverflow.com/questions/69626029/typescript-generic-type-for-nested-object-properties/69626987#69626987',
+            text: 'Infer deep nested react object'
+        },
+        {
+            href: 'https://stackoverflow.com/questions/69605677/typescript-adding-dynamic-fields-to-a-class-at-runtime-with-type-safety/69606143#69606143',
+            text: 'OOP and mutation tracking with help of assert'
+        },
+        {
+            href: 'https://stackoverflow.com/questions/69596738/types-object-base-on-arras-of-another-object/69597100#69597100',
+            text: 'Infer key/value'
+        }
 
         ],
         tags: ['infer'],
@@ -1062,7 +1070,7 @@ export const blogArticles = [
             },
             {
                 href: 'https://stackoverflow.com/questions/69594950/typescript-defining-type-of-element-in-array-based-of-the-types-of-the-previous/69596729#69596729',
-                text:'Each type is a subtype of previous in the tuple'
+                text: 'Each type is a subtype of previous in the tuple'
             }
         ],
         tags: ['tuples'],
