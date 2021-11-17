@@ -1075,6 +1075,24 @@ export const blogArticles = [
         ],
         tags: ['tuples'],
         date: 'October 20, 2021'
+    },
+    {
+        url: '/recursive-ds',
+        title: 'Recursive data structure',
+        description: 'How to put a limit on recursive data structure ?',
+        Comp: 'RecursiveDataStructures',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/69990263/a-recursive-interface-for-a-react-typescript-component/69992036#69992036',
+                text: 'Typing of recursive data structure'
+            }, {
+                href: 'https://stackoverflow.com/questions/69781314/typescript-in-recursive-type-extra-props-allowed-to-be-assigned-in-object-decl/69808994#69808994',
+                text: 'Recursive type'
+            }
+
+        ],
+        tags: ['tuples'],
+        date: 'November 17, 2021'
     }
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
 

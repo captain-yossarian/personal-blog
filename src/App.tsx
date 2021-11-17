@@ -54,6 +54,7 @@ export const componentMap = {
   FlattenTuple: React.lazy(() => import("./Chapters/FlattenTuple")),
   SafeEnum: React.lazy(() => import("./Chapters/SafeEnum")),
   RestTuples: React.lazy(() => import("./Chapters/RestTuples")),
+  RecursiveDataStructures: React.lazy(()=>import('./Chapters/RecursiveDataStructures'))
 };
 
 setTimeout(() => Prism.highlightAll(), 0);
