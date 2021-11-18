@@ -324,8 +324,8 @@ const navigation = {
     updated: true,
   },
   repeated_pattern: {
-    id: "domino",
-    text: "Validate tuples according to domino rules",
+    id: "repeated",
+    text: "Typing repeated pattern",
     updated: true,
   },
 };
