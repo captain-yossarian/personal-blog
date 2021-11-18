@@ -184,6 +184,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69089549/typescript-template-literal-type-how-to-infer-numeric-type',
                 text: 'TS 4.5 Tail recursion update'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/69766516/infer-generic-from-properties/69766606#69766606',
+                text: 'Typing upper bounds'
             }
         ],
         tags: ['number', 'range', 'template literals'],
@@ -1060,7 +1064,7 @@ export const blogArticles = [
     },
     {
         url: '/rest-tuples',
-        title: 'Rest operator in tuples',
+        title: 'Rest operator in tuples (UPDATED)',
         description: 'Use rest operator one after another in tuple type representation',
         Comp: 'RestTuples',
         links: [
@@ -1071,6 +1075,12 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69594950/typescript-defining-type-of-element-in-array-based-of-the-types-of-the-previous/69596729#69596729',
                 text: 'Each type is a subtype of previous in the tuple'
+            }, {
+                href: 'https://stackoverflow.com/questions/69901253/defining-an-array-type-with-matching-pairs-like-domino-bricks-in-typscript/69902043#69902043',
+                text: 'Domino validation'
+            }, {
+                href: 'https://stackoverflow.com/questions/61155425/how-to-define-array-with-alternating-types-in-typescript/69800688#69800688',
+                text: 'Typing repeated pattern'
             }
         ],
         tags: ['tuples'],
@@ -1093,7 +1103,8 @@ export const blogArticles = [
         ],
         tags: ['tuples'],
         date: 'November 17, 2021'
-    }
+    },
+
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
 
 /**

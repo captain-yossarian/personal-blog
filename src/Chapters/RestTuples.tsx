@@ -194,6 +194,121 @@ const result = builder([
   { age: 'age' } // error
 ])
 `;
+
+const code10 = `
+type Last<T> = T extends [...infer _, infer LastElem] ? LastElem : never
+
+type Head<T> = T extends [infer First, ...infer _] ? First : never
+
+type IsChainable<Current, Next> =
+  (Last<Current> extends Head<Next>
+    ? (Head<Next> extends Last<Current>
+      ? true
+      : false)
+    : false)
+
+type True = IsChainable<[1, 2], [2, 3]> // true
+type False = IsChainable<[1, 2], [1, 3]> // false
+`;
+
+const code11 = `
+type DominoChain<List extends any[], Result extends any[] = []> =
+  // last call
+  (List extends []
+    ? Result
+    // before last call
+    : (List extends [infer First]
+    // if elements are chainable, leave next element as it is
+      ? (IsChainable<Last<Result>, First> extends true
+        ? [...Result, First]
+        // otherwise return never
+        : never) 
+      // all callse except last and before last
+      : (List extends [infer First, ...infer Rest]
+        // if first call, don't check if it is allowed
+        ? (Result extends []
+          ? DominoChain<Rest, [...Result, First]>
+          // checkif it chainable
+          : (IsChainable<First, Head<Rest>> extends true
+            // if yes, leave element as it is
+            ? DominoChain<Rest, [...Result, First]>
+            // otherwise return never
+            : never))
+        : never
+      )
+    )
+  )
+`;
+const code12 = `
+type Last<T> = T extends [...infer _, infer LastElem] ? LastElem : never
+
+type Head<T> = T extends [infer First, ...infer _] ? First : never
+
+type IsChainable<Current, Next> =
+  (Last<Current> extends Head<Next>
+    ? (Head<Next> extends Last<Current>
+      ? true
+      : false)
+    : false)
+
+type DominoChain<List extends any[], Result extends any[] = []> =
+  (List extends []
+    ? Result
+    : (List extends [infer First]
+      ? (IsChainable<Last<Result>, First> extends true
+        ? [...Result, First]
+        : never)
+      : (List extends [infer First, ...infer Rest]
+        ? (Result extends []
+          ? DominoChain<Rest, [...Result, First]>
+          : (IsChainable<First, Head<Rest>> extends true
+            ? DominoChain<Rest, [...Result, First]>
+            : never))
+        : never
+      )
+    )
+  )
+
+type Test1 = DominoChain<[["A", "B"], ["B", "C"], ["C", "D"], ["D", "E"]]>
+type Test2 = DominoChain<[[3, 4], [4, 2], [2, 1]]>
+type Test3 = DominoChain<[[3, null], [null, {}], [{}, undefined]]>
+type Test4 = DominoChain<[[1, 2]]> // ok 
+type Test5 = DominoChain<[]> // ok
+
+type Test6 = DominoChain<[[1, 2], [3, 4],]> // never
+
+const domino = <
+  Elem extends string,
+  Tuple extends Elem[],
+  List extends [...Tuple][]
+>(list: [...List] & DominoChain<[...List]>) => list
+
+domino([["A", "B"], ["B", "C"], ["C", "D"], ["D", "E"]]) // ok
+domino([[1, 2], [3, 4],]) // error
+`;
+
+const code13 = `
+
+type MAXIMUM_ALLOWED_BOUNDARY = 50
+
+type Mapped<
+    Tuple extends Array<unknown>,
+    Result extends Array<unknown> = [],
+    Count extends ReadonlyArray<number> = []
+    > =
+    (Count['length'] extends MAXIMUM_ALLOWED_BOUNDARY
+        ? Result
+        : (Tuple extends []
+            ? []
+            : (Result extends []
+                ? Mapped<Tuple, Tuple, [...Count, 1]>
+                : Mapped<Tuple, Result | [...Result, ...Tuple], [...Count, 1]>)
+        )
+    )
+
+
+type Result = Mapped<[string, number, number[]]>
+`;
 const navigation = {
   double_rest: {
     id: "duble_rest",
@@ -202,6 +317,16 @@ const navigation = {
   elem_inheritance: {
     id: "elem_ineritance",
     text: "Make each elem a subtype of previous",
+  },
+  domino: {
+    id: "domino",
+    text: "Validate tuples according to domino rules",
+    updated: true,
+  },
+  repeated_pattern: {
+    id: "domino",
+    text: "Validate tuples according to domino rules",
+    updated: true,
   },
 };
 const links = Object.values(navigation);
@@ -287,6 +412,61 @@ const RestTuples: FC = () => (
       <Var>{`[...Tuple] & Validator<[...Tuple]>`}</Var>. Intersection of infered
       argument with validated argument makes sure that only invalid property
       will be highlighted. This technique is very useful.
+    </p>
+    <Header {...navigation.domino} />
+    <p>
+      Imagine you want to validate this tuple of tuples{" "}
+      <Var>{`[ [1,2], [2,1], [3,4] ]`}</Var> according to domino rules. I mean,
+      first element is <Var>{`[1,2]`}</Var>, hence second element should be{" "}
+      <Var>{`[2, *]`}</Var>. So first two elements are in right order and the
+      last one is wrong because it should be <Var>{`[1, *]`}</Var>. While it is
+      impossible to express in a standalone type such restriction in generic
+      way, we can use extra utility type and validate passed argument/generic.
+    </p>
+    <p>
+      Let's define simple utility which will check whether two tuples are
+      chainable or not.
+    </p>
+    <Code code={code10} />
+    <p>Now we can define our main iterator utility type</p>
+    <Code code={code11} />
+    <p>
+      If you are not familiar with recursive iteration through tuple,{" "}
+      <Anchor href="https://catchts.com/tuples" text="here" /> you can find an
+      explanation.
+    </p>
+    <p>Here you have whole code with tests</p>
+    <Code code={code12} />
+    <p>
+      P.S.{" "}
+      <Anchor
+        href="https://stackoverflow.com/questions/69901253/defining-an-array-type-with-matching-pairs-like-domino-bricks-in-typscript/69902043#69902043"
+        text="Related answer"
+      />
+    </p>
+    <Header {...navigation.repeated_pattern} />
+    <p>
+      I'd willing to bet that you are curious how to type a tuple in repeated
+      manner. For instance <Var>{`[A, B, A, B, A, B]`}</Var>.Since we have
+      <Anchor
+        href="https://github.com/microsoft/TypeScript/pull/45711"
+        text="Tail recursion optimization"
+      /> in TS, we can create an utility type which build a union of all allowed values.
+      Please keep in mind that it will generate finite collection of allowed
+      states.
+    </p>
+    <Code code={code13} />
+    <p>
+      Please keep in mind, you can increase <Var>MAXIMUM_ALLOWED_BOUNDARY</Var>{" "}
+      if you want up to <Var>999</Var>. I'd willing to bet that it will generate
+      enough allowed states.
+    </p>
+    <p>
+      <Anchor
+        href="https://stackoverflow.com/questions/61155425/how-to-define-array-with-alternating-types-in-typescript/69800688#69800688"
+        text="Here"
+      />{" "}
+      you can find related answer
     </p>
   </>
 );
