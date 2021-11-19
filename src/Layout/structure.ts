@@ -110,42 +110,42 @@ export const blogArticles = [
         tags: ['number', 'bigint', 'math'],
         date: 'December 13, 2020'
     },
-    {
-        url: "/typed-react-children",
-        title: "Type React component children in TypeScript",
-        description:
-            "Let's assume you want to create component which will accept array of children components with certain props.",
-        Comp: 'ReactChildren',
-        links: [
-            {
-                href:
-                    "https://stackoverflow.com/questions/64967447/adding-required-props-to-child-react-elements-with-typescript",
-                text: "Adding required props to child react elements",
-            },
-            {
-                href: 'https://stackoverflow.com/questions/68398560/typescript-type-for-react-functioncomponent-that-returns-exactly-one-intrinsicel/68399995#68399995',
-                text: 'Infer JSX'
-            }
-        ],
-        tags: ['react', 'children'],
-        date: 'November 23, 2020'
-    },
-    {
-        url: "/react-return-type",
-        title: "Type React component return type in TypeScript",
-        description:
-            "What if you need to make sure that some component will always return other component with some particular props",
-        Comp: 'ReactReturnType',
-        links: [
-            {
-                href:
-                    "https://stackoverflow.com/questions/65406516/react-typescript-difference-between-react-fc-t-and-function",
-                text: "DIff between typed function component and untyped",
-            },
-        ],
-        tags: ['ReturnType', 'react'],
-        date: 'December 22, 2020'
-    },
+    // {
+    //     url: "/typed-react-children",
+    //     title: "Type React component children in TypeScript",
+    //     description:
+    //         "Let's assume you want to create component which will accept array of children components with certain props.",
+    //     Comp: 'ReactChildren',
+    //     links: [
+    //         {
+    //             href:
+    //                 "https://stackoverflow.com/questions/64967447/adding-required-props-to-child-react-elements-with-typescript",
+    //             text: "Adding required props to child react elements",
+    //         },
+    //         {
+    //             href: 'https://stackoverflow.com/questions/68398560/typescript-type-for-react-functioncomponent-that-returns-exactly-one-intrinsicel/68399995#68399995',
+    //             text: 'Infer JSX'
+    //         }
+    //     ],
+    //     tags: ['react', 'children'],
+    //     date: 'November 23, 2020'
+    // },
+    // {
+    //     url: "/react-return-type",
+    //     title: "Type React component return type in TypeScript",
+    //     description:
+    //         "What if you need to make sure that some component will always return other component with some particular props",
+    //     Comp: 'ReactReturnType',
+    //     links: [
+    //         {
+    //             href:
+    //                 "https://stackoverflow.com/questions/65406516/react-typescript-difference-between-react-fc-t-and-function",
+    //             text: "DIff between typed function component and untyped",
+    //         },
+    //     ],
+    //     tags: ['ReturnType', 'react'],
+    //     date: 'December 22, 2020'
+    // },
     {
         url: "/compare-arguments",
         title: "Compare array arguments",
