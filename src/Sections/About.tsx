@@ -17,6 +17,7 @@ const About: FC = () => (
         If you like my blog, you can
         <Anchor href="https://www.buymeacoffee.com/captainyosarian" text="buy me a beer" />
       </p>
+      <p><Anchor href="https://github.com/captain-yossarian/personal-blog" text="Here"/> you can find github repo of my blog.</p>
     </div>
   </>
 );
