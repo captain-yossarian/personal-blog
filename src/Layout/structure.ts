@@ -373,6 +373,9 @@ export const blogArticles = [
         links: [{
             href: 'https://stackoverflow.com/questions/65668969/event-maps-and-type-guards#answer-65890181',
             text: 'Event mapping'
+        }, {
+            href: 'https://stackoverflow.com/questions/70137328/mapping-a-variable-number-of-generics-while-retaining-link-between-type-values#answer-70138046',
+            text: 'Event mapping 2'
         }],
         tags: ['pattern'],
         date: 'January 25, 2021'
