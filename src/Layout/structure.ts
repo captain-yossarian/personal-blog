@@ -54,6 +54,10 @@ export const sections = [
             {
                 href: 'https://www.youtube.com/watch?v=wSdV1M7n4gQ',
                 text: 'Anders Hejlsberg on Modern Compiler Construction'
+            },
+            {
+                href: 'https://kerkour.com/',
+                text: 'Very nice blog dedicated to Rust and security'
             }
         ],
         id: -1,
