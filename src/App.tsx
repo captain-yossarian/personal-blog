@@ -13,6 +13,7 @@ import "prismjs/components/prism-typescript";
 import { Main } from "./Layout";
 import ArticleBase from "./Shared/ArticleBase";
 import { sort } from "./Sections/Home";
+import { EmailValidation } from "./Chapters";
 
 export const componentMap = {
   MathOperations: React.lazy(() => import("./Chapters/MathOperations")),
@@ -54,7 +55,9 @@ export const componentMap = {
   FlattenTuple: React.lazy(() => import("./Chapters/FlattenTuple")),
   SafeEnum: React.lazy(() => import("./Chapters/SafeEnum")),
   RestTuples: React.lazy(() => import("./Chapters/RestTuples")),
-  RecursiveDataStructures: React.lazy(()=>import('./Chapters/RecursiveDataStructures'))
+  RecursiveDataStructures: React.lazy(() => import('./Chapters/RecursiveDataStructures')),
+  EmailValidation: React.lazy(()=>import('./Chapters/EmailValidation'))
+  
 };
 
 setTimeout(() => Prism.highlightAll(), 0);

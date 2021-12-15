@@ -1111,6 +1111,21 @@ export const blogArticles = [
         tags: ['tuples'],
         date: 'November 17, 2021'
     },
+    {
+        url: '/email-validation',
+        title: 'Validation of static email string',
+        description: 'In this article you will learn how to validate template literal type of email string',
+        Comp: 'EmailValidation',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/70203643/prevent-creation-of-type-alias-instance',
+                text: 'Static email validation'
+            },
+
+        ],
+        tags: ['template literal type'],
+        date: 'December 13, 2021'
+    },
 
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
 
