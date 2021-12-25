@@ -3,6 +3,7 @@ import Code from "../Shared/Code";
 import { Var } from "../Layout";
 import { Anchor } from "../Shared/Links";
 import { Link } from "react-router-dom";
+import { Header, HeaderNav } from "../Shared/ArticleBase";
 
 const code1 = `
 factory({
@@ -105,8 +106,102 @@ factory({
 });
 
 `;
+
+const code8 = `
+interface BasicProps<T> {
+  input: T;
+}
+
+interface TransformProps<T, O> {
+  transform: (input: T) => O;
+  render: <U extends O>(input: U) => any; // added extra generic U
+}
+
+type TProps<T, O> = BasicProps<T> & TransformProps<T, O>;
+
+function test<T, O>(props: TProps<T, O>) {
+  return props.render(props.transform(props.input));
+}
+
+const testData = {
+  nested: {
+    test: 1,
+    best: true
+  }
+};
+
+const testResult = test({
+  input: testData,
+  transform: input => input.nested,
+  render: input => input.test // Error
+});
+`;
+
+const code9 = `
+const testResult = test({
+  input: testData,
+  transform: input => input.nested,
+  render: input => {
+    input.test // ok
+  }
+});
+`;
+
+const code10 = `
+const hof = (callback, data) => (model) => callback({ ...data, ...model });
+`;
+
+const code11 = `
+const factory = <
+    Callback extends (arg: any) => void,
+    Arg extends Parameters<Callback>[0],
+    KnownProps extends Partial<Arg>,
+    >(callback: Callback, knownProps: KnownProps) => (...[newProps]: any) =>
+        callback({ ...knownProps, ...newProps });
+`;
+
+const code12 = `
+interface GreeterData {
+    greetings: string;
+    userName: string;
+}
+
+const factory = <
+    Callback extends (arg: any) => void,
+    Arg extends Parameters<Callback>[0],
+    KnownProps extends Partial<Arg>,
+    >(callback: Callback, knownProps: KnownProps) =>
+    (newProps: Omit<Arg, keyof KnownProps>) =>
+        callback({ ...knownProps, ...newProps });
+
+const greeter = (greeterData: GreeterData) => string;
+const greet1 = factory(greeter, { greetings: "hello" });
+
+greet1({ userName: 'a' })
+greet1({ userName: 'a', greetings: 'a' }) // expected error
+`;
+
+const navigation = {
+  context_sensitive: {
+    id: "context_sensitive",
+    text: "Context sensitive functions",
+  },
+  typing_curried_callbacks: {
+    id: "typing_curried_callbacks",
+    text: "Typing curried factories",
+  },
+};
+const links = Object.values(navigation);
+
 const GenericResolving: FC = () => (
   <>
+    <HeaderNav links={links} />
+    <p>
+      In this article you will find some useful examples of typing factory
+      functions which requires you to use several generics with constraints
+    </p>
+    <Header {...navigation.context_sensitive} />
+
     <p>
       Sometimes it is hard to get around with typescript generics. Especially
       when we want to apply some sort of type validation.
@@ -195,8 +290,71 @@ const GenericResolving: FC = () => (
       <Anchor
         text="this"
         href="https://stackoverflow.com/questions/70453358/typescript-factory-with-custom-methods-3rd-step"
-      />{" "}
+      />
       answers.
+    </p>
+    <p>
+      Btw,
+      <Anchor
+        text="here"
+        href="https://stackoverflow.com/questions/70461273/typescript-use-result-of-one-interface-generic-method-as-input-for-another-int"
+      />{" "}
+      you can find interesting use case. Code example from the question can be
+      rewritten as follow:
+    </p>
+    <Code code={code8} />
+    <p>
+      The error still exists. TS i unable to figure out the type of render
+      argument <Var>input</Var>. Once you rewrite <Var>render</Var> function to
+      make it <Var>void</Var> - TS is able to infer <Var>input</Var> argument.
+      This is strange. I'm unable to explain it.
+    </p>
+    <Code code={code9} />
+    <Header {...navigation.typing_curried_callbacks} />
+    <p>
+      Imagine that we have simple high order function that accepts another
+      function and some object and returns another function:
+    </p>
+    <Code code={code10} />
+    <p>
+      The main requirements here is that we need exclude from <Var>model</Var>{" "}
+      properties that already present in <Var>data</Var>.
+    </p>
+    <p>
+      Let's type it step by step. Our <Var>callback</Var> argument can be any
+      one argument function, so we can use simple restriction:
+      <Var>{`(arg: any) => void`}</Var>. The second argument <Var>data</Var>
+      can be a <Var>Partial</Var> of <Var>callback</Var> argument. I mean
+      {`Parameters<Callback>[0]`}. Let's implement it.
+    </p>
+    <Code code={code11} />
+    <p>Now we can type our second part.</p>
+    <Code code={code12} />
+    <p>
+      The argument of inner function meets our main requirement. However, this
+      example has few extra requirements. If you are curious, full code you can
+      find
+      <Anchor
+        text="in the answer"
+        href="https://stackoverflow.com/questions/70154354/higher-order-function-how-to-deduct-injected-type-from-model-without-casting#answer-70282196"
+      />{" "}
+      provided by
+      <Anchor
+        text="Dima Parzhitsky"
+        href="https://stackoverflow.com/users/4554883/dima-parzhitsky"
+      />
+      .
+    </p>
+    <p>
+      Btw, he is an author of famous answer about{" "}
+      <Anchor
+        href="https://stackoverflow.com/questions/51631786/how-to-use-project-references-in-typescript-3-0"
+        text="using project references in TypeScript 3.0"
+      />
+    </p>
+    <p>
+      P.S.{" "}
+      <Anchor href="https://stackoverflow.com/questions/70152059/how-to-type-tuple-array-with-corresponding-types" text="Here" /> you can find an interesting example of typing <Var>Map</Var> constraints.
     </p>
   </>
 );

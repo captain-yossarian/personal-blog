@@ -59,7 +59,7 @@ export const componentMap = {
     () => import("./Chapters/RecursiveDataStructures")
   ),
   EmailValidation: React.lazy(() => import("./Chapters/EmailValidation")),
- // GenericResolving:React.lazy(()=>import('./Chapters/GenericResolving'))
+  GenericResolving: React.lazy(() => import("./Chapters/GenericResolving")),
 };
 
 setTimeout(() => Prism.highlightAll(), 0);
