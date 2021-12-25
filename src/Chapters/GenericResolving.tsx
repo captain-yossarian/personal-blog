@@ -332,8 +332,8 @@ const GenericResolving: FC = () => (
     <Code code={code12} />
     <p>
       The argument of inner function meets our main requirement. However, this
-      example has few extra requirements. If you are curious, full code you can
-      find
+      example has few extra requirements. If you are curious, you can find full
+      code
       <Anchor
         text="in the answer"
         href="https://stackoverflow.com/questions/70154354/higher-order-function-how-to-deduct-injected-type-from-model-without-casting#answer-70282196"
@@ -354,7 +354,11 @@ const GenericResolving: FC = () => (
     </p>
     <p>
       P.S.{" "}
-      <Anchor href="https://stackoverflow.com/questions/70152059/how-to-type-tuple-array-with-corresponding-types" text="Here" /> you can find an interesting example of typing <Var>Map</Var> constraints.
+      <Anchor
+        href="https://stackoverflow.com/questions/70152059/how-to-type-tuple-array-with-corresponding-types"
+        text="Here"
+      />{" "}
+      you can find an interesting example of typing <Var>Map</Var> constraints.
     </p>
   </>
 );
