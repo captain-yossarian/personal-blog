@@ -55,9 +55,11 @@ export const componentMap = {
   FlattenTuple: React.lazy(() => import("./Chapters/FlattenTuple")),
   SafeEnum: React.lazy(() => import("./Chapters/SafeEnum")),
   RestTuples: React.lazy(() => import("./Chapters/RestTuples")),
-  RecursiveDataStructures: React.lazy(() => import('./Chapters/RecursiveDataStructures')),
-  EmailValidation: React.lazy(()=>import('./Chapters/EmailValidation'))
-  
+  RecursiveDataStructures: React.lazy(
+    () => import("./Chapters/RecursiveDataStructures")
+  ),
+  EmailValidation: React.lazy(() => import("./Chapters/EmailValidation")),
+  GenericResolving:React.lazy(()=>import('./Chapters/GenericResolving'))
 };
 
 setTimeout(() => Prism.highlightAll(), 0);

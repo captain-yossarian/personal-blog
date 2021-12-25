@@ -1126,6 +1126,30 @@ export const blogArticles = [
         tags: ['template literal type'],
         date: 'December 13, 2021'
     },
+    {
+        url: '/generic-resolving',
+        title: 'Resolving generics in TypeScript',
+        description: 'In this article you will learn TypeScript resolves generics',
+        Comp: 'GenericResolving',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/70332961/typescript-factory-with-custom-methods',
+                text: 'Resolving generics - part 1'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/70360843/typescript-factory-with-custom-methods-2nd-step',
+                text: 'Resolving generics - part 2'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/70453358/typescript-factory-with-custom-methods-3rd-step',
+                text: 'Resolving generics - part 3'
+            },
+
+        ],
+        tags: ['generics'],
+        date: 'December 23, 2021'
+    },
+
 
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
 
