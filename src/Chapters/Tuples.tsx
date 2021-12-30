@@ -535,12 +535,18 @@ const Tuples: FC = () => (
     <Code code={code14} />
     <p>And whole code</p>
     <Code code={code15} />
-    <p>
-      {" "}
+    <p>  
       <Anchor
         text="TypeScript playground"
         href="https://www.typescriptlang.org/play?#code/FAFwngDgpgBAMlAdgcxACwDwBUZQB4hIAmAzjAEpQCGRA9ogDZgCCATq1WBlYmAHx8YAXhg58hRKRgBvGAySo0ALhgBLRADMoreDAC+wGDAD88QzBWIoAN20BuYKEiwAwrQC2EKqygIU6DHMADVwCYjJKGnomNg4uHn4AGnMATVCJKUi6RhZ2Tm5ePnNBET9FDCDBcXD4BQCUwVMQVgBXWBUNKgYSKAdgAHoAKkHDQdqQAHIyWmgOQhh6GAhWVXdVEFVbMlH+p2gYAGkoMDIREmb1ZBgAHxhEFvcAI20bmBIwJ9oGB3B95gYGLQAO5QIhHE7YEqidI1HxRHKHY4kADaAF0TNDLDZ7I49rAAAo+IiqADGVEI2ESMAAqlCxGFJGRwWRTNSYYzEScMZQSbRWERKTTBFjbDoRTiBsNRhQoCSWqwSJtYOttOTVIt0KxaC1kGgYCAgbQYN44iQdniYAAtVQQbDszLUbIxPJcZl8Kls6ocrLRXJxDBuqmUEgtBgge0RWV8gXnFYoKkJKHSPQlcxuTzeXx1TBYD1VBlSZptcymekZMhoksykNhizmMs1ZHqLQ6AASjqwAEZUVXPQWK82Xu2aNTu1Xg6HwwAyGCE0Gk8lQDDDohdqkr0fCu7YsX1iMwJuaIcdgBMVIAdJfBzosFRVAwsCee0ZWfvDy2YBuzzBL+fr6I7wYaknyra1bX+QEQTBJFsEAx93RgCDgVBZlYPvYCEInWsZznYkyQpFdH3XR0MKKIxxVYcwKKo7dRT6IYRhgMZmAgCAmCtG0FgRVQNGNF0yHkfw9VUMgoAARxaLoqVodBtCBETYB8EB5UQWjtHNX5YDA2Y7S9B14Wdf1AxpfcfRyWJ8jdVMjHTLwfDKAJcyFfci1gUwwMFWkLDU1g+k06tJ2EDjWO0DBkQAIg0WhaHCqlwsebxwtRKlkQAVjihLWCSvg+mAXlEHOGAAC8bRULDwxEaRzCi2gVHS8xMpUCZMomYA9Bgfp+gWABrYAgA"
       />
+    </p>
+    <p> 
+      <Anchor
+        text="Here"
+        href="https://stackoverflow.com/questions/70531056/typescript-two-way-string-mapping/70532783#70532783"
+      />
+      you can find less verbose version of <Var>Zip</Var>
     </p>
 
     <Header {...navigation.find_index} />
