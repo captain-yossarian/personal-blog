@@ -857,10 +857,15 @@ const InferFunctionArguments: FC = () => {
       <p>To make it clear, please see another example with object.</p>
       <Code code={code17} />
       <p>
-        Related{" "}
+        Related answers you can find
         <Anchor
-          text="answer"
+          text="here"
           href="https://stackoverflow.com/questions/69187022/why-cant-the-generic-interface-in-ts-infer-the-type-correctly/69188596#69188596"
+        />{" "}
+        and{" "}
+        <Anchor
+          text="here"
+          href="https://stackoverflow.com/questions/70494434/typescript-generic-type-extract-keys-with-value-of-type-x-does-not-behave-as/70496182?noredirect=1#comment124654422_70496182"
         />
       </p>
       <p>
@@ -1091,8 +1096,8 @@ const InferFunctionArguments: FC = () => {
           href="https://stackoverflow.com/questions/68699646/typescript-strong-typing-and-autocomplete-for-a-value-based-on-a-sibling-obje/68700044#68700044"
           text={"third"}
         />
-        ].
-        If you would like to read more about them, please let me know or upvote above answers.        
+        ]. If you would like to read more about them, please let me know or
+        upvote above answers.
       </p>
     </>
   );

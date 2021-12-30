@@ -252,6 +252,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69585308/create-string-literal-type-from-dyanamic-array-in-typescript/69587394#69587394',
                 text: 'Create tuple with some length'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/70531056/typescript-two-way-string-mapping/70532783#70532783',
+                text: 'Less verbose version of Zip'
             }
         ],
         tags: ['array', 'tuples'],
@@ -713,6 +717,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69680459/soft-type-checking-function-parameters/69681910#69681910',
                 text: 'Validate subtype'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/70489636/typescript-weird-behavior-on-implementation-of-union-of-types/70490540#70490540',
+                text:'Validation of tuple arguments'
             }
 
         ],
@@ -1146,11 +1154,11 @@ export const blogArticles = [
             },
             {
                 href: 'https://stackoverflow.com/questions/70154354/higher-order-function-how-to-deduct-injected-type-from-model-without-casting#answer-70282196',
-                text:'Infering arguments type of curried function'
+                text: 'Infering arguments type of curried function'
             },
             {
                 href: 'https://stackoverflow.com/questions/70152059/how-to-type-tuple-array-with-corresponding-types',
-                text:'Map constraints'
+                text: 'Map constraints'
             }
 
         ],
