@@ -108,6 +108,7 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
 
   return (
     <Layout title={title}>
+     
       {children}
       <Footer>
         {id > 0 ? (

@@ -58,6 +58,7 @@ const Section = styled.section`
 export const Main: FC<{ children: React.ReactNode }> = ({ children }) => (
   <Container>
     <Navigation />
+    123
     <Section>{children}</Section>
   </Container>
 );

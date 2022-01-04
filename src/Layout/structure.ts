@@ -720,7 +720,7 @@ export const blogArticles = [
             },
             {
                 href: 'https://stackoverflow.com/questions/70489636/typescript-weird-behavior-on-implementation-of-union-of-types/70490540#70490540',
-                text:'Validation of tuple arguments'
+                text: 'Validation of tuple arguments'
             }
 
         ],
@@ -748,6 +748,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69616906/how-can-i-strongly-type-a-composed-mixin/69627763#69627763',
                 text: 'Alternative pipeline'
+            },
+            {
+                href: 'https://github.com/drizzer14/fnts',
+                text: 'fnts package with interesting utility types'
             }
 
         ],

@@ -558,6 +558,12 @@ const FP: FC = () => (
       need to made only few changes to convert it
     </p>
     <Code code={code15} />
+    <Anchor
+      text="Here"
+      href="https://github.com/drizzer14/fnts/blob/main/src/compose.ts"
+    />{" "}
+    you can find slightly better implementation of <Var>Compose</Var> utility
+    type
     <Header {...navigation.string_unions} />
     <p>
       Let's consider next example. It is not strictly related to TS but I
@@ -565,7 +571,9 @@ const FP: FC = () => (
     </p>
     <p>
       This code is very specific, since it works only with strings, at least in
-      our example.
+      our example. Btw, I strongly recommend you to check source code of{" "}
+      <Anchor text="drizzer14/fnts" href="https://github.com/drizzer14/fnts" />{" "}
+      package.
     </p>
     <p>
       I'm not saying that it is better then several <Var>||</Var>, or better
