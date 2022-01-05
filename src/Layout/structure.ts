@@ -1076,6 +1076,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/62268023/how-to-type-function-taking-an-enum#answer-69465829',
                 text: 'Make safer enum'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/70591789/enum-typescript-return-specific-value/70592714#70592714',
+                text: 'Make safer enum 2'
             }
         ],
         tags: ['enums', 'tuples'],
