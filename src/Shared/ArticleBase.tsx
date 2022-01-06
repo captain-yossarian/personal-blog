@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
 import { Layout } from "../Layout";
 import { Props } from "../Chapters/Props";
-import Links, { Props as LinksProps } from "./Links";
+import Links, { Anchor, Props as LinksProps } from "./Links";
 import styled from "styled-components";
 import { TEXT_COLOR, THEME_COLOR } from "../Layout/utils";
 
@@ -108,7 +108,6 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
 
   return (
     <Layout title={title}>
-     
       {children}
       <Footer>
         {id > 0 ? (
@@ -116,6 +115,17 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
             <div>
               <p>
                 Share on twitter <TwitterShare title={title} path={path} />
+              </p>
+              <p>
+                If you like this article you can
+                <Anchor
+                  href="https://ko-fi.com/catchts"
+                  text=" buy me a coffee "
+                />
+                <img
+                  src="https://storage.ko-fi.com/cdn/cup-border.png"
+                  width="40"
+                />
               </p>
             </div>
           </>
