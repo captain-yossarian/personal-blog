@@ -29,6 +29,10 @@ const Subscribe: FC = () => {
           Subscribe
         </button>
       </form>
+      <p>
+        Don't worry, no spam. I publish the article - you receive an email. It
+        will be 1 or two emails in a month.
+      </p>
     </>
   );
 };
