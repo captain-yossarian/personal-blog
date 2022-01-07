@@ -87,6 +87,17 @@ export const sections = [
         type: 'section',
         tags: []
     },
+    {
+        url: "/subscribe",
+        title: 'Subscribe',
+        description: 'Subscribe section',
+        Comp: 'Subscribe',
+        links: [],
+        id: -4,
+        date: '',
+        type: 'section',
+        tags: []
+    },
 ];
 
 export const blogArticles = [

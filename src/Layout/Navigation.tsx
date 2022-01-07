@@ -21,6 +21,7 @@ const links = Object.entries({
   "/": "Home",
   "/about": "About",
   "/contact": "Contact",
+  '/subscribe':'Subscribe'
 });
 
 const NavElement = styled.li`
