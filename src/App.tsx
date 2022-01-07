@@ -77,9 +77,8 @@ const ScrollToTop = withRouter(({ history }) => {
   return null;
 });
 
-const data = sort(blogArticles)
-  //@ts-expect-error
-  .concat(sections);
+// @ts-ignore
+const data = sort(blogArticles).concat(sections);
 
 const App: VFC = () => {
   return (
@@ -91,6 +90,7 @@ const App: VFC = () => {
             {data.map((elem) => {
               const { url, Comp } = elem;
               const Component = componentMap[Comp as keyof typeof componentMap];
+              console.log({ url });
               return (
                 <Route path={url} key={url}>
                   <ArticleBase path={url} {...elem}>

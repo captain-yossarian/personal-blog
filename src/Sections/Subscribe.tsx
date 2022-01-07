@@ -9,7 +9,7 @@ const Subscribe: FC = () => {
         method="post"
         id="#mc_embed_signup"
       >
-        <label htmlFor="mce-EMAIL">Subscribe</label>
+        <label htmlFor="mce-EMAIL">Subscribe </label>
         <input
           type="email"
           value={value}
@@ -24,7 +24,7 @@ const Subscribe: FC = () => {
           type="submit"
           value="Subscribe"
           name="subscribe"
-          id="mc-embedded-subscribe"
+          style={{ marginLeft: "10px" }}
         >
           Subscribe
         </button>
