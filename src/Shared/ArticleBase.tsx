@@ -126,6 +126,7 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
                   src="https://storage.ko-fi.com/cdn/cup-border.png"
                   width="40"
                 />
+                or <Anchor href="https://catchts.com/subscribe" text="subscribe" />.
               </p>
             </div>
           </>
