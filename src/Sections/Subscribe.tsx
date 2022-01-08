@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react";
+import { Anchor } from "../Shared/Links";
 
 const Subscribe: FC = () => {
   const [value, setValue] = useState("");
@@ -32,6 +33,11 @@ const Subscribe: FC = () => {
       <p>
         Don't worry, no spam. I publish the article - you receive an email. It
         will be 1 or two emails in a month.
+      </p>
+      <p>
+        RSS feed is available
+        <Anchor href="https://catchts.com/api/rss" text="here" /> thanks to
+        <Anchor href="https://twitter.com/drlehr" text="Daniel" />.
       </p>
     </>
   );
