@@ -295,7 +295,7 @@ const navigation = {
   callback_in_union2: {
     id: "callback_in_union 2",
     text: "Callbacks in unions 2",
-    updated: true,
+    
   },
 };
 const links = Object.values(navigation);

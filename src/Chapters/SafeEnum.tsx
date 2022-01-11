@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { Var } from "../Layout";
+import { Header, HeaderNav } from "../Shared/ArticleBase";
 import Code from "../Shared/Code";
 import { Anchor } from "../Shared/Links";
 
@@ -119,9 +120,179 @@ handleEnum(MyEnum, (-0 + 0)); // error
 handleEnum(MyEnum, Math.PI); // error
 `;
 
+const code7 = `
+enum MyEnum {
+  ONE, // 0
+  TWO // 1
+}
+
+type EnumType = Record<string | number, string | number>
+
+function handleEnum(enEnum: EnumType, index: number) {
+  return enEnum[index]
+}
+
+const one = handleEnum(MyEnum, 0) // "ONE"
+const two = handleEnum(MyEnum, 1) // "TWO"
+`;
+
+const code8 = `
+/**
+ * Represents any enum type
+ */
+type EnumType = Record<string | number, string | number>
+
+type EnumToObj<Enum extends EnumType> = Pick<
+  {
+    [Prop in keyof Enum]: Enum[Prop] extends string | number ? \`${"${Enum[Prop]}"}\` : never
+  }, keyof Enum
+>
+
+{
+  // {
+  //   readonly ONE: "0";
+  //   readonly TWO: "1";
+  // }
+  type Test = EnumToObj<typeof MyEnum>
+}
+`;
+
+const code9 = `
+type GetEnumValue<
+  Enum extends EnumType,
+  Index extends number,
+  Obj extends EnumToObj<Enum> = EnumToObj<Enum>
+  > =
+  {
+    [Prop in keyof Obj]: \`${"${Index}"}\`  extends Obj[Prop] ? Prop : never
+  }[keyof Enum];
+
+{
+  type Test = GetEnumValue<typeof MyEnum, 1> // TWO
+}
+`;
+
+const code10 = `
+// credits https://github.com/microsoft/TypeScript/issues/23182#issuecomment-379091887
+type IsNever<T> = [T] extends [never] ? true : false
+
+type IsKeyValid<
+  Index extends number,
+  Enum extends EnumType
+  > = IsNever<GetEnumValue<Enum, Index>> extends true ? never : Index
+
+{
+  type _ = IsKeyValid<1, typeof MyEnum> // 1
+  type __ = IsKeyValid<2, typeof MyEnum> // never
+}
+`;
+
+const code11 = `
+enum MyEnum {
+  ONE, // 0
+  TWO // 1
+}
+
+/**
+ * Obtains a union of all dictionary values
+ */
+type Values<T> = T[keyof T]
+
+
+/**
+ * Represents any enum type
+ */
+type EnumType = Record<string | number, string | number>
+
+type EnumToObj<Enum extends EnumType> = Pick<
+  {
+    [Prop in keyof Enum]:
+    (Enum[Prop] extends string | number
+      ? \`${"${Enum[Prop]}"}\`
+      : never)
+  }, keyof Enum
+>
+
+{
+  // {
+  //   readonly ONE: "0";
+  //   readonly TWO: "1";
+  // }
+  type Test = EnumToObj<typeof MyEnum>
+}
+
+type GetEnumValue<
+  Enum extends EnumType,
+  Index extends number,
+  Obj extends EnumToObj<Enum> = EnumToObj<Enum>
+  > =
+  {
+    [Prop in keyof Obj]:
+    (\`${"${Index}"}\` extends Obj[Prop]
+      ? Prop
+      : never)
+  }[keyof Enum];
+
+{
+  type Test = GetEnumValue<typeof MyEnum, 1> // TWO
+}
+
+type IsNever<T> = [T] extends [never] ? true : false
+
+type IsKeyValid<
+  Index extends number,
+  Enum extends EnumType
+  > =
+  IsNever<GetEnumValue<Enum, Index>> extends true
+  ? never
+  : Index
+
+{
+  type _ = IsKeyValid<1, typeof MyEnum> // 1
+  type __ = IsKeyValid<2, typeof MyEnum> // never
+}
+
+function handleEnum<
+  Index extends number,
+  Enum extends EnumType
+>(
+  enEnum: Enum,
+  index: IsKeyValid<Index, Enum>
+): GetEnumValue<Enum, Index>
+function handleEnum<
+  Index extends number,
+  Enum extends EnumType
+>(enEnum: Enum, index: IsKeyValid<Index, Enum>) {
+  return enEnum[index]
+}
+
+const x = handleEnum(MyEnum, 0) // "ONE"
+const y = handleEnum(MyEnum, 1) // "TWO"
+
+handleEnum(MyEnum, 2) // expected error
+handleEnum(MyEnum, 'ONE') // expected error
+`;
+
+const navigation = {
+  safer_enum: {
+    id: "safer_enum",
+    text: "Validate enum key",
+  },
+  obtain_enum_by_key: {
+    id: "obtain_enum_by_key",
+    text: "Infer enum value by key",
+    updated: true,
+  },
+};
+
+const links = Object.values(navigation);
+
 const SafeEnum: FC = () => {
   return (
     <>
+      <HeaderNav links={links} />
+      <Header {...navigation.safer_enum} />
+
       <p>
         In this article you will learn how to make numerical <Var>enum</Var> a
         bit safer.
@@ -191,7 +362,59 @@ const SafeEnum: FC = () => {
         P.S. I hope you have noticed <Var>Enumerate2</Var>. This is interesting
         behavior. Seems that <Var>keyof SomeObj</Var> acts differently inside
         iteration loop and outside. See related{" "}
-        <Anchor href="https://stackoverflow.com/questions/69523580/typescript-keyof-change-the-origin-property-optional/69524091#69524091" text="issue" />
+        <Anchor
+          href="https://stackoverflow.com/questions/69523580/typescript-keyof-change-the-origin-property-optional/69524091#69524091"
+          text="issue"
+        />
+      </p>
+      <Header {...navigation.obtain_enum_by_key} />
+      <p>
+        Consider similar example with enum, but now, we need to infer enum value
+        by key. See this example:
+      </p>
+      <Code code={code7} />
+      <p>
+        I'm not saying that this is preferred way of working with enums. I just
+        want to show you how to infer return type.
+      </p>
+      <p>
+        Let's try to validate whether index is allowed or not in a different way
+        than we did it in previous section. We can convert our enum to regular
+        object
+      </p>
+      <Code code={code8} />
+      <p>
+        I have wrapped <Var>Enum[Prop]</Var> into template literal strings
+        because in this way we can break enum bindings and TS will treat it as a
+        regular property
+      </p>
+      <p>
+        In order to obtain enum value by numerical key, we can use this utility
+      </p>
+      <Code code={code9} />
+      <p>
+        <Var>GetEnumValue</Var> iterates through all keys of converted enum and
+        checks whether provided <Var>Index</Var> extends object value. Remember,
+        that converted enum looks like this <Var>{`readonly ONE: "0";`}</Var>
+      </p>
+      <p>
+        If you are curious why I have used <Var>[keyof Enum]</Var> at the end,{" "}
+        <Anchor
+          href="https://stackoverflow.com/questions/70608257/retrieve-subset-of-object-where-string-values-start-with-given-string/70608410#70608410"
+          text="here"
+        />
+        you can find thorough explanation
+      </p>
+      <p>
+        Now, we can validate enum key. Be aware that if <Var>GetEnumValue</Var>{" "}
+        returns <Var>never</Var> it means that key is not exists. So, we need
+        just check whether it is <Var>never</Var> or not
+      </p>
+      <Code code={code10} />
+      <p>Whole example</p>
+      <Code code={code11} />
+      <p>
+        <Anchor href="https://tsplay.dev/NBeo4w" text="Playground" />
       </p>
     </>
   );

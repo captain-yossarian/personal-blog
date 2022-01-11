@@ -200,7 +200,7 @@ const navigation = {
   second: {
     id: "second",
     text: "Template literal string permutations",
-    updated: true,
+    
   },
 };
 const links = Object.values(navigation);

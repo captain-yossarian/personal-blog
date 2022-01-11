@@ -168,12 +168,12 @@ const navigation = {
   union_constraints: {
     id: "union_constraints",
     text: "Union constraints",
-    updated: true,
+    
   },
   generic_constraints: {
     id: "generic_constraints",
     text: "Generic constraints",
-    updated: true,
+    
   },
 };
 const links = Object.values(navigation);
