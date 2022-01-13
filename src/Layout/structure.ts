@@ -98,7 +98,7 @@ export const sections = [
         type: 'section',
         tags: []
     },
- 
+
 ];
 
 export const blogArticles = [
@@ -1008,6 +1008,10 @@ export const blogArticles = [
         {
             href: 'https://stackoverflow.com/questions/69596738/types-object-base-on-arras-of-another-object/69597100#69597100',
             text: 'Infer key/value'
+        },
+        {
+            href: 'https://stackoverflow.com/questions/70680599/get-nested-type-with-generics/70680940#70680940',
+            text: 'Infer method name in class constructor'
         }
 
         ],
