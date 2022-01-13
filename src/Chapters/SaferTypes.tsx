@@ -97,7 +97,7 @@ const result = handleRecord(animal) // error
 `;
 
 const code6 = `
-type Animal= {
+type Animal= { // <---- change is here
   tag: 'animal',
   name: 'some animal'
 }
@@ -111,7 +111,7 @@ const result = handleRecord(animal) // ok
 
 const code7 = `
 interface Animals {
-  dog: 'Sharky dog', // do you remember th Sharky Dog?
+  dog: 'Sharky dog', // do you remember the Sharky Dog?
   cat: 'Meout'
 }
 
