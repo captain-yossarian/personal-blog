@@ -1058,6 +1058,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69085069/repeat-multiple-function-arguments/69087323#69087323',
                 text: 'Function with even length of arguments'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/70718896/how-do-i-define-a-typescript-type-with-a-repeating-structure#answer-70720063',
+                text: 'Define recursive pattern for string'
             }
 
         ],

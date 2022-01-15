@@ -416,6 +416,14 @@ const SafeEnum: FC = () => {
       <p>
         <Anchor href="https://tsplay.dev/NBeo4w" text="Playground" />
       </p>
+      <p>
+        P.S. If you want to convert a string enum to union of string - just use
+        template literals <Var>{"`${MyEnum}`"}</Var>. See related
+        <Anchor
+          href="https://stackoverflow.com/questions/70693587/how-to-create-a-union-type-from-enum-values-in-typescript#answer-70693670"
+          text="answer"
+        />
+      </p>
     </>
   );
 };

@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { Var } from "../Layout";
+import { Header, HeaderNav } from "../Shared/ArticleBase";
 import Code from "../Shared/Code";
 import { Anchor } from "../Shared/Links";
 
@@ -203,9 +204,74 @@ handle([1, 1, 1]) // expected error
 handle([1, 1]) // ok
 `;
 
+const code7 = `
+type Coordinates = \`${"${number}${number}"}\`;
+
+type MAXIMUM_ALLOWED_BOUNDARY = 10
+
+/**
+ * Obtains last element in the tuple
+ */
+type Last<T extends string[]> = T extends [...infer _, infer Last] ? Last : never;
+
+/**
+ * Concats Coordinates to the last element in the tuple
+ */
+type ConcatPrevious<T extends any[]> = Last<T> extends string ? \`${"${Last<T>}${Coordinates}"}\` : never
+
+/**
+ * Creates required union
+ */
+type Repeat<
+    N extends number,
+    Result extends Array<unknown> = [Coordinates],
+    > =
+    (Result['length'] extends N
+        ? Result
+        : Repeat<N, [...Result, ConcatPrevious<Result>]>
+    )
+
+type MyLocation = Repeat<MAXIMUM_ALLOWED_BOUNDARY>[number]
+
+const myLocation1: MyLocation = '02,56;67,68;' // ok
+const myLocation2: MyLocation = '45,56;67,68;1,2;3,4;5,6;7,8;9,10;' // ok
+const myLocation3: MyLocation = '45,56;67,68;1,2;3,4;5,6;7,8;9,10,' // expected error
+`;
+
+const code8 = `
+/**
+ * JS representation of Repeat type
+ */
+const mapped = (N: number, Result: any[] = []): string => {
+    if (N === Result.length) {
+        return Result.join('')
+    }
+
+    const x = Math.random();
+    const y = Math.random()
+    return mapped(N, [...Result, \`${"${x}${y}"}\`])
+}
+`;
+
+const navigation = {
+  even_length_tuple: {
+    id: "even_length_tuple",
+    text: "Create tuple of even length",
+  },
+  recursive_pattern: {
+    id: "recursive_pattern",
+    text: "Create string with recursive pattern",
+    updated: true,
+  },
+};
+
+const links = Object.values(navigation);
+
 const EvenLength: FC = () => {
   return (
     <>
+      <HeaderNav links={links} />
+      <Header {...navigation.even_length_tuple} />
       <p>Imagine situation where you need to model a tuple with even length.</p>
       <p>
         While we can model recursive object type with help of interfaces, it
@@ -291,9 +357,33 @@ const EvenLength: FC = () => {
       <p>UPDATE</p>
       <p>
         If you are allowed to use TypeScript 4.5, you can use more efficient
-        version for 494 elements.
+        version for 999 elements.
       </p>
       <Code code={code6} />
+      <Header {...navigation.recursive_pattern} />
+      <p>
+        It appears that above pattern is useful when you want to create other
+        repeated patterns. For instance you have a repeated string of
+        coordinates. Assume each your string can consist with infinity number of{" "}
+        <Var>{`\`${"${number},${number};"}\``}</Var> pattern. As you might
+        already know, there is no possibility to define this type of behavior in
+        typescript, at least not for infinity number. However we can create
+        union with 500 elements. Each next element will be longer than previous
+        element on 1 pattern.
+      </p>
+      <Code code={code7} />
+      <p>
+        Here you have JS representation of <Var>Repeat</Var> type to better
+        understand it
+      </p>
+      <Code code={code8} />
+      <p>
+        <Anchor
+          text="Here"
+          href="https://stackoverflow.com/questions/70718896/how-do-i-define-a-typescript-type-with-a-repeating-structure#answer-70720063"
+        />{" "}
+        you can find corresponding answer.
+      </p>
     </>
   );
 };
