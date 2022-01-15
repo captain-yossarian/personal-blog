@@ -614,6 +614,9 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/66851513/a-way-to-mark-arbitrary-strings-in-typescript-template-literals#answer-66852494',
                 text: 'Template literals HEX Validator',
+            }, {
+                href: 'https://stackoverflow.com/questions/70531056/typescript-two-way-string-mapping/70532783#70532783',
+                text: 'validation of static string'
             }
         ],
         tags: ['template literals', 'hex', 'tuples'],
@@ -1063,6 +1066,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69085069/repeat-multiple-function-arguments/69087323#69087323',
                 text: 'Function with even length of arguments'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/70718896/how-do-i-define-a-typescript-type-with-a-repeating-structure#answer-70720063',
+                text: 'Define recursive pattern for string'
             }
 
         ],
@@ -1089,7 +1096,7 @@ export const blogArticles = [
     },
     {
         url: '/safe-enums',
-        title: 'Make enums safe again',
+        title: 'Make enums safe again (updated)',
         description: 'You will learn how to make numerical enum safe again',
         Comp: 'SafeEnum',
         links: [
@@ -1100,14 +1107,18 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/70591789/enum-typescript-return-specific-value/70592714#70592714',
                 text: 'Make safer enum 2'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/70591789/enum-typescript-return-specific-value#answer-70592714',
+                text: 'Infer enum value by key'
             }
         ],
         tags: ['enums', 'tuples'],
-        date: 'October 6, 2021'
+        date: 'January 11, 2022'
     },
     {
         url: '/rest-tuples',
-        title: 'Rest operator in tuples (UPDATED)',
+        title: 'Rest operator in tuples (updated)',
         description: 'Use rest operator one after another in tuple type representation',
         Comp: 'RestTuples',
         links: [
@@ -1124,6 +1135,10 @@ export const blogArticles = [
             }, {
                 href: 'https://stackoverflow.com/questions/61155425/how-to-define-array-with-alternating-types-in-typescript/69800688#69800688',
                 text: 'Typing repeated pattern'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/70489636/typescript-weird-behavior-on-implementation-of-union-of-types#answer-70490540',
+                text: 'tuple validation for duplicates'
             }
         ],
         tags: ['tuples'],

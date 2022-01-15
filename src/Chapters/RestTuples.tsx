@@ -101,6 +101,7 @@ type Test13 = Validation<[2, false, "middle-element"]> // never
 `;
 
 const code5 = `
+// credits https://github.com/microsoft/TypeScript/issues/23182#issuecomment-379091887
 type IsNever<T> = [T] extends [never] ? true : false;
 
 function check<
@@ -321,12 +322,12 @@ const navigation = {
   domino: {
     id: "domino",
     text: "Validate tuples according to domino rules",
-    updated: true,
+    
   },
   repeated_pattern: {
     id: "repeated",
     text: "Typing repeated pattern",
-    updated: true,
+    
   },
 };
 const links = Object.values(navigation);
