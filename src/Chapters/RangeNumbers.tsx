@@ -175,6 +175,34 @@ const Mapped = (N: number, Result: number[] = []): number[] => {
     return Mapped(N, [...Result, Result.length])
 }
 `;
+
+const code7 = `
+type MAXIMUM_ALLOWED_BOUNDARY = 256
+
+type ComputeRange<
+    N extends number,
+    Result extends Array<unknown> = [],
+    > =
+    (Result['length'] extends N
+        ? Result
+        : ComputeRange<N, [...Result, Result['length']]>
+    )
+
+type Octal = ComputeRange<MAXIMUM_ALLOWED_BOUNDARY>[number] // 0 - 255
+
+type Digits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+type AlphaChanel =\`${"0.${ComputeRange<999>[number]}"}\` | '1.0'
+
+type AssertAlpha<Alpha extends number> = \`${"${Alpha}"}\` extends AlphaChanel ? Alpha : never;
+
+type RGBA<Alpha extends number = 1.0> = [Octal, Octal, Octal, AssertAlpha<Alpha>?]
+
+const rgb: RGBA = [255, 67, 89] // ok
+const rgb2: RGBA = [256, 67, 89] //error, 255 is out of range
+const rgba: RGBA<0.25> = [245, 67, 34, 0.25] // ok
+`;
+
 const RangeNumbers: FC = () => (
   <>
     <p>
@@ -219,6 +247,14 @@ const RangeNumbers: FC = () => (
       it is possible to make a range of <Var>numbers</Var> from 0 to 494.
     </p>
     <Code code={code6} />
+    <p>
+      We can use above pattern to create a standalone type for RGBa color
+      format:
+    </p>
+    <Code code={code7} />
+    <p>
+      <Anchor text="Playground" href="tsplay.dev/mAvlkW" />
+    </p>
   </>
 );
 

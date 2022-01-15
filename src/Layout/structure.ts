@@ -204,6 +204,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/69766516/infer-generic-from-properties/69766606#69766606',
                 text: 'Typing upper bounds'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/70717701/how-to-use-spread-operator-in-typescript-as-argument-to-a-function#answer-70720851',
+                text: 'Safe type for RGBA'
             }
         ],
         tags: ['number', 'range', 'template literals'],
