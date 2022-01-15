@@ -249,7 +249,7 @@ const navigation = {
   third: {
     id: "third",
     text: "Third example",
-    updated: true,
+    
   },
 };
 const links = Object.values(navigation);

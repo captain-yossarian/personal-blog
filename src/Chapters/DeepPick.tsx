@@ -477,17 +477,17 @@ const navigation = {
   all_keys: {
     id: "all_keys",
     text: "Get all possible variants of keys",
-    updated: true,
+    
   },
   deep_pick: {
     id: "deep_pick",
     text: "Get value by property path (deep pick)",
-    updated: true,
+    
   },
   second_approach: {
     id: "second_approach",
     text: "Second approach",
-    updated: true,
+    
   },
 };
 

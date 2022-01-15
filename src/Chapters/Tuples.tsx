@@ -374,7 +374,7 @@ const navigation = {
   zip: {
     id: "zip",
     text: "Zip arrays into object",
-    updated: true,
+    
   },
   find_index: {
     id: "find_index",

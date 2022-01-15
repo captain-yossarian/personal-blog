@@ -69,7 +69,7 @@ const navigation = {
   fp: {
     id: "fp",
     text: "FP approach",
-    updated: true,
+    
   },
 };
 

@@ -663,22 +663,22 @@ const navigation = {
   generic_constraints: {
     id: "generic_constraints",
     text: "Generic constraints",
-    updated: true,
+    
   },
   first_level_inference: {
     id: "first_level_inference",
     text: "First level prop inference",
-    updated: true,
+    
   },
   second_level_inference: {
     id: "second_level_inference",
     text: "Second level prop inference",
-    updated: true,
+    
   },
   function_inference: {
     id: "function_inference",
     text: "Function inference",
-    updated: true,
+    
   },
 };
 const links = Object.values(navigation);
