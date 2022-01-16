@@ -60,6 +60,7 @@ export const componentMap = {
   ),
   EmailValidation: React.lazy(() => import("./Chapters/EmailValidation")),
   GenericResolving: React.lazy(() => import("./Chapters/GenericResolving")),
+  UnsafeHabits:React.lazy(()=>import('./Chapters/UnsafeHabits'))
 };
 
 setTimeout(() => Prism.highlightAll(), 0);

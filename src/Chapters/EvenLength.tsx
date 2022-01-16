@@ -205,7 +205,7 @@ handle([1, 1]) // ok
 `;
 
 const code7 = `
-type Coordinates = \`${"${number}${number}"}\`;
+type Coordinates = \`${"${number},${number};"}\`;
 
 type MAXIMUM_ALLOWED_BOUNDARY = 10
 
