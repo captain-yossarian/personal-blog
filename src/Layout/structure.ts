@@ -1208,37 +1208,18 @@ export const blogArticles = [
         tags: ['generics'],
         date: 'December 26, 2021'
     },
-    {
-        url: '/unsafe-habbits',
-        title: 'Unsafe javascript habits which are not welcome in TypeScript',
-        description: 'In this article you will learn why some javascript habits/patterns are unsafe',
-        Comp: 'UnsafeHabits',
-        links: [
-            {
-                href: 'https://stackoverflow.com/questions/70332961/typescript-factory-with-custom-methods',
-                text: 'Resolving generics - part 1'
-            },
-            {
-                href: 'https://stackoverflow.com/questions/70360843/typescript-factory-with-custom-methods-2nd-step',
-                text: 'Resolving generics - part 2'
-            },
-            {
-                href: 'https://stackoverflow.com/questions/70453358/typescript-factory-with-custom-methods-3rd-step',
-                text: 'Resolving generics - part 3'
-            },
-            {
-                href: 'https://stackoverflow.com/questions/70154354/higher-order-function-how-to-deduct-injected-type-from-model-without-casting#answer-70282196',
-                text: 'Infering arguments type of curried function'
-            },
-            {
-                href: 'https://stackoverflow.com/questions/70152059/how-to-type-tuple-array-with-corresponding-types',
-                text: 'Map constraints'
-            }
+    // {
+    //     url: '/unsafe-habbits',
+    //     title: 'Unsafe javascript habits which are not welcome in TypeScript',
+    //     description: 'In this article you will learn why some javascript habits/patterns are unsafe',
+    //     Comp: 'UnsafeHabits',
+    //     links: [
 
-        ],
-        tags: ['generics'],
-        date: 'December 26, 2021'
-    },
+
+    //     ],
+    //     tags: ['generics'],
+    //     date: 'December 26, 2021'
+    // },
 
 
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
