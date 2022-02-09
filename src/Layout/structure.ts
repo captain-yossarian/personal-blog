@@ -1208,18 +1208,25 @@ export const blogArticles = [
         tags: ['generics'],
         date: 'December 26, 2021'
     },
-    // {
-    //     url: '/unsafe-habbits',
-    //     title: 'Unsafe javascript habits which are not welcome in TypeScript',
-    //     description: 'In this article you will learn why some javascript habits/patterns are unsafe',
-    //     Comp: 'UnsafeHabits',
-    //     links: [
+    {
+        url: '/useful-patterns',
+        title: 'Useful TypeScript patterns',
+        description: 'Here you can find some useful patterns in TS which will save your time',
+        Comp: 'UsefulPatterns',
+        links: [
+            {
+                href: 'https://stackoverflow.com/questions/70885329/generic-constraint-between-two-properties-of-an-object',
+                text: 'Builder utility',
+            },
+            {
+                href: 'https://github.com/microsoft/TypeScript/pull/47607',
+                text: 'Instantiation expressions PR'
+            }
 
-
-    //     ],
-    //     tags: ['generics'],
-    //     date: 'December 26, 2021'
-    // },
+        ],
+        tags: ['generics'],
+        date: 'February 9, 2022'
+    },
 
 
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
