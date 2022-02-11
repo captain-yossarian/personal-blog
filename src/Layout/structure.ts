@@ -1335,7 +1335,3 @@ https://stackoverflow.com/questions/57750777/generics-error-with-forwardref-prop
 // mutation track
 // https://stackoverflow.com/questions/69605677/typescript-adding-dynamic-fields-to-a-class-at-runtime-with-type-safety/69606143#69606143
 
-
-const fn = <T,>(t: T) => t
-
-const withString = fn<string>
