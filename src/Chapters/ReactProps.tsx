@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Var } from "../Layout";
 import { Anchor } from "../Shared/Links";
+import { Header, HeaderNav } from "../Shared/ArticleBase";
 
 const code1 = `
 enum Mode {
@@ -322,10 +323,265 @@ type ParametersUnion<PropsUnion> =
     ReturnType<FnUnion<PropsUnion>>
   : never
 `;
+
+const code16 = `
+interface ItemWithState {
+  name: string;
+  active: boolean;
+}
+
+interface ItemWithRouter {
+  name: string;
+  path: string;
+}
+
+type WithStateProps = {
+  tabs: ItemWithState[];
+};
+
+type WithRouterProps = {
+  withRouter: true;
+  baseUrl?: string;
+  tabs: ItemWithRouter[];
+};
+
+const TabsWithRouter: FC<WithRouterProps> = (props) => null
+const TabsWithState: FC<WithStateProps> = (props) => null
+`;
+
+const code17 = `
+type TabsProps = WithStateProps | WithRouterProps;
+
+const Tabs = (props: TabsProps) => {
+  if (props.withRouter) { // error
+    return <TabsWithRouter {...props} />; // error
+  }
+  return <TabsWithState {...props} />; // error
+};
+`;
+
+const code18 = `
+import React, { FC } from 'react'
+
+interface ItemWithState {
+  name: string;
+  active: boolean;
+}
+
+interface ItemWithRouter {
+  name: string;
+  path: string;
+}
+
+type WithStateProps = {
+  withRouter?: never;
+  tabs: ItemWithState[];
+};
+
+type WithRouterProps = {
+  withRouter: true;
+  baseUrl?: string;
+  tabs: ItemWithRouter[];
+};
+
+const TabsWithRouter: FC<WithRouterProps> = (props) => null
+const TabsWithState: FC<WithStateProps> = (props) => null
+
+type TabsProps = WithStateProps | WithRouterProps;
+
+const Tabs = (props: TabsProps) => {
+  if (props.withRouter) {
+    return <TabsWithRouter {...props} />;
+  }
+  return <TabsWithState {...props} />;
+};
+
+const Test = () => {
+  return (
+    <div>
+      <Tabs // With incorrect state props
+        baseUrl="something"
+        tabs={[{ name: "myname", active: true }]}
+      />
+    </div>
+  );
+};
+`;
+
+const code19 = `
+
+interface ItemWithState {
+  name: string;
+  active: boolean;
+}
+
+interface ItemWithRouter {
+  name: string;
+  path: string;
+}
+
+type WithStateProps = {
+  tabs: ItemWithState[];
+};
+
+type WithRouterProps = {
+  withRouter: true;
+  baseUrl?: string;
+  tabs: ItemWithRouter[];
+};
+
+const TabsWithRouter: FC<WithRouterProps> = (props) => null
+const TabsWithState: FC<WithStateProps> = (props) => null
+
+type TabsProps = WithStateProps | WithRouterProps;
+
+const hasProperty = <Obj, Prop extends string>(obj: Obj, prop: Prop)
+  : obj is Obj & Record<Prop, unknown> =>
+  Object.prototype.hasOwnProperty.call(obj, prop);
+
+
+const Tabs = (props: TabsProps) => {
+  if (hasProperty(props, 'withRouter')) {
+    return <TabsWithRouter {...props} />;
+  }
+  return <TabsWithState {...props} />;
+};
+
+const Test = () => {
+  return (
+    <div>  
+      <Tabs // With incorrect state props
+        baseUrl="something"
+        tabs={[{ name: "myname", active: true }]}
+      />
+    </div>
+  );
+};
+`;
+const code20 = `
+// type Overload = FC<WithStateProps> & FC<WithRouterProps>
+
+const Tabs: FC<WithStateProps> & FC<WithRouterProps> = (props: TabsProps) => {
+  if (hasProperty(props, 'withRouter')) {
+    return <TabsWithRouter {...props} />;
+  }
+  return <TabsWithState {...props} />;
+};
+
+const Test = () => {
+  return (
+    <div>
+      <Tabs // With correct state props
+        tabs={[{ name: "myname", active: true }]}
+      />
+      <Tabs // With incorrect state props
+        baseUrl="something"
+        tabs={[{ name: "myname", active: true }]}
+      />
+      <Tabs // WIth correct router props
+        withRouter
+        tabs={[{ name: "myname", path: "somepath" }]}
+      />
+      <Tabs // WIth correct router props
+        withRouter
+        baseUrl="someurl"
+        tabs={[{ name: "myname", path: "somepath" }]}
+      />
+      <Tabs // WIth incorrect router props
+        withRouter
+        tabs={[{ name: "myname", active: true }]}
+      />
+    </div>
+  );
+};
+`;
+
+const code21 = `
+import React, { FC } from 'react'
+
+interface ItemWithState {
+  name: string;
+  active: boolean;
+}
+
+interface ItemWithRouter {
+  name: string;
+  path: string;
+}
+
+type WithStateProps = {
+  tabs: ItemWithState[];
+};
+
+type WithRouterProps = {
+  withRouter: true;
+  baseUrl?: string;
+  tabs: ItemWithRouter[];
+};
+
+const TabsWithRouter: FC<WithRouterProps> = (props) => null
+const TabsWithState: FC<WithStateProps> = (props) => null
+
+type TabsProps = WithStateProps | WithRouterProps;
+
+const hasProperty = <Obj, Prop extends string>(obj: Obj, prop: Prop)
+  : obj is Obj & Record<Prop, unknown> =>
+  Object.prototype.hasOwnProperty.call(obj, prop);
+
+// credits goes to https://stackoverflow.com/a/50375286
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
+  k: infer I
+) => void
+  ? I
+  : never;
+
+type Distributive<T> = T extends any ? FC<T> : never
+
+type Overload = UnionToIntersection<Distributive<TabsProps>>
+
+const Tabs: Overload = (props: TabsProps) => {
+  if (hasProperty(props, 'withRouter')) {
+    return <TabsWithRouter {...props} />;
+  }
+  return <TabsWithState {...props} />;
+};
+
+const Test = () => {
+  return (
+    <div>
+      <Tabs // With correct state props
+        tabs={[{ name: "myname", active: true }]}
+      />
+      <Tabs // With incorrect state props
+        baseUrl="something"
+        tabs={[{ name: "myname", active: true }]}
+      />
+      <Tabs // WIth correct router props
+        withRouter
+        tabs={[{ name: "myname", path: "somepath" }]}
+      />
+      <Tabs // WIth correct router props
+        withRouter
+        baseUrl="someurl"
+        tabs={[{ name: "myname", path: "somepath" }]}
+      />
+      <Tabs // WIth incorrect router props
+        withRouter
+        tabs={[{ name: "myname", active: true }]}
+      />
+    </div>
+  );
+};
+`;
 const navigation = {
   first: {
     id: "first",
-    text: "First example",
+    text: "Handle union of functions",
+  },
+  second: {
+    id: "second",
+    text: "Use component overloading instead of unions",
+    updated: true,
   },
 };
 const links = Object.values(navigation);
@@ -336,6 +592,8 @@ const ReactProps: FC = () => (
       In this article, I will describe some issues you may encounter making
       illegal props unrepresentable in React.
     </p>
+    <HeaderNav links={links} />
+    <Header {...navigation.first} />
     <p>Let's start with simple example:</p>
     <Code code={code1} />
     <p>
@@ -435,7 +693,59 @@ const ReactProps: FC = () => (
     <Code code={code14} />
     <p>You may have noticed that the code is a bit repetitive. We can fix it</p>
     <Code code={code15} />
-    <p>That's all. I hope it helps you.</p>
+    <Header {...navigation.second} />
+    <p>
+      Let's consider another example from{" "}
+      <Anchor
+        href="https://stackoverflow.com/questions/68308390/react-props-struggling-with-discriminating-union-types"
+        text="stackoverflow"
+      />{" "}
+      We have two components with similar props,<Var> tabs</Var> property is
+      common:
+    </p>
+    <Code code={code16} />
+    <p>Also, we have higher order component:</p>
+    <Code code={code17} />
+    <p>
+      We ended up with three errors. TS will not allow you to get{" "}
+      <Var>withRouter</Var>
+      property, since it is optional. Instead, it allows you to get only common
+      property which is <Var> tabs</Var>. This is expected behavior.
+    </p>
+    <p>
+      There is one fix/workaround. We can add <Var> withRouter?:never</Var> to
+      our <Var> WithStateProps</Var> type. Now it works and infers the type of{" "}
+      <Var> {`{...props}`}</Var>. But it has one small drawback: it allows us to
+      pass to <Var>Tabs</Var> component illegal props:
+    </p>
+    <Code code={code18} />
+    <p>This approach is bad. Let's try another one with typeguard:</p>
+    <Code code={code19} />
+    <p>
+      I believe this approach is much better, because we don't need to use any
+      hacks. Our <Var>WithStateProps</Var> type should not have any extra
+      optional props. But it still has the same drawback. Illegal state is
+      allowed. Seems we forgot about function overloading. It works the same way
+      with react components since they are just simple functions. Please keep in
+      mind, that intersection of functions produces overloads:
+    </p>
+    <Code code={code20} />
+    <p>
+      What if we have 5 elements in union?We can use conditional distributive
+      types:
+    </p>
+    <Code code={code21} />
+    <p>
+      There is one thing that we should keep in mind. React components are just
+      regular javascript functions. Function overloadings and inference on
+      arguments techniques can be applied to react components. Please see{" "}
+      <Anchor href="https://catchts.com/type-negation" text="type negation" />{" "}
+      and my{" "}
+      <Anchor
+        href="https://dev.to/captainyossarian/how-to-type-react-props-as-a-pro-2df2"
+        text="article on dev.to"
+      />
+    </p>
   </>
 );
 

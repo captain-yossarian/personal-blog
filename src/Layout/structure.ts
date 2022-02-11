@@ -780,7 +780,7 @@ export const blogArticles = [
     {
         url: '/react-props',
         title: 'Handle Props in React in TypeScript',
-        description: 'Make illegal React props unrepresentable',
+        description: 'Make illegal React props unrepresentable (updated)',
         Comp: 'ReactProps',
         links: [
             {
@@ -794,11 +794,15 @@ export const blogArticles = [
             {
                 text: 'Manage weird intersection',
                 href: 'https://stackoverflow.com/questions/68966710/how-to-get-concrete-type-from-mapping-variable/68967097#68967097'
+            },
+            {
+                text: 'How to type React props as a pro in TypeScript (my article on dev.to)',
+                href: 'https://dev.to/captainyossarian/how-to-type-react-props-as-a-pro-2df2'
             }
 
         ],
         tags: ['illegal state', 'react', 'props'],
-        date: 'June 19, 2021'
+        date: 'February 11, 2022'
     },
     {
         url: '/oop-style',
@@ -1325,8 +1329,13 @@ https://stackoverflow.com/questions/57750777/generics-error-with-forwardref-prop
 
 //COnditional return statement https://github.com/microsoft/TypeScript/issues/24929
 
- // TO WRITE
+// TO WRITE
 // IS UNIQUE SYMBOL https://stackoverflow.com/questions/69244389/force-generic-type-to-be-the-type-of-a-unique-symbol-in-typescript/69244820#69244820
 // https://stackoverflow.com/questions/68700018/how-to-reuse-rest-types-in-tuples/68700643#68700643
- // mutation track
+// mutation track
 // https://stackoverflow.com/questions/69605677/typescript-adding-dynamic-fields-to-a-class-at-runtime-with-type-safety/69606143#69606143
+
+
+const fn = <T,>(t: T) => t
+
+const withString = fn<string>
