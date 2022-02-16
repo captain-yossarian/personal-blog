@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import Code from "../Shared/Code";
 import { Var } from "../Layout";
+import { Anchor } from "../Shared/Links";
 
 const code1 = `
 const handleArray=(x: number[], y: number[][]) => void
@@ -467,6 +468,16 @@ const result7 = array(arr, [[1, 1, 1]]);
 
 const CompareArguments: FC = () => (
   <>
+    <p>
+      <mark style={{ fontSize: 18 }}>This article is deprecated.</mark>
+    </p>
+    <p>
+      Please see my
+      <Anchor
+        text="last update"
+        href="https://stackoverflow.com/questions/66423396/is-there-a-way-to-enforce-an-array-size-declaration-based-on-another-array-size/66424138#66424138"
+      />
+    </p>
     <p>Let's say you want to make a function with next constraints:</p>
     <ul>
       <li>

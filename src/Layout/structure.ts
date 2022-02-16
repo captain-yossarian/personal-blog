@@ -190,7 +190,7 @@ export const blogArticles = [
         links: [
             {
                 href:
-                    "https://stackoverflow.com/questions/65307438/how-to-define-properties-in-a-typescript-interface-with-dynamic-elements-in-the",
+                    "https://stackoverflow.com/questions/69089549/typescript-template-literal-type-how-to-infer-numeric-type#answer-69090186",
                 text: "Make number range",
             },
             {

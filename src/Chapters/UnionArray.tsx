@@ -116,6 +116,13 @@ const UnionArray: FC = () => (
       />
     </p>
     <Code code={code4} />
+    <p>
+      <Anchor
+        href="https://stackoverflow.com/questions/69676439/create-constant-array-type-from-an-object-type/69676731#69676731"
+        text="Here"
+      />{" "}
+      you can find a thorough explanation of this utility type
+    </p>
   </>
 );
 
