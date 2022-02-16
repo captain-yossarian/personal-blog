@@ -1115,10 +1115,6 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/70591789/enum-typescript-return-specific-value#answer-70592714',
                 text: 'Infer enum value by key'
-            },
-            {
-                text: 'Enum manipulations',
-                href: 'https://stackoverflow.com/questions/71146605/enforce-generic-type-parameter-to-be-enum'
             }
         ],
         tags: ['enums', 'tuples'],
