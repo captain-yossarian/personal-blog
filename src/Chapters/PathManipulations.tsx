@@ -549,6 +549,14 @@ const PathManipulations: FC = () => (
       examples might be helpful. Otherwise, it might be not good idea to use
       this approach only in one component.
     </p>
+    <p>
+      I want to thank
+      <Anchor
+        text="blog.feedspot.com"
+        href="https://blog.feedspot.com/javascript_blogs/"
+      />{" "}
+      for mentioning my blog in their list.
+    </p>
   </>
 );
 
