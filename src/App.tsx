@@ -61,6 +61,7 @@ export const componentMap = {
   EmailValidation: React.lazy(() => import("./Chapters/EmailValidation")),
   GenericResolving: React.lazy(() => import("./Chapters/GenericResolving")),
   UsefulPatterns: React.lazy(() => import("./Chapters/UsefulPatterns")),
+  PathManipulations: React.lazy(() => import("./Chapters/PathManipulations")),
 };
 
 setTimeout(() => Prism.highlightAll(), 0);
@@ -91,7 +92,6 @@ const App: VFC = () => {
             {data.map((elem) => {
               const { url, Comp } = elem;
               const Component = componentMap[Comp as keyof typeof componentMap];
-              console.log({ url });
               return (
                 <Route path={url} key={url}>
                   <ArticleBase path={url} {...elem}>

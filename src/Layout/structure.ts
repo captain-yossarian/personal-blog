@@ -1231,6 +1231,22 @@ export const blogArticles = [
         tags: ['generics'],
         date: 'February 9, 2022'
     },
+    {
+        url: '/path-manipulations',
+        title: 'Key path manipulations and functional patterns',
+        description: 'You will find how to invert key path and several functional patterns in React',
+        Comp: 'PathManipulations',
+        links: [
+            {
+                text: 'Invert key path',
+                href: 'https://stackoverflow.com/questions/71200802/typescript-how-to-create-a-type-getting-all-nested-object-key#answer-71203797'
+            }
+
+
+        ],
+        tags: ['recursion', 'react', 'fp',],
+        date: 'February 21, 2022'
+    },
 
 
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))
