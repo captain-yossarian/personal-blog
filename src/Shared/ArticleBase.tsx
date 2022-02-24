@@ -105,12 +105,13 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
       document.title = prevTitle;
     };
   });
+  console.log({ id, title });
 
   return (
     <Layout title={title}>
       {children}
       <Footer>
-        {id > 0 ? (
+        {id > 0 && id !== 38 ? (
           <>
             <div>
               <p>
@@ -126,7 +127,9 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
                   src="https://storage.ko-fi.com/cdn/cup-border.png"
                   width="40"
                 />
-                or <Anchor href="https://catchts.com/subscribe" text="subscribe" />.
+                or{" "}
+                <Anchor href="https://catchts.com/subscribe" text="subscribe" />
+                .
               </p>
             </div>
           </>

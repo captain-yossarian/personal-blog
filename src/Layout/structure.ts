@@ -1247,6 +1247,15 @@ export const blogArticles = [
         tags: ['recursion', 'react', 'fp',],
         date: 'February 21, 2022'
     },
+    {
+        url: '/Ukraine',
+        title: 'Want to help Ukraine?',
+        description: 'Ukraine',
+        Comp: 'Ukraine',
+        links: [],
+        tags: [],
+        date: 'February 24, 2022'
+    },
 
 
 ].map((elem, index) => ({ ...elem, type: 'article', id: index + 1 }))

@@ -62,6 +62,7 @@ export const componentMap = {
   GenericResolving: React.lazy(() => import("./Chapters/GenericResolving")),
   UsefulPatterns: React.lazy(() => import("./Chapters/UsefulPatterns")),
   PathManipulations: React.lazy(() => import("./Chapters/PathManipulations")),
+  Ukraine: React.lazy(() => import("./Chapters/Ukraine")),
 };
 
 setTimeout(() => Prism.highlightAll(), 0);
