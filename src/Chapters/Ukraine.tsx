@@ -4,9 +4,10 @@ import { Anchor } from "../Shared/Links";
 const Ukraine: FC = () => (
   <>
     <p>
-      russia launched an all-out invasion of Ukraine by land, air and sea on
-      Thursday.
+      russia launched an all-out invasion of Ukraine by land, air and sea on 24
+      of February.
     </p>
+    <p>This is why I came back to Ukraine</p>
     <p>
       If you want to help Ukrainian army, you can make a donation here{" "}
       <Anchor
