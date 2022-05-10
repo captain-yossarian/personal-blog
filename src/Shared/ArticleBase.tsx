@@ -105,7 +105,6 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
       document.title = prevTitle;
     };
   });
-  console.log({ id, title });
 
   return (
     <Layout title={title}>

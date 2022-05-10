@@ -8,16 +8,13 @@ const Ukraine: FC = () => (
       Thursday.
     </p>
     <p>
-      If you want to help Ukraine, you can make a donation here{" "}
+      If you want to help Ukrainian army, you can make a donation here{" "}
       <Anchor
-        href="https://savelife.in.ua/en/donate/"
-        text="https://savelife.in.ua/en/donate/"
+        href="https://www.comebackalive.in.ua/uk/donate?fbclid=IwAR3lATfZiatgnRvwoEam-3aWUNoYJDroYJLAqWsIvdOQNSm-PwAwL1sGM9s"
+        text="Сome back alive"
       />
-      . If you want to help in other way please see this{" "}
-      <Anchor
-        text="https://ukraine.ua/news/stand-with-ukraine"
-        href="https://ukraine.ua/news/stand-with-ukraine/"
-      />
+      . If you want to help Territorial Defense Forces please see
+      <Anchor text="this donation" href="Territorial Defense Forces" />
     </p>
     <p>
       If you don't trust the link I have provided, it is ok. Please double check
