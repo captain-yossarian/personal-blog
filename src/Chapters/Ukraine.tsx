@@ -15,7 +15,7 @@ const Ukraine: FC = () => (
         text="Сome back alive"
       />
       . If you want to help Territorial Defense Forces please see
-      <Anchor text="this donation" href="Territorial Defense Forces" />
+      <Anchor text="this donation" href="https://zrzutka.pl/pthyet" />
     </p>
     <p>
       If you don't trust the link I have provided, it is ok. Please double check
