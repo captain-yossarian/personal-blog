@@ -82,28 +82,22 @@ enum MyEnum {
     TWO // 1
 }
 
-type Enumerate<Enum extends number | string> = keyof {
-    [Prop in \`${"${Enum}"}\`]: Prop
-}
+type Enumerate<Enum extends number | string> = \`${"${Enum}"}\`
 
-// non generic version 
-type Keys = keyof typeof MyEnum
-type Enumerate2 = keyof {
-    [Prop in Keys]: Prop
-}
+type PseudoEnum = Record<string | number, string | number>
 
 type Values<T> = T[keyof T]
 
 type IsKeyValid<
     InitialValue extends number,
-    Enum extends Record<string | number, string | number>
+    Enum extends PseudoEnum
     > =
     \`${"${InitialValue}"}\` extends Enumerate<Values<Enum>>
     ? InitialValue
     : never
 
 const handleEnum = <
-    Enum extends Record<string | number, string | number>,
+    Enum extends PseudoEnum,
     InitialValue extends number,
     >(anEnum: Enum, initialState: IsKeyValid<InitialValue, Enum>) => { }
 
