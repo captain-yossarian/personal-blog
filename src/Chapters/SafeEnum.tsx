@@ -67,7 +67,7 @@ type IsKeyValid<
     InitialValue extends number,
     Enum extends Record<string | number, string | number>
     > =
-    \`${"${InitialValue}"}\ extends Enumerate<Values<Enum>>
+    \`${"${InitialValue}"}\` extends Enumerate<Values<Enum>>
     ? InitialValue
     : never
 
@@ -98,7 +98,7 @@ type IsKeyValid<
     InitialValue extends number,
     Enum extends Record<string | number, string | number>
     > =
-    \`${"${InitialValue}"}\ extends Enumerate<Values<Enum>>
+    \`${"${InitialValue}"}\` extends Enumerate<Values<Enum>>
     ? InitialValue
     : never
 
