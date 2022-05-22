@@ -279,6 +279,7 @@ const navigation = {
   infer_argument: {
     id: "infer_argument",
     text: "Infer function parameter",
+    updated: true,
   },
   cb_structure: {
     id: "cb_structure",
@@ -295,7 +296,6 @@ const navigation = {
   callback_in_union2: {
     id: "callback_in_union 2",
     text: "Callbacks in unions 2",
-    
   },
 };
 const links = Object.values(navigation);
@@ -363,6 +363,13 @@ const Callbacks: FC = () => {
         function.
       </p>
       <Code code={code3} />
+      <p>
+        This weird behavior was fixed in TypeScript 4.7. See{" "}
+        <Anchor
+          text="blog"
+          href="https://devblogs.microsoft.com/typescript/announcing-typescript-4-7-beta/#improved-function-inference-in-objects-and-methods"
+        />
+      </p>
       <Header {...navigation.cb_structure} />
       <p>Let's go to a bit complicated example</p>
       <p>Consider next data structure:</p>
