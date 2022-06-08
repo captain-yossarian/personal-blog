@@ -1,9 +1,17 @@
 import { css } from "styled-components";
+import Prism from "prismjs";
+import "prismjs/themes/prism-tomorrow.css";
+import "prismjs/components/prism-typescript";
+
 
 export const NAV_WIDTH = "8rem";
 export const CTA_FONT_FAMILY = '"Lucida Console","Courier New",monospace';
 export const THEME_COLOR = '#fdba08';
 export const TEXT_COLOR = '#0e2924'
+
+export const highlightPrism = () => {
+    setTimeout(() => Prism.highlightAll(), 0)
+};
 
 const Sizes = {
     giant: 1170,
@@ -33,3 +41,5 @@ export const media = (Object.keys(Sizes) as (keyof typeof Sizes)[]).reduce(
     },
     {} as Initial
 );
+
+

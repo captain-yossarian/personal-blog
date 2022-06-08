@@ -1,12 +1,22 @@
 
-export const sections = [
+export interface Section {
+    url: string,
+    title: string;
+    description: string;
+    Comp: string;
+    links: Array<{ href: string, text: string }>;
+    id: number;
+    date: string;
+    type?: string;
+    tags: string[]
+}
+export const sections: Section[] = [
     {
         url: "/about",
         title: 'About',
         description: 'About section',
         Comp: 'About',
         links: [
-            ,
             {
                 href: 'https://www.typescriptlang.org/docs/handbook/intro.html',
                 text: 'TypeScript book'
@@ -101,7 +111,7 @@ export const sections = [
 
 ];
 
-export const blogArticles = [
+export const blogArticles: Section[] = [
     {
         url: "/math",
         title: "Math operations in TypeScript",
@@ -208,6 +218,10 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/70717701/how-to-use-spread-operator-in-typescript-as-argument-to-a-function#answer-70720851',
                 text: 'Safe type for RGBA'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/72327925/how-do-i-tell-typescript-that-i-expect-exactly-2-elements-from-split/72347326#72347326',
+                text: 'Convert stringified digits to array of numbers'
             }
         ],
         tags: ['number', 'range', 'template literals'],
@@ -740,6 +754,9 @@ export const blogArticles = [
             {
                 href: 'https://stackoverflow.com/questions/70489636/typescript-weird-behavior-on-implementation-of-union-of-types/70490540#70490540',
                 text: 'Validation of tuple arguments'
+            }, {
+                href: 'https://stackoverflow.com/questions/72515066/an-array-of-object-with-specific-type-using-generics-with-typescript/72517827#72517827',
+                text: 'Validation of each object in the array'
             }
 
         ],
@@ -798,6 +815,10 @@ export const blogArticles = [
             {
                 text: 'How to type React props as a pro in TypeScript (my article on dev.to)',
                 href: 'https://dev.to/captainyossarian/how-to-type-react-props-as-a-pro-2df2'
+            },
+            {
+                text: 'React props validation, make illegal props unrepresentable',
+                href: 'https://stackoverflow.com/questions/72376248/type-specificity-in-conditional-type/72377810#72377810'
             }
 
         ],
@@ -1023,6 +1044,10 @@ export const blogArticles = [
         {
             href: 'https://stackoverflow.com/questions/70680599/get-nested-type-with-generics/70680940#70680940',
             text: 'Infer method name in class constructor'
+        },
+        {
+            href: 'https://stackoverflow.com/questions/72540476/use-values-of-a-certain-key-in-an-array-of-object-as-keys/72541615#72541615',
+            text: 'Column/Row function arguments inference'
         }
 
         ],
@@ -1160,6 +1185,14 @@ export const blogArticles = [
             }, {
                 href: 'https://stackoverflow.com/questions/69781314/typescript-in-recursive-type-extra-props-allowed-to-be-assigned-in-object-decl/69808994#69808994',
                 text: 'Recursive type'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/72533295/how-can-i-define-a-type-with-a-generic-type-in-parent-child-structure/72535525#72535525',
+                text: 'Recursive DT with children'
+            },
+            {
+                href: 'https://stackoverflow.com/questions/72517907/type-vs-interface-for-a-nested-array-which-to-use/72518139#72518139',
+                text: 'Recursive array of arrays'
             }
 
         ],
@@ -1360,3 +1393,5 @@ https://stackoverflow.com/questions/57750777/generics-error-with-forwardref-prop
 // mutation track
 // https://stackoverflow.com/questions/69605677/typescript-adding-dynamic-fields-to-a-class-at-runtime-with-type-safety/69606143#69606143
 
+// June 2022
+// https://stackoverflow.com/questions/72528815/why-typescript-tuples-allow-array-push-method/72530855#72530855
