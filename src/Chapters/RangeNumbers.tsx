@@ -206,6 +206,31 @@ const rgba: RGBA<0.25> = [245, 67, 34, 0.25] // ok
 const RangeNumbers: FC = () => (
   <>
     <p>
+      Since TS 4.5,{" "}
+      <Anchor
+        href="https://github.com/microsoft/TypeScript/pull/45711"
+        text="Tail recursion PR"
+      />
+      it is possible to make a range of <Var>numbers</Var> from 0 to 999.
+    </p>
+    <Code code={code6} />
+    <p>
+      We can use above pattern to create a standalone type for RGBa color
+      format:
+    </p>
+    <Code code={code7} />
+    <p>
+      <Anchor text="Playground" href="tsplay.dev/mAvlkW" />
+    </p>
+
+    <p>
+      Since TypeScript 4.8 it is possible to infer pure number from string. See{" "}
+      <Anchor
+        text="PR"
+        href=" https://github.com/microsoft/TypeScript/pull/48094"
+      />
+    </p>
+    <p>
       Let's take a look on <Var>type Values = T[keyof T]</Var> utility.
     </p>
     <p>Maybe you wonder, what does it mean ?</p>
@@ -238,23 +263,6 @@ const RangeNumbers: FC = () => (
       you can use this code:
     </p>
     <Code code={code5} />
-    <p>
-      Since TS 4.5,{" "}
-      <Anchor
-        href="https://github.com/microsoft/TypeScript/pull/45711"
-        text="Tail recursion PR"
-      />
-      it is possible to make a range of <Var>numbers</Var> from 0 to 494.
-    </p>
-    <Code code={code6} />
-    <p>
-      We can use above pattern to create a standalone type for RGBa color
-      format:
-    </p>
-    <Code code={code7} />
-    <p>
-      <Anchor text="Playground" href="tsplay.dev/mAvlkW" />
-    </p>
   </>
 );
 
