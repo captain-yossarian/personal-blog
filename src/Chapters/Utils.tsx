@@ -157,7 +157,7 @@ const Utils: FC = () => {
       <p>
         Please try to implement it on your own, without checking the solution.
         When I started implementing this soultion, I ended up with partialy
-        working recursive ugly solution. However, there is very simple geniuos
+        working recursive ugly solution. However, there is very simple genius
         solution, which was provided by{" "}
         <Anchor
           href="https://stackoverflow.com/users/8613630/tobias-s"
