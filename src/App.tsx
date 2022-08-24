@@ -29,7 +29,7 @@ const ScrollToTop = withRouter(({ history }) => {
   return null;
 });
 
-const data = sort(blogArticles).concat(sections);
+const data = sort(blogArticles).concat(sections);//
 
 const App: VFC = () => {
   return (
