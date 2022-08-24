@@ -54,4 +54,5 @@ export const ComponentMap: Record<
   UsefulPatterns: React.lazy(() => import("../Chapters/UsefulPatterns")),
   PathManipulations: React.lazy(() => import("../Chapters/PathManipulations")),
   Ukraine: React.lazy(() => import("../Chapters/Ukraine")),
+  Utils: React.lazy(() => import("../Chapters/Utils")),
 };
