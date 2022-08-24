@@ -28,7 +28,7 @@ type SnakeToCamel<Str extends string, Acc extends string = ''> =
       // part should not be capitalized
       ? SnakeToCamel<Tail, \`${"${Acc}${Head}"}\` >
       // This is not first call, hence Head should be capitalized
-      : SnakeToCamel<Tail, \`${"${Acc}${Capitalize<Head>}"}\` >)
+      : SnakeToCamel<Tail, \`${"${Acc}${Capitalize<Head>}"}\`>)
     // This is the last call, because Str does not match the pattern
     : \`${"${Acc}${Capitalize<Str>}"}\` )
 
@@ -83,7 +83,7 @@ type CamelToSnake<
         : Acc)
 
 // type Result = "foo_bar_baz"
-type Result = CamelToSnake<'fooBarBaz'></Char>
+type Result = CamelToSnake<'fooBarBaz'>
 `;
 
 const code3 = `
