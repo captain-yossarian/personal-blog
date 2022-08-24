@@ -162,7 +162,13 @@ const Utils: FC = () => {
         <Anchor
           href="https://stackoverflow.com/users/8613630/tobias-s"
           text="Tobias S."
-        />
+        />{" "}
+        and{" "}
+        <Anchor
+          href="https://stackoverflow.com/questions/73207976/substring-of-a-string-type-typescript"
+          text="here"
+        />{" "}
+        you can find and upvote original answer.
       </p>
       {show ? null : (
         <Button onClick={() => setShow(true)}>Show solution</Button>
