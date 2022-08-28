@@ -628,9 +628,13 @@ export const blogArticles: Section[] = [
         href: "https://stackoverflow.com/questions/70531056/typescript-two-way-string-mapping/70532783#70532783",
         text: "validation of static string",
       },
+      {
+        href: "https://stackoverflow.com/questions/73512814/is-there-a-way-to-keep-the-value-an-object-refers-to-as-a-string-reference-key-a/73517095#73517095",
+        text: "HEX validation",
+      },
     ],
     tags: ["template literals", "hex", "tuples"],
-    date: "March 29, 2021",
+    date: "August 28, 2022",
   },
   {
     url: "/linked-list",
@@ -1293,9 +1297,9 @@ export const blogArticles: Section[] = [
         href: "https://stackoverflow.com/questions/73432506/how-to-dry-two-similar-typescript-interfaces-with-different-key-names#answer-73432894",
       },
       {
-        text:'Check substring',
-        href:'https://stackoverflow.com/questions/73207976/substring-of-a-string-type-typescript'
-      }
+        text: "Check substring",
+        href: "https://stackoverflow.com/questions/73207976/substring-of-a-string-type-typescript",
+      },
     ],
     tags: [],
     date: "August 24, 2022",

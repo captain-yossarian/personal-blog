@@ -1,4 +1,6 @@
 import React, { FC } from "react";
+import { Var } from "../Layout";
+import { Header, HeaderNav } from "../Shared/ArticleBase";
 import Code from "../Shared/Code";
 import { Anchor } from "../Shared/Links";
 
@@ -93,9 +95,166 @@ type ReduceToString<
     : never;
 `;
 
+const code7 = `
+type ComputeRange<
+    N extends number,
+    Result extends Array<unknown> = [],
+    > =
+    (Result['length'] extends N
+        ? Result[number]
+        : ComputeRange<N, [...Result, Result['length']]>
+    )
+
+type HexNumber =\`${"${ComputeRange<10>}"}\`
+type HexString = 
+  | 'A' 
+  | 'B' 
+  | 'C' 
+  | 'D' 
+  | 'E' 
+  | 'F' 
+  | 'a' 
+  | 'b' 
+  | 'c' 
+  | 'd' 
+  | 'e' 
+  | 'f'
+
+type Hex = \`${"${HexNumber}"}\` | HexString;
+
+type StringLength<
+    Str extends string,
+    Acc extends string[] = []
+    > =
+    (Str extends \`${"${infer S}${infer Rest}"}\`
+        ? StringLength<Rest, [...Acc, S]>
+        : Acc['length'])
+
+type ValidateLength<
+    Str extends string,
+    Length extends number
+    > =
+    (StringLength<Str> extends Length
+        ? Str
+        : never)
+
+type ValidateHex<
+    Color extends string,
+    Cache extends string = '',
+    > =
+    Color extends \`${"${infer A}${infer Rest}"}\`
+    ? (A extends ''
+        ? Cache
+        : (A extends Hex
+            ? ValidateHex<Rest, \`${"${Cache}${A}"}\`>
+            : never)
+    ) : Cache
+
+
+type ExtractHash<T extends string> = T extends \`${"#${infer Rest}"}\` ? Rest : never
+
+
+type ValidateMap<T extends Record<string, string>> = {
+  [Prop in keyof T]:
+  & T[Prop]
+  & ValidateHex<T[Prop]>
+  & ValidateLength<T[Prop], 6 | 3>
+}
+
+type AddHash<T extends Record<string, string>> = {
+  [Prop in keyof T]: \`${"#${T[Prop]}"}\`
+}
+
+const color = <
+    Key extends string,
+    Value extends string,
+    ColorMap extends Record<Key, Value>
+>(dictionary: AddHash<ValidateMap<ColorMap>>) => dictionary
+
+
+const colorTheme = color({
+  /**
+   * Ok
+   */
+  white: '#ffffff', // ok
+  gray: '#e2e2e2', // ok
+  anyColor: '#ddd', // ok
+  /**
+   * Error
+   */
+  green: '#ffx', // expected error,
+  foo:'#___', // expected error
+  bar: '#www' // expected error
+})
+
+
+colorTheme.gray // '#e2e2e2'
+`;
+const navigation = {
+  function_inference: {
+    id: "function_inference",
+    text: "Function inference validation",
+    updated: true,
+  },
+  type_validation: {
+    id: "type_validation",
+    text: "Type scope validation",
+  },
+};
+
+const links = Object.values(navigation);
+
 const HexValidation: FC = () => {
   return (
     <>
+      <HeaderNav links={links} />
+      <Header {...navigation.function_inference} />
+      <p>
+        If you need to create a color map, where each value should be a valid
+        HEX value, you can check this code:
+        <Code code={code7} />
+        <p>Explanation</p>
+        <p>
+          <ul>
+            <li>
+              <Var>type ComputeRange</Var>: is used for generating union of
+              numbers. See
+              <Anchor
+                href="https://catchts.com/range-numbers"
+                text="my article"
+              />
+              for more explanation
+            </li>
+            <li>
+              <Var>type Hex</Var>: just a union of all allowed HEX chars
+            </li>
+            <li>
+              <Var>type StringLength</Var>: recursively computes length of
+              string, is used for validation of HEX length, because it should be
+              either 3 or 6
+            </li>
+            <li>
+              <Var>type ValidateLength</Var>: If length is valid return provided
+              string, otherwise return <Var>never</Var>
+            </li>
+            <li>
+              <Var>type ValidateHex</Var>: main validation type utility;
+              iterates recursively through each char and checks whether it is
+              allowed HEX value or not
+            </li>
+            <li>
+              <Var>type ExtractHash</Var>: removes <Var>#</Var> from provided
+              HEX value, because it pollutes main hex values
+            </li>
+            <li>
+              <Var>type ValidateMap</Var>: checks whether provided string has
+              length 3 or 6 chars and if every char is allowed hex value
+            </li>
+          </ul>
+        </p>
+      </p>
+      <p><Anchor href="https://tsplay.dev/WKRPZm" text="Playground" /></p>
+      <Header {...navigation.type_validation} />
       <p>So, you want to validate HEX string?</p>
       <p>Am, I right?</p>
       <p>First of all, let's define our constraints.</p>
