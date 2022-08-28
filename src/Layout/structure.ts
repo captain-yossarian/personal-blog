@@ -616,7 +616,7 @@ export const blogArticles: Section[] = [
   },
   {
     url: "/hex-validation",
-    title: "HEX Validation in TypeScript",
+    title: "HEX Validation in TypeScript (UPDATED)",
     description: "Static type validator for HEX values",
     Comp: "HexValidation",
     links: [
