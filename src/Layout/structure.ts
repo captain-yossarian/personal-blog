@@ -1304,6 +1304,25 @@ export const blogArticles: Section[] = [
     tags: [],
     date: "August 24, 2022",
   },
+  {
+    url: "/unsafe-intersections",
+    title: "Unsafe TypeScript. Part 2",
+    description:
+      "Here you can find an information about unsafe intersections in TypeScript and why using interfaces with all optional properties should be considered as a bad practice",
+    Comp: "UnsafeIntersection",
+    links: [
+      {
+        text: "Unsafe intersection",
+        href: "https://stackoverflow.com/questions/73580368/why-doesnt-typescript-complain-about-an-incorrect-return-type",
+      },
+      {
+        text: "Github issue",
+        href: "https://github.com/microsoft/TypeScript/issues/50608",
+      },
+    ],
+    tags: [],
+    date: "September 2, 2022",
+  },
 ].map((elem, index) => ({ ...elem, type: "article", id: index + 1 }));
 
 /**
