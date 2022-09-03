@@ -66,11 +66,29 @@ type Result = AtLeastOne<Foo>
 `;
 
 const code3 = `
-declare let x: string
+declare let withString: {
+  list: string[];
+  version: number;
+}[]
+
+declare let withObject: ResultType[]
+
+withString = withObject // error
+
+/**
+ * object where list peoprty is an array of strings
+ * is assignable to object where list property is an
+ * array of possible empty objects
+ */
+withObject = withString // ok
+`;
+
+const code3_1 = `
+declare let str: string
 declare let y: {}
 
-x = y // error
-y = x // ok
+str = obj // error
+obj = str // ok
 `;
 
 const code4 = `
@@ -247,29 +265,26 @@ const UnsafeIntersection: FC = () => {
           text="Weak type detection"
         />
       </p>
+
       <p>
-        Offtopic. There is a workaround for <Var>ObjectItem</Var>. If you want
-        to have at least one property defined, you can use this utility type:
-      </p>
-      <Code code={code2} />
-      <p>
-        Ok. Let's go back to our example. Take a look on line with <Var>#2</Var>
-        . I would expect there an error because return type of{" "}
-        <Var>builder</Var> is an array of objects where property <Var>list</Var>{" "}
-        is <Var>ObjectItem</Var> which has two optional properties:{" "}
-        <Var>id</Var>
-        and <Var>name</Var>. This interface is tricky, because since everything
-        is object, literal type of empty object is <Var>{"{}"}</Var> and{" "}
-        <Var>string</Var> is assignable to <Var>{"{}"}</Var>
+        Take a look on line with <Var>#2</Var>. I would expect there an error
+        because return type of <Var>builder</Var> is <Var>ResultType[]</Var> -
+        an array of objects where property <Var>list</Var> is{" "}
+        <Var>ObjectItem</Var> which has two optional properties: <Var>id</Var>
+        and <Var>name</Var>, whereas <Var>elem.list</Var> is an array of
+        strings.
       </p>
       <Code code={code3} />
+      <p>Simplified version</p>
+      <Code code={code3_1} />
+
       <p>
         However, this is not the case. We don't have an error in our example
-        because of intersection in <Var>ResultType</Var>. I know, it and is
+        because of intersection in <Var>ResultType</Var>. I know, it is
         weird, this is why I have wrote this article.
       </p>
       <p>
-        Let's try to rewrite <Var>ReturnType</Var>.
+        Let's try to rewrite <Var>ReturnType</Var>, without <Var>Omit</Var> and intersection.
       </p>
       <Code code={code4} />
       <p>
@@ -308,6 +323,11 @@ const UnsafeIntersection: FC = () => {
         />{" "}
         my question on stackoverflow
       </p>
+      <p>
+        Offtopic. There is a workaround for <Var>ObjectItem</Var>. If you want
+        to have at least one property defined, you can use this utility type:
+      </p>
+      <Code code={code2} />
       <Header {...navigation.unsafe_optional_properties} />
       <p>
         Let's consider another example, where object has all optional proeprties
@@ -337,7 +357,13 @@ const UnsafeIntersection: FC = () => {
         <Var>NewRequest</Var> has also all properties from <Var>OldRequest</Var>{" "}
         however they are optional and type of the value is <Var>never</Var>
       </p>
-      <p>If you are interested in safe typescript, you can check <Anchor href="https://catchts.com/safer-types" text="my previous article" /></p>
+      <p>
+        If you are interested in safe typescript, you can check{" "}
+        <Anchor
+          href="https://catchts.com/safer-types"
+          text="my previous article"
+        />
+      </p>
     </>
   );
 };
