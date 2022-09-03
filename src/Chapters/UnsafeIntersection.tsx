@@ -328,6 +328,7 @@ const UnsafeIntersection: FC = () => {
         to have at least one property defined, you can use this utility type:
       </p>
       <Code code={code2} />
+      <p><Anchor href="https://stackoverflow.com/questions/72515807/create-an-union-type-from-interface-properties/72516344#72516344" text="Here" /> you can find related question</p>
       <Header {...navigation.unsafe_optional_properties} />
       <p>
         Let's consider another example, where object has all optional proeprties
