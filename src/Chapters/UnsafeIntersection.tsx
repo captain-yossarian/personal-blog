@@ -85,7 +85,7 @@ withObject = withString // ok
 
 const code3_1 = `
 declare let str: string
-declare let y: {}
+declare let obj: {}
 
 str = obj // error
 obj = str // ok
