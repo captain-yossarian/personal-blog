@@ -132,8 +132,7 @@ const StringCombinations: FC = () => {
     <>
       <HeaderNav links={links} />
       <Header {...navigation.string_combinations} />
-      <p>
-        THis code is take from{" "}
+      <p>This code is taken from{" "}
         <Anchor
           href="https://stackoverflow.com/questions/73630242/unable-to-define-type-for-tuple-target-requires-2-elements-but-source-may-hav#answer-73631072"
           text="this"
