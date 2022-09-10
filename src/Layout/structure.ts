@@ -1323,6 +1323,25 @@ export const blogArticles: Section[] = [
     tags: [],
     date: "September 2, 2022",
   },
+  {
+    url: "/string-combinations",
+    title: "String combinations",
+    description:
+      "Imagine you have two arrays of strings and you need to create a new array where each elements will be a concatenation of elements from both arrays",
+    Comp: "StringCombinations",
+    links: [
+      {
+        text: "Platform combinations",
+        href: "https://stackoverflow.com/questions/73630242/unable-to-define-type-for-tuple-target-requires-2-elements-but-source-may-hav#answer-73631072",
+      },
+      {
+        text: "Cards combinations",
+        href: "https://stackoverflow.com/questions/69265186/how-to-generate-array-with-template-literal-types-items/69265799#69265799",
+      },
+    ],
+    tags: [],
+    date: "September 10, 2022",
+  },
 ].map((elem, index) => ({ ...elem, type: "article", id: index + 1 }));
 
 /**

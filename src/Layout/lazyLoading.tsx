@@ -55,5 +55,10 @@ export const ComponentMap: Record<
   PathManipulations: React.lazy(() => import("../Chapters/PathManipulations")),
   Ukraine: React.lazy(() => import("../Chapters/Ukraine")),
   Utils: React.lazy(() => import("../Chapters/Utils")),
-  UnsafeIntersection:React.lazy(() => import("../Chapters/UnsafeIntersection")),
+  UnsafeIntersection: React.lazy(
+    () => import("../Chapters/UnsafeIntersection")
+  ),
+  StringCombinations: React.lazy(
+    () => import("../Chapters/StringCombinations")
+  ),
 };
