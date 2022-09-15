@@ -1342,6 +1342,21 @@ export const blogArticles: Section[] = [
     tags: [],
     date: "September 10, 2022",
   },
+  {
+    url: "/undocumented-features",
+    title: "Undocumented features",
+    description:
+      "Here you can find some undocumented features of TypeScript",
+    Comp: "UndocumentedFeatures",
+    links: [
+      {
+        text: "Undocumented feature of TypeScript 4.8",
+        href: "https://stackoverflow.com/questions/68963491/define-a-typescript-type-that-takes-a-lowercase-word#answer-73732194",
+      },
+    ],
+    tags: [],
+    date: "September 15, 2022",
+  },
 ].map((elem, index) => ({ ...elem, type: "article", id: index + 1 }));
 
 /**

@@ -61,4 +61,5 @@ export const ComponentMap: Record<
   StringCombinations: React.lazy(
     () => import("../Chapters/StringCombinations")
   ),
+  UndocumentedFeatures: React.lazy(()=>import('../Chapters/UndocumentedFeatures'))
 };
