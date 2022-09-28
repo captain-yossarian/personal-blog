@@ -293,6 +293,69 @@ const fail = [
   ),
 ]
 `;
+
+const code11 = `
+const obj = {
+  a: 'a',
+  b: 42
+}
+
+stringProperty(obj, 'a') // ok
+stringProperty(obj, 'b') // expected error
+`;
+
+const code12 = `
+/**
+ * Obtain a union of all values of record
+ */
+type Values<T> = T[keyof T]
+
+/**
+ * Obtain a union of all object keys which coresponds to strings
+ */
+type StringProperty<T> = Values<{
+  [Prop in keyof T]: T[Prop] extends string ? Prop : never
+}>
+
+// "a" | "c"
+type Test1 = StringProperty<{
+  a: 'a',
+  b: 2,
+  c: string
+}>
+`;
+const code13 = `
+type Values<T> = T[keyof T]
+
+type StringProperty<T> = Values<{
+  [Prop in keyof T]: T[Prop] extends string ? Prop : never
+}>
+
+const setAndGetString = <
+  Obj extends Record<PropertyKey, unknown>,
+  Key extends StringProperty<Obj>
+>(obj: Obj, key: Key) => {
+  // error, but should be ok, since we know that result have to be a string
+  const result = obj[key].charAt
+}
+
+const obj = {
+  a: 'a',
+  b: 42
+}
+
+setAndGetString(obj, 'a') // ok
+setAndGetString(obj, 'b') // expected error
+`;
+
+const code14 = `
+const setAndGetString = <
+  Obj extends Record<PropertyKey, unknown>,
+  Key extends StringProperty<Obj>
+>(obj: Obj & Record<Key,string>, key: Key) => {
+  const result = obj[key].charAt // ok
+}
+`;
 const navigation = {
   includes: {
     id: "includes",
@@ -309,6 +372,11 @@ const navigation = {
   insights: {
     id: "insights",
     text: "TypeScript insights",
+  },
+  dependent_arguments: {
+    id: "dependent_arguments",
+    text: "Dependent arguments",
+    updated: true,
   },
 } as const;
 const links = Object.values(navigation);
@@ -416,6 +484,43 @@ const UsefulPatterns: FC = () => (
       />
       .
     </p>
+    <Header {...navigation.dependent_arguments} />
+    <p>
+      Imagine you have a function which expects two arguments. First one is an
+      object, second one is a key of this object. But not any key which exists
+      in this object, only key which coresponds to some particular type. For
+      instance, consider this example:
+    </p>
+    <Code code={code11} />
+    <p>
+      Function <Var>stringProperty</Var> expects as a second argument only{" "}
+      <Var>a</Var> key, because this key coresponds to <Var>string</Var>
+    </p>
+    <p>
+      First of all, we need to create utility type which will return a union of
+      all allowed keys
+    </p>
+    <Code code={code12} />
+    <p>Now we need to use this utility type in our function</p>
+    <Code code={code13} />
+    <p>
+      It almost works. As you might have noticed, when we call our function,
+      second argument is validated, however, TS is unsure about inner
+      implementation. TypeScript does not allow you to use{" "}
+      <Var>obj[key].charAt</Var> because compiler don't believes that{" "}
+      <Var>obj[key]</Var> is a string. We need to help him :D
+    </p>
+    <Code code={code14} />
+    <p>
+      In order to make it work, I just added{" "}
+      <Var>,{"Obj & Record<Key,string>"}</Var> instead of just <Var>Obj</Var>.
+      <Anchor
+        href="https://stackoverflow.com/questions/73885923/why-wont-typescript-let-me-set-a-value-of-an-object-to-a-string-when-it-recogni"
+        text="Here"
+      />{" "}
+      you can find a question and my answer
+    </p>
+    <p>That's it. Thank you for reading</p>
   </>
 );
 export default UsefulPatterns;

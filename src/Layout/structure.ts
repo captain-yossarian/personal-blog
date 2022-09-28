@@ -1245,7 +1245,7 @@ export const blogArticles: Section[] = [
   },
   {
     url: "/useful-patterns",
-    title: "Useful TypeScript patterns",
+    title: "(updated) Useful TypeScript patterns",
     description:
       "Here you can find some useful patterns in TS which will save your time",
     Comp: "UsefulPatterns",
@@ -1258,9 +1258,13 @@ export const blogArticles: Section[] = [
         href: "https://github.com/microsoft/TypeScript/pull/47607",
         text: "Instantiation expressions PR",
       },
+      {
+        href: "https://stackoverflow.com/questions/73885923/why-wont-typescript-let-me-set-a-value-of-an-object-to-a-string-when-it-recogni",
+        text: "Dependent arguments",
+      },
     ],
     tags: ["generics"],
-    date: "February 9, 2022",
+    date: "September 28, 2022",
   },
   {
     url: "/path-manipulations",
@@ -1345,8 +1349,7 @@ export const blogArticles: Section[] = [
   {
     url: "/undocumented-features",
     title: "Undocumented features",
-    description:
-      "Here you can find some undocumented features of TypeScript",
+    description: "Here you can find some undocumented features of TypeScript",
     Comp: "UndocumentedFeatures",
     links: [
       {
