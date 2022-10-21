@@ -280,11 +280,12 @@ const UnsafeIntersection: FC = () => {
 
       <p>
         However, this is not the case. We don't have an error in our example
-        because of intersection in <Var>ResultType</Var>. I know, it is
-        weird, this is why I have wrote this article.
+        because of intersection in <Var>ResultType</Var>. I know, it is weird,
+        this is why I have wrote this article.
       </p>
       <p>
-        Let's try to rewrite <Var>ReturnType</Var>, without <Var>Omit</Var> and intersection.
+        Let's try to rewrite <Var>ReturnType</Var>, without <Var>Omit</Var> and
+        intersection.
       </p>
       <Code code={code4} />
       <p>
@@ -328,7 +329,13 @@ const UnsafeIntersection: FC = () => {
         to have at least one property defined, you can use this utility type:
       </p>
       <Code code={code2} />
-      <p><Anchor href="https://stackoverflow.com/questions/72515807/create-an-union-type-from-interface-properties/72516344#72516344" text="Here" /> you can find related question</p>
+      <p>
+        <Anchor
+          href="https://stackoverflow.com/questions/72515807/create-an-union-type-from-interface-properties/72516344#72516344"
+          text="Here"
+        />{" "}
+        you can find related question
+      </p>
       <Header {...navigation.unsafe_optional_properties} />
       <p>
         Let's consider another example, where object has all optional proeprties
@@ -357,6 +364,18 @@ const UnsafeIntersection: FC = () => {
       <p>
         <Var>NewRequest</Var> has also all properties from <Var>OldRequest</Var>{" "}
         however they are optional and type of the value is <Var>never</Var>
+      </p>
+      <p>
+        <Anchor
+          text="Here"
+          href="https://stackoverflow.com/questions/74127866/understanding-ts-type-inferring-narrowing-with-combination-of-extends-impleme/74132728#74132728"
+        />{" "}
+        you can find another one good answer of{" "}
+        <Anchor
+          href="https://stackoverflow.com/users/2887218/jcalz"
+          text="@jcalz"
+        />{" "}
+        avout using partial props and unsafe behavior it might cause
       </p>
       <p>
         If you are interested in safe typescript, you can check{" "}

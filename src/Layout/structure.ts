@@ -1327,6 +1327,10 @@ export const blogArticles: Section[] = [
         text: "Github issue",
         href: "https://github.com/microsoft/TypeScript/issues/50608",
       },
+      {
+        text: "Unsafe partial props assignability",
+        href: "https://stackoverflow.com/questions/74127866/understanding-ts-type-inferring-narrowing-with-combination-of-extends-impleme/74132728#74132728",
+      },
     ],
     tags: [],
     date: "September 2, 2022",
@@ -1360,9 +1364,21 @@ export const blogArticles: Section[] = [
         text: "Undocumented feature of TypeScript 4.8",
         href: "https://stackoverflow.com/questions/68963491/define-a-typescript-type-that-takes-a-lowercase-word#answer-73732194",
       },
+      {
+        text: "Inference prioritizing",
+        href: "https://stackoverflow.com/questions/74093078/how-do-i-create-a-literal-type-for-react-component-parameters#74093982",
+      },
+      {
+        text: "Github comment about inference",
+        href: "https://github.com/microsoft/TypeScript/issues/14829#issuecomment-320754731",
+      },
+      {
+        text: "Answer with explanation about prioritizing inference",
+        href: "https://stackoverflow.com/questions/73732549/narrow-number-argument-of-function-to-be-literal-type/73733110#73733110",
+      },
     ],
     tags: [],
-    date: "September 15, 2022",
+    date: "October 21, 2022",
   },
 ].map((elem, index) => ({ ...elem, type: "article", id: index + 1 }));
 

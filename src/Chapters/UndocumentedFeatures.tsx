@@ -33,10 +33,40 @@ str = "abc"; // okay
 str = "DEF"; // error in TS4.8+
 
 `;
+
+const code3 = `
+<Select
+  value="red" // error expected,should be either "dark" or "white"
+  options={['dark', 'white']}
+/>
+`;
+
+const code4 = `
+export interface SelectProps<Options extends string[]> {
+  options: [...Options],
+  value: Options[number]
+}
+
+const Select = <Options extends string[]>(props: SelectProps<Options>) => <div></div>
+`;
+
+const code5 = `
+export interface SelectProps<Value extends string> {
+  value: Value & {} // <----- TRICK !
+  options: Value[]
+}
+
+const Select = <Value extends string>(props: SelectProps<Value>) => <div></div>
+`;
 const navigation = {
   string_features: {
     id: "string_features",
     text: "String features",
+  },
+  inference: {
+    id: "inference",
+    text: "Inference prioritization",
+    updated: true,
   },
 } as const;
 const links = Object.values(navigation);
@@ -86,6 +116,40 @@ const UndocumentedFeatures: FC = () => {
           href="https://catchts.com/safer-types"
           text="my another article"
         />{" "}
+      </p>
+      <Header {...navigation.inference} />
+      <p>
+        This very interesting trick I have found in
+        <Anchor
+          text="this"
+          href="https://stackoverflow.com/questions/74093078/how-do-i-create-a-literal-type-for-react-component-parameters#74093982"
+        />{" "}
+        answer which was provided by
+        <Anchor
+          href="https://stackoverflow.com/users/8613630/tobias-s"
+          text="Tobias S."
+        />
+        . By the way, you should defenitely check his answers, I'd willing to
+        bet that you will find very interesting solutions.
+      </p>
+      <p>Imagine this super simple React component</p>
+      <Code code={code3} />
+      <p>
+        Property <Var>value</Var> should be one of <Var>options</Var>, either{" "}
+        <Var>dark</Var> or <Var>white</Var>
+      </p>
+      <p>
+        This task is relativily easy, we need to infer <Var>options</Var> and
+        then make a validation. This is how I would to this:
+      </p>
+      <Code code={code4} />
+      <p>
+        However, there is an easier way. You can use <Var>Value & {}</Var> trick
+      </p>
+      <Code code={code5} />
+      <p>
+        Using <Var>Value & {}</Var> - means "lower priority inference". You can
+        check links under the article to find official explanation
       </p>
     </>
   );
