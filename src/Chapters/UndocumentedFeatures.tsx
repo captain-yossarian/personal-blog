@@ -149,7 +149,12 @@ const UndocumentedFeatures: FC = () => {
       <Code code={code5} />
       <p>
         Using <Var>Value & {}</Var> - means "lower priority inference". You can
-        check links under the article to find official explanation
+        check links under the article to find official explanation. Apart from
+        that, <Var>Value & {}</Var> also means <Var>NonNullable</Var>, see{" "}
+        <Anchor
+          text="TypeScript 4.8"
+          href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-8.html#improved-intersection-reduction-union-compatibility-and-narrowing"
+        />
       </p>
     </>
   );
