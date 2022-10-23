@@ -404,6 +404,11 @@ export const blogArticles: Section[] = [
         href: "https://stackoverflow.com/questions/70137328/mapping-a-variable-number-of-generics-while-retaining-link-between-type-values#answer-70138046",
         text: "Event mapping 2",
       },
+      {
+        href:'https://stackoverflow.com/questions/74168548/how-to-define-a-custom-event-callback-function-argument-shape-in-a-class-with-ty/74169411#74169411',
+        text: 'Typing NodeJS event emitter'
+      }
+      
     ],
     tags: ["pattern"],
     date: "January 25, 2021",

@@ -3,6 +3,7 @@ import Code from "../Shared/Code";
 import { Header, HeaderNav } from "../Shared/ArticleBase";
 import { Anchor } from "../Shared/Links";
 import { Var } from "../Layout";
+import { z } from "zod";
 
 const code1 = `
 type UpLetters = 'A' | 'B' | 'C' // provide all allowed letters
@@ -159,4 +160,15 @@ const UndocumentedFeatures: FC = () => {
     </>
   );
 };
+
+const type = z.intersection(
+  z.object({ a: z.null() }),
+  z.record(
+    z.string().refine((s): s is "b" => s === "b"),
+    z.undefined()
+  )
+);
+const input: z.infer<typeof type> = { a: null, b: undefined };
+type.parse(input);
+
 export default UndocumentedFeatures;
