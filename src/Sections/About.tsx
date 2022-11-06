@@ -20,6 +20,17 @@ const About: FC = () => (
         />
         you can find github repo of my blog.
       </p>
+      <p>
+        Special thanks to my colleagues from
+        <Anchor
+          href="https://polarbearcommerce.com/"
+          text="Polar Bear commerce"
+        />
+        fot their continious support of my blog
+      </p>
+      <a href="https://polarbearcommerce.com/" target="_blank" rel="noopener noreferrer">
+        <img alt="Polar Bear commerce" width="100px" src="/LOGO_PB_WHITE.png" />
+      </a>
     </div>
   </>
 );

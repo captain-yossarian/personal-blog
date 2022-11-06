@@ -161,14 +161,5 @@ const UndocumentedFeatures: FC = () => {
   );
 };
 
-const type = z.intersection(
-  z.object({ a: z.null() }),
-  z.record(
-    z.string().refine((s): s is "b" => s === "b"),
-    z.undefined()
-  )
-);
-const input: z.infer<typeof type> = { a: null, b: undefined };
-type.parse(input);
 
 export default UndocumentedFeatures;
