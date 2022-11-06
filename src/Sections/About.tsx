@@ -26,7 +26,7 @@ const About: FC = () => (
           href="https://polarbearcommerce.com/"
           text="Polar Bear commerce"
         />
-        for their continious support of my blog
+        for their continuous support of my blog
       </p>
       <a
         href="https://polarbearcommerce.com/"
