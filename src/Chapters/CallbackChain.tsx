@@ -210,7 +210,7 @@ const CallbackChain: FC = () => {
     <>
       <HeaderNav links={links} />
       <p>
-        Let's say you have a function which accepts function chain where each
+        Let's say you have a function that accepts function chain where each
         function transforms results from the previous one
       </p>
       <Code code={code1} />
@@ -229,7 +229,7 @@ const CallbackChain: FC = () => {
       </p>
       <Code code={code2} />
       <Header {...navigation.short_way} />
-      <p>What if I say you that there is a much simplier solution ?</p>
+      <p>What if I say you that there is a much simpler solution ?</p>
       <Code code={code3} />
       <Header {...navigation.cb_in_tuple} />
       <p>
@@ -237,7 +237,7 @@ const CallbackChain: FC = () => {
           href="https://stackoverflow.com/questions/66075326/define-an-array-with-infered-types-related-to-first-prop-in-the-array"
           text="This"
         />
-        question might be interesting for you if you have a callback in tuples.
+        the question might be interesting for you if you have a callback in tuples.
       </p>
       <Code code={code4} />
     </>

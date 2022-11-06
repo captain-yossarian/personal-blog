@@ -337,7 +337,7 @@ const Callbacks: FC = () => {
     <>
       <HeaderNav links={links} />
       <Header {...navigation.infer_argument} />
-      <p>Let's say you have next function</p>
+      <p>Let's say you have this function</p>
       <Code code={code1} />
       <p>
         It is simple. The argument of <Var>b</Var> function should be return
@@ -346,8 +346,8 @@ const Callbacks: FC = () => {
       </p>
       <Code code={code2} />
       <p>
-        But why we have an error here? Honestly - I don't understand it so good
-        to be able explain it.
+        But why do we have an error here? Honestly - I don't understand it so good
+        to be able to explain it.
       </p>
       <p>
         <Anchor
@@ -356,7 +356,7 @@ const Callbacks: FC = () => {
           }
           text={"Here"}
         />
-        you can find why the error occurs
+        you can find out why the error occurs
       </p>
       <p>
         To make it work, You should add an extra generic for <Var>b</Var>

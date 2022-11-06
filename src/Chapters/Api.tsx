@@ -80,17 +80,17 @@ const request = {
 const Api: FC = () => (
   <>
     <p>
-      If you ever thought how to make type safe API requests, this article might
+      If you ever thought about making type safe API requests, this article might
       help you.
     </p>
-    <p>Let's assume that we have next allowed endpoints:</p>
+    <p>Let's assume that we have these allowed endpoints:</p>
     <Code code={code1} />
     <p>
       You might have noticed, that I used <Var>const enum</Var> instead of
       <Var>enum</Var>.
     </p>
     <p>
-      This technique will reduce you code output. Please, keep in mind, it does
+      This technique will reduce your code output. Please, keep in mind, it does
       not works with babel compiler.
     </p>
     <p>You allowed to make:</p>
@@ -120,7 +120,7 @@ const Api: FC = () => (
       As You see, <Var>HandleHttp</Var> is just overloading for function.
       Nothing special except the first line. I will come back to it later. We
       have class <Var>Api</Var> and overloadings for function. How we can
-      combine them? Very simple - we will just create a function which returns
+      combine them? Very simple - we will just create a function that returns
       instance of <Var>Api</Var> class.
     </p>
     <Code code={code5} />
