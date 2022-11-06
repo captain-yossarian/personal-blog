@@ -26,9 +26,13 @@ const About: FC = () => (
           href="https://polarbearcommerce.com/"
           text="Polar Bear commerce"
         />
-        fot their continious support of my blog
+        for their continious support of my blog
       </p>
-      <a href="https://polarbearcommerce.com/" target="_blank" rel="noopener noreferrer">
+      <a
+        href="https://polarbearcommerce.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img alt="Polar Bear commerce" width="100px" src="/LOGO_PB_WHITE.png" />
       </a>
     </div>
