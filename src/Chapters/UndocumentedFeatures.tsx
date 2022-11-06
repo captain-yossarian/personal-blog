@@ -3,7 +3,6 @@ import Code from "../Shared/Code";
 import { Header, HeaderNav } from "../Shared/ArticleBase";
 import { Anchor } from "../Shared/Links";
 import { Var } from "../Layout";
-import { z } from "zod";
 
 const code1 = `
 type UpLetters = 'A' | 'B' | 'C' // provide all allowed letters
