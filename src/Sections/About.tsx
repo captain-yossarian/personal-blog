@@ -5,10 +5,13 @@ const About: FC = () => (
   <>
     <div>
       <p>Hi, my name is Serhii. I'm from Ukraine.</p>
-      <p> I work as a software engineer at Intive.</p>
       <p>
-        If I used someone's code and did not provide link to original
-        post/article/answer, please let me know, I will add it.
+        I am a senior front end developer. Apart from that, I enjoy Rust
+        and functional programming.
+      </p>
+      <p>
+        If I used someone's code and did not provide link to the original
+        post/article/answer, please let me know, and I will add it.
       </p>
       <p>
         If you noticed a mistake\typo, I kindly ask You to let me know. Thanks.
