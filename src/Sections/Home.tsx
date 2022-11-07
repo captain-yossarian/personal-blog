@@ -9,7 +9,7 @@ const toUnix = (date: string) => new Date(date).getTime();
 export const sort = (data: typeof blogArticles) =>
   data.sort((prev, next) => toUnix(prev.date) - toUnix(next.date)).reverse();
 
-const Aside = styled.aside`
+const Aside = styled.h3`
   margin-left: 30px;
   font-size: 18px;
   line-height: 1.5;
@@ -69,7 +69,7 @@ const ArticleHeader: FC<{
   </Li>
 );
 
-export const Title = styled.h1`
+export const Title = styled.p`
   line-height: 1.5;
   font-size: 20px;
   display: inline-block;
