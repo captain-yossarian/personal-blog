@@ -405,10 +405,10 @@ export const blogArticles: Section[] = [
         text: "Event mapping 2",
       },
       {
-        href:'https://stackoverflow.com/questions/74168548/how-to-define-a-custom-event-callback-function-argument-shape-in-a-class-with-ty/74169411#74169411',
+        href: 'https://stackoverflow.com/questions/74168548/how-to-define-a-custom-event-callback-function-argument-shape-in-a-class-with-ty/74169411#74169411',
         text: 'Typing NodeJS event emitter'
       }
-      
+
     ],
     tags: ["pattern"],
     date: "January 25, 2021",
@@ -1384,6 +1384,21 @@ export const blogArticles: Section[] = [
     ],
     tags: [],
     date: "October 21, 2022",
+  },
+  {
+    url: "/find-duplicates",
+    title: "Find key duplicates in dictionary data structure",
+    description: "How to create dictionary data structure with unique keys inside nested leafs",
+    Comp: "Duplicates",
+    links: [
+      {
+        text: "Duplicates",
+        href: "https://stackoverflow.com/questions/74489137/typescript-how-to-enforce-unique-keys-across-nested-objects#answer-74492547",
+      },
+
+    ],
+    tags: [],
+    date: "November 20, 2022",
   },
 ].map((elem, index) => ({ ...elem, type: "article", id: index + 1 }));
 
