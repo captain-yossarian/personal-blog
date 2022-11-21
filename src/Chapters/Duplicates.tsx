@@ -89,7 +89,7 @@ type Validate<
          * Son if Cache contains a union it means that we have more than one match of a key
          */
         Prop extends Key
-        ? Validate<Obj[Prop], Key, Record<Key, \`${"${Root}-${Prop & string}-${Index['length']}`"}\`>, [...Index, Index['length']], Root extends '' ? Prop : Root>
+        ? Validate<Obj[Prop], Key, Record<Key, \`${"${Root}-${Prop & string}-${Index['length']}"}\`>, [...Index, Index['length']], Root extends '' ? Prop : Root>
         : Validate<Obj[Prop], Key, Cache, [...Index, Index['length']], Root extends '' ? Prop : Root>
     }[keyof Obj]
 
