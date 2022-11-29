@@ -1,6 +1,8 @@
 import { VercelResponse, VercelRequest } from "@vercel/node";
 
-export const handler = (request: VercelRequest, response: VercelResponse) => {
+const handler = (request: VercelRequest, response: VercelResponse) => {
   console.log({ request });
 
 };
+
+export default handler
