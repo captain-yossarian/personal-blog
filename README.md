@@ -9,3 +9,6 @@ https://stackoverflow.com/questions/73733474/generic-type-params-not-inferred-wh
 Link for me https://stackoverflow.com/questions/53807517/how-to-test-if-two-types-are-exactly-the-same/53808212?noredirect=1#comment130290231_53808212
 
 https://stackoverflow.com/questions/70874941/return-a-different-type-if-array-is-empty-in-typescript/70875301#70875301
+
+
+https://stackoverflow.com/questions/74545720/how-do-i-create-type-for-array-of-enum-values-with-mandatory-members-in-typescri?noredirect=1#comment131589876_74545720
