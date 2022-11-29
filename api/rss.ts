@@ -1,7 +1,8 @@
-import { VercelResponse } from "@vercel/node";
+import { VercelResponse, VercelRequest } from "@vercel/node";
 import { rss } from "./feed";
 
-export default (_, response: VercelResponse) => {
+export default (request: VercelRequest, response: VercelResponse) => {
+  console.log({ request });
   response.status(200).setHeader("Content-Type", "text/xml");
   response.send(rss);
 };
