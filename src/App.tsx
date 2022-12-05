@@ -43,14 +43,12 @@ const App: VFC = () => {
       (data) => data.json()
     );
 
-    if (
-      response.status === "success" &&
-      /**
-       * This shit hole country should be banned
-       */
-      response.country.toLowerCase() !== "russia"
-    ) {
+    if (response.status !== "success") {
       setVisibility(true);
+    }
+
+    if (response.country.toLowerCase() === "russia") {
+      setVisibility(false);
     }
   };
 
@@ -78,7 +76,9 @@ const App: VFC = () => {
             </Switch>
           </Main>
         </Router>
-      ) : <p>russia is banned</p>}
+      ) : (
+        <p>russia is banned</p>
+      )}
     </React.Suspense>
   );
 };
