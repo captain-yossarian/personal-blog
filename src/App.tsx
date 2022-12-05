@@ -36,16 +36,12 @@ interface IPResponse {
   country: string;
 }
 const App: VFC = () => {
-  const [visible, setVisibility] = useState(false);
+  const [visible, setVisibility] = useState(true);
 
   const fetchCountry = async () => {
     const response: IPResponse = await fetch("http://ip-api.com/json").then(
       (data) => data.json()
     );
-
-    if (response.status !== "success") {
-      setVisibility(true);
-    }
 
     if (response.country.toLowerCase() === "russia") {
       setVisibility(false);
