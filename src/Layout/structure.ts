@@ -97,6 +97,17 @@ export const sections: Section[] = [
     tags: [],
   },
   {
+    url: "/hire",
+    title: "Hire",
+    description: "Hire me section",
+    Comp: "Hire",
+    links: [],
+    id: -5,
+    date: "",
+    type: "section",
+    tags: [],
+  },
+  {
     url: "/",
     title: "Home",
     description: "Home section",
@@ -107,6 +118,7 @@ export const sections: Section[] = [
     type: "section",
     tags: [],
   },
+
 ];
 
 export const blogArticles: Section[] = [

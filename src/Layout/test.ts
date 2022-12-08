@@ -62,4 +62,3 @@ const eqUser = contramap((user: User) => user.userId)(eqNumber)
 eqUser.equals({ userId: 1, name: 'Giulio' }, { userId: 1, name: 'Giulio Canti2' }) // true
 eqUser.equals({ userId: 1, name: 'Giulio' }, { userId: 2, name: 'Giulio' }) // false
 
-export const log = () => console.log(1)

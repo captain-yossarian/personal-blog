@@ -11,9 +11,7 @@ import ArticleBase from "./Shared/ArticleBase";
 import { sort } from "./Sections/Home";
 import { ComponentMap } from "./Layout/lazyLoading";
 import { highlightPrism } from "./Layout/utils";
-import { log } from "./Layout/test";
 
-log();
 highlightPrism();
 
 const ScrollToTop = withRouter(({ history }) => {
@@ -30,7 +28,7 @@ const ScrollToTop = withRouter(({ history }) => {
 });
 
 const data = sort(blogArticles).concat(sections); //
-
+console.log({data})
 interface IPResponse {
   status: string;
   country: string;
@@ -51,6 +49,7 @@ const App: VFC = () => {
   useEffect(() => {
     fetchCountry();
   });
+
   return (
     <React.Suspense fallback={<div>loading</div>}>
       {visible ? (
