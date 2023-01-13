@@ -28,7 +28,7 @@ const ScrollToTop = withRouter(({ history }) => {
 });
 
 const data = sort(blogArticles).concat(sections); //
-console.log({data})
+
 interface IPResponse {
   status: string;
   country: string;

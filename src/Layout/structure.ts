@@ -118,7 +118,6 @@ export const sections: Section[] = [
     type: "section",
     tags: [],
   },
-
 ];
 
 export const blogArticles: Section[] = [
@@ -200,40 +199,6 @@ export const blogArticles: Section[] = [
     date: "December 18, 2020",
   },
 
-  {
-    url: "/range-numbers",
-    title: "Generate literal type for numbers range in TypeScript",
-    description: "How to generate numbers range as a literal type",
-    Comp: "RangeNumbers",
-    links: [
-      {
-        href: "https://stackoverflow.com/questions/69089549/typescript-template-literal-type-how-to-infer-numeric-type#answer-69090186",
-        text: "Make number range",
-      },
-      {
-        href: "https://stackoverflow.com/questions/68724603/how-to-create-a-uuid-template-literal-type-in-typescript/68724963#68724963",
-        text: "UUID string",
-      },
-      {
-        href: "https://stackoverflow.com/questions/69089549/typescript-template-literal-type-how-to-infer-numeric-type",
-        text: "TS 4.5 Tail recursion update",
-      },
-      {
-        href: "https://stackoverflow.com/questions/69766516/infer-generic-from-properties/69766606#69766606",
-        text: "Typing upper bounds",
-      },
-      {
-        href: "https://stackoverflow.com/questions/70717701/how-to-use-spread-operator-in-typescript-as-argument-to-a-function#answer-70720851",
-        text: "Safe type for RGBA",
-      },
-      {
-        href: "https://stackoverflow.com/questions/72327925/how-do-i-tell-typescript-that-i-expect-exactly-2-elements-from-split/72347326#72347326",
-        text: "Convert stringified digits to array of numbers",
-      },
-    ],
-    tags: ["number", "range", "template literals"],
-    date: "December 15, 2020",
-  },
   {
     url: "/tuples",
     title: "Handle literal arrays/tuples types in TypeScript",
@@ -417,10 +382,9 @@ export const blogArticles: Section[] = [
         text: "Event mapping 2",
       },
       {
-        href: 'https://stackoverflow.com/questions/74168548/how-to-define-a-custom-event-callback-function-argument-shape-in-a-class-with-ty/74169411#74169411',
-        text: 'Typing NodeJS event emitter'
-      }
-
+        href: "https://stackoverflow.com/questions/74168548/how-to-define-a-custom-event-callback-function-argument-shape-in-a-class-with-ty/74169411#74169411",
+        text: "Typing NodeJS event emitter",
+      },
     ],
     tags: ["pattern"],
     date: "January 25, 2021",
@@ -1400,18 +1364,57 @@ export const blogArticles: Section[] = [
   {
     url: "/find-duplicates",
     title: "Find key duplicates in dictionary data structure",
-    description: "How to create dictionary data structure with unique keys inside nested leafs",
+    description:
+      "How to create dictionary data structure with unique keys inside nested leafs",
     Comp: "Duplicates",
     links: [
       {
         text: "Duplicates",
         href: "https://stackoverflow.com/questions/74489137/typescript-how-to-enforce-unique-keys-across-nested-objects#answer-74492547",
       },
-
     ],
     tags: [],
     date: "November 20, 2022",
   },
+  {
+    url: "/range-numbers",
+    title: "Generate literal type for numbers range in TypeScript",
+    description: "How to generate numbers range as a literal type",
+    Comp: "RangeNumbers",
+    links: [
+      {
+        href: "https://stackoverflow.com/questions/69089549/typescript-template-literal-type-how-to-infer-numeric-type#answer-69090186",
+        text: "Make number range",
+      },
+      {
+        href: "https://stackoverflow.com/questions/68724603/how-to-create-a-uuid-template-literal-type-in-typescript/68724963#68724963",
+        text: "UUID string",
+      },
+      {
+        href: "https://stackoverflow.com/questions/69089549/typescript-template-literal-type-how-to-infer-numeric-type",
+        text: "TS 4.5 Tail recursion update",
+      },
+      {
+        href: "https://stackoverflow.com/questions/69766516/infer-generic-from-properties/69766606#69766606",
+        text: "Typing upper bounds",
+      },
+      {
+        href: "https://stackoverflow.com/questions/70717701/how-to-use-spread-operator-in-typescript-as-argument-to-a-function#answer-70720851",
+        text: "Safe type for RGBA",
+      },
+      {
+        href: "https://stackoverflow.com/questions/72327925/how-do-i-tell-typescript-that-i-expect-exactly-2-elements-from-split/72347326#72347326",
+        text: "Convert stringified digits to array of numbers",
+      },
+      {
+        href:'https://stackoverflow.com/questions/75108082/is-it-possible-to-generate-a-union-type-of-numbers-without-explicitly-stating-ea/75109244#75109244',
+        text:"Generate a range with MIN, MAX and STEP"
+      }
+    ],
+    tags: ["number", "range", "template literals"],
+    date: "January 13, 2023",
+  },
+
 ].map((elem, index) => ({ ...elem, type: "article", id: index + 1 }));
 
 /**

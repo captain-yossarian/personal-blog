@@ -3,8 +3,6 @@ import styled from "styled-components";
 
 import Code from "../Shared/Code";
 import { Var } from "../Layout";
-import { Anchor } from "../Shared/Links";
-import { Link } from "react-router-dom";
 import { Header, HeaderNav } from "../Shared/ArticleBase";
 
 const Ul = styled.ul``;
