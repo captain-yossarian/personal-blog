@@ -1357,6 +1357,10 @@ export const blogArticles: Section[] = [
         text: "Answer with explanation about prioritizing inference",
         href: "https://stackoverflow.com/questions/73732549/narrow-number-argument-of-function-to-be-literal-type/73733110#73733110",
       },
+       {
+        text: "ANother example with inference prioritization",
+        href: "https://stackoverflow.com/questions/75233854/typescript-ensure-all-properties-use-the-same-tuple-type#answer-75233976",
+      },
     ],
     tags: [],
     date: "October 21, 2022",
