@@ -29,6 +29,10 @@ export const sections: Section[] = [
         text: "TypeScript FAQ",
       },
       {
+        href: "https://typescript-weekly.com/",
+        text: "TypeScript weekly",
+      },
+      {
         href: "https://www.stephanboyer.com/",
         text: "https://www.stephanboyer.com/",
       },
@@ -1357,7 +1361,7 @@ export const blogArticles: Section[] = [
         text: "Answer with explanation about prioritizing inference",
         href: "https://stackoverflow.com/questions/73732549/narrow-number-argument-of-function-to-be-literal-type/73733110#73733110",
       },
-       {
+      {
         text: "ANother example with inference prioritization",
         href: "https://stackoverflow.com/questions/75233854/typescript-ensure-all-properties-use-the-same-tuple-type#answer-75233976",
       },
@@ -1411,14 +1415,13 @@ export const blogArticles: Section[] = [
         text: "Convert stringified digits to array of numbers",
       },
       {
-        href:'https://stackoverflow.com/questions/75108082/is-it-possible-to-generate-a-union-type-of-numbers-without-explicitly-stating-ea/75109244#75109244',
-        text:"Generate a range with MIN, MAX and STEP"
-      }
+        href: "https://stackoverflow.com/questions/75108082/is-it-possible-to-generate-a-union-type-of-numbers-without-explicitly-stating-ea/75109244#75109244",
+        text: "Generate a range with MIN, MAX and STEP",
+      },
     ],
     tags: ["number", "range", "template literals"],
     date: "January 13, 2023",
   },
-
 ].map((elem, index) => ({ ...elem, type: "article", id: index + 1 }));
 
 /**

@@ -378,7 +378,7 @@ const navigation = {
   part_2: {
     id: "part_2",
     text: "Generate a range with min,max and steb by parameters",
-    updated:true
+    updated: true,
   },
   part_3: {
     id: "part_2",
@@ -533,8 +533,12 @@ const RangeNumbers: FC = () => (
       <Anchor
         href="https://stackoverflow.com/questions/75108082/is-it-possible-to-generate-a-union-type-of-numbers-without-explicitly-stating-ea/75109244#75109244"
         text="Here"
-      />{" "}
-      you can find my answer
+      />
+      you can find my answer.
+    </p>
+    <p>
+      If you like this article, I will appreciate for any donation for
+      <Anchor href="https://zrzutka.pl/pthyet" text="Ukrainian army" />. Thank you
     </p>
 
     <Header {...navigation.part_3} />
