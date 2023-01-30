@@ -7,20 +7,32 @@ const Ukraine: FC = () => (
       russia launched an all-out invasion of Ukraine by land, air and sea on 24
       of February.
     </p>
-    <p>This is why I came back to Ukraine</p>
+    <p>This is why I came back to Ukraine.</p>
     <p>
-      If you want to help Ukrainian army, you can make a donation here{" "}
-      <Anchor
-        href="https://www.comebackalive.in.ua/uk/donate?fbclid=IwAR3lATfZiatgnRvwoEam-3aWUNoYJDroYJLAqWsIvdOQNSm-PwAwL1sGM9s"
-        text="Сome back alive"
-      />
-      . If you want to help Territorial Defense Forces please see
-      <Anchor text="this donation" href="https://zrzutka.pl/pthyet" />
+      I have my own small donation company, which you can find
+      <Anchor text="here" href="https://zrzutka.pl/pthyet" />. Once per month I
+      am buying holographic sights, starlinks and other tactical equipment.
     </p>
+
     <p>
-      If you don't trust the link I have provided, it is ok. Please double check
-      them with other official web pages or on official Ukraine twitter account.
+      If you don't trust the link I have provided, it is ok. You can also make a
+      donation to these most popular charity foundations in Ukraine:
+      <ul>
+        <li>
+          <Anchor
+            href="https://savelife.in.ua/en/donate-en/#donate-army-card-monthly"
+            text="Сome back alive"
+          />
+        </li>
+        <li>
+          <Anchor
+            href="https://prytulafoundation.org/en/home/support_page"
+            text="Serhiy Prytula Charity Foundation"
+          />
+        </li>
+      </ul>
     </p>
+
     <p>Thank you.</p>
   </>
 );

@@ -60,12 +60,14 @@ const ArticleHeader: FC<{
       <Link to={name}>{meta.title},</Link>
       <span>{meta.date}</span>
     </H2>
-    <Aside>{meta.description}</Aside>
-    <Tags>
-      {meta.tags.map((tag, index) => (
-        <Tag key={index}>{`#${tag}`}</Tag>
-      ))}
-    </Tags>
+    {meta.description && <Aside>{meta.description}</Aside>}
+    {meta.tags.length > 0 && (
+      <Tags>
+        {meta.tags.map((tag, index) => (
+          <Tag key={index}>{`#${tag}`}</Tag>
+        ))}
+      </Tags>
+    )}
   </Li>
 );
 
@@ -75,11 +77,31 @@ export const Title = styled.p`
   display: inline-block;
   margin-bottom: 20px;
 `;
+const Border = styled.ul`
+  background: linear-gradient(rgba(0, 87, 183, 0.2) 50%, rgba(255,215,0,.2) 50%);
+  & li {
+    margin-bottom: 0px !important;
+  }
+`;
+
+const Ukraine = {
+  url: "/Ukraine",
+  title: "Want to help Ukraine?",
+  description: "",
+  Comp: "Ukraine",
+  links: [],
+  tags: [],
+  date: "February 24, 2022",
+  id: 24022022,
+};
 
 const Home: FC = () => {
   return (
     <>
       <div>
+        <Border>
+          <ArticleHeader name={Ukraine.url} meta={Ukraine} key={Ukraine.url} />
+        </Border>
         <Title>
           Here you can find some non-trivial typescript examples taken from real
           life (95% are from stackoverflow).
