@@ -128,7 +128,7 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
                 />
                 or{" "}
                 <Anchor
-                  href="https://zrzutka.pl/pthyet"
+                  href="https://zrzutka.pl/en/pthyet"
                   text="help Ukrainian army"
                 />
                 .

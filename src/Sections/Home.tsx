@@ -86,7 +86,7 @@ const Border = styled.ul`
 
 const Ukraine = {
   url: "/Ukraine",
-  title: "Want to help Ukraine?",
+  title: "Do you want to help Ukraine?",
   description: "",
   Comp: "Ukraine",
   links: [],

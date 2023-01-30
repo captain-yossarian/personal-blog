@@ -538,7 +538,7 @@ const RangeNumbers: FC = () => (
     </p>
     <p>
       If you like this article, I will appreciate for any donation for
-      <Anchor href="https://zrzutka.pl/pthyet" text="Ukrainian army" />. Thank you
+      <Anchor href="https://zrzutka.pl/en/pthyet" text="Ukrainian army" />. Thank you
     </p>
 
     <Header {...navigation.part_3} />
