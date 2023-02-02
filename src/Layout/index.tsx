@@ -65,17 +65,17 @@ const Banner = styled.aside`
     width: 100%;
     opacity: 55%;
   }
-
-  @media (max-width: 1400px) {
-    /* Probably some parent element that limits the img width */
-    img {
-      display: none;
-    }
-  }
 `;
 
 const Flex = styled.div`
-  display: flex;
+  #banner {
+    @media (max-width: 1400px) {
+      /* Probably some parent element that limits the img width */
+      img {
+        display: none;
+      }
+    }
+  }
 `;
 
 export const Main: FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -83,7 +83,7 @@ export const Main: FC<{ children: React.ReactNode }> = ({ children }) => (
     <Navigation />
     <Flex>
       <Section>{children}</Section>
-      <Banner>
+      <Banner id="banner">
         <img src="/olympic.png" title="Share this page on Twitter" />
       </Banner>
     </Flex>
