@@ -55,9 +55,37 @@ const Section = styled.section`
   }
 `;
 
+const Banner = styled.aside`
+  position: fixed;
+  max-width: 20rem;
+  z-index: 99999;
+  top: 5px;
+  right: 5px;
+  img {
+    width: 100%;
+    opacity: 55%;
+  }
+
+  @media (max-width: 1400px) {
+    /* Probably some parent element that limits the img width */
+    img {
+      display: none;
+    }
+  }
+`;
+
+const Flex = styled.div`
+  display: flex;
+`;
+
 export const Main: FC<{ children: React.ReactNode }> = ({ children }) => (
   <Container>
-    <Navigation />    
-    <Section>{children}</Section>
+    <Navigation />
+    <Flex>
+      <Section>{children}</Section>
+      <Banner>
+        <img src="/olympic.png" title="Share this page on Twitter" />
+      </Banner>
+    </Flex>
   </Container>
 );
