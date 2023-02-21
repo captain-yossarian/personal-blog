@@ -7,6 +7,7 @@ const Hire: FC = () => (
       Hi, I am glad you are interested. I have 6 years of experience with
       React/TypeScript/Javascript eco system.
     </p>
+    
     <p>
       I am focused on type safe functional programming. My main language is
       TypeScript.
