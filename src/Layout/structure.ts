@@ -1365,6 +1365,10 @@ export const blogArticles: Section[] = [
         text: "ANother example with inference prioritization",
         href: "https://stackoverflow.com/questions/75233854/typescript-ensure-all-properties-use-the-same-tuple-type#answer-75233976",
       },
+      {
+        text: "My tweet with T & {} use cases",
+        href: "https://twitter.com/captainyosarian/status/1613179906950680576",
+      },
     ],
     tags: [],
     date: "October 21, 2022",
