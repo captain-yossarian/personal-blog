@@ -84,7 +84,16 @@ export const Main: FC<{ children: React.ReactNode }> = ({ children }) => (
     <Flex>
       <Section>{children}</Section>
       <Banner id="banner">
-        <img src="/olympic.png" title="Share this page on Twitter" />
+        <a
+          href="https://cyberdef.savelife.in.ua/en"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="/cyberprotection.png"
+            alt="You will be redirected to https://cyberdef.savelife.in.ua/en"
+          />
+        </a>
       </Banner>
     </Flex>
   </Container>
