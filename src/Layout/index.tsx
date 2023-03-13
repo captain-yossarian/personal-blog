@@ -83,18 +83,6 @@ export const Main: FC<{ children: React.ReactNode }> = ({ children }) => (
     <Navigation />
     <Flex>
       <Section>{children}</Section>
-      <Banner id="banner">
-        <a
-          href="https://cyberdef.savelife.in.ua/en"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="/cyberprotection.png"
-            alt="You will be redirected to https://cyberdef.savelife.in.ua/en"
-          />
-        </a>
-      </Banner>
     </Flex>
   </Container>
 );

@@ -36,7 +36,7 @@ interface IPResponse {
 const App: VFC = () => {
   const [visible, setVisibility] = useState(true);
 
-  const fetchCountry = async () => {
+    const fetchCountry = async () => {
     const response: IPResponse = await fetch("http://ip-api.com/json").then(
       (data) => data.json()
     );
