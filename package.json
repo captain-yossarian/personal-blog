@@ -2,6 +2,7 @@
   "name": "az-demo",
   "version": "0.1.0",
   "private": true,
+  "type":"module",
   "dependencies": {
     "fp-ts": "^2.12.1",
     "highlight.js": "^10.5.0",
