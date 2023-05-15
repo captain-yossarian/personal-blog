@@ -1,4 +1,4 @@
-import { VercelResponse, VercelRequest } from "@vercel/node";
+import { type VercelResponse, type VercelRequest } from "@vercel/node";
 import { rss } from "./feed";
 
 export default (_: VercelRequest, response: VercelResponse) => {
