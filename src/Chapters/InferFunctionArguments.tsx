@@ -50,7 +50,7 @@ type Json =
   | string
   | number
   | boolean
-  | Array<JSON>
+  | Array<Json>
   | {
     [prop: string]: Json
   }
@@ -71,7 +71,7 @@ type Json =
   | string
   | number
   | boolean
-  | Array<JSON>
+  | Array<Json>
   | {
     [prop: string]: Json
   }
