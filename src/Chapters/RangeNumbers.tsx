@@ -549,11 +549,6 @@ const RangeNumbers: FC = () => (
       />
       you can find my answer.
     </p>
-    <p>
-      If you like this article, I will appreciate for any donation for
-      <Anchor href="https://zrzutka.pl/en/pthyet" text="Ukrainian army" />. Thank you
-    </p>
-
     <Header {...navigation.part_3} />
     <p>
       If you still want to generate literal numbers instead of string numbers,

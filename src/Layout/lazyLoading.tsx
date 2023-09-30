@@ -59,6 +59,7 @@ export const ComponentMap: Record<
   UnsafeIntersection: React.lazy(
     () => import("../Chapters/UnsafeIntersection")
   ),
+  SafeNavigation:React.lazy(()=>import('../Chapters/SafeNavigation')),
   StringCombinations: React.lazy(
     () => import("../Chapters/StringCombinations")
   ),

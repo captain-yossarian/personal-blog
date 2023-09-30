@@ -90,10 +90,10 @@ const Footer = styled.footer`
   margin: 10px 0 20px 0;
   padding: 5px;
 `;
-const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
+const ArticleBase: FC<Props & { links?: LinksProps["data"] }> = ({
   title,
   children,
-  links,
+  links=[],
   path,
   date,
   id,
@@ -125,12 +125,7 @@ const ArticleBase: FC<Props & { links: LinksProps["data"] }> = ({
                 <img
                   src="https://storage.ko-fi.com/cdn/cup-border.png"
                   width="40"
-                />
-                or{" "}
-                <Anchor
-                  href="https://zrzutka.pl/en/pthyet"
-                  text="help Ukrainian army"
-                />
+                />            
                 .
               </p>
             </div>

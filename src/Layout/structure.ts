@@ -1426,6 +1426,18 @@ export const blogArticles: Section[] = [
     tags: ["number", "range", "template literals"],
     date: "January 13, 2023",
   },
+  {
+    url: "/navigation",
+    title: "Type safe navigation",
+    description:
+      "Here you will learn how to create type safe navigation with mutually recursive utility types",
+    Comp: "SafeNavigation",
+    tags: ['mutually recursive types', 'navigation'],
+    date: "September 30, 2023",
+    links: [
+
+    ],
+  },
 ].map((elem, index) => ({ ...elem, type: "article", id: index + 1 }));
 
 /**
