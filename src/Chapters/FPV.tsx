@@ -10,7 +10,7 @@ const FPV: FC = () => (
         text=" Polar Bear commerce"
       />
       , are making FPV drones to help Ukrainian army to defence Ukraine from
-      russian occupiers. The price of the one FPV frone is around 350$ with
+      russian occupiers. The price of the one FPV drone is around 350$ with
       battery.
       <Anchor href="https://www.facebook.com/jossarian/" text="Here" /> you can
       check my facebook for photo confirmation. If you want to support me, this
