@@ -1434,9 +1434,17 @@ export const blogArticles: Section[] = [
     Comp: "SafeNavigation",
     tags: ['mutually recursive types', 'navigation'],
     date: "September 30, 2023",
-    links: [
-
-    ],
+    links: [],
+  },
+  {
+    url: "/fpv",
+    title: "Making FPV drones for Ukrainian army",
+    description:
+      "I, with my frined from Polar Bear commerce, are making FPV drones for Ukrainian army",
+    Comp: "FPV",
+    tags: ['fpv'],
+    date: "October 25, 2023",
+    links: [],
   },
 ].map((elem, index) => ({ ...elem, type: "article", id: index + 1 }));
 

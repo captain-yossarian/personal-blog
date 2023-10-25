@@ -59,7 +59,7 @@ export const ComponentMap: Record<
   UnsafeIntersection: React.lazy(
     () => import("../Chapters/UnsafeIntersection")
   ),
-  SafeNavigation:React.lazy(()=>import('../Chapters/SafeNavigation')),
+  SafeNavigation: React.lazy(() => import("../Chapters/SafeNavigation")),
   StringCombinations: React.lazy(
     () => import("../Chapters/StringCombinations")
   ),
@@ -67,4 +67,5 @@ export const ComponentMap: Record<
     () => import("../Chapters/UndocumentedFeatures")
   ),
   Duplicates: React.lazy(() => import("../Chapters/Duplicates")),
+  FPV: React.lazy(() => import("../Chapters/FPV")),
 };
