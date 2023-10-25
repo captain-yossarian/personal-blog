@@ -4,10 +4,10 @@ import { Anchor } from "../Shared/Links";
 const FPV: FC = () => (
   <>
     <p>
-      I, with my friend Nazar, from
+      I, with my friend Nazar, from{" "}
       <Anchor
         href="https://polarbearcommerce.com/"
-        text="Polar Bear commerce"
+        text=" Polar Bear commerce"
       />
       , are making FPV drones to help Ukrainian army to defence Ukraine from
       russian occupiers. The price of the one FPV frone is around 350$ with
@@ -22,9 +22,9 @@ const FPV: FC = () => (
       ...)
     </p>
     <p>
-      If you just have an experience and you want help - dont hesitate, please
-      send me an email. I dont have a lot of "drone" experience so I would be
-      happy to learn smth new from you
+      If you just have an experience and you want help - don`t hesitate, please
+      send me an email. I don`t have a lot of "drone-making" experience so I
+      would be happy to learn smth new from you
     </p>
     <p>Thank you!</p>
   </>
