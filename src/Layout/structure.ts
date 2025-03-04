@@ -1437,13 +1437,13 @@ export const blogArticles: Section[] = [
     links: [],
   },
   {
-    url: "/fpv",
-    title: "Making FPV drones for Ukrainian army",
+    url: "/fpv-155",
+    title: "Drones for 155th Separate Mechanized Brigade",
     description:
-      "I, with my frined from Polar Bear commerce, are making FPV drones for Ukrainian army",
+      "FPV drone campaign",
     Comp: "FPV",
     tags: ['fpv'],
-    date: "October 25, 2023",
+    date: "March 4, 2025",
     links: [],
   },
 ].map((elem, index) => ({ ...elem, type: "article", id: index + 1 }));

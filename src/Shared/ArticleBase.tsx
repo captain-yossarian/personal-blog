@@ -112,10 +112,7 @@ const ArticleBase: FC<Props & { links?: LinksProps["data"] }> = ({
       <Footer>
         {id > 0 && id !== 38 ? (
           <>
-            <div>
-              <p>
-                Share on twitter <TwitterShare title={title} path={path} />
-              </p>
+            <div>          
               <p>
                 If you like this article you can
                 <Anchor

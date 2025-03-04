@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 type PropsAnchor = {
   href: string;
-  text: string;
+  text?: string;
+  style?:React.CSSProperties
 };
 
 export type Props = {
@@ -15,14 +16,15 @@ const A = styled.a`
   margin: 10px 0;
 `;
 
-const Span = styled.span`
+export const Span = styled.span`
   display: inline-block;
   margin: 0 5px;
 `;
 
-export const Anchor: FC<PropsAnchor> = ({ href, text }) => (
-  <A target="_blank" rel="noopener noreferrer" href={href}>
-    <Span>{text}</Span>
+export const Anchor: FC<PropsAnchor> = ({ href, text, children = null, style={} }) => (
+  <A target="_blank" rel="noopener noreferrer" href={href} style={style}>
+    {text && <Span>{text}</Span>}
+    {children}
   </A>
 );
 

@@ -1,33 +1,109 @@
-import React, { FC } from "react";
+import React from "react";
 import { Anchor } from "../Shared/Links";
 
-const FPV: FC = () => (
-  <>
-    <p>
-      I, with my friend Nazar, from{" "}
-      <Anchor
-        href="https://polarbearcommerce.com/"
-        text=" Polar Bear commerce"
-      />
-      , are making FPV drones to help Ukrainian army to defence Ukraine from
-      russian occupiers. The price of the one FPV drone is around 350$ with
-      battery.
-      <Anchor href="https://www.facebook.com/jossarian/" text="Here" /> you can
-      check my facebook for photo confirmation. If you want to support me, this
-      is my PayPal serhii.bilyk89@gmail.com .
-    </p>
-    <p>
-      If you have your own old fpv drone that you are not using you can send it
-      to us or at least some parts (drone frame, flight controller, motors etc
-      ...)
-    </p>
-    <p>
-      If you just have an experience and you want help - don`t hesitate, please
-      send me an email. I don`t have a lot of "drone-making" experience so I
-      would be happy to learn smth new from you
-    </p>
-    <p>Thank you!</p>
-  </>
+import styled from "styled-components";
+
+const Flex = styled.div`
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 24px;
+`;
+
+const FPV = () => (
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      gap: "3rem",
+    }}
+  >
+    <div>
+      <p>
+        Благодійний фонд{" "}
+        <Anchor
+          text="Створені перемагати"
+          href="https://www.facebook.com/people/%D0%91%D0%A4-%D0%A1%D1%82%D0%B2%D0%BE%D1%80%D0%B5%D0%BD%D1%96-%D0%9F%D0%B5%D1%80%D0%B5%D0%BC%D0%B0%D0%B3%D0%B0%D1%82%D0%B8/100087463445783/"
+        />
+        відкрив збір на FPV-дрони "Бомбери" для{" "}
+        <Anchor
+          text="155-ої окремої механізованої бригади"
+          href="https://en.wikipedia.org/wiki/155th_Mechanized_Brigade_(Ukraine)"
+        ></Anchor>
+      </p>
+      <p
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          border: "2px solid #fdba08",
+          borderRadius: "10px",
+        }}
+      >
+        <Anchor
+          href="https://send.monobank.ua/jar/AUdgydtFwG"
+          text="Тут Ви знайдете монобанку"
+          style={{
+            width: "auto",
+          }}
+        />
+      </p>
+    </div>
+    <div>
+      <p>
+        Fund{" "}
+        <Anchor
+          text="Built to win"
+          href="https://stvoreni-peremahaty.com/pro-nas/"
+        />{" "}
+        started a drone campaign for
+        <Anchor
+          text="155th Separate Mechanized Brigade"
+          href="https://en.wikipedia.org/wiki/155th_Mechanized_Brigade_(Ukraine)"
+        ></Anchor>
+        <p
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            border: "2px solid #fdba08",
+            borderRadius: "10px",
+          }}
+        >
+          <Anchor
+            href="https://send.monobank.ua/jar/AUdgydtFwG"
+            text="Here you can find a monobank jar"
+            style={{
+              width: "auto",
+            }}
+          />{" "}
+        </p>
+        <p> which we have opened to gather the money</p>
+        <Flex>
+          <img src="./155th_Infantry_Brigade_Insignia.png" />
+
+          <Anchor
+            href="https://stvoreni-peremahaty.com/pro-nas/"
+            style={{
+              backgroundColor: "#333330",
+              height: "fit-content",
+              width: "auto",
+            }}
+          >
+            <img src="./built_to_win.webp" />
+          </Anchor>
+        </Flex>
+      </p>
+    </div>
+    <div
+      style={{
+        width: "100%",
+      }}
+    >
+      <video autoPlay loop muted playsInline controls={false}>
+        <source type="video/mp4" src="/video.mp4" data-src="/video.mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
 );
 
 export default FPV;
