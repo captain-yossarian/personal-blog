@@ -113,8 +113,8 @@ export const sections: Section[] = [
   // },
   {
     url: "/looking-for-job",
-    title: "Looking for a job",
-    description: "Looking for a job",
+    title: "Looking for a job?",
+    description: "Looking for a job?",
     Comp: "Careerspan",
     links: [],
     id: -5,
