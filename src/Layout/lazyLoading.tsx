@@ -9,6 +9,7 @@ export const ComponentMap: Record<
   Home: React.lazy(() => import("../Sections/Home")),
   Subscribe: React.lazy(() => import("../Sections/Subscribe")),
   Hire: React.lazy(() => import("../Sections/Hire")),
+  Careerspan: React.lazy(() => import("../Sections/Careerspan")),
   MathOperations: React.lazy(() => import("../Chapters/MathOperations")),
   ReactChildren: React.lazy(() => import("../Chapters/ReactChildren")),
   ReactReturnType: React.lazy(() => import("../Chapters/ReactReturnType")),

@@ -4,7 +4,7 @@ import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
 
 
-export const NAV_WIDTH = "8rem";
+export const NAV_WIDTH = "15rem";
 export const CTA_FONT_FAMILY = '"Lucida Console","Courier New",monospace';
 export const THEME_COLOR = '#fdba08';
 export const TEXT_COLOR = '#0e2924'

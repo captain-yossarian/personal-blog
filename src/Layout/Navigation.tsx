@@ -22,7 +22,8 @@ const links = Object.entries({
   "/about": "About",
   "/contact": "Contact",
   "/subscribe": "Subscribe",
-  "/hire": "Hire me!",
+  // "/hire": "Hire me!",
+  "/looking-for-job": "Looking for a job?",
 });
 
 const NavElement = styled.li`

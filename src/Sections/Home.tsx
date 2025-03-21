@@ -53,7 +53,7 @@ const Tags = styled.ul`
 `;
 const ArticleHeader: FC<{
   name: string;
-  meta: typeof blogArticles[number];
+  meta: (typeof blogArticles)[number];
 }> = ({ name, meta }) => (
   <Li>
     <H2>
@@ -78,7 +78,10 @@ export const Title = styled.p`
   margin-bottom: 20px;
 `;
 const Border = styled.ul`
-  background: linear-gradient(rgba(0, 87, 183, 0.2) 50%, rgba(255,215,0,.2) 50%);
+  background: linear-gradient(
+    rgba(0, 87, 183, 0.2) 50%,
+    rgba(255, 215, 0, 0.2) 50%
+  );
   & li {
     margin-bottom: 0px !important;
   }
@@ -104,7 +107,9 @@ const Home: FC = () => {
         </Border>
         <Title>
           Here you can find some non-trivial typescript examples taken from real
-          life (95% are from stackoverflow).
+          life (95% are from stackoverflow). Please keep in mind that while you
+          are struggling with TypeScript issues hundreds of thousands of
+          Ukrainian people are fighting agains russia. This is XXI century
         </Title>
       </div>
       <ul>

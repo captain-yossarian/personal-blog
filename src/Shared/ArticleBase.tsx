@@ -62,23 +62,6 @@ export const HeaderNav: FC<HeaderProps> = ({ links }) => (
   </ul>
 );
 
-const twitterSkip = ["about", "contact", "home"];
-
-const TwitterShare: FC<{ title: string; path: string }> = ({ title, path }) =>
-  !twitterSkip.includes(title.toLowerCase()) ? (
-    <span>
-      <a
-        href={`https://twitter.com/share?url=catchts.com${path}&hashtags=typescript,catchts&text=${title}`}
-      >
-        <img
-          width="45"
-          src="/twitter-logo.png"
-          title="Share this page on Twitter"
-        />
-      </a>
-    </span>
-  ) : null;
-
 const RenderDate = styled.div`
   text-align: center;
   margin: 0 auto;
@@ -93,7 +76,7 @@ const Footer = styled.footer`
 const ArticleBase: FC<Props & { links?: LinksProps["data"] }> = ({
   title,
   children,
-  links=[],
+  links = [],
   path,
   date,
   id,
@@ -114,9 +97,6 @@ const ArticleBase: FC<Props & { links?: LinksProps["data"] }> = ({
           <>
             <div>
               <p>
-                Share on twitter <TwitterShare title={title} path={path} />
-              </p>
-              <p>
                 If you like this article you can
                 <Anchor
                   href="https://ko-fi.com/catchts"
@@ -125,7 +105,7 @@ const ArticleBase: FC<Props & { links?: LinksProps["data"] }> = ({
                 <img
                   src="https://storage.ko-fi.com/cdn/cup-border.png"
                   width="40"
-                />            
+                />
                 .
               </p>
             </div>

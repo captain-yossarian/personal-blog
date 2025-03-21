@@ -1,9 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import styled from "styled-components";
 
 type PropsAnchor = {
   href: string;
-  text: string;
+  text?: string;
+  children?: ReactNode;
 };
 
 export type Props = {
@@ -20,9 +21,10 @@ const Span = styled.span`
   margin: 0 5px;
 `;
 
-export const Anchor: FC<PropsAnchor> = ({ href, text }) => (
+export const Anchor: FC<PropsAnchor> = ({ href, text, children = null }) => (
   <A target="_blank" rel="noopener noreferrer" href={href}>
     <Span>{text}</Span>
+    {children}
   </A>
 );
 

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React, { FC } from "react";
 import Navigation from "./Navigation";
 import { NAV_WIDTH, CTA_FONT_FAMILY } from "./utils";
+import { Anchor } from "../Shared/Links";
 
 export const Title = styled.h1`
   font-weight: bold;
@@ -61,21 +62,29 @@ const Banner = styled.aside`
   z-index: 99999;
   top: 5px;
   right: 5px;
+  margin-top: 3rem;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+
   img {
     width: 100%;
-    opacity: 55%;
+    border-radius: 20px;
   }
 `;
 
 const Flex = styled.div`
+  display: flex;
   #banner {
     @media (max-width: 1400px) {
-      /* Probably some parent element that limits the img width */
-      img {
-        display: none;
-      }
+      right: -300px;
     }
   }
+`;
+
+const DonationTitle = styled.p`
+  font-size: 16px;
+  font-family: ${CTA_FONT_FAMILY};
 `;
 
 export const Main: FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -83,6 +92,17 @@ export const Main: FC<{ children: React.ReactNode }> = ({ children }) => (
     <Navigation />
     <Flex>
       <Section>{children}</Section>
+      <Banner id="banner">
+        <DonationTitle>
+          If you want to help Ukraine, help us to make as much as possible FPV
+          drones
+        </DonationTitle>
+        <Anchor
+          href="https://send.monobank.ua/jar/AUdgydtFwG"
+         >
+          <img src="./pixel.jpg" />
+        </Anchor>
+      </Banner>
     </Flex>
   </Container>
 );
