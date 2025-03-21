@@ -77,7 +77,7 @@ const Flex = styled.div`
   display: flex;
   #banner {
     @media (max-width: 1400px) {
-      right: -300px;
+      right: -900px;
     }
   }
 `;
