@@ -11,8 +11,7 @@ const Careerspan: FC = () => (
       <Anchor href="https://www.mycareerspan.com/aboutus" text="Here" /> you can
       find about us section
     </p>
-    <p>In general, we are working on AI based platform which will help you to tailor your resume.</p>
-    <p>There are a lot more feature they can bring to the table, give it a try!</p>
+    <p>In general, we are working on AI based platform which will help you identify and communicate your strengths to employers and tailor your resume by pasting in a job description.</p>
   </div>
 );
 
