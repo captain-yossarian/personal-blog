@@ -94,13 +94,12 @@ export const Main: FC<{ children: React.ReactNode }> = ({ children }) => (
       <Section>{children}</Section>
       <Banner id="banner">
         <DonationTitle>
-          If you want to help Ukraine, help us to make as much as possible FPV
-          drones
+          Help me to save money for drone repeater for 155th Mechanized Brigade
         </DonationTitle>
         <Anchor
-          href="https://send.monobank.ua/jar/AUdgydtFwG"
+          href="https://send.monobank.ua/jar/5GdbNDryWQ"
          >
-          <img src="./pixel.jpg" />
+          <img src="./star_wars.jpg" />
         </Anchor>
       </Banner>
     </Flex>

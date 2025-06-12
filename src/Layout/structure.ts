@@ -1288,7 +1288,7 @@ export const blogArticles: Section[] = [
     Comp: "Ukraine",
     links: [],
     tags: [],
-    date: "February 24, 2022",
+    date: "June 12, 2025",
   },
   {
     url: "/transformation-utils",
